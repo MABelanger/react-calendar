@@ -17,7 +17,6 @@ json {
 	},
 	days : {
 		lundi : {
-		
 			{
 				icon : "yoga",
 				startHour : "10:30",
