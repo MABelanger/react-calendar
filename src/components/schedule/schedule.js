@@ -58,14 +58,17 @@ var Schedule = React.createClass({
 		return (
 			<div>
 				<table>
+
 					<tr>
-						<td>
+						<th>
 							Lundi
-						</td>
-						<td>
+						</th>
+						<th>
 							Mardi
-						</td>
+						</th>
 					</tr>
+
+
 					<tr>
 						{this.state.days.map(this.eachDay)}
 					</tr>
