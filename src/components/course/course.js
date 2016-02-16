@@ -3,16 +3,26 @@
 var React = require('react');
 
 var Course = React.createClass({
+
+	propTypes: {
+		link: React.PropTypes.string.isRequired,
+		image: React.PropTypes.string.isRequired,
+		startHour: React.PropTypes.string.isRequired,
+		endHour: React.PropTypes.string.isRequired,
+		professorName: React.PropTypes.string.isRequired,
+	},
+		
 	render: function(){
+		console.log('inside', 'Course')
 		return (
-			<div style="background-color: yellow; width:70px;">	
-				<a class="cal" href="/calendar_activities/#/courses/24">
-					<div style="height:100%">
-						<img src="/media/course_icon/logo_yoga_Zhstq9G.png" />
+			<div>	
+				<a className="cal" href="{this.props.link}">
+					<div>
+						<img src="{this.props.imge}" />
 						<br />&nbsp;
-						10:00-<br />
-						11:15<br />
-						Laurence Bourgault Martin
+						{this.props.startHour}-<br />
+						{this.props.endHour}<br />
+						{this.props.professorName}
 					</div>
 				</a>
 			</div>

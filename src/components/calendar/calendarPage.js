@@ -17,7 +17,7 @@ var CalendarPage = React.createClass({
 						</td>
 					</tr>
 					<tr>
-						< Day />
+						< Day course={[1,2,3]} />
 						< Day />
 					</tr>
 				</table>
