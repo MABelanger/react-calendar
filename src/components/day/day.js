@@ -14,23 +14,7 @@ var Day = React.createClass({
 
     getInitialState: function() {
         return {
-            courses: [
-            	{
-            		link: "link1",
-            		image: "image1",
-            		startHour: "startHour1",
-            		endHour: "endHour1",
-            		professorName: "professorName1"
-            	},
-            	{
-            		link: "link2",
-            		image: "image2",
-            		startHour: "startHour2",
-            		endHour: "endHour2",
-            		professorName: "professorName2"
-            	}
-
-            ]
+            courses: []
         };
     },
 
@@ -49,7 +33,7 @@ var Day = React.createClass({
 	render: function(){
 		return (
 			<td>
-				{this.state.courses.map(this.eachCourse)}
+				{this.props.courses.map(this.eachCourse)}
 			</td>
 		);
 	}

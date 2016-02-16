@@ -1,5 +1,5 @@
 var React = require('react');
-var Day = require('../day/day');
+var Schedule = require('../schedule/schedule');
 
 var CalendarPage = React.createClass({
 	
@@ -7,20 +7,7 @@ var CalendarPage = React.createClass({
 		console.log('inside', 'CalendarPage')
 		return (
 			<div>
-				<table>
-					<tr>
-						<td>
-							Lundi
-						</td>
-						<td>
-							Mardi
-						</td>
-					</tr>
-					<tr>
-						< Day course={[1,2,3]} />
-						< Day />
-					</tr>
-				</table>
+				<Schedule />
 			</div>
 		);
 	}
