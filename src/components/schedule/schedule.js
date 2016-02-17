@@ -3,45 +3,74 @@ var Day = require('../day/day');
 
 var Schedule = React.createClass({
 
-    getInitialState: function() {
+	getHeaders: function(scheduleFormat) {
+		var headers = [];
+		for(var key in scheduleFormat) {
+		    if(scheduleFormat.hasOwnProperty(key)) {
+		        //scheduleFormat[key];
+		        headers.push(key);
+		    }
+		}
+		return headers;
+	},
+
+	getDays: function(scheduleFormat) {
+		var days = [];
+		for(var key in scheduleFormat) {
+		    if(scheduleFormat.hasOwnProperty(key)) {
+		        days.push(scheduleFormat[key]);
+		    }
+		}
+		return days;
+	},
+
+
+	getSchedule: function() {
         return {
-        	days : [
-	            [
-	            	{
-	            		link: "link1",
-	            		image: "image1",
-	            		startHour: "startHour1",
-	            		endHour: "endHour1",
-	            		professorName: "professorName1"
-	            	},
-	            	{
-	            		link: "link2",
-	            		image: "image2",
-	            		startHour: "startHour2",
-	            		endHour: "endHour2",
-	            		professorName: "professorName2"
-	            	}
+			lundi : [
+		    	{
+		    		link: "link1",
+		    		image: "image1",
+		    		startHour: "startHour1",
+		    		endHour: "endHour1",
+		    		professorName: "professorName1"
 
-	            ],
-	            [
-	            	{
-	            		link: "link1b",
-	            		image: "image1b",
-	            		startHour: "startHour1b",
-	            		endHour: "endHour1b",
-	            		professorName: "professorName1b"
-	            	},
-	            	{
-	            		link: "link2b",
-	            		image: "image2b",
-	            		startHour: "startHour2b",
-	            		endHour: "endHour2b",
-	            		professorName: "professorName2b"
-	            	}
+		    	},
+		    	{
+		    		link: "link2",
+		    		image: "image2",
+		    		startHour: "startHour2",
+		    		endHour: "endHour2",
+		    		professorName: "professorName2"
+		    	}
+			],
 
-	            ]
-	        ]
+			mardi: [
+		    	{
+		    		link: "link1b",
+		    		image: "image1b",
+		    		startHour: "startHour1b",
+		    		endHour: "endHour1b",
+		    		professorName: "professorName1b"
+		    	},
+		    	{
+		    		link: "link2b",
+		    		image: "image2b",
+		    		startHour: "startHour2b",
+		    		endHour: "endHour2b",
+		    		professorName: "professorName2b"
+		    	}
+			]
         };
+	},
+
+    getInitialState: function() {
+    	var schedule = this.getSchedule();
+    	return {
+    		headers: this.getHeaders(schedule),
+    		days: this.getDays(schedule)
+    	};
+
     },
 
 	eachDay: function(day, i) {
@@ -53,22 +82,21 @@ var Schedule = React.createClass({
 		);
 	},
 
+	eachHeader: function(header, i) {
+		return (
+			<th>{header}</th>
+		);
+	},
+
+
 	render: function(){
-		console.log('inside', 'Schedule', this.state.days)
+		console.log('inside', 'Row', this.state.days)
 		return (
 			<div>
 				<table>
-
 					<tr>
-						<th>
-							Lundi
-						</th>
-						<th>
-							Mardi
-						</th>
+						{this.state.headers.map(this.eachHeader)}
 					</tr>
-
-
 					<tr>
 						{this.state.days.map(this.eachDay)}
 					</tr>
