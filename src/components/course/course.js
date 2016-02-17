@@ -11,14 +11,14 @@ var Course = React.createClass({
 		endHour: React.PropTypes.string.isRequired,
 		professorName: React.PropTypes.string.isRequired,
 	},
-		
+
 	render: function(){
 		console.log('inside', 'Course')
 		return (
 			<div>	
 				<a className="cal" href="{this.props.link}">
 					<div>
-						<img src="{this.props.imge}" />
+						<img src={this.props.image} />
 						<br />&nbsp;
 						{this.props.startHour}-<br />
 						{this.props.endHour}<br />
