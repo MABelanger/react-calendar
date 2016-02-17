@@ -20,6 +20,7 @@ var config = {
 			'./src/**/*.css',
 		],
 		scss: './src/**/*.scss',
+		src: './src',
 		dist: './dist',
 		mainJs: './src/main.js'
 
@@ -59,8 +60,8 @@ gulp.task('js', function() {
 gulp.task('sass', function () {
   return gulp.src(config.paths.scss)
     .pipe(sass().on('error', sass.logError))
-    .pipe(concat('bundle.css'))
-    .pipe(gulp.dest(config.paths.dist + '/css'));
+    .pipe(concat('sass.css'))
+    .pipe(gulp.dest(config.paths.src + '/css'));
 });
 
 gulp.task('css', function() {
@@ -81,4 +82,4 @@ gulp.task('watch', function(){
 	
 });
 
-gulp.task('default', ['html', 'js', 'sass', 'lint', 'open', 'watch']);
+gulp.task('default', ['html', 'js', 'sass', 'css', 'lint', 'open', 'watch']);

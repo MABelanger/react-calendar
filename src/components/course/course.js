@@ -15,17 +15,15 @@ var Course = React.createClass({
 	render: function(){
 		console.log('inside', 'Course')
 		return (
-			<div>	
-				<a className="cal" href="{this.props.link}">
-					<div>
-						<img src={this.props.image} />
-						<br />&nbsp;
-						{this.props.startHour}-<br />
-						{this.props.endHour}<br />
-						{this.props.professorName}
-					</div>
-				</a>
-			</div>
+			<a className="cal" href="{this.props.link}">
+				<div>
+					<img src={this.props.image} />
+					<br />&nbsp;
+					{this.props.startHour}-<br />
+					{this.props.endHour}<br />
+					{this.props.professorName}
+				</div>
+			</a>
 		);
 	}
 });

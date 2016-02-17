@@ -32,7 +32,7 @@ var Day = React.createClass({
 
 	render: function(){
 		return (
-			<td>
+			<td nameClass="cal">
 				{this.props.courses.map(this.eachCourse)}
 			</td>
 		);

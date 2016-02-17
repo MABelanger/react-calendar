@@ -107,7 +107,7 @@ var Schedule = React.createClass({
 
 	eachHeader: function(header, i) {
 		return (
-			<th>{header}</th>
+			<th className="cal day-name">{header}</th>
 		);
 	},
 
