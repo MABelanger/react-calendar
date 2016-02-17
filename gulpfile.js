@@ -78,6 +78,7 @@ return gulp.src(config.paths.js)
 
 gulp.task('watch', function(){
 	gulp.watch(config.paths.html, ['html']);
+	gulp.watch(config.paths.scss, ['sass']);
 	gulp.watch(config.paths.js, ['js', 'lint']);
 	
 });
