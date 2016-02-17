@@ -49,7 +49,7 @@ var Schedule = React.createClass({
 		    		image: "http://www.mondeavie.ca/media/course_icon/logo_ki_gong_D2eqw4b.png",
 		    		startHour: "09:00",
 		    		endHour: "11:30",
-		    		professorName: "professorName1"
+		    		professorName: "Danielle Fontaine"
 
 		    	},
 		    	{
@@ -57,7 +57,7 @@ var Schedule = React.createClass({
 		    		image: "http://www.mondeavie.ca/media/course_icon/logo_ki_gong_D2eqw4b.png",
 		    		startHour: "13:00",
 		    		endHour: "15:30",
-		    		professorName: "professorName2"
+		    		professorName: "Alison Martel"
 		    	}
 			],
 			mardi: [
@@ -66,21 +66,21 @@ var Schedule = React.createClass({
 		    		image: "http://www.mondeavie.ca/media/course_icon/logo_ki_gong_D2eqw4b.png",
 		    		startHour: "09:00",
 		    		endHour: "12:30",
-		    		professorName: "professorName1b"
+		    		professorName: "Johanne Lacasse"
 		    	},
 		    	{
 		    		link: "link2b",
 		    		image: "http://www.mondeavie.ca/media/course_icon/logo_ki_gong_D2eqw4b.png",
 		    		startHour: "12:30",
 		    		endHour: "15:00",
-		    		professorName: "professorName2b"
+		    		professorName: "Sandra Duval"
 		    	},
 		    	{
 		    		link: "link3b",
 		    		image: "http://www.mondeavie.ca/media/course_icon/logo_ki_gong_D2eqw4b.png",
 		    		startHour: "16:00",
 		    		endHour: "18:30",
-		    		professorName: "professorName3b"
+		    		professorName: "Sylvie Major"
 		    	}
 			]
         };
