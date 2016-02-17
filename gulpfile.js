@@ -1,5 +1,6 @@
 
 var gulp = require('gulp');
+var sass = require('gulp-sass');
 var connect = require('gulp-connect'); //Runs a local dev server
 var open = require('gulp-open'); //Open a URL in a web browser
 var browserify = require('browserify'); //Bundles JS
@@ -18,6 +19,7 @@ var config = {
 			'node_modules/bootstrap/dist/css/bootstrap.min.css',
 			'./src/**/*.css',
 		],
+		scss: './src/**/*.scss',
 		dist: './dist',
 		mainJs: './src/main.js'
 
@@ -54,6 +56,13 @@ gulp.task('js', function() {
 		.pipe(connect.reload());
 });
 
+gulp.task('sass', function () {
+  return gulp.src(config.paths.scss)
+    .pipe(sass().on('error', sass.logError))
+    .pipe(concat('bundle.css'))
+    .pipe(gulp.dest(config.paths.dist + '/css'));
+});
+
 gulp.task('css', function() {
 	gulp.src(config.paths.css)
 		.pipe(concat('bundle.css'))
@@ -72,4 +81,4 @@ gulp.task('watch', function(){
 	
 });
 
-gulp.task('default', ['html', 'js', 'css', 'lint', 'open', 'watch']);
+gulp.task('default', ['html', 'js', 'sass', 'lint', 'open', 'watch']);

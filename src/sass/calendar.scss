@@ -1,0 +1,68 @@
+$bgcolor: #99CC66;
+$size-title: 15px;
+$menu-hover: #91C85B;
+$link-hover: #5A8727;
+$txt-color-mid: #333;
+
+table.cal-menu {
+    width: 100%;
+}
+
+table {
+    &.cal {
+        border-collapse: collapse;
+        table-layout: fixed;
+        /*background-color: #D5EDC9;*/
+        width:100%;
+        border-bottom: 1px solid $link-hover;
+
+        .th.cal, td.cal {
+            border-collapse: collapse;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+            vertical-align: top;
+            /* height: 40px; */
+            border-left: 1px solid $link-hover;
+            border-right: 1px solid $link-hover;
+            width: 40px;
+            overflow: hidden;
+        }
+    }
+}
+
+a { 
+    &:hover {
+        .cal-menu-tname {
+            text-decoration: none;
+            background-color: $menu-hover;
+        }
+    }
+}
+
+a {
+    &.cal {
+        width: 100%;
+        height: 100%;
+        display: block;
+        color: $txt-color-mid;
+        border: 1px solid transparent;
+    
+        &:link, &:visited {
+            text-decoration: none;
+            outline: none;
+        }
+
+        &:hover {
+            text-decoration: none;
+            background-color: $menu-hover;
+            border: 1px solid $link-hover;
+        }
+
+        &:active {
+            text-decoration: none;
+            background-color: $menu-hover;
+            border: 1px solid $link-hover;
+        }
+    }
+}

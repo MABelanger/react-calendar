@@ -115,11 +115,11 @@ var Schedule = React.createClass({
 		console.log('inside', 'Row', this.state.days)
 		return (
 			<div>
-				<table>
-					<tr>
+				<table className="cal">
+					<tr className="cal">
 						{this.state.headers.map(this.eachHeader)}
 					</tr>
-					<tr>
+					<tr className="cal">
 						{this.state.days.map(this.eachDay)}
 					</tr>
 				</table>
