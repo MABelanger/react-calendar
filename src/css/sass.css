@@ -28,7 +28,8 @@ a.cal {
   height: 100%;
   display: block;
   color: #333;
-  border: 1px solid transparent; }
+  border: 1px solid transparent;
+  text-align: center; }
   a.cal:link, a.cal:visited {
     text-decoration: none;
     outline: none; }

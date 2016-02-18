@@ -6,7 +6,7 @@ module.exports = {
         image: "http://www.mondeavie.ca/media/course_icon/logo_ki_gong_D2eqw4b.png",
         startHour: "09:00",
         endHour: "11:30",
-        professorName: "Danielle Fontaine"
+        professorName: "test"
 
       },
       {
@@ -14,7 +14,7 @@ module.exports = {
         image: "http://www.mondeavie.ca/media/course_icon/logo_ki_gong_D2eqw4b.png",
         startHour: "13:00",
         endHour: "15:30",
-        professorName: "Alison Martel"
+        professorName: "test"
       }
     ],
     mardi: [
@@ -23,21 +23,21 @@ module.exports = {
         image: "http://www.mondeavie.ca/media/course_icon/logo_ki_gong_D2eqw4b.png",
         startHour: "09:00",
         endHour: "12:30",
-        professorName: "Johanne Lacasse"
+        professorName: "test"
       },
       {
         link: "link2b",
         image: "http://www.mondeavie.ca/media/course_icon/logo_ki_gong_D2eqw4b.png",
         startHour: "12:30",
         endHour: "15:00",
-        professorName: "Sandra Duval"
+        professorName: "test"
       },
       {
         link: "link3b",
         image: "http://www.mondeavie.ca/media/course_icon/logo_ki_gong_D2eqw4b.png",
         startHour: "16:00",
         endHour: "18:30",
-        professorName: "Sylvie Major"
+        professorName: "test"
       }
     ]
   }
