@@ -14,6 +14,7 @@ var config = {
 	devBaseUrl: 'http://localhost',
 	paths: {
 		html: './src/*.html',
+		json: './src/api/**/*.json',
 		js: './src/**/*.js',
 		css: [
 			'node_modules/bootstrap/dist/css/bootstrap.min.css',
@@ -57,6 +58,12 @@ gulp.task('js', function() {
 		.pipe(connect.reload());
 });
 
+gulp.task('json', function() {
+	gulp.src(config.paths.json)	
+		.pipe(gulp.dest(config.paths.dist + '/api'))
+		.pipe(connect.reload());
+});
+
 gulp.task('sass', function () {
   return gulp.src(config.paths.scss)
     .pipe(sass().on('error', sass.logError))
@@ -83,4 +90,4 @@ gulp.task('watch', function(){
 	
 });
 
-gulp.task('default', ['html', 'js', 'sass', 'css', 'lint', 'open', 'watch']);
+gulp.task('default', ['html', 'json', 'js', 'sass', 'css', 'lint', 'open', 'watch']);

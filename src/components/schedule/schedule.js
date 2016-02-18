@@ -1,15 +1,14 @@
 var React = require('react');
-var Day = require('../day/day');
+var $ = jQuery = require('jquery');
 
+var Day = require('../day/day');
 var ScheduleApi = require('../api/scheduleApi');
 
 
 var Schedule = React.createClass({
 
-
   getInitialState: function() {
-    var schedule = ScheduleApi.getSchedule();
-    console.log(ScheduleApi.isDinnerTime(schedule));
+    var schedule = ScheduleApi.getScheduleMock();
     return {
       headers: ScheduleApi.getHeaders(schedule),
       days: ScheduleApi.getDays(schedule)
@@ -17,7 +16,16 @@ var Schedule = React.createClass({
   },
 
   componentDidMount: function() {
+    console.log('componentDidMount');
 
+
+    this.serverRequest = $.get('/api/schedule.json', function (result) {
+      console.log('success, ', result)
+      this.setState({
+        headers: ScheduleApi.getHeaders(result),
+        days: ScheduleApi.getDays(result)
+      });
+    }.bind(this));
   },
 
   eachDay: function(day, i) {
