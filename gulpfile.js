@@ -14,7 +14,7 @@ var config = {
 	devBaseUrl: 'http://localhost',
 	paths: {
 		html: './src/*.html',
-		json: './src/api/**/*.json',
+		json: './src/components/api/**/*.json',
 		js: './src/**/*.js',
 		css: [
 			'node_modules/bootstrap/dist/css/bootstrap.min.css',
@@ -85,6 +85,7 @@ return gulp.src(config.paths.js)
 
 gulp.task('watch', function(){
 	gulp.watch(config.paths.html, ['html']);
+	gulp.watch(config.paths.json, ['json']);
 	gulp.watch(config.paths.scss, ['sass']);
 	gulp.watch(config.paths.js, ['js', 'lint']);
 	

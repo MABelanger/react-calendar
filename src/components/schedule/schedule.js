@@ -17,8 +17,6 @@ var Schedule = React.createClass({
 
   componentDidMount: function() {
     console.log('componentDidMount');
-
-
     this.serverRequest = $.get('/api/schedule.json', function (result) {
       console.log('success, ', result)
       this.setState({
