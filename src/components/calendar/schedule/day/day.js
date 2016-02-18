@@ -1,7 +1,7 @@
 "use strict";
 
 var React = require('react');
-var Course = require('../course/course')
+var Course = require('./course/course')
 
 /*
   link: React.PropTypes.string.isRequired,

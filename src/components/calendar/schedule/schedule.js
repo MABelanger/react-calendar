@@ -1,8 +1,8 @@
 var React = require('react');
 var $ = jQuery = require('jquery');
 
-var Day = require('../day/day');
-var ScheduleApi = require('../api/scheduleApi');
+var Day = require('./day/day');
+var ScheduleApi = require('./api/scheduleApi');
 
 
 var Schedule = React.createClass({
