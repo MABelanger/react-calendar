@@ -14,7 +14,7 @@ var config = {
 	devBaseUrl: 'http://localhost',
 	paths: {
 		html: './src/*.html',
-		json: './src/components/schedule/api/**/*.json',
+		json: './src/components/calendar/schedule/api/**/*.json',
 		js: './src/**/*.js',
 		css: [
 			'node_modules/bootstrap/dist/css/bootstrap.min.css',
