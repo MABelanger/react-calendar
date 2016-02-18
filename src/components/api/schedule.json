@@ -37,5 +37,21 @@
          "endHour": "18:30",
          "professorName": "Sylvie Major"
       }
+   ],
+   "mercredi": [
+      {
+         "link": "link1",
+         "image": "http://www.mondeavie.ca/media/course_icon/logo_ki_gong_D2eqw4b.png",
+         "startHour": "09:00",
+         "endHour": "11:30",
+         "professorName": "Danielle Fontaine"
+      },
+      {
+         "link": "link2",
+         "image": "http://www.mondeavie.ca/media/course_icon/logo_ki_gong_D2eqw4b.png",
+         "startHour": "13:00",
+         "endHour": "15:30",
+         "professorName": "Alison Martel"
+      }
    ]
 }
