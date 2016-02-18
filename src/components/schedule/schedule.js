@@ -16,9 +16,7 @@ var Schedule = React.createClass({
   },
 
   componentDidMount: function() {
-    console.log('componentDidMount');
     this.serverRequest = $.get('/api/schedule.json', function (result) {
-      console.log('success, ', result)
       this.setState({
         headers: ScheduleApi.getHeaders(result),
         days: ScheduleApi.getDays(result)
@@ -42,7 +40,6 @@ var Schedule = React.createClass({
   },
 
   render: function(){
-    console.log('inside', 'Row', this.state.days)
     return (
       <div>
         <table className="cal">

@@ -17,7 +17,6 @@ var ScheduleApi = {
   },
 
   getSchedule: function(url, callback) {
-  	console.log('getSchedule');
     $.get(url, callback);
   },
 

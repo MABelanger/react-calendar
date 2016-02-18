@@ -13,7 +13,6 @@ var Course = React.createClass({
   },
 
   render: function(){
-    console.log('inside', 'Course')
     return (
       <a className="cal" href="{this.props.link}">
         <div>
