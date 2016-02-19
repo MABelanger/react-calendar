@@ -1,10 +1,12 @@
-$bgcolor: #99CC66;
+/*$bgcolor: #99CC66;*/
+$bgcolor: #F5F5F5;
 $size-title: 15px;
-$menu-hover: #91C85B;
-$link-hover: #5A8727;
-$txt-color-mid: #333;
+$menu-hover: #EEEEEE;
+$link-hover: #999999;
+$txt-color-mid: #5C753F;
 
 .schedule {
+  background-color: $bgcolor;
   table {
     border-collapse: collapse;
     table-layout: fixed;
