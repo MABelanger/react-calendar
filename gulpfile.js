@@ -68,7 +68,8 @@ gulp.task('sass', function () {
   return gulp.src(config.paths.scss)
     .pipe(sass().on('error', sass.logError))
     .pipe(concat('sass.css'))
-    .pipe(gulp.dest(config.paths.src + '/css'));
+    .pipe(gulp.dest(config.paths.src + '/css'))
+	.pipe(connect.reload());
 });
 
 gulp.task('css', function() {

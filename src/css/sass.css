@@ -1,13 +1,10 @@
-table.cal-menu {
-  width: 100%; }
-
-table.cal {
+.schedule table {
   border-collapse: collapse;
   table-layout: fixed;
   /*background-color: #D5EDC9;*/
   width: 100%;
   border-bottom: 1px solid #5A8727; }
-  table.cal th.cal, table.cal td.cal {
+  .schedule table th, .schedule table td {
     border-collapse: collapse;
     padding: 0;
     margin: 0;
@@ -19,25 +16,25 @@ table.cal {
     width: 40px;
     overflow: hidden; }
 
-a:hover .cal-menu-tname {
+.schedule a:hover .cal-menu-tname {
   text-decoration: none;
   background-color: #91C85B; }
 
-a.cal {
+.schedule a {
   width: 100%;
   height: 100%;
   display: block;
   color: #333;
   border: 1px solid transparent;
   text-align: center; }
-  a.cal:link, a.cal:visited {
+  .schedule a:link, .schedule a:visited {
     text-decoration: none;
     outline: none; }
-  a.cal:hover {
+  .schedule a:hover {
     text-decoration: none;
     background-color: #91C85B;
     border: 1px solid #5A8727; }
-  a.cal:active {
+  .schedule a:active {
     text-decoration: none;
     background-color: #91C85B;
     border: 1px solid #5A8727; }

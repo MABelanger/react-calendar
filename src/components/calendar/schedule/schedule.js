@@ -41,7 +41,7 @@ var Schedule = React.createClass({
 
   render: function(){
     return (
-      <div>
+      <div className="schedule" >
         <table className="cal">
           <tr className="cal">
             {this.state.headers.map(this.eachHeader)}
