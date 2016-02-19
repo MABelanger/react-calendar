@@ -20,7 +20,10 @@ var config = {
 			'node_modules/bootstrap/dist/css/bootstrap.min.css',
 			'./src/**/*.css',
 		],
-		scss: './src/**/*.scss',
+
+		scss: [
+			'./src/components/calendar/schedule/sass/**/*.scss',
+		],
 		src: './src',
 		dist: './dist',
 		mainJs: './src/main.js'
@@ -68,14 +71,14 @@ gulp.task('sass', function () {
   return gulp.src(config.paths.scss)
     .pipe(sass().on('error', sass.logError))
     .pipe(concat('sass.css'))
-    .pipe(gulp.dest(config.paths.src + '/css'))
-	.pipe(connect.reload());
+    .pipe(gulp.dest(config.paths.src + '/components/calendar/schedule/sass/css'));
 });
 
 gulp.task('css', function() {
 	gulp.src(config.paths.css)
 		.pipe(concat('bundle.css'))
-		.pipe(gulp.dest(config.paths.dist + '/css'));
+		.pipe(gulp.dest(config.paths.dist + '/css'))
+		.pipe(connect.reload());
 });
 
 gulp.task('lint', function() {
@@ -88,6 +91,7 @@ gulp.task('watch', function(){
 	gulp.watch(config.paths.html, ['html']);
 	gulp.watch(config.paths.json, ['json']);
 	gulp.watch(config.paths.scss, ['sass']);
+	gulp.watch(config.paths.css, ['css']);
 	gulp.watch(config.paths.js, ['js', 'lint']);
 	
 });

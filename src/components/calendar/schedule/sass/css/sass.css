@@ -1,16 +1,16 @@
 .schedule table {
   border-collapse: collapse;
   table-layout: fixed;
-  /*background-color: #D5EDC9;*/
   width: 100%;
   border-bottom: 1px solid #5A8727; }
+  .schedule table th {
+    border-bottom: 1px solid #5A8727; }
   .schedule table th, .schedule table td {
     border-collapse: collapse;
     padding: 0;
     margin: 0;
     text-align: center;
     vertical-align: top;
-    /* height: 40px; */
     border-left: 1px solid #5A8727;
     border-right: 1px solid #5A8727;
     width: 40px;
