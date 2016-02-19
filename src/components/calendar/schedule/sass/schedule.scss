@@ -14,7 +14,7 @@ $txt-color-mid: #333;
     th {
       border-bottom: 1px solid $link-hover;
     }
-    
+
     td {
       border-left: 1px solid $link-hover;
       border-right: 1px solid $link-hover;
@@ -28,15 +28,6 @@ $txt-color-mid: #333;
       vertical-align: top;
       width: 40px;
       overflow: hidden;
-    }
-  }
-
-  a { 
-    &:hover {
-      .cal-menu-tname {
-        text-decoration: none;
-        background-color: $menu-hover;
-      }
     }
   }
 

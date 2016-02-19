@@ -17,10 +17,6 @@
     width: 40px;
     overflow: hidden; }
 
-.schedule a:hover .cal-menu-tname {
-  text-decoration: none;
-  background-color: #91C85B; }
-
 .schedule a {
   width: 100%;
   height: 100%;
