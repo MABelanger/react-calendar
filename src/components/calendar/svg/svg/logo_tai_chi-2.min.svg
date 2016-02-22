@@ -3,7 +3,7 @@
         <clipPath id="a">
             <path d="M0 0h14400v14400H0V0z" />
         </clipPath>
-        <clipPath id="b">
+        <clipPath id="c">
             <path d="M7192 7208.46h18v-18h-18v18z" />
         </clipPath>
     </defs>
