@@ -4,6 +4,7 @@ var React = require('react');
 var Coaching = require('./svg/coaching');
 var JoyA = require('./svg/joy-a');
 var KiGong = require('./svg/ki-gong');
+var Meditation = require('./svg/meditation');
 
 var Logo = React.createClass({
 
@@ -26,6 +27,13 @@ var Logo = React.createClass({
       case 'ki-gong': {
         return (
           <KiGong />
+        );
+      }
+
+      case 'meditation': {
+        console.log('ici')
+        return (
+          <Meditation />
         );
       }
 
