@@ -12,11 +12,8 @@ var _clone = function(item) {
 };
 
 var ScheduleApi = {
-  getScheduleMock: function() {
-    return _clone(scheduleData); 
-  },
 
-  getSchedule: function(url, callback) {
+  getCalendar: function(url, callback) {
     $.get(url, callback);
   },
 
@@ -39,26 +36,6 @@ var ScheduleApi = {
     }
     return days;
   },
-
-  isDinnerTime: function(scheduleFormat) {
-    var DINNER_TIME = 16;
-    var isDinnerTime = false;
-    var days = this.getDays(scheduleFormat);
-    for (var i in days) {
-      var courses = days[i];
-      for (var j in courses) {
-      var course = courses[j];
-      var endHour = course.endHour.split(":")[0];
-      if( endHour > DINNER_TIME ) {
-        isDinnerTime = true;
-      }
-      }
-    }
-    return isDinnerTime;
-  },
-
-
-
 };
 
 module.exports = ScheduleApi;
