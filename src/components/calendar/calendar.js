@@ -1,37 +1,38 @@
 var React = require('react');
 var $ = jQuery = require('jquery');
 var Schedule = require('./schedule/schedule');
-var ScheduleApi = require('./schedule/api/scheduleApi')
+var CalendarApi = require('./api/calendarApi');
 
 
 var Calendar = React.createClass({
 
   getInitialState: function() {
+    console.log('getInitialState');
     return {
-      headers : [],
-      days : []
-    }
-  },
-
-  getSchedule: function(result) {
-    return result.schedule;
+      schedule : {
+        headers : [],
+        days: []
+      },
+      logos: []
+    };
   },
 
   componentDidMount: function() {
+    console.log('componentDidMount');
     this.serverRequest = $.get('/api/calendar.json', function (result) {
-      var schedule = this.getSchedule(result);
-      console.log('ScheduleApi.getHeaders(schedule)', ScheduleApi.getHeaders(schedule))
+      console.log('CalendarApi.getSchedule(result)', CalendarApi.getSchedule(result))
       this.setState({
-        headers: ScheduleApi.getHeaders(schedule),
-        days: ScheduleApi.getDays(schedule)
+        schedule: CalendarApi.getSchedule(result),
+        logos: CalendarApi.getLogos(result)
       });
+
     }.bind(this));
   },
 
   render: function(){
     return (
-      <div >
-        <Schedule headers={this.state.headers} days={this.state.days}/>
+      <div>
+        <Schedule schedule={this.state.schedule} logos={this.state.logos} />
       </div>
     );
   }

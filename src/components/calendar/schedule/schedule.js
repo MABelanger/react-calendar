@@ -3,6 +3,9 @@ var $ = jQuery = require('jquery');
 
 var Day = require('./day/day');
 
+var ScheduleApi = require('./api/scheduleApi');
+
+
 
 var Schedule = React.createClass({
 
@@ -11,6 +14,7 @@ var Schedule = React.createClass({
     return (
       <Day 
         courses={courses}
+        logos={this.props.logos}
       />
     );
   },
@@ -21,15 +25,24 @@ var Schedule = React.createClass({
     );
   },
 
+  getHeaders: function(schedule){
+    return ScheduleApi.getHeaders(schedule);
+  },
+
+  getDays: function(schedule){
+    return ScheduleApi.getDays(schedule);
+  },
+
   render: function(){
+    console.log('this.props.schedule', this.props.schedule)
     return (
       <div className="schedule" >
         <table className="cal">
           <tr className="cal">
-            {this.props.headers.map(this.eachHeader)}
+            {this.getHeaders(this.props.schedule).map(this.eachHeader)}
           </tr>
           <tr className="cal">
-            {this.props.days.map(this.eachDay)}
+            {this.getDays(this.props.schedule).map(this.eachDay)}
           </tr>
         </table>
       </div>

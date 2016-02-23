@@ -41,14 +41,14 @@
     "lundi": [
       {
         "link": "link1",
-        "logoName": "coaching",
+        "logo": "coaching",
         "startHour": "09:00",
         "endHour": "11:30",
         "professorName": "Danielle Fontaine"
       },
       {
         "link": "link2",
-        "logoName": "joy-a",
+        "logo": "joy-a",
         "startHour": "13:00",
         "endHour": "15:30",
         "professorName": "Alison Martel"
@@ -57,21 +57,21 @@
     "mardi": [
       {
         "link": "link1b",
-        "logoName": "ki-gong",
+        "logo": "ki-gong",
         "startHour": "09:00",
         "endHour": "12:30",
         "professorName": "Johanne Lacasse"
       },
       {
         "link": "link2b",
-        "logoName": "meditation",
+        "logo": "meditation",
         "startHour": "12:30",
         "endHour": "15:00",
         "professorName": "Sandra Duval"
       },
       {
         "link": "link3b",
-        "logoName": "coaching",
+        "logo": "coaching",
         "startHour": "16:00",
         "endHour": "18:30",
         "professorName": "Sylvie Major"
@@ -80,14 +80,14 @@
     "mercredi": [
       {
         "link": "link1",
-        "logoName": "coaching",
+        "logo": "coaching",
         "startHour": "09:00",
         "endHour": "11:30",
         "professorName": "Danielle Fontaine"
       },
       {
         "link": "link2",
-        "logoName": "coaching",
+        "logo": "coaching",
         "startHour": "13:00",
         "endHour": "15:30",
         "professorName": "Alison Martel"
@@ -96,14 +96,14 @@
     "jeudi": [
       {
         "link": "link1",
-        "logoName": "coaching",
+        "logo": "coaching",
         "startHour": "09:00",
         "endHour": "11:30",
         "professorName": "Danielle Fontaine"
       },
       {
         "link": "link2",
-        "logoName": "coaching",
+        "logo": "coaching",
         "startHour": "13:00",
         "endHour": "15:30",
         "professorName": "Alison Martel"

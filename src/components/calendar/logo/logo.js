@@ -1,52 +1,13 @@
 "use strict";
 
 var React = require('react');
-var Coaching = require('./svg/coaching');
-var JoyA = require('./svg/joy-a');
-var KiGong = require('./svg/ki-gong');
-var Meditation = require('./svg/meditation');
+var LogoApi = require('./api/logoApi')
 
 var Logo = React.createClass({
-
-  getLogo: function(name){
-    console.log('name', name)
-    switch (name) {
-
-      case 'coaching': {
-        return (
-          <Coaching />
-        );
-      }
-
-      case 'joy-a': {
-        return (
-          <JoyA />
-        );
-      }
-
-      case 'ki-gong': {
-        return (
-          <KiGong />
-        );
-      }
-
-      case 'meditation': {
-        console.log('ici')
-        return (
-          <Meditation />
-        );
-      }
-
-      default: {
-        return (
-          <span></span>
-        );
-      }
-    }
-  },
   render: function(){
+  	console.log('LogoApi.getSvg(this.props.name, this.props.logos)', LogoApi.getSvg(this.props.name, this.props.logos))
     return (
-      this.getLogo(this.props.name)
+		<span dangerouslySetInnerHTML={{__html: LogoApi.getSvg(this.props.name, this.props.logos)}} />
     );
   }
 });

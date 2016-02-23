@@ -20,30 +20,30 @@ var ScheduleApi = {
     $.get(url, callback);
   },
 
-  getHeaders: function(scheduleFormat) {
+  getHeaders: function(schedule) {
     var headers = [];
-    for(var key in scheduleFormat) {
-      if(scheduleFormat.hasOwnProperty(key)) {
+    for(var key in schedule) {
+      if(schedule.hasOwnProperty(key)) {
         headers.push(key);
       }
     }
     return headers;
   },
 
-  getDays: function(scheduleFormat) {
+  getDays: function(schedule) {
     var days = [];
-    for(var key in scheduleFormat) {
-      if(scheduleFormat.hasOwnProperty(key)) {
-        days.push(scheduleFormat[key]);
+    for(var key in schedule) {
+      if(schedule.hasOwnProperty(key)) {
+        days.push(schedule[key]);
       }
     }
     return days;
   },
 
-  isDinnerTime: function(scheduleFormat) {
+  isDinnerTime: function(schedule) {
     var DINNER_TIME = 16;
     var isDinnerTime = false;
-    var days = this.getDays(scheduleFormat);
+    var days = this.getDays(schedule);
     for (var i in days) {
       var courses = days[i];
       for (var j in courses) {
