@@ -4,9 +4,18 @@ $size-title: 15px;
 $menu-hover: #EEEEEE;
 $link-hover: #999999;
 $txt-color-mid: #5C753F;
+$logo-fill: #2d4214;
 
 .schedule {
   background-color: $bgcolor;
+
+  svg {
+    path {
+      fill: $logo-fill;
+      transition: 0.5s ease;
+    }
+  }
+
   table {
     border-collapse: collapse;
     table-layout: fixed;

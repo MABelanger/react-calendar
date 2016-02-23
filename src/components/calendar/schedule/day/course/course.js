@@ -7,7 +7,7 @@ var Course = React.createClass({
 
   propTypes: {
     link: React.PropTypes.string.isRequired,
-    image: React.PropTypes.string.isRequired,
+    courseName: React.PropTypes.string.isRequired,
     startHour: React.PropTypes.string.isRequired,
     endHour: React.PropTypes.string.isRequired,
     professorName: React.PropTypes.string.isRequired,
@@ -17,7 +17,6 @@ var Course = React.createClass({
     return (
       <a className="cal" href="{this.props.link}">
         <div>
-          <img src={this.props.image} />
           <Logo name={this.props.courseName} />
           <br />&nbsp;
           {this.props.startHour}-<br />

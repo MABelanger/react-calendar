@@ -5,7 +5,7 @@ var Course = require('./course/course')
 
 /*
   link: React.PropTypes.string.isRequired,
-  image: React.PropTypes.string.isRequired,
+  courseName: React.PropTypes.string.isRequired,
   startHour: React.PropTypes.string.isRequired,
   endHour: React.PropTypes.string.isRequired,
   professorName: React.PropTypes.string.isRequired,
@@ -22,7 +22,7 @@ var Day = React.createClass({
     return (
       <Course 
         link={course.link}
-        image={course.image}
+        courseName={course.courseName}
         startHour={course.startHour}
         endHour={course.endHour}
         professorName={course.professorName}

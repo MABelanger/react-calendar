@@ -2,25 +2,31 @@
 
 var React = require('react');
 var Coaching = require('./svg/coaching')
+var JoyA = require('./svg/joy-a')
 
 var Logo = React.createClass({
 
   getLogo: function(name){
-
-    return (
-      <Coaching />
-    );
-        
+    console.log('name', name)
     switch (name) {
-      case 'coaching':
+
+      case 'coaching': {
         return (
           <Coaching />
         );
+      }
 
-      case 'another-icon':
+      case 'joy-a': {
+        return (
+          <JoyA />
+        );
+      }
+
+      default: {
         return (
           <span></span>
         );
+      }
     }
   },
   render: function(){

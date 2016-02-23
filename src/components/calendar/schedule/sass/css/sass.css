@@ -1,6 +1,9 @@
 /*$bgcolor: #99CC66;*/
 .schedule {
   background-color: #F5F5F5; }
+  .schedule svg path {
+    fill: #2d4214;
+    transition: 0.5s ease; }
   .schedule table {
     border-collapse: collapse;
     table-layout: fixed;
