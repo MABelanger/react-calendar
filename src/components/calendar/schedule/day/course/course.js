@@ -1,6 +1,7 @@
 "use strict";
 
 var React = require('react');
+var Logo = require('../../../logo/logo')
 
 var Course = React.createClass({
 
@@ -17,6 +18,7 @@ var Course = React.createClass({
       <a className="cal" href="{this.props.link}">
         <div>
           <img src={this.props.image} />
+          <Logo name={this.props.courseName} />
           <br />&nbsp;
           {this.props.startHour}-<br />
           {this.props.endHour}<br />
