@@ -1,11 +1,11 @@
 var React = require('react');
-var Schedule = require('./schedule/schedule');
+var Calendar = require('./calendar');
 
 var CalendarPage = React.createClass({
   render: function(){
     return (
       <div>
-        <Schedule />
+        <Calendar />
       </div>
     );
   }
