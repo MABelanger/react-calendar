@@ -1,9 +1,6 @@
 "use strict";
 var $ = jQuery = require('jquery');
 
-//This file is mocking a web API by hitting hard coded data.
-var scheduleData = require('./scheduleData').schedule;
-
 var _ = require('lodash');
 
 var _clone = function(item) {
@@ -12,13 +9,6 @@ var _clone = function(item) {
 };
 
 var ScheduleApi = {
-  getScheduleMock: function() {
-    return _clone(scheduleData); 
-  },
-
-  getSchedule: function(url, callback) {
-    $.get(url, callback);
-  },
 
   getHeaders: function(schedule) {
     var headers = [];

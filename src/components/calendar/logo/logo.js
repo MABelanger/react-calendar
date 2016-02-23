@@ -6,7 +6,7 @@ var LogoApi = require('./api/logoApi')
 var Logo = React.createClass({
   render: function(){
     return (
-		<span dangerouslySetInnerHTML={{__html: LogoApi.getSvg(this.props.name, this.props.logos)}} />
+		<span dangerouslySetInnerHTML={{__html: LogoApi.getSvg(this.props.logoName, this.props.logos)}} ></span>
     );
   }
 });

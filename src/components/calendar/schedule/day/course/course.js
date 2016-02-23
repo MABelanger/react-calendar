@@ -15,10 +15,11 @@ var Course = React.createClass({
   },
 
   render: function(){
+    console.log('this.props.logoName', this.props.logoName);
     return (
       <a className="cal" href="{this.props.link}">
         <div>
-          <Logo name={this.props.logoName} logos={this.props.logos} />
+          <Logo logoName={this.props.logoName} logos={this.props.logos} />
           <br />&nbsp;
           {this.props.startHour}-<br />
           {this.props.endHour}<br />
