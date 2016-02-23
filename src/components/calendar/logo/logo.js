@@ -1,8 +1,9 @@
 "use strict";
 
 var React = require('react');
-var Coaching = require('./svg/coaching')
-var JoyA = require('./svg/joy-a')
+var Coaching = require('./svg/coaching');
+var JoyA = require('./svg/joy-a');
+var KiGong = require('./svg/ki-gong');
 
 var Logo = React.createClass({
 
@@ -19,6 +20,12 @@ var Logo = React.createClass({
       case 'joy-a': {
         return (
           <JoyA />
+        );
+      }
+
+      case 'ki-gong': {
+        return (
+          <KiGong />
         );
       }
 

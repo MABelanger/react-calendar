@@ -1,7 +1,7 @@
 "use strict";
 var React = require('react');
 
-var Coaching = React.createClass({
+var JoyA = React.createClass({
   render: function(){
     return (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23.75 23.75" height="23.75" width="23.75">
@@ -24,4 +24,4 @@ var Coaching = React.createClass({
   }
 });
 
-module.exports = Coaching;
+module.exports = JoyA;
