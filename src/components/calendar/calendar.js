@@ -7,7 +7,6 @@ var CalendarApi = require('./api/calendarApi');
 var Calendar = React.createClass({
 
   getInitialState: function() {
-    console.log('getInitialState');
     return {
       schedule : {
         headers : [],
@@ -18,9 +17,7 @@ var Calendar = React.createClass({
   },
 
   componentDidMount: function() {
-    console.log('componentDidMount');
     this.serverRequest = $.get('/api/calendar.json', function (result) {
-      console.log('CalendarApi.getSchedule(result)', CalendarApi.getSchedule(result))
       this.setState({
         schedule: CalendarApi.getSchedule(result),
         logos: CalendarApi.getLogos(result)

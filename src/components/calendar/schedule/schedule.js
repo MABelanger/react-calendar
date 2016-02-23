@@ -34,7 +34,6 @@ var Schedule = React.createClass({
   },
 
   render: function(){
-    console.log('this.props.schedule', this.props.schedule)
     return (
       <div className="schedule" >
         <table className="cal">
