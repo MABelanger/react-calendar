@@ -31,7 +31,7 @@ var Calendar = React.createClass({
   render: function(){
     return (
       <div className="row">
-        <Courses />
+        <Courses logos={this.state.logos}/>
         <Schedule schedule={this.state.schedule} logos={this.state.logos} />
       </div>
     );
