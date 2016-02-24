@@ -1,5 +1,4 @@
 pharNat : 
-	stroke : 
-	stroke-width: .3
+stroke : #2D4214;
+stroke-width: .3;
 
-	

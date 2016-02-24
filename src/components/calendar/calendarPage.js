@@ -4,7 +4,7 @@ var Calendar = require('./calendar');
 var CalendarPage = React.createClass({
   render: function(){
     return (
-      <div>
+      <div className="container">
         <Calendar />
       </div>
     );

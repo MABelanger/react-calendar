@@ -35,7 +35,7 @@ var Schedule = React.createClass({
 
   render: function(){
     return (
-      <div className="schedule" >
+      <div className="schedule col-sm-9" >
         <table className="cal">
           <tr className="cal">
             {this.getHeaders(this.props.schedule).map(this.eachHeader)}

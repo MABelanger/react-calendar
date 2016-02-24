@@ -3,6 +3,8 @@ var $ = jQuery = require('jquery');
 var Schedule = require('./schedule/schedule');
 var CalendarApi = require('./api/calendarApi');
 
+var Courses = require('./courses/courses');
+
 
 var Calendar = React.createClass({
 
@@ -28,7 +30,8 @@ var Calendar = React.createClass({
 
   render: function(){
     return (
-      <div>
+      <div className="row">
+        <Courses />
         <Schedule schedule={this.state.schedule} logos={this.state.logos} />
       </div>
     );
