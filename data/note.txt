@@ -1,0 +1,5 @@
+pharNat : 
+	stroke : 
+	stroke-width: .3
+
+	
