@@ -5,12 +5,13 @@ function getCourses() {
 		<div className="col-sm-3">
 			<table className="cal-menu">
 				<tr>
-					<td className="cal-menu-cname" colspan="2">
-				    	<a href="" >
+					<td className="cal-menu-cname" colSpan="2">
+				    	<a href="" ng-click="teacher_hide = !teacher_hide">
 				    		<div className="text-right">
-					    		<div className="cal-menu-cname-label">
+					    		<div className="cal-menu-cname-label ng-binding">
 					    			Yoga
-					    		</div><div className="cal-menu-icon">
+					    		</div>
+					    		<div className="cal-menu-icon">
 					    			<img src="/media/course_icon/logo_yoga_Zhstq9G.png" src="/media/course_icon/logo_yoga_Zhstq9G.png" />
 					    		</div>
 					    	</div>
@@ -19,22 +20,22 @@ function getCourses() {
 				</tr>
 				<tr>
 					<td>
-						<div class="animate-show">
+						<div className="animate-show">
 							<a href="#/courses/2" href="#/courses/2">
-								<div class="text-right cal-menu-tname">
+								<div className="text-right cal-menu-tname">
 									Sandra Duval
 								</div>
 							</a>
 						</div>
-						<div class="animate-show">
+						<div className="animate-show">
 							<a href="#/courses/3" href="#/courses/3">
-								<div class="text-right cal-menu-tname">
+								<div className="text-right cal-menu-tname">
 									Isabelle Nadeau
 								</div>
 							</a>
 						</div>
 					</td>
-					<td class="cal-menu-empty"></td>
+					<td className="cal-menu-empty"></td>
 				</tr>
 			</table>
 		</div>

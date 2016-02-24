@@ -1,0 +1,93 @@
+/*$bgcolor: #99CC66;*/
+$bgcolor: #F5F5F5;
+$size-title: 15px;
+$menu-hover: #EEEEEE;
+$link-hover: #999999;
+$txt-color-mid: #5C753F;
+$logo-fill: #2d4214;
+
+/* General links */
+a {
+    &:link, &:visited {
+        text-decoration: none;
+        outline: none;
+    }
+
+    &:hover {
+        text-decoration: none;
+        background-color: $menu-hover;
+    }
+
+    &:active {
+        text-decoration: none;
+        outline: none;
+    }
+}
+
+
+.cal-menu-cname {
+    > a {
+        > div {
+            color: black;
+            font-family: Gotham, sans-serif;
+            font-weight: bold;
+            padding-right:10px;
+            outline: none;
+        }
+
+        &:hover{
+            > div {
+                background-color: $menu-hover;
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+.cal-menu-cname-label {
+    padding-right: 15px;
+    display: inline-block;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+
+.cal-menu-icon {
+    display: inline-block;
+    width: 35px;
+    text-align: center;
+}
+
+
+.cal-menu-tname {
+    padding-right: 25px;
+    white-space: nowrap;
+    color: black;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+td.cal-menu-empty {
+    width: 35px;
+}
+
+/*Animate menu, Course Names with Teachers*/
+.animate-show {
+    opacity: 1;
+}
+
+.animate-show.ng-hide-add.ng-hide-add-active,
+.animate-show.ng-hide-remove.ng-hide-remove-active {
+    -webkit-transition: all ease-out .2s;
+    transition: all ease-out .2s;
+}
+
+.animate-show.ng-hide-add.ng-hide-add-active {
+    -webkit-transition: all ease-in .2s;
+    transition: all ease-in .2s;
+}
+
+.animate-show.ng-hide {
+    line-height: 0;
+    opacity: 0;
+}
