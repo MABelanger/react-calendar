@@ -137,6 +137,61 @@
         "startHour": "13:00",
         "endHour": "15:30",
         "professorName": "Alison Martel"
+      },
+      {
+        "link": "link2",
+        "logoName": "yoga",
+        "startHour": "13:00",
+        "endHour": "15:30",
+        "professorName": "Alison Martel"
+      }
+    ],
+    "vendredi": [
+      {
+        "link": "link1",
+        "logoName": "taiChi",
+        "startHour": "09:00",
+        "endHour": "11:30",
+        "professorName": "Danielle Fontaine"
+      },
+      {
+        "link": "link2",
+        "logoName": "yoga",
+        "startHour": "13:00",
+        "endHour": "15:30",
+        "professorName": "Alison Martel"
+      }
+    ],
+    "samedi": [
+      {
+        "link": "link1",
+        "logoName": "taiChi",
+        "startHour": "09:00",
+        "endHour": "11:30",
+        "professorName": "Danielle Fontaine"
+      },
+      {
+        "link": "link2",
+        "logoName": "yoga",
+        "startHour": "13:00",
+        "endHour": "15:30",
+        "professorName": "Alison Martel"
+      }
+    ],
+    "dimanche": [
+      {
+        "link": "link1",
+        "logoName": "taiChi",
+        "startHour": "09:00",
+        "endHour": "11:30",
+        "professorName": "Danielle Fontaine"
+      },
+      {
+        "link": "link2",
+        "logoName": "yoga",
+        "startHour": "13:00",
+        "endHour": "15:30",
+        "professorName": "Alison Martel"
       }
     ]
   }
