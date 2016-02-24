@@ -15,7 +15,6 @@ var Course = React.createClass({
   },
 
   render: function(){
-    console.log('this.props.logoName', this.props.logoName);
     return (
       <a className="cal" href="{this.props.link}">
         <div>
