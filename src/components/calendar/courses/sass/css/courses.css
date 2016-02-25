@@ -1,5 +1,8 @@
 /*$bgcolor: #99CC66;*/
-/* General links */
+table, tr, td {
+  border: 1px solid black; }
+
+/* Reset General links */
 a:link, a:visited {
   text-decoration: none;
   outline: none; }
@@ -12,37 +15,33 @@ a:active {
   text-decoration: none;
   outline: none; }
 
-.cal-menu-cname > a > div {
-  color: black;
-  font-family: Gotham, sans-serif;
-  font-weight: bold;
-  padding-right: 10px;
-  outline: none; }
-
-.cal-menu-cname > a:hover > div {
-  background-color: #EEEEEE;
-  text-decoration: none; }
-
-.cal-menu-cname-label {
-  padding-right: 15px;
-  display: inline-block;
-  padding-top: 5px;
-  padding-bottom: 5px; }
-
-.cal-menu-icon {
-  display: inline-block;
-  width: 35px;
-  text-align: center; }
-
-.cal-menu-tname {
-  padding-right: 25px;
-  white-space: nowrap;
-  color: black;
-  padding-top: 5px;
-  padding-bottom: 5px; }
-
-td.cal-menu-empty {
-  width: 35px; }
+/* links of cal-menu */
+.course {
+  width: 100%;
+  text-align: right; }
+  .course .course-header {
+    color: black;
+    font-family: Gotham, sans-serif;
+    font-weight: bold; }
+    .course .course-header:hover {
+      background-color: #EEEEEE;
+      text-decoration: none; }
+    .course .course-header .course-header-name {
+      display: inline-block;
+      padding-right: 15px; }
+    .course .course-header .course-header-icon {
+      display: inline-block;
+      vertical-align: middle;
+      width: 45px;
+      text-align: center;
+      padding-top: 5px;
+      padding-bottom: 5px; }
+  .course .teacher-name {
+    padding-right: 15px;
+    white-space: nowrap;
+    color: black; }
+  .course .teacher-icon {
+    width: 50px; }
 
 /*Animate menu, Course Names with Teachers*/
 .teachers-show {
@@ -60,4 +59,5 @@ td.cal-menu-empty {
 */
 .teachers-hide {
   line-height: 0;
-  opacity: 0; }
+  opacity: 0;
+  display: hidden; }

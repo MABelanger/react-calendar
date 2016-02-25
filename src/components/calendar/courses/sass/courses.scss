@@ -6,7 +6,11 @@ $link-hover: #999999;
 $txt-color-mid: #5C753F;
 $logo-fill: #2d4214;
 
-/* General links */
+
+table, tr, td{
+    border: 1px solid black;
+}
+/* Reset General links */
 a {
     &:link, &:visited {
         text-decoration: none;
@@ -25,51 +29,53 @@ a {
 }
 
 
-.cal-menu-cname {
-    > a {
-        > div {
-            color: black;
-            font-family: Gotham, sans-serif;
-            font-weight: bold;
-            padding-right:10px;
-            outline: none;
-        }
-
+/* links of cal-menu */
+.course {
+    width: 100%;
+    text-align: right;
+    .course-header {
+        color: black;
+        font-family: Gotham, sans-serif;
+        font-weight: bold;
         &:hover{
-            > div {
                 background-color: $menu-hover;
                 text-decoration: none;
-            }
         }
+        .course-header-name {
+            display: inline-block;
+            padding-right: 15px;
+        }
+
+        .course-header-icon {
+            display: inline-block;
+            vertical-align: middle;
+            width: 45px;
+            text-align: center;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+    }
+
+
+    .teacher-name {
+        padding-right: 15px;
+        white-space: nowrap;
+        color: black;
+    }
+
+    .teacher-icon {
+        width: 50px; // 35px of icon + 15 padding-right
     }
 }
 
-.cal-menu-cname-label {
-    padding-right: 15px;
-    display: inline-block;
-    padding-top: 5px;
-    padding-bottom: 5px;
-}
 
 
-.cal-menu-icon {
-    display: inline-block;
-    width: 35px;
-    text-align: center;
-}
 
 
-.cal-menu-tname {
-    padding-right: 25px;
-    white-space: nowrap;
-    color: black;
-    padding-top: 5px;
-    padding-bottom: 5px;
-}
 
-td.cal-menu-empty {
-    width: 35px;
-}
+
+
+
 
 /*Animate menu, Course Names with Teachers*/
 .teachers-show {
@@ -91,4 +97,5 @@ td.cal-menu-empty {
 .teachers-hide {
     line-height: 0;
     opacity: 0;
+    display: hidden;
 }
