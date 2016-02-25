@@ -4,11 +4,11 @@ $size-title: 15px;
 $menu-hover: #EEEEEE;
 $link-hover: #999999;
 $txt-color-mid: #5C753F;
+$txt-color-mid: black;
 $logo-fill: #2d4214;
 
-
-table, tr, td{
-    border: 1px solid black;
+.courses {
+    margin-top: 15px;
 }
 /* Reset General links */
 a {
@@ -32,6 +32,9 @@ a {
     }
 }
 
+.course , .course-header {
+    border: 0px solid black;
+}
 
 /* links of cal-menu */
 .course {
@@ -59,31 +62,31 @@ a {
         }
     }
 
+    .teachers {
+        .teacher {
+            &:hover{
+                    background-color: $menu-hover;
+                    text-decoration: none;
+            }
+            .teacher-name {
+                display: inline-block;
+                white-space: nowrap;
+                padding-right: 15px;
+            }
 
-    .teacher-name {
-        display: inline-block;
-        white-space: nowrap;
-        padding-right: 15px;
-    }
-
-    .teacher-icon {
-        display: inline-block;
-        width: 45px; // 35px of icon + 15 padding-right
+            .teacher-icon {
+                display: inline-block;
+                width: 45px; // 35px of icon + 15 padding-right
+            }
+        }
     }
 }
-
-
-
-
-
-
-
-
 
 
 /*Animate menu, Course Names with Teachers*/
 .teachers-show {
     opacity: 1;
+    padding-bottom: 5px;
 }
 
 .teachers-animate-transition {
@@ -101,4 +104,5 @@ a {
 .teachers-hide {
     line-height: 0;
     opacity: 0;
+    padding: 0px;
 }

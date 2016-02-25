@@ -5,7 +5,7 @@ var Courses = React.createClass({
 
   render: function(){
     return (
-    	<div className="col-sm-3">
+    	<div className="courses col-sm-3">
 	    	<Course logoName="yoga" logos={this.props.logos} />
 	    	<Course logoName="meditation" logos={this.props.logos} />
 	    	<Course logoName="coaching" logos={this.props.logos} />
