@@ -52,10 +52,8 @@ a:active {
     .course .teachers .teacher .teacher-name {
       display: inline-block;
       white-space: nowrap;
-      padding-right: 15px; }
-    .course .teachers .teacher .teacher-icon {
-      display: inline-block;
-      width: 45px; }
+      padding-right: 15px;
+      margin-right: 45px; }
     .course .teachers .teacher-transition {
       -webkit-transition: all ease-out .2s;
       transition: all ease-out .2s; }

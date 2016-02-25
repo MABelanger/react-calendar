@@ -26,7 +26,7 @@ var Course = React.createClass({
 			<div className="course">
 		    	<div className="course-header" onClick={this.showHideTeachers}>
 		    		<div className="course-header-name">
-		    			Yoga
+		    			M&eacute;dicinal
 		    		</div>
 		    		<div className="course-header-icon">
 		    			<Logo logoName={this.props.logoName} logos={this.props.logos} />
@@ -39,7 +39,6 @@ var Course = React.createClass({
 							<div className="teacher-name">
 								Sandra Duval
 							</div>
-							<div className="teacher-icon"></div>
 						</a>
 					</div>
 					<div className={classes}>
@@ -47,7 +46,6 @@ var Course = React.createClass({
 							<div className="teacher-name">
 								Isabelle Nadeau
 							</div>
-							<div className="teacher-icon"></div>
 						</a>
 					</div>
 				</div>
