@@ -4,11 +4,16 @@ $size-title: 15px;
 $menu-hover: #EEEEEE;
 $link-hover: #999999;
 $txt-color-mid: #5C753F;
-$txt-color-mid: black;
-$logo-fill: #2d4214;
+$logo-fill: #333;
 
 .courses {
-    margin-top: 15px;
+  margin-top: 15px;
+  svg {
+    path {
+      fill: $logo-fill;
+      transition: 0.5s ease;
+    }
+  }
 }
 /* Reset General links */
 a {
@@ -33,7 +38,7 @@ a {
 }
 
 .course , .course-header {
-    border: 0px solid black;
+    border: 0px solid $txt-color-mid;
 }
 
 /* links of cal-menu */
@@ -41,7 +46,7 @@ a {
     width: 100%;
     text-align: right;
     .course-header {
-        color: black;
+        color: $logo-fill;
         font-family: Gotham, sans-serif;
         font-weight: bold;
 
@@ -79,20 +84,27 @@ a {
                 width: 45px; // 35px of icon + 15 padding-right
             }
         }
+
+        /*Animate menu, Course Names with Teachers*/
+        .teacher-transition {
+            -webkit-transition: all ease-out .2s;
+            transition: all ease-out .2s;
+        }
+
+        .teacher-show {
+            opacity: 1;
+            padding-top: 2px;
+            padding-bottom: 2px;
+        }
+
+        .teacher-hide {
+            line-height: 0;
+            opacity: 0;
+            padding: 0px;
+        }
     }
 }
 
-
-/*Animate menu, Course Names with Teachers*/
-.teachers-show {
-    opacity: 1;
-    padding-bottom: 5px;
-}
-
-.teachers-animate-transition {
-    -webkit-transition: all ease-out .2s;
-    transition: all ease-out .2s;
-}
 
 /*
 .animate-teachers.hide {
@@ -101,8 +113,3 @@ a {
 }
 */
 
-.teachers-hide {
-    line-height: 0;
-    opacity: 0;
-    padding: 0px;
-}

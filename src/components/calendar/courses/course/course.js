@@ -18,41 +18,39 @@ var Course = React.createClass({
 	getCourse: function() {
 	    var classes = classNames( this.props.className, {
 	    	'teacher' : true,
-	    	'teachers-animate-transition' : true,
-	        'teachers-show': ( this.state.showTeachers == true ),
-	        'teachers-hide': ( this.state.showTeachers == false )
+	    	'teacher-transition' : true,
+	        'teacher-show': ( this.state.showTeachers == true ),
+	        'teacher-hide': ( this.state.showTeachers == false )
 	    } );
 		return (
 			<div className="course">
+		    	<div className="course-header" onClick={this.showHideTeachers}>
+		    		<div className="course-header-name">
+		    			Yoga
+		    		</div>
+		    		<div className="course-header-icon">
+		    			<Logo logoName={this.props.logoName} logos={this.props.logos} />
+		    		</div>
+		    	</div>
 
-				    	<div className="course-header" onClick={this.showHideTeachers}>
-				    		<div className="course-header-name">
-				    			Yoga
-				    		</div>
-				    		<div className="course-header-icon">
-				    			<Logo logoName={this.props.logoName} logos={this.props.logos} />
-				    		</div>
-				    	</div>
-
-
-				    	<div className="teachers">
-							<div className={classes}>
-								<a href="#/courses/2">
-									<div className="teacher-name">
-										Sandra Duval
-									</div>
-									<div className="teacher-icon"></div>
-								</a>
+		    	<div className="teachers">
+					<div className={classes}>
+						<a href="#/courses/2">
+							<div className="teacher-name">
+								Sandra Duval
 							</div>
-							<div className={classes}>
-								<a href="#/courses/3">
-									<div className="teacher-name">
-										Isabelle Nadeau
-									</div>
-									<div className="teacher-icon"></div>
-								</a>
+							<div className="teacher-icon"></div>
+						</a>
+					</div>
+					<div className={classes}>
+						<a href="#/courses/3">
+							<div className="teacher-name">
+								Isabelle Nadeau
 							</div>
-						</div>
+							<div className="teacher-icon"></div>
+						</a>
+					</div>
+				</div>
 			</div>
 		);
 	},

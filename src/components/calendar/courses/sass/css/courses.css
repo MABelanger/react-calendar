@@ -1,33 +1,36 @@
 /*$bgcolor: #99CC66;*/
 .courses {
   margin-top: 15px; }
+  .courses svg path {
+    fill: #333;
+    transition: 0.5s ease; }
 
 /* Reset General links */
 a:link, a:visited {
   text-decoration: none;
   outline: none;
-  color: black; }
+  color: #5C753F; }
 
 a:hover {
   text-decoration: none;
   background-color: #EEEEEE;
   outline: none;
-  color: black; }
+  color: #5C753F; }
 
 a:active {
   text-decoration: none;
   outline: none;
-  color: black; }
+  color: #5C753F; }
 
 .course, .course-header {
-  border: 0px solid black; }
+  border: 0px solid #5C753F; }
 
 /* links of cal-menu */
 .course {
   width: 100%;
   text-align: right; }
   .course .course-header {
-    color: black;
+    color: #333;
     font-family: Gotham, sans-serif;
     font-weight: bold; }
     .course .course-header:hover {
@@ -41,25 +44,29 @@ a:active {
       vertical-align: middle;
       width: 45px;
       text-align: center; }
-  .course .teachers .teacher:hover {
-    background-color: #EEEEEE;
-    text-decoration: none; }
-  .course .teachers .teacher .teacher-name {
-    display: inline-block;
-    white-space: nowrap;
-    padding-right: 15px; }
-  .course .teachers .teacher .teacher-icon {
-    display: inline-block;
-    width: 45px; }
-
-/*Animate menu, Course Names with Teachers*/
-.teachers-show {
-  opacity: 1;
-  padding-bottom: 5px; }
-
-.teachers-animate-transition {
-  -webkit-transition: all ease-out .2s;
-  transition: all ease-out .2s; }
+  .course .teachers {
+    /*Animate menu, Course Names with Teachers*/ }
+    .course .teachers .teacher:hover {
+      background-color: #EEEEEE;
+      text-decoration: none; }
+    .course .teachers .teacher .teacher-name {
+      display: inline-block;
+      white-space: nowrap;
+      padding-right: 15px; }
+    .course .teachers .teacher .teacher-icon {
+      display: inline-block;
+      width: 45px; }
+    .course .teachers .teacher-transition {
+      -webkit-transition: all ease-out .2s;
+      transition: all ease-out .2s; }
+    .course .teachers .teacher-show {
+      opacity: 1;
+      padding-top: 2px;
+      padding-bottom: 2px; }
+    .course .teachers .teacher-hide {
+      line-height: 0;
+      opacity: 0;
+      padding: 0px; }
 
 /*
 .animate-teachers.hide {
@@ -67,7 +74,3 @@ a:active {
     transition: all ease-in .2s;
 }
 */
-.teachers-hide {
-  line-height: 0;
-  opacity: 0;
-  padding: 0px; }
