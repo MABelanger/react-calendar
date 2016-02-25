@@ -17,14 +17,14 @@ var Course = React.createClass({
 
 	getCourse: function() {
 	    var classes = classNames( this.props.className, {
+	    	'teacher' : true,
 	    	'teachers-animate-transition' : true,
 	        'teachers-show': ( this.state.showTeachers == true ),
 	        'teachers-hide': ( this.state.showTeachers == false )
 	    } );
 		return (
-			<table className="course">
-				<tr>
-					<td colSpan="2">
+			<div className="course">
+
 				    	<div className="course-header" onClick={this.showHideTeachers}>
 				    		<div className="course-header-name">
 				    			Yoga
@@ -33,28 +33,27 @@ var Course = React.createClass({
 				    			<Logo logoName={this.props.logoName} logos={this.props.logos} />
 				    		</div>
 				    	</div>
-				    </td>
-				</tr>
-				<tr>
-					<td>
-						<div className={classes}>
-							<a href="#/courses/2">
-								<div className="teacher-name">
-									Sandra Duval
-								</div>
-							</a>
+
+
+				    	<div className="teachers">
+							<div className={classes}>
+								<a href="#/courses/2">
+									<div className="teacher-name">
+										Sandra Duval
+									</div>
+									<div className="teacher-icon"></div>
+								</a>
+							</div>
+							<div className={classes}>
+								<a href="#/courses/3">
+									<div className="teacher-name">
+										Isabelle Nadeau
+									</div>
+									<div className="teacher-icon"></div>
+								</a>
+							</div>
 						</div>
-						<div className={classes}>
-							<a href="#/courses/3">
-								<div className="teacher-name">
-									Isabelle Nadeau
-								</div>
-							</a>
-						</div>
-					</td>
-					<td className="teacher-icon"></td>
-				</tr>
-			</table>
+			</div>
 		);
 	},
 

@@ -15,16 +15,20 @@ a {
     &:link, &:visited {
         text-decoration: none;
         outline: none;
+        color: $txt-color-mid;
     }
 
     &:hover {
         text-decoration: none;
         background-color: $menu-hover;
+        outline: none;
+        color: $txt-color-mid;
     }
 
     &:active {
         text-decoration: none;
         outline: none;
+        color: $txt-color-mid;
     }
 }
 
@@ -37,6 +41,7 @@ a {
         color: black;
         font-family: Gotham, sans-serif;
         font-weight: bold;
+
         &:hover{
                 background-color: $menu-hover;
                 text-decoration: none;
@@ -51,20 +56,19 @@ a {
             vertical-align: middle;
             width: 45px;
             text-align: center;
-            padding-top: 5px;
-            padding-bottom: 5px;
         }
     }
 
 
     .teacher-name {
-        padding-right: 15px;
+        display: inline-block;
         white-space: nowrap;
-        color: black;
+        padding-right: 15px;
     }
 
     .teacher-icon {
-        width: 50px; // 35px of icon + 15 padding-right
+        display: inline-block;
+        width: 45px; // 35px of icon + 15 padding-right
     }
 }
 
@@ -97,5 +101,4 @@ a {
 .teachers-hide {
     line-height: 0;
     opacity: 0;
-    display: hidden;
 }

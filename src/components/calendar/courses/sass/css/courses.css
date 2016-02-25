@@ -5,15 +5,19 @@ table, tr, td {
 /* Reset General links */
 a:link, a:visited {
   text-decoration: none;
-  outline: none; }
+  outline: none;
+  color: #5C753F; }
 
 a:hover {
   text-decoration: none;
-  background-color: #EEEEEE; }
+  background-color: #EEEEEE;
+  outline: none;
+  color: #5C753F; }
 
 a:active {
   text-decoration: none;
-  outline: none; }
+  outline: none;
+  color: #5C753F; }
 
 /* links of cal-menu */
 .course {
@@ -33,15 +37,14 @@ a:active {
       display: inline-block;
       vertical-align: middle;
       width: 45px;
-      text-align: center;
-      padding-top: 5px;
-      padding-bottom: 5px; }
+      text-align: center; }
   .course .teacher-name {
-    padding-right: 15px;
+    display: inline-block;
     white-space: nowrap;
-    color: black; }
+    padding-right: 15px; }
   .course .teacher-icon {
-    width: 50px; }
+    display: inline-block;
+    width: 45px; }
 
 /*Animate menu, Course Names with Teachers*/
 .teachers-show {
@@ -59,5 +62,4 @@ a:active {
 */
 .teachers-hide {
   line-height: 0;
-  opacity: 0;
-  display: hidden; }
+  opacity: 0; }
