@@ -1,4 +1,147 @@
-pharNat : 
-stroke : #2D4214;
-stroke-width: .3;
+
+courses -> 
+	professors -> 
+		courseTypes -> 
+			schedule ->
+
+
+courses : [
+ 	{
+ 		name : "yoga"
+		logo : "",
+		teachers : [
+			{
+				firstName : "Danielle"
+				lastName : "Fontaine"
+				id : "" 
+				link : ""
+				courseTypes : [
+					{
+						name : "yoga doux"
+						StartDate : 
+						EndDate : 
+						schedules : [
+							{
+								"dayName" : "lundi"
+						        "link": "linkCourse",
+						        "logoName": "coaching",
+						        "startHour": "09:00",
+						        "endHour": "11:30",
+						        "professorName": "Danielle Fontaine"
+						    }, 
+						    {
+						    	"dayName" : "mardi"
+						        "link": "linkCourse",
+						        "logoName": "coaching",
+						        "startHour": "09:00",
+						        "endHour": "11:30",
+						        "professorName": "Danielle Fontaine"
+						    }
+						}
+					},
+				},
+				...
+				]
+			},
+		}
+	}
+}
+professors :
+	Sandra Duval : 
+
+coursNames :
+	logo : 
+
+
+page avec prof avec photo : 
+/calendrier/cours/yoga/danielle-fontaine
+
+page de reservation : 
+/calendrier/reservation/cours/yoga/isabelle-nadeau/yoga-doux/yoga-sur-chaise/0,1,2
+/calendrier/reservation/conferences/medicinal/marie-andree-beaumier/0,1,2
+  the number at the end represent the array : ( startDate & endDate & startHours & endHours)
+
+
+dumpdata --natural-foreign --natural-primary
+
+db.adminActivitiesCourse.distinct( "courseNameId" )
+[ 1, 3, 4, 2, 6, 8, 9 ]
+
+
+db.dropDatabase()
+db.conference_speakers.copyTo(db.conferencespeakers)
+
+mongod --dbpath /Volumes/data/mongodb
+
+#!/bin/bash
+./bin/sqlite3 ./sys/xserve_sqlite.db <<!
+.headers on
+.mode csv
+.output out.csv
+select * from eS1100_sensor_results;
+!
+
+
+admin_activities_conference
+admin_activities_conference_speakers
+admin_activities_course
+admin_activities_coursename
+admin_activities_dayconference
+admin_activities_dayname
+admin_activities_dayschedule
+admin_activities_schedule
+admin_activities_speaker
+admin_activities_teacher
+admin_activities_testingday         
+
+
+sqlite3 -header -csv db.sqlite3 "select * FROM admin_activities_teacher;" > admin_activities_teacher.csv
+mongoimport --collection adminActivitiesTeacher --type csv --headerline --db mondeavie admin_activities_teacher.csv
+
+# drop db
+use temp
+db.runCommand( { dropDatabase: 1 } )
+
+
+mongoose.connection.on('open', function (ref) {
+  console.log('Connected to mongo server.');
+  //trying to get collection names
+  mongoose.connection.db.listCollections().toArray(function(err, names) {
+    if (err) {
+      console.log(err);
+    }
+    else {
+    console.log(names); // [{ name: 'dbname.myCollection' }]
+    mongoose.connection.close();
+    }
+  });
+
+})
+
+  -d, --db=<database-name>                        database to use
+  -c, --collection=<collection-name>              collection to use
+        --file=<filename>                           file to import from; if not specified,
+                                                  stdin is used
+      --jsonArray                                 treat input source as a JSON array
+      --type=<type>                               input format to import: json, csv, or tsv
+                                                  (defaults to 'json')
+
+mongoimport -d newdb -c courses --jsonArray --type="json" --file=
+
+cat courses-db.json | grep -v '"_id":' | grep -v 'Id":' | grep -v '"id":'
+db.courses.find( { }, { teachers: { $elemMatch: { firstName: 'Isabelle' } } } )
+
+use admin
+db.runCommand({
+   copydb: 1,
+   fromdb: "test",
+   todb: "records"
+})
+// return only the teacher
+.findOne({'teachers.firstName' : 'Isabelle'}, {"teachers.$" : 1})
+
+
+
+
+
 
