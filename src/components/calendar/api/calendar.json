@@ -38,7 +38,7 @@
   "courses": {
     "coaching": {
       "name": "Coaching",
-      "logo": "coaching",
+      "logoName": "coaching",
       "teachers": [
         {
           "link": "link1",
