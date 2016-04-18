@@ -1,4 +1,4 @@
-import React from 'react';
+import ReactDOM from 'react-dom';
 import CalendarPage from './components/calendar/calendarPage';
 
-React.render(<CalendarPage />, document.getElementById('app'));
+ReactDOM.render(<CalendarPage />, document.getElementById('app'));

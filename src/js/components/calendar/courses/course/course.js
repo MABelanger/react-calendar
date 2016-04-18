@@ -16,14 +16,9 @@ export default class Course extends React.Component {
     };
     // bind the functions to this because is not Autobinding with class es6
   }
-  
-  getInitialState() {
-      return {showTeachers: false}
-  }
 
 	showHideTeachers() {
 		this.setState({showTeachers: !this.state.showTeachers});
-
 	}
 
 	getTeachers(){
@@ -45,7 +40,7 @@ export default class Course extends React.Component {
 	    } );
 		return (
 			<div className="course">
-		    	<div className="course-header" onClick={this.showHideTeachers}>
+		    	<div className="course-header" onClick={this.showHideTeachers.bind(this)}>
 		    		<div className="course-header-name">
 		    			{this.props.name}
 		    		</div>
