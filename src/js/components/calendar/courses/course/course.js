@@ -1,14 +1,22 @@
 "use strict";
 
 import React from 'react';
-import Logo from '../../logo/logo';
 
 import classNames from  'classnames'; 
+
 
 
 export default class Course extends React.Component {
 
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      showTeachers: false
+    };
+    // bind the functions to this because is not Autobinding with class es6
+  }
+  
   getInitialState() {
       return {showTeachers: false}
   }

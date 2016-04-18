@@ -3,7 +3,6 @@
 import React from 'react';
 
 import Day from './day/day';
-import ScheduleApi from './api/scheduleApi';
 
 
 export default class Schedule extends React.Component {
@@ -25,11 +24,11 @@ export default class Schedule extends React.Component {
   }
 
   getHeaders(schedule){
-    return ScheduleApi.getHeaders(schedule);
+    //return ScheduleApi.getHeaders(schedule);
   }
 
   getDays(schedule){
-    return ScheduleApi.getDays(schedule);
+    //return ScheduleApi.getDays(schedule);
   }
 
   render(){

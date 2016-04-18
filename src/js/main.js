@@ -1,4 +1,4 @@
-var React = require('react');
-var CalendarPage = require('./components/calendar/calendarPage');
+import React from 'react';
+import CalendarPage from './components/calendar/calendarPage';
 
 React.render(<CalendarPage />, document.getElementById('app'));

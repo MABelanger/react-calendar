@@ -1,9 +1,8 @@
 "use strict";
 
 import React from 'react';
-import Logo from '../../../logo/logo';
 
-export default class Course extends React.component {
+export default class Course extends React.Component {
 
 /*
 

@@ -3,7 +3,6 @@
 import React from 'react';
 import Request from 'superagent';
 import Schedule from './schedule/schedule';
-import CalendarApi from './api/calendarApi';
 
 import Courses from './courses/courses';
 

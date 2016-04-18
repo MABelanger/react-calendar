@@ -4,7 +4,7 @@ import React from 'react';
 import Course from './course/course';
 
 
-export default class Day extends React.component {
+export default class Day extends React.Component {
 
   constructor(props) {
     super(props);

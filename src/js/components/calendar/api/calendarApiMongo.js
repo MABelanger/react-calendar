@@ -1,5 +1,5 @@
 "use strict";
-var _ = require('lodash');
+
 
 var _clone = function(item) {
   //return cloned copy so that the item is passed by value instead of by reference
