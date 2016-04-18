@@ -1,18 +1,20 @@
 "use strict";
 
-var React = require('react');
-var Course = require('./course/course')
+import React from 'react';
+import Course from './course/course';
 
 
-var Day = React.createClass({
+export default class Day extends React.component {
 
-  getInitialState: function() {
-    return {
+  constructor(props) {
+    super(props);
+    this.state = {
       courses: []
     };
-  },
+    // bind the functions to this because is not Autobinding with class es6
+  }
 
-  eachCourse: function(course, i) {
+  eachCourse(course, i) {
     return (
       <Course 
         link={course.link}
@@ -23,15 +25,13 @@ var Day = React.createClass({
         professorName={course.professorName}
       />
     );
-  },
+  }
 
-  render: function(){
+  render(){
     return (
       <td nameClass="cal">
         {this.props.courses.map(this.eachCourse)}
       </td>
     );
   }
-});
-
-module.exports = Day;
+}

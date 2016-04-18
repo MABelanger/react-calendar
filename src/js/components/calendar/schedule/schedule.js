@@ -1,15 +1,14 @@
-var React = require('react');
-var $ = jQuery = require('jquery');
+"use strict";
 
-var Day = require('./day/day');
+import React from 'react';
 
-var ScheduleApi = require('./api/scheduleApi');
+import Day from './day/day';
+import ScheduleApi from './api/scheduleApi';
 
 
+export default class Schedule extends React.Component {
 
-var Schedule = React.createClass({
-
-  eachDay: function(day, i) {
+  eachDay(day, i) {
     var courses = day
     return (
       <Day 
@@ -17,23 +16,23 @@ var Schedule = React.createClass({
         logos={this.props.logos}
       />
     );
-  },
+  }
 
-  eachHeader: function(header, i) {
+  eachHeader(header, i) {
     return (
       <th className="cal day-name">{header}</th>
     );
-  },
+  }
 
-  getHeaders: function(schedule){
+  getHeaders(schedule){
     return ScheduleApi.getHeaders(schedule);
-  },
+  }
 
-  getDays: function(schedule){
+  getDays(schedule){
     return ScheduleApi.getDays(schedule);
-  },
+  }
 
-  render: function(){
+  render(){
     return (
       <div className="schedule col-sm-9" >
         <table className="cal">
@@ -47,6 +46,4 @@ var Schedule = React.createClass({
       </div>
     );
   }
-});
-
-module.exports = Schedule;
+}

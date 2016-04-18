@@ -1,10 +1,11 @@
 "use strict";
 
-var React = require('react');
-var Logo = require('../../../logo/logo')
+import React from 'react';
+import Logo from '../../../logo/logo';
 
+export default class Course extends React.component {
 
-var Course = React.createClass({
+/*
 
   propTypes: {
     link: React.PropTypes.string.isRequired,
@@ -13,8 +14,9 @@ var Course = React.createClass({
     endHour: React.PropTypes.string.isRequired,
     professorName: React.PropTypes.string.isRequired,
   },
+*/
 
-  render: function(){
+  render(){
     return (
       <a className="cal" href="{this.props.link}">
         <div>
@@ -27,6 +29,4 @@ var Course = React.createClass({
       </a>
     );
   }
-});
-
-module.exports = Course;
+}

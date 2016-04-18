@@ -1,16 +1,19 @@
-var React = require('react');
-var $ = jQuery = require('jquery');
-var Request = require('superagent');
-var Schedule = require('./schedule/schedule');
-var CalendarApi = require('./api/calendarApi');
+"use strict";
 
-var Courses = require('./courses/courses');
+import React from 'react';
+import Request from 'superagent';
+import Schedule from './schedule/schedule';
+import CalendarApi from './api/calendarApi';
+
+import Courses from './courses/courses';
 
 
-var Calendar = React.createClass({
+export default class Calendar extends React.Component {
 
-  getInitialState: function() {
-    return {
+
+  constructor(props) {
+    super(props);
+    this.state = {
       schedule : {
         headers : [],
         days: []
@@ -18,20 +21,21 @@ var Calendar = React.createClass({
       logos: [],
       courses : []
     };
-  },
+    // bind the functions to this because is not Autobinding with class es6
+  }
 
   /**
    * Read
    **/
-  list: function(callback) {
+  list(callback) {
     var URL = 'http://localhost:3000/api/courses';
     Request
     .get(URL, function(err, res){
       callback(res.body);
     });
-  },
+  }
 
-  componentDidMount: function() {
+  componentDidMount() {
     this.serverRequest = this.list(function (result) {
 
       this.setState({
@@ -39,10 +43,10 @@ var Calendar = React.createClass({
       });
 
     }.bind(this));
-  },
+  }
 
 //        <Schedule schedule={this.state.schedule} logos={this.state.logos} />
-  render: function(){
+  render(){
     return (
       <div className="row">
         <Courses courses={this.state.courses}/>
@@ -50,6 +54,5 @@ var Calendar = React.createClass({
       </div>
     );
   }
-});
 
-module.exports = Calendar;
+}

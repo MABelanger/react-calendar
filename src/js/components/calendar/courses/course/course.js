@@ -1,32 +1,34 @@
-var React = require('react');
-var Logo = require('../../logo/logo');
+"use strict";
 
-var classNames = require( 'classnames' ); 
+import React from 'react';
+import Logo from '../../logo/logo';
+
+import classNames from  'classnames'; 
 
 
-var Course = React.createClass({
+export default class Course extends React.Component {
 
-  getInitialState: function() {
+
+  getInitialState() {
       return {showTeachers: false}
-  },
+  }
 
-	showHideTeachers: function() {
+	showHideTeachers() {
 		this.setState({showTeachers: !this.state.showTeachers});
 
-	},
+	}
 
-
-	getTeachers: function(){
+	getTeachers(){
 		return '';
-	},
+	}
 
-	renderLogo: function(svg){
+	renderLogo(svg){
 		return (
 			<span dangerouslySetInnerHTML={{__html: svg }} ></span>
     );
-	},
+	}
 
-	getCourse: function() {
+	getCourse() {
 	    var classes = classNames( this.props.className, {
 	    	'teacher' : true,
 	    	'teacher-transition' : true,
@@ -62,12 +64,10 @@ var Course = React.createClass({
 				</div>
 			</div>
 		);
-	},
+	}
 
-  render: function(){
+  render(){
     return this.getCourse();
   }
-});
-
-module.exports = Course;
+}
 
