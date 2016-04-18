@@ -9,6 +9,22 @@ var _clone = function(item) {
 
 var CalendarApi = {
 
+  // New
+
+  // getCourseName: function(result) {
+  //   var courseName = result.map(function(course){
+  //     return {
+  //       name: course.name,
+  //       svg: course.svg,
+  //       teachers: course.teachers
+  //     }
+  //   });
+  //   return courseName;
+  // },
+
+
+
+  // END new
   getSchedule: function(result) {
     return result.schedule;
   },

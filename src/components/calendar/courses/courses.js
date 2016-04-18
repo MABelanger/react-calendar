@@ -3,12 +3,17 @@ var Course = require('./course/course');
 
 var Courses = React.createClass({
 
+  getRenderCourses: function(courses){
+    var renderCourses = courses.map( function(course){
+      return <Course name={course.name} logos={course.svg} teachers={course.teachers} />;
+    });
+    return renderCourses;
+  },
+
   render: function(){
     return (
     	<div className="courses col-sm-3">
-	    	<Course logoName="yoga" logos={this.props.logos} />
-	    	<Course logoName="meditation" logos={this.props.logos} />
-	    	<Course logoName="coaching" logos={this.props.logos} />
+        {this.getRenderCourses(this.props.courses)}
 	    </div>
    	);
   }

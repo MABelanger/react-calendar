@@ -6,13 +6,24 @@ var classNames = require( 'classnames' );
 
 var Course = React.createClass({
 
-    getInitialState: function() {
-        return {showTeachers: false}
-    },
+  getInitialState: function() {
+      return {showTeachers: false}
+  },
 
 	showHideTeachers: function() {
 		this.setState({showTeachers: !this.state.showTeachers});
 
+	},
+
+
+	getTeachers: function(){
+		return '';
+	},
+
+	renderLogo: function(svg){
+		return (
+			<span dangerouslySetInnerHTML={{__html: svg }} ></span>
+    );
 	},
 
 	getCourse: function() {
@@ -26,10 +37,10 @@ var Course = React.createClass({
 			<div className="course">
 		    	<div className="course-header" onClick={this.showHideTeachers}>
 		    		<div className="course-header-name">
-		    			M&eacute;dicinal
+		    			{this.props.name}
 		    		</div>
 		    		<div className="course-header-icon">
-		    			<Logo logoName={this.props.logoName} logos={this.props.logos} />
+		    			{this.renderLogo(this.props.svg)}
 		    		</div>
 		    	</div>
 
