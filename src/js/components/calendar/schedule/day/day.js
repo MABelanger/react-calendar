@@ -12,9 +12,12 @@ export default class Day extends React.Component {
     return moment( isoDate ).utcOffset("+00:00").format("HH:mm");
   }
 
+
   eachCourse(course, i) {
     return (
       <Course 
+        setMaxHeight={this.props.setMaxHeight}
+        height={this.props.courseHeight}
         key={course._id}
         link={course.link}
         logo={course.logo}

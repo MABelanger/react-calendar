@@ -9,10 +9,33 @@ import './styles.scss';
 
 export default class Schedule extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.maxHeight=0;
+    this.nbLoop=0;
+
+    this.state = {
+      scheduleDays: []
+    }
+  }
+
+
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.courses != this.props.courses){
+      console.log('toto', scheduleApi.getScheduleDays(nextProps.courses))
+      this.setState({
+        scheduleDays: scheduleApi.getScheduleDays(nextProps.courses),
+        key: Date()
+      });
+    }
+  }
+
   eachDay(day, i) {
     var courses = day;
     return (
       <Day
+        courseHeight={this.maxHeight}
+        setMaxHeight={this.setMaxHeight.bind(this)}
         key={i}
         courses={courses}
       />
@@ -33,20 +56,33 @@ export default class Schedule extends React.Component {
     //return ScheduleApi.getDays(schedule);
   }
 
-  render(){
-    let scheduleDays = scheduleApi.getScheduleDays(this.props.courses);
+  setMaxHeight(height){
+    this.nbLoop++;
+    if(this.maxHeight < height){
+      this.maxHeight = height + 10;
+    }
+    console.log('this.maxHeight', this.maxHeight)
+    if(this.nbLoop == scheduleApi.getNbSchedule(this.state.scheduleDays) ){
+      //this.nbLoop = 0; // reset the loop
 
+      this.setState({
+        key: Date()
+      });
+    }
+  }
+
+  render(){
     return (
-      <div className="schedule col-sm-9" >
+      <div className="schedule col-sm-9" key={this.state.key}>
         <table className="cal">
           <thead>
             <tr className="cal">
-              {scheduleApi.getHeaders(scheduleDays).map(this.eachHeader)}
+              {scheduleApi.getHeaders(this.state.scheduleDays).map(this.eachHeader)}
             </tr>
           </thead>
           <tbody>
             <tr className="cal">
-              {scheduleDays.map(this.eachDay)}
+              {this.state.scheduleDays.map(this.eachDay.bind(this))}
             </tr>
           </tbody>
         </table>

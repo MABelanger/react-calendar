@@ -121,3 +121,11 @@ export function getHeaders(scheduleDays){
   });
   return headers;
 }// ./getHeaders
+
+export function getNbSchedule(scheduleDays){
+  let number = 0;
+  scheduleDays.map( function(scheduleDay, index){
+    number += scheduleDay.length;
+  });
+  return number;
+}// ./getNbSchedule
