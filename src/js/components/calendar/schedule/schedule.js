@@ -6,15 +6,15 @@ import * as scheduleApi from './api/scheduleApi';
 
 import Day from './day/day';
 
+import './styles.scss';
 
 export default class Schedule extends React.Component {
 
   eachDay(day, i) {
-    var courses = day
+    var courses = day;
     return (
       <Day 
         courses={courses}
-        logos={this.props.logos}
       />
     );
   }
@@ -26,7 +26,7 @@ export default class Schedule extends React.Component {
   }
 
   getHeaders(schedule){
-    //return ScheduleApi.getHeaders(schedule);
+    return ScheduleApi.getHeaders(schedule);
   }
 
   getDays(schedule){
@@ -34,22 +34,21 @@ export default class Schedule extends React.Component {
   }
 
   render(){
-    let schedules = scheduleApi.getFormatedSchedules(this.props.courses);
-    console.log('schedules', schedules)
-    /*
+    let scheduleDays = scheduleApi.getScheduleDays(this.props.courses);
+
     return (
       <div className="schedule col-sm-9" >
         <table className="cal">
           <tr className="cal">
-            {this.getHeaders(this.props.schedule).map(this.eachHeader)}
+            {scheduleApi.getHeaders(scheduleDays).map(this.eachHeader)}
           </tr>
           <tr className="cal">
-            {this.getDays(this.props.schedule).map(this.eachDay)}
+            {scheduleDays.map(this.eachDay)}
           </tr>
         </table>
       </div>
     );
-    */
+
     return <br/>;
   }
 }

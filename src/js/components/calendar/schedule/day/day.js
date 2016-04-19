@@ -1,27 +1,24 @@
 "use strict";
 
 import React from 'react';
+import moment from 'moment';
+
 import Course from './course/course';
 
 
 export default class Day extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      courses: []
-    };
-    // bind the functions to this because is not Autobinding with class es6
+  _getHours(isoDate){
+    return moment( isoDate ).utcOffset("+00:00").format("HH:mm");
   }
 
   eachCourse(course, i) {
     return (
       <Course 
         link={course.link}
-        logoName={course.logoName}
-        logos={this.props.logos}
-        startHour={course.startHour}
-        endHour={course.endHour}
+        logo={course.logo}
+        hourStart={this._getHours(course.dayStart)}
+        hourEnd={this._getHours(course.dayEnd)}
         professorName={course.professorName}
       />
     );
@@ -30,7 +27,7 @@ export default class Day extends React.Component {
   render(){
     return (
       <td nameClass="cal">
-        {this.props.courses.map(this.eachCourse)}
+        {this.props.courses.map(this.eachCourse.bind(this))}
       </td>
     );
   }

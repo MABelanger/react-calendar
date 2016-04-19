@@ -64,7 +64,7 @@ function _groupByDays(formatedSchedules){
   return scheduleDays;
 }
 
-export function getFormatedSchedules(courses){
+export function getScheduleDays(courses){
   moment.locale('fr');
 
   let formatedSchedules = [];
@@ -98,10 +98,25 @@ export function getFormatedSchedules(courses){
       });// ./courseTypes.map
     });// ./teachers.map
   });// ./courses.map
+
+  // a list of schedule to 2d array of the week day
+  // [{}, {}, {}] -> [0][{},{}], [1][{},{}] ... [6][{},{}]
   let groupByDays = _groupByDays(formatedSchedules);
-  let orderedByHours = groupByDays.map( function(groupByDay){
+
+  // order by hours the group by days 
+  let scheduleDays = groupByDays.map( function(groupByDay){
     return _sortByHours(groupByDay);
   });
 
-  return orderedByHours;
-}// ./getAllSchedules
+  return scheduleDays;
+}// ./getScheduleDays
+
+export function getHeaders(scheduleDays){
+  let headers = scheduleDays.map( function(scheduleDay, index){
+    if(scheduleDay.length > 0){
+      let weekDayName = moment.weekdays( index + 1 );
+      return weekDayName;
+    }
+  });
+  return headers;
+}// ./getHeaders

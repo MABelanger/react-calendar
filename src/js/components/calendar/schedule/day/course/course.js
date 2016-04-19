@@ -2,6 +2,7 @@
 
 import React from 'react';
 
+
 export default class Course extends React.Component {
 
 /*
@@ -15,14 +16,15 @@ export default class Course extends React.Component {
   },
 */
 
+
   render(){
     return (
       <a className="cal" href="{this.props.link}">
         <div>
-          <Logo logoName={this.props.logoName} logos={this.props.logos} />
+          LOGO
           <br />&nbsp;
-          {this.props.startHour}-<br />
-          {this.props.endHour}<br />
+          {this.props.hourStart}-<br />
+          {this.props.hourEnd}<br />
           {this.props.professorName}
         </div>
       </a>
