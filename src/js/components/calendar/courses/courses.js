@@ -10,7 +10,7 @@ export default class Courses extends React.Component {
 
   getRenderCourses(courses){
     var renderCourses = courses.map( function(course){
-      return <Course key={course.name} name={course.name} logos={course.svg} teachers={course.teachers} />;
+      return <Course key={course.name} name={course.name} logo={course.svg} teachers={course.teachers} />;
     });
     return renderCourses;
   }

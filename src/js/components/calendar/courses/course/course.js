@@ -31,6 +31,22 @@ export default class Course extends React.Component {
     );
 	}
 
+  getRenderTeachers(teachers, classes){
+    var renderTeachers = teachers.map( function(teacher){
+    	return (
+				<div className={classes}>
+					<a href="#/courses/2">
+						<div className="teacher-name">
+							{teacher.firstName + ' ' + teacher.lastName}
+						</div>
+					</a>
+				</div>
+			);
+
+    });
+    return renderTeachers;
+  }
+
 	getCourse() {
 	    var classes = classNames( this.props.className, {
 	    	'teacher' : true,
@@ -40,30 +56,17 @@ export default class Course extends React.Component {
 	    } );
 		return (
 			<div className="course">
-		    	<div className="course-header" onClick={this.showHideTeachers.bind(this)}>
-		    		<div className="course-header-name">
-		    			{this.props.name}
-		    		</div>
-		    		<div className="course-header-icon">
-		    			{this.renderLogo(this.props.svg)}
-		    		</div>
-		    	</div>
+	    	<div className="course-header" onClick={this.showHideTeachers.bind(this)}>
+	    		<div className="course-header-name">
+	    			{this.props.name}
+	    		</div>
+	    		<div className="course-header-icon">
+	    			{this.renderLogo(this.props.logo)}
+	    		</div>
+	    	</div>
 
-		    	<div className="teachers">
-					<div className={classes}>
-						<a href="#/courses/2">
-							<div className="teacher-name">
-								Sandra Duval
-							</div>
-						</a>
-					</div>
-					<div className={classes}>
-						<a href="#/courses/3">
-							<div className="teacher-name">
-								Isabelle Nadeau
-							</div>
-						</a>
-					</div>
+	    	<div className="teachers">
+					{this.getRenderTeachers(this.props.teachers, classes)}
 				</div>
 			</div>
 		);
