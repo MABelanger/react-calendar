@@ -3,7 +3,6 @@
 import React from 'react';
 
 import * as scheduleApi from './api/scheduleApi';
-
 import Day from './day/day';
 
 import './styles.scss';
@@ -13,7 +12,8 @@ export default class Schedule extends React.Component {
   eachDay(day, i) {
     var courses = day;
     return (
-      <Day 
+      <Day
+        key={i}
         courses={courses}
       />
     );
@@ -21,7 +21,7 @@ export default class Schedule extends React.Component {
 
   eachHeader(header, i) {
     return (
-      <th className="cal day-name">{header}</th>
+      <th key={i} className="cal day-name">{header}</th>
     );
   }
 
@@ -39,16 +39,18 @@ export default class Schedule extends React.Component {
     return (
       <div className="schedule col-sm-9" >
         <table className="cal">
-          <tr className="cal">
-            {scheduleApi.getHeaders(scheduleDays).map(this.eachHeader)}
-          </tr>
-          <tr className="cal">
-            {scheduleDays.map(this.eachDay)}
-          </tr>
+          <thead>
+            <tr className="cal">
+              {scheduleApi.getHeaders(scheduleDays).map(this.eachHeader)}
+            </tr>
+          </thead>
+          <tbody>
+            <tr className="cal">
+              {scheduleDays.map(this.eachDay)}
+            </tr>
+          </tbody>
         </table>
       </div>
     );
-
-    return <br/>;
   }
 }

@@ -87,6 +87,7 @@ export function getScheduleDays(courses){
 
           formatedSchedules.push({
             'weekDayName': weekDayName,
+            "_id": schedule._id,
             "link": "link1",
             "logo": svg,
             "dayStart": dayStart,

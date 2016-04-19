@@ -4,6 +4,8 @@ import React from 'react';
 
 import classNames from  'classnames'; 
 
+import * as calendarHelper from '../../helper';
+
 
 
 export default class Course extends React.Component {
@@ -25,11 +27,7 @@ export default class Course extends React.Component {
 		return '';
 	}
 
-	renderLogo(svg){
-		return (
-			<span dangerouslySetInnerHTML={{__html: svg }} ></span>
-    );
-	}
+
 
   getRenderTeachers(teachers, classes){
     var renderTeachers = teachers.map( function(teacher){
@@ -61,7 +59,7 @@ export default class Course extends React.Component {
 	    			{this.props.name}
 	    		</div>
 	    		<div className="course-header-icon">
-	    			{this.renderLogo(this.props.logo)}
+	    			{calendarHelper.renderLogo(this.props.logo)}
 	    		</div>
 	    	</div>
 

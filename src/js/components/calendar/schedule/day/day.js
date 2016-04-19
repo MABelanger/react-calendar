@@ -15,6 +15,7 @@ export default class Day extends React.Component {
   eachCourse(course, i) {
     return (
       <Course 
+        key={course._id}
         link={course.link}
         logo={course.logo}
         hourStart={this._getHours(course.dayStart)}

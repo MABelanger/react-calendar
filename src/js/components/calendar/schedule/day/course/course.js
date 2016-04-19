@@ -1,6 +1,7 @@
 "use strict";
 
 import React from 'react';
+import * as calendarHelper from '../../../helper';
 
 
 export default class Course extends React.Component {
@@ -21,7 +22,7 @@ export default class Course extends React.Component {
     return (
       <a className="cal" href="{this.props.link}">
         <div>
-          LOGO
+          {calendarHelper.renderLogo(this.props.logo)}
           <br />&nbsp;
           {this.props.hourStart}-<br />
           {this.props.hourEnd}<br />
