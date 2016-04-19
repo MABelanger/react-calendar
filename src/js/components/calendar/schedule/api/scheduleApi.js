@@ -1,52 +1,107 @@
 "use strict";
 
+import moment                     from "moment";
 
 var _clone = function(item) {
   //return cloned copy so that the item is passed by value instead of by reference
   return JSON.parse(JSON.stringify(item)); 
 };
 
-var ScheduleApi = {
+function _create2DArray(rows) {
+  var arr = [];
 
-  getHeaders: function(schedule) {
-    var headers = [];
-    for(var key in schedule) {
-      if(schedule.hasOwnProperty(key)) {
-        headers.push(key);
-      }
-    }
-    return headers;
-  },
+  for (var i=0;i<rows;i++) {
+     arr[i] = [];
+  }
 
-  getDays: function(schedule) {
-    var days = [];
-    for(var key in schedule) {
-      if(schedule.hasOwnProperty(key)) {
-        days.push(schedule[key]);
-      }
-    }
-    return days;
-  },
-
-  isDinnerTime: function(schedule) {
-    var DINNER_TIME = 16;
-    var isDinnerTime = false;
-    var days = this.getDays(schedule);
-    for (var i in days) {
-      var courses = days[i];
-      for (var j in courses) {
-      var course = courses[j];
-      var endHour = course.endHour.split(":")[0];
-      if( endHour > DINNER_TIME ) {
-        isDinnerTime = true;
-      }
-      }
-    }
-    return isDinnerTime;
-  },
+  return arr;
+}
 
 
+function _getHourMinute(isoDate){
+  let hour = moment( isoDate ).utcOffset("+00:00").hour();
+  let minute = moment( isoDate ).utcOffset("+00:00").minute();
 
-};
+  return {
+    hour: hour,
+    minute: minute
+  };
+}
 
-module.exports = ScheduleApi;
+function _sortByHours(scheduleDay){
+  scheduleDay.sort(function(a, b) {
+
+    a = _getHourMinute(a.dayStart)
+    b = _getHourMinute(b.dayStart)
+
+    // compare hours first
+    if (a.hour < b.hour) return -1;
+    if (a.hour > b.hour) return 1;
+
+    // else a.hour === b.hour, so compare minutes to break the tie
+    if (a.minute < b.minute) return -1;
+    if (a.minute > b.minute) return 1;
+
+    // couldn't break the tie
+    return 0;
+  });
+  return scheduleDay;
+}
+
+function _groupByDays(formatedSchedules){
+  let scheduleDays = _create2DArray(7);
+
+  formatedSchedules.map( function(formatedSchedule){
+    let day = moment(formatedSchedule.dayStart).day();
+
+    scheduleDays[day].push(formatedSchedule);
+  });
+
+  // put sunday at then end of the week
+  let sunday = scheduleDays.shift();
+  scheduleDays.push(sunday);
+
+  return scheduleDays;
+}
+
+export function getFormatedSchedules(courses){
+  moment.locale('fr');
+
+  let formatedSchedules = [];
+  courses.map( function(course){
+    let svg = course.svg;
+    let teachers = course.teachers;
+
+    teachers.map( function(teacher){
+      let courseDescription = teacher.course;
+      let courseTypes = courseDescription.courseTypes;
+
+      courseTypes.map( function(courseType){
+        let schedules = courseType.schedules;
+
+        schedules.map( function(schedule){
+          let dayStart = schedule.dayStart;
+          let dayEnd = schedule.dayEnd;
+
+          let weekDayName = moment.weekdays( moment(dayStart).day() );
+
+          formatedSchedules.push({
+            'weekDayName': weekDayName,
+            "link": "link1",
+            "logo": svg,
+            "dayStart": dayStart,
+            "dayEnd": dayEnd,
+            "professorName": teacher.firstName + ' ' + teacher.lastName
+          });
+          
+        }); // ./schedules.map
+      });// ./courseTypes.map
+    });// ./teachers.map
+  });// ./courses.map
+  let groupByDays = _groupByDays(formatedSchedules);
+  let orderedByHours = groupByDays.map( function(groupByDay){
+    return _sortByHours(groupByDay);
+  });
+
+  return orderedByHours;
+}// ./getAllSchedules

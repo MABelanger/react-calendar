@@ -2,6 +2,8 @@
 
 import React from 'react';
 
+import * as scheduleApi from './api/scheduleApi';
+
 import Day from './day/day';
 
 
@@ -32,6 +34,9 @@ export default class Schedule extends React.Component {
   }
 
   render(){
+    let schedules = scheduleApi.getFormatedSchedules(this.props.courses);
+    console.log('schedules', schedules)
+    /*
     return (
       <div className="schedule col-sm-9" >
         <table className="cal">
@@ -44,5 +49,7 @@ export default class Schedule extends React.Component {
         </table>
       </div>
     );
+    */
+    return <br/>;
   }
 }
