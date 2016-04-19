@@ -34,7 +34,7 @@ export default class Course extends React.Component {
   getRenderTeachers(teachers, classes){
     var renderTeachers = teachers.map( function(teacher){
     	return (
-				<div className={classes}>
+				<div key={teacher._id} className={classes}>
 					<a href="#/courses/2">
 						<div className="teacher-name">
 							{teacher.firstName + ' ' + teacher.lastName}
