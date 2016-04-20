@@ -4,7 +4,7 @@ import React from 'react';
 
 import classNames from  'classnames'; 
 
-import * as calendarHelper from '../../helper';
+import * as componentHelper from '../../../helper';
 
 
 
@@ -59,7 +59,7 @@ export default class Course extends React.Component {
 	    			{this.props.name}
 	    		</div>
 	    		<div className="course-header-icon">
-	    			{calendarHelper.renderLogo(this.props.logo)}
+	    			{componentHelper.renderHtml(this.props.logo)}
 	    		</div>
 	    	</div>
 

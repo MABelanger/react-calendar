@@ -2,7 +2,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import * as calendarHelper from '../../../helper';
+import * as componentHelper from '../../../../helper';
 
 
 export default class Course extends React.Component {
@@ -43,7 +43,7 @@ export default class Course extends React.Component {
         style={style}
       >
         <div>
-          {calendarHelper.renderLogo(this.props.logo)}
+          {componentHelper.renderHtml(this.props.logo)}
           <br />&nbsp;
           {this.props.hourStart}-<br />
           {this.props.hourEnd}<br />

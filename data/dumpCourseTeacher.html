@@ -1,0 +1,202 @@
+<div class="app-container">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="container">
+        <!-- ngView:  --><div ng-view="" autoscroll="true" class="ng-scope">
+
+
+
+
+<div class="row row-top-margin ng-scope">
+    <div class="col-sm-4">
+        <!-- template label_span.html -->
+
+        <table>
+            <tbody><tr class="tr-space">
+                <td class="all-label all-label-align">Cours:</td>
+                <td class="coursed-data ng-binding">
+                    Yoga avec
+                    Marianne Girard
+                </td>
+            </tr>
+
+            <tr class="tr-space">
+                <td class="all-label all-label-align">Type:</td>
+                <td class="coursed-data ng-binding">
+                    Yoga
+                </td>
+            </tr>
+
+            <tr class="tr-space">
+                <td class="all-label all-label-align">Tel:</td>
+                <td class="coursed-data ng-binding">
+                    4504745078
+                </td>
+            </tr>
+
+            <tr class="tr-space ng-hide" ng-show="courseDetail.teacher.school_url">
+                <td class="all-label all-label-align">Lien:</td>
+                <td class="coursed-data">
+                    <a class="link-url ng-binding" ng-href="" target="_blank"></a>
+                </td>
+            </tr>
+
+            <tr class="tr-space" ng-show="courseDetail.note">
+                <td class="all-label all-label-align">Note:</td>
+                <td class="coursed-data">
+                    <span ng-bind-html="getTrustAsHtml(courseDetail.note)" class="ng-binding"><p>Bienvenue aux débutants!<br>&nbsp;</p></span>
+                </td>
+            </tr>
+
+            <!--
+            <tr class="txt-red tr-space">
+                <td class="txt-red all-label all-label-align">Gratuits:</td>
+                <td valign="bottom" class="coursed-data">
+                    <ul style="margin:15px; padding:5px">
+                        <li>Mardi, 13 Janvier 2015 <a class="link-url" href="#">R&eacute;server</a></li>
+                        <li>Jeudi 15 Janvier 2015</li>
+                    </ul>
+                </td>
+            </tr>
+            -->
+        </tbody>
+        </table>
+        <!-- ./template label_span.html -->
+    </div><!-- ./col-sm-4 -->
+
+    <div class="col-sm-4 text-center">
+        <h4 class="text-center text-uppercase ng-binding">Marianne Girard</h4>
+        <img class="coursed-image radius-img" ng-src="/media/course_pic/marianne_yoga_petite.jpg" src="/media/course_pic/marianne_yoga_petite.jpg">
+        <br>
+        <br>
+        <div class="text-center">
+             <a href="#/courses" class="btn my-btn"> &lt; Retour au calendrier</a>
+        </div>
+    </div>
+
+    <div class="col-sm-4 info-pad-top-col-3">
+        <!-- ngRepeat: schedule in courseDetail.schedules --><div ng-repeat="schedule in courseDetail.schedules" class="ng-scope">
+    <div class="all-label ng-binding">Yoga:</div>
+    <div class="tab ng-binding">
+        Du 18 Janvier au 08 Juillet 2016
+        <!-- ngRepeat: daySchedule in schedule.daySchedules --><div ng-repeat="daySchedule in schedule.daySchedules" class="ng-scope">
+            <ul>
+                <li class="coursed-li-day-name" ng-show="daySchedule.day_name != schedule.daySchedules[$index-1].day_name">
+                    <span class="all-label ng-binding">Lundi</span>
+                </li>
+                <ul>
+                    <li class="coursed-li-hour ng-binding">18:00 à 19:20
+                        <!-- <a href="" ng-click="reserve(daySchedule)">R&eacute;server</a> -->
+                        <a ng-hide="daySchedule.is_full" class="link-url" href="#/day_schedules/reserve/46">Réserver</a>
+                        <span ng-hide="!daySchedule.is_full" class="ng-hide"><strong><u>Complet</u></strong></span><br>
+                        <span class="txt-red">
+                            <!-- ngRepeat: testingDay in daySchedule.testingDays.list --></span></li>
+                </ul>
+            </ul>
+        </div><!-- end ngRepeat: daySchedule in schedule.daySchedules --><div ng-repeat="daySchedule in schedule.daySchedules" class="ng-scope">
+            <ul>
+                <li class="coursed-li-day-name ng-hide" ng-show="daySchedule.day_name != schedule.daySchedules[$index-1].day_name">
+                    <span class="all-label ng-binding">Lundi</span>
+                </li>
+                <ul>
+                    <li class="coursed-li-hour ng-binding">19:30 à 20:45
+                        <!-- <a href="" ng-click="reserve(daySchedule)">R&eacute;server</a> -->
+                        <a ng-hide="daySchedule.is_full" class="link-url" href="#/day_schedules/reserve/53">Réserver</a>
+                        <span ng-hide="!daySchedule.is_full" class="ng-hide"><strong><u>Complet</u></strong></span><br>
+                        <span class="txt-red">
+                            <!-- ngRepeat: testingDay in daySchedule.testingDays.list --></span></li>
+                </ul>
+            </ul>
+        </div><!-- end ngRepeat: daySchedule in schedule.daySchedules --><div ng-repeat="daySchedule in schedule.daySchedules" class="ng-scope">
+            <ul>
+                <li class="coursed-li-day-name" ng-show="daySchedule.day_name != schedule.daySchedules[$index-1].day_name">
+                    <span class="all-label ng-binding">Jeudi</span>
+                </li>
+                <ul>
+                    <li class="coursed-li-hour ng-binding">15:30 à 16:40
+                        <!-- <a href="" ng-click="reserve(daySchedule)">R&eacute;server</a> -->
+                        <a ng-hide="daySchedule.is_full" class="link-url" href="#/day_schedules/reserve/9">Réserver</a>
+                        <span ng-hide="!daySchedule.is_full" class="ng-hide"><strong><u>Complet</u></strong></span><br>
+                        <span class="txt-red">
+                            <!-- ngRepeat: testingDay in daySchedule.testingDays.list --><span ng-repeat="testingDay in daySchedule.testingDays.list" class="ng-scope">
+                                (Gratuit le 
+                                <!-- ngRepeat: day in testingDay.list --><span ng-repeat="day in testingDay.list" class="ng-binding ng-scope">05 mai 2016<span>
+                                )<br>
+                            </span>
+                        </span><!-- end ngRepeat: day in testingDay.list -->
+                    </span><!-- end ngRepeat: testingDay in daySchedule.testingDays.list --></span></li>
+                </ul>
+            </ul>
+        </div><!-- end ngRepeat: daySchedule in schedule.daySchedules --><div ng-repeat="daySchedule in schedule.daySchedules" class="ng-scope">
+            <ul>
+                <li class="coursed-li-day-name" ng-show="daySchedule.day_name != schedule.daySchedules[$index-1].day_name">
+                    <span class="all-label ng-binding">Vendredi</span>
+                </li>
+                <ul>
+                    <li class="coursed-li-hour ng-binding">12:00 à 13:15
+                        <!-- <a href="" ng-click="reserve(daySchedule)">R&eacute;server</a> -->
+                        <a ng-hide="daySchedule.is_full" class="link-url" href="#/day_schedules/reserve/18">Réserver</a>
+                        <span ng-hide="!daySchedule.is_full" class="ng-hide"><strong><u>Complet</u></strong></span><br>
+                        <span class="txt-red">
+                            <!-- ngRepeat: testingDay in daySchedule.testingDays.list --><span ng-repeat="testingDay in daySchedule.testingDays.list" class="ng-scope">
+                                (Gratuit le 
+                                <!-- ngRepeat: day in testingDay.list --><span ng-repeat="day in testingDay.list" class="ng-binding ng-scope">06 mai 2016<span>
+                                )<br>
+                            </span>
+                        </span><!-- end ngRepeat: day in testingDay.list -->
+                    </span><!-- end ngRepeat: testingDay in daySchedule.testingDays.list --></span></li>
+                </ul>
+            </ul>
+        </div><!-- end ngRepeat: daySchedule in schedule.daySchedules --><!-- .ng-repeat="daySchedule -->
+    </div><!-- ./tab -->
+</div><!-- end ngRepeat: schedule in courseDetail.schedules --><!-- .ng-repeat="schedules -->
+    </div><!-- ./col-sm-4 -->
+</div><!-- ./row -->
+
+<div class="row ng-scope">
+    <div class="col-sm-12">
+        <br>
+        <span class="all-label ng-binding">Cours de Yoga avec
+                Marianne Girard</span>,
+        <div ng-bind-html="getTrustAsHtml(courseDetail.description)" class="ng-binding"><p>Marianne s'intéresse au yoga depuis 2001. Le yoga s'est tranquillement immiscé dans son quotidien et elle souhaite qu'il prenne une place de plus en plus importante.<br>Elle a pratiqué avec plus de 60 professeurs différents et d<span style="line-height: 20.8px;">epuis 8&nbsp;ans, sa principale inspiration est Catherine Nehme du&nbsp;</span><a target="_blank" style="line-height: 20.8px;" href="http://www.bhutayoga.ca/">Studio Bhuta yoga à Terrebonne</a><span style="line-height: 20.8px;">.&nbsp;</span><br>Au mois d'octobre dernier, elle a ajouté à son cursus&nbsp;une formation (yoga Alliance)&nbsp;de 200 heures au Costa Rica avec <a target="_blank" href="http://anabelmirandayoga.com/">Anabel Miranda</a>&nbsp;et Kadri Kurgun.<br><br>Marianne vous invite à venir partager sa pratique. Dans la douceur, le respect et le calme. Bienvenue à tous.<br>Elle organise deux retraites de yoga par année! La prochaine sera du 23 au 30&nbsp;avril 2016 au <a target="_blank" href="http://www.wildorchidbelize.com/">Belize au Wild Orchid</a>. (Comprends 7 nuits en occupation double, 7 déjeuners, 7 diners, 5 soupers VÉGÉTARIEN, 2 cours de yoga par jour, cours de cuisine végétalienne, transport terrestre pour 1480$ - exclus: alcool, avion et activités facultatives)<br>Le Costa Rica vous intéresse? Elle organise une semanie de yoga et découvertes&nbsp;au mois de&nbsp;novembre 2016.<a target="_blank" href="http://www.mondeavie.ca/costa-rica-2015"> Cliquez ici pour plus d'informations!</a></p></div>
+    </div><!-- ./col-sm-12 -->
+</div><!-- ./row -->
+
+<div class="row ng-scope">
+    <div class="col-sm-12">
+        <p>
+        </p><ul ng-show="courseDetail.schedules" class="">
+            <!-- ngRepeat: schedule in courseDetail.schedules --><li class="coursed-li-schedule ng-scope" ng-show="schedule.description" ng-repeat=" schedule in courseDetail.schedules">
+                <span class="all-label ng-binding">Yoga</span>: 
+                    <span class="input-xlarge uneditable-input ng-binding" ng-bind-html="getTrustAsHtml(schedule.description)"><p>Noter qu'il n'y aura PAS de cours du 22 au 30 avril!</p></span>
+            </li><!-- end ngRepeat: schedule in courseDetail.schedules --><!-- ./ng-repeat=" schedules -->
+        </ul>
+    </div><!-- ./col-sm-12 -->
+</div><!-- ./row -->
+
+<div class="row ng-scope">
+    <div class="col-sm-12">
+        <div class="form-horizontal">
+            <fieldset>
+                <div class="control-group">
+                    <span class="all-label">coût:</span>
+                    <span class="input-xlarge uneditable-input ng-binding" ng-bind-html="getTrustAsHtml(courseDetail.price)"><p>Premier cours d'essai toujours gratuit.<br>Cours à la carte: 15$<br>10 cours pour 140$ - aucune date limite!<br>20 cours pour 260$ - aucune date limite!<br>Pour ceux et celles qui affrontent une période financière plus précaire, Marianne offre ses séances avec une "contribution volontaire". Communiquez directement avec Marianne pour connaître le yoga karma!&nbsp;</p></span>
+                </div>
+            </fieldset>
+        </div>
+    </div><!-- ./col-sm-12 -->
+</div><!-- ./row -->
+
+<div class="row ng-scope">
+    <div class="col-sm-12">
+        <div class="text-center">
+            <a href="#/courses" class="btn my-btn"> &lt; Retour au calendrier</a>
+        </div>
+    </div><!-- ./col-sm-12 -->
+</div><!-- ./row --></div><!-- ng-view -->
+    </div><!-- container -->
+</div>
