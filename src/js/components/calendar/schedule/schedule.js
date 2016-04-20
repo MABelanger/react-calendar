@@ -1,5 +1,8 @@
 "use strict";
 
+// Setting The State Based On Rendered DOM Elements In ReactJS 
+// bennadel.com/blog/2915-setting-the-state-based-on-rendered-dom-elements-in-reactjs.htm
+
 import React from 'react';
 
 import * as scheduleApi from './api/scheduleApi';
@@ -22,7 +25,6 @@ export default class Schedule extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if(nextProps.courses != this.props.courses){
-      console.log('toto', scheduleApi.getScheduleDays(nextProps.courses))
       this.setState({
         scheduleDays: scheduleApi.getScheduleDays(nextProps.courses),
         key: Date()
@@ -48,23 +50,25 @@ export default class Schedule extends React.Component {
     );
   }
 
-  getHeaders(schedule){
-    return ScheduleApi.getHeaders(schedule);
-  }
-
-  getDays(schedule){
-    //return ScheduleApi.getDays(schedule);
-  }
-
+  /*
+   * setMaxHeight is called each time that /day/course/course.js is rendered
+   * and we track the number of render by increment the nbLoop
+   * after that we compare nbLoop with the number of child of
+   * schedule.
+   */
   setMaxHeight(height){
+    // the nbLoop correspond of the number of render of a
     this.nbLoop++;
+    let numberOfSchedules = scheduleApi.getNbSchedule(this.state.scheduleDays);
+
+    // Set the new maxHeight
     if(this.maxHeight < height){
       this.maxHeight = height + 10;
     }
-    console.log('this.maxHeight', this.maxHeight)
-    if(this.nbLoop == scheduleApi.getNbSchedule(this.state.scheduleDays) ){
-      //this.nbLoop = 0; // reset the loop
 
+    // Only if it is the last schedule, force rerender by calling setState
+    // with the right height.
+    if(this.nbLoop == numberOfSchedules){
       this.setState({
         key: Date()
       });
@@ -72,17 +76,23 @@ export default class Schedule extends React.Component {
   }
 
   render(){
+    let headers = scheduleApi.getHeaders(this.state.scheduleDays).map(this.eachHeader);
+    let scheduleDay = this.state.scheduleDays.map(this.eachDay.bind(this));
+
     return (
-      <div className="schedule col-sm-9" key={this.state.key}>
+      <div 
+        className="schedule col-sm-9"
+        key={this.state.key}
+      >
         <table className="cal">
           <thead>
             <tr className="cal">
-              {scheduleApi.getHeaders(this.state.scheduleDays).map(this.eachHeader)}
+              { headers }
             </tr>
           </thead>
           <tbody>
             <tr className="cal">
-              {this.state.scheduleDays.map(this.eachDay.bind(this))}
+              { scheduleDay }
             </tr>
           </tbody>
         </table>

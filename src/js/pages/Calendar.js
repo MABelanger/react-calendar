@@ -1,13 +1,13 @@
 "use strict";
 
 import React from 'react';
-import Calendar from './calendar';
+import CalendarComponent from '../components/calendar/calendar';
 
-export default class CalendarPage extends React.Component {
+export default class Calendar extends React.Component {
   render(){
     return (
       <div className="container" style={{backgroundColor:"#F5F5F5"}}>
-        <Calendar />
+        <CalendarComponent />
       </div>
     );
   }

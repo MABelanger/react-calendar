@@ -2,6 +2,7 @@
 
 import moment                     from "moment";
 
+
 var _clone = function(item) {
   //return cloned copy so that the item is passed by value instead of by reference
   return JSON.parse(JSON.stringify(item)); 
@@ -65,7 +66,6 @@ function _groupByDays(formatedSchedules){
 }
 
 export function getScheduleDays(courses){
-  moment.locale('fr');
 
   let formatedSchedules = [];
   courses.map( function(course){
@@ -76,27 +76,28 @@ export function getScheduleDays(courses){
       let courseDescription = teacher.course;
       let courseTypes = courseDescription.courseTypes;
 
-      courseTypes.map( function(courseType){
-        let schedules = courseType.schedules;
+      if(courseDescription.isVisible) {
+        courseTypes.map( function(courseType){
+          let schedules = courseType.schedules;
 
-        schedules.map( function(schedule){
-          let dayStart = schedule.dayStart;
-          let dayEnd = schedule.dayEnd;
+          schedules.map( function(schedule){
+            let dayStart = schedule.dayStart;
+            let dayEnd = schedule.dayEnd;
 
-          let weekDayName = moment.weekdays( moment(dayStart).day() );
+            //let weekDayName = moment.weekdays( moment(dayStart).day() );
 
-          formatedSchedules.push({
-            'weekDayName': weekDayName,
-            "_id": schedule._id,
-            "link": "link1",
-            "logo": svg,
-            "dayStart": dayStart,
-            "dayEnd": dayEnd,
-            "professorName": teacher.firstName + ' ' + teacher.lastName
-          });
-          
-        }); // ./schedules.map
-      });// ./courseTypes.map
+            formatedSchedules.push({
+              "_id": schedule._id,
+              "link": "link1",
+              "logo": svg,
+              "dayStart": dayStart,
+              "dayEnd": dayEnd,
+              "professorName": teacher.firstName + ' ' + teacher.lastName
+            });
+            
+          }); // ./schedules.map
+        });// ./courseTypes.map
+      }// ./if(courseDescription.isVisible)
     });// ./teachers.map
   });// ./courses.map
 
@@ -113,6 +114,7 @@ export function getScheduleDays(courses){
 }// ./getScheduleDays
 
 export function getHeaders(scheduleDays){
+  moment.locale('fr');
   let headers = scheduleDays.map( function(scheduleDay, index){
     if(scheduleDay.length > 0){
       let weekDayName = moment.weekdays( index + 1 );

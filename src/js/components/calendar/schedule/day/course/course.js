@@ -9,7 +9,6 @@ export default class Course extends React.Component {
 
   constructor(props) {
     super(props);
-    console.log('toto')
   }
 
 /*
@@ -31,7 +30,6 @@ export default class Course extends React.Component {
   }
 
   render(){
-    console.log('this.props.height', this.props.height)
     let style = {};
     if(this.props.height > 0){
       style.height = this.props.height + 'px'
