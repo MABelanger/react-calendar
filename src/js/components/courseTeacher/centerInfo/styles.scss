@@ -1,0 +1,25 @@
+$link-hover: #5A8727;
+$txt-color-mid: #333;
+
+.coursed-image {
+    max-width: 300px;
+}
+
+.radius-img {
+    border-radius: 5%;
+    width: 100%;
+}
+
+
+/* Button */
+a {
+    /* My Button */
+    &.my-btn {
+        /*background-color: #339933; /*#7AB83D;*/ 
+        color: $txt-color-mid;
+        padding:10px;
+        font-family: Gotham, sans-serif;
+        font-weight: bold;
+        border: 1px solid $link-hover;
+    }
+}

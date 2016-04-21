@@ -20,7 +20,7 @@ export default class LeftInfo extends React.Component {
 
   _eachTr(label, data){
     return(
-      <tr class="tr-space">
+      <tr key={label} class="tr-space">
         <td class="all-label all-label-align">{label}:</td>
         <td class="coursed-data">
           {componentHelper.renderHtml(data)}
