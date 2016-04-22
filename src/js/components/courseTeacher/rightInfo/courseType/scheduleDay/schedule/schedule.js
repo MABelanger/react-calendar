@@ -23,15 +23,14 @@ export default class Schedule extends React.Component {
 
     if(testingDays) {
       let TestingDays = testingDays.map(function(testingDay){
-        console.log('testingDay', testingDay)
-        return <TestingDay testingDay={testingDay} />
+        return <TestingDay key={testingDay._id} day={testingDay.day} />
       });
       return TestingDays;
     }
   }
 
   render(){
-
+    // 'this._renderTestingDays(this.props.schedule.testingDays)'
     return(
       <li class="coursed-li-hour">
         <Hours schedule={this.props.schedule} />

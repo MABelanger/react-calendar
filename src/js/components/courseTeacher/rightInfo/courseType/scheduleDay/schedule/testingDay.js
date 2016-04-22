@@ -3,8 +3,11 @@ import moment from 'moment';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 
+import * as componentHelper       from '../../../../../helper';  
 
-export default class FreeDay extends React.Component {
+
+
+export default class TestingDay extends React.Component {
 
   constructor(props) {
     super(props);
@@ -19,11 +22,25 @@ export default class FreeDay extends React.Component {
     return date;
   }
 
+
+  _renderDay(day){
+    if( componentHelper.isNotExpired(day) ){
+      let dayFormat = componentHelper.getDayFormat(day);
+      return(
+        <span class="txt-red">
+          (Gratuit le {dayFormat} )<br />
+        </span>
+      );
+    } else {
+      return(
+        <span></span>
+      );
+    }
+  }
+
   render(){
     return(
-      <span class="txt-red">
-        (Gratuit le {this._getDate(this.props.testingDay)} )<br />
-      </span>
+      this._renderDay(this.props.day)
     );
   }
 }

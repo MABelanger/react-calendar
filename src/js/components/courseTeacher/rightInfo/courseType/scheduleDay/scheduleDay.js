@@ -20,7 +20,7 @@ export default class ScheduleDay extends React.Component {
 
   _renderSchedules(schedules){
     let Schedules = schedules.map( (schedule) => {
-      return <Schedule schedule={schedule} />;
+      return <Schedule key={schedule._id} schedule={schedule} />;
     });
     return Schedules;
   }

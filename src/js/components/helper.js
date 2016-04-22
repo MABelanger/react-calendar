@@ -28,10 +28,22 @@ export function renderHtml(html){
   );
 }
 
-export function getWeekDayName(date){
+export function getWeekDayName(isoDate){
   moment.locale('fr');
-  return moment.weekdays( moment(date).day() );
+  return moment.weekdays( moment(isoDate).utcOffset("+00:00").day() );
 }
+
+export function getDayFormat(isoDate){
+  moment.locale('fr');
+  return moment( isoDate ).utcOffset("+00:00").format('LL');
+}
+
+export function isNotExpired(momentDate){
+  let now = moment();
+  let isBefore = moment(now).isBefore(momentDate)
+  return isBefore;
+}
+
 
 export function sortByHours(scheduleDay){
   scheduleDay.sort(function(a, b) {

@@ -38,9 +38,9 @@ export default class RightInfo extends React.Component {
   }
 
   _renderScheduleDays(scheduleDays){
-    let ScheduleDays = scheduleDays.map( (schedules) => {
+    let ScheduleDays = scheduleDays.map( (schedules, index) => {
       if(schedules.length > 0){
-        return <ScheduleDay schedules={schedules} />
+        return <ScheduleDay key={index} schedules={schedules} />
       }
     });
     return ScheduleDays;
