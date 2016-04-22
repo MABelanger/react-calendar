@@ -26,10 +26,8 @@ export default class LeftInfo extends React.Component {
 
   render(){
     if(this.props.courseTeacher){
-      console.log('this.props', this.props);
       let course = this.props.courseTeacher.course;
       let teacher = this.props.courseTeacher.teacher;
-      console.log('teacher', teacher);
       return (
         <div class="col-sm-4 text-center">
             <h4 class="text-center text-uppercase">{teacher.firstName + ' ' + teacher.lastName}</h4>

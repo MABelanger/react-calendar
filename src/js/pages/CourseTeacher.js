@@ -75,12 +75,7 @@ export default class CourseTeacherPage extends React.Component {
     const { date, filter } = query;
 
     let courseTeacher = this.getCourseTeacher(this.state.courses, courseNameSlug, teacherSlug);
-    console.log('courseTeacher', courseTeacher)
 
-    console.log('query', query);
-    console.log('params', params);
-    console.log('courseNameSlug', courseNameSlug);
-    console.log('teacherSlug', teacherSlug);
 
 
     return (

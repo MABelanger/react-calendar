@@ -1,3 +1,15 @@
+Yoga: <- courseType
+	Du 18 Janvier au 08 Juillet 2016
+		Lundi <- scheduleDay
+			18:00 à 19:20 <- hours Réserver Complet <- schedule
+			19:30 à 20:45 Réserver Complet
+		Jeudi
+			15:30 à 16:40 Réserver Complet
+				(Gratuit le 05 mai 2016 )
+		Vendredi
+			12:00 à 13:15 Réserver Complet
+				(Gratuit le 06 mai 2016 ) <- freeDay
+
 // http://www.bennadel.com/blog/2915-setting-the-state-based-on-rendered-dom-elements-in-reactjs.htm
 
 		// I manage the root component.

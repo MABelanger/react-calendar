@@ -71,7 +71,6 @@ export default class LeftInfo extends React.Component {
 
   render(){
     if(this.props.courseTeacher){
-      console.log('this.props', this.props);
       let course = this.props.courseTeacher.course;
       let teacher = this.props.courseTeacher.teacher;
       let data = this._getData(course, teacher);

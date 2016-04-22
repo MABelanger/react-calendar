@@ -5,7 +5,9 @@ import ReactDOMServer from 'react-dom/server';
 
 import * as componentHelper from '../../helper';
 
-import './styles.scss';
+import CourseType from './courseType/courseType';
+
+
 
 export default class RightInfo extends React.Component {
 
@@ -18,52 +20,72 @@ export default class RightInfo extends React.Component {
 
   }
 
+  _eachFreeDay(freeDays){
+    <span class="txt-red">
+      (Gratuit le 05 mai 2016 )<br />
+    </span>
+  }
+
+  _renderRangeHours(){
+    return(
+      <span>
+        18:00 à 19:20
+      </span>
+    );
+  }
+
+  _eachHours(data){
+    return(
+      <li class="coursed-li-hour">
+        {this._renderRangeHours()}
+        
+        <a class="link-url" href="#/day_schedules/reserve/46">
+          Réserver
+        </a>
+
+        <strong>
+          <u>Complet</u>
+        </strong>
+
+        <br />
+        {this._eachFreeDay(freeDays)}
+      </li>
+    );
+  }
+
+  _eachDay(data){
+    return(
+      <ul>
+        <li class="coursed-li-day-name">
+          <span class="all-label">Lundi</span>
+        </li>
+        <ul>
+          {this._eachHours()}
+        </ul>
+      </ul>
+    );
+  }
+
+  _eachCourseType(courseType){
+    return(
+      <CourseType courseType={courseType}/>
+    );
+  }
 
   render(){
     if(this.props.courseTeacher){
-      console.log('this.props', this.props);
       let course = this.props.courseTeacher.course;
       let teacher = this.props.courseTeacher.teacher;
 
+      let courseTypes = teacher.course.courseTypes;
+
+      let CourseTypes = courseTypes.map((courseType) => {
+        return this._eachCourseType(courseType);
+      });
+
       return (
         <div class="col-sm-4 info-pad-top-col-3">
-
-            <div class="all-label ">Yoga:</div>
-            <div class="tab ">
-              Du 18 Janvier au 08 Juillet 2016
-              
-                <ul>
-                  <li class="coursed-li-day-name"><span class="all-label ">Lundi</span></li>
-                  <ul>
-                    <li class="coursed-li-hour ">18:00 à 19:20 <a class="link-url" href="#/day_schedules/reserve/46">Réserver</a> <span class=""><strong><u>Complet</u></strong></span><br /> <span class="txt-red"> </span></li>
-                  </ul>
-                </ul>
-
-              
-                <ul>
-                  <li class="coursed-li-day-name "><span class="all-label ">Lundi</span></li>
-                  <ul>
-                    <li class="coursed-li-hour ">19:30 à 20:45 <a class="link-url" href="#/day_schedules/reserve/53">Réserver</a> <span class=""><strong><u>Complet</u></strong></span><br /> <span class="txt-red"> </span></li>
-                  </ul>
-                </ul>
-
-              
-                <ul>
-                  <li class="coursed-li-day-name"><span class="all-label ">Jeudi</span></li>
-                  <ul>
-                    <li class="coursed-li-hour ">15:30 à 16:40 <a class="link-url" href="#/day_schedules/reserve/9">Réserver</a> <span class=""><strong><u>Complet</u></strong></span><br /> <span class="txt-red"> <span class="ng-scope"> (Gratuit le <span class=" ng-scope">05 mai 2016 )<br /> </span> </span> </span></li>
-                  </ul>
-                </ul>
-
-              
-                <ul>
-                  <li class="coursed-li-day-name"><span class="all-label ">Vendredi</span></li>
-                  <ul>
-                    <li class="coursed-li-hour ">12:00 à 13:15 <a class="link-url" href="#/day_schedules/reserve/18">Réserver</a> <span class=""><strong><u>Complet</u></strong></span><br /> <span class="txt-red"> <span class="ng-scope"> (Gratuit le <span class=" ng-scope">06 mai 2016 )<br /> </span> </span> </span></li>
-                  </ul>
-                </ul>
-
-            </div>
+          { CourseTypes }
         </div>
       );
     } else {

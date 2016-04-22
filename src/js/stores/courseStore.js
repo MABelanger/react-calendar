@@ -49,8 +49,6 @@ const courseStore = new CourseStoreClass();
 // by changing the store's data and emitting a
 // change
 AppDispatcher.register((payload) => {
-  console.log('payload', payload)
-
   switch (payload.actionType) {
 
   case CourseConstants.RECEIVE_COURSES:
