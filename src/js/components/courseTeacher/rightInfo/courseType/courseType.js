@@ -65,10 +65,10 @@ export default class RightInfo extends React.Component {
 
       return (
         <div>
-          <div class="all-label ">
+          <div className="all-label">
             {courseType.name}:
           </div>
-          <div class="tab ">
+          <div className="tab">
             {rangeDates}
             {this._renderScheduleDays(scheduleDays)}
           </div>

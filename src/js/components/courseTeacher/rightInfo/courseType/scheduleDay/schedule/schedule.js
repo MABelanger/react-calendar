@@ -32,7 +32,7 @@ export default class Schedule extends React.Component {
   render(){
     // 'this._renderTestingDays(this.props.schedule.testingDays)'
     return(
-      <li class="coursed-li-hour">
+      <li className="coursed-li-hour">
         <Hours schedule={this.props.schedule} />
         <Reserve schedule={this.props.schedule} />
         <br />

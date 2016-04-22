@@ -32,8 +32,8 @@ export default class ScheduleDay extends React.Component {
 
     return (
       <ul>
-        <li class="coursed-li-day-name">
-          <span class="all-label">{weekDayName}</span>
+        <li className="coursed-li-day-name">
+          <span className="all-label">{weekDayName}</span>
         </li>
         <ul>
           {Schedules}

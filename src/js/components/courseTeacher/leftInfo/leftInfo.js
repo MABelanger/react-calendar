@@ -20,9 +20,9 @@ export default class LeftInfo extends React.Component {
 
   _eachTr(label, data){
     return(
-      <tr key={label} class="tr-space">
-        <td class="all-label all-label-align">{label}:</td>
-        <td class="coursed-data">
+      <tr key={label} className="tr-space">
+        <td className="all-label all-label-align">{label}:</td>
+        <td className="coursed-data">
           {componentHelper.renderHtml(data)}
         </td>
       </tr>
@@ -47,10 +47,10 @@ export default class LeftInfo extends React.Component {
   // let courseType = teacher.course.courseType;
 
   _getLink(label, url){
-    //return '<a class="link-url" href="'+ url + '">' + label + '</a>';
+    //return '<a className="link-url" href="'+ url + '">' + label + '</a>';
     let link = null;
     if(url) {
-      link = <a class="link-url" href={url}>{label}</a>
+      link = <a className="link-url" href={url}>{label}</a>
     }
     return link;
   }
@@ -75,7 +75,7 @@ export default class LeftInfo extends React.Component {
       let teacher = this.props.courseTeacher.teacher;
       let data = this._getData(course, teacher);
       return (
-        <div class="col-sm-4">
+        <div className="col-sm-4">
           <table>
             <tbody>
               {this._getTrList(data)}

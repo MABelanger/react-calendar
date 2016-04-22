@@ -29,13 +29,13 @@ export default class LeftInfo extends React.Component {
       let course = this.props.courseTeacher.course;
       let teacher = this.props.courseTeacher.teacher;
       return (
-        <div class="col-sm-4 text-center">
-            <h4 class="text-center text-uppercase">{teacher.firstName + ' ' + teacher.lastName}</h4>
-            <img class="coursed-image radius-img" src={'http://www.mondeavie.ca/' + teacher.course.image}/>
+        <div className="col-sm-4 text-center">
+            <h4 className="text-center text-uppercase">{teacher.firstName + ' ' + teacher.lastName}</h4>
+            <img className="coursed-image radius-img" src={'http://www.mondeavie.ca/' + teacher.course.image}/>
             <br/>
             <br/>
-            <div class="text-center">
-              <a href="#/courses" class="btn my-btn"> &lt; Retour au calendrier</a>
+            <div className="text-center">
+              <a href="#/courses" className="btn my-btn"> &lt; Retour au calendrier</a>
             </div>
         </div>
       );

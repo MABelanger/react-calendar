@@ -27,7 +27,7 @@ export default class TestingDay extends React.Component {
     if( componentHelper.isNotExpired(day) ){
       let dayFormat = componentHelper.getDayFormat(day);
       return(
-        <span class="txt-red">
+        <span className="txt-red">
           (Gratuit le {dayFormat} )<br />
         </span>
       );

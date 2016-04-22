@@ -19,7 +19,7 @@ export default class Reserve extends React.Component {
   render(){
     return(
       <span>
-        <a class="link-url" href="#/day_schedules/reserve/46">
+        <a className="link-url" href="#/day_schedules/reserve/46">
           Réserver
         </a>
 

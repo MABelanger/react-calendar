@@ -32,7 +32,7 @@ export default class RightInfo extends React.Component {
       });
 
       return (
-        <div class="col-sm-4 info-pad-top-col-3">
+        <div className="col-sm-4 info-pad-top-col-3">
           { CourseTypes }
         </div>
       );
