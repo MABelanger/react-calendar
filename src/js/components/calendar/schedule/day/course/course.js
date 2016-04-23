@@ -32,6 +32,7 @@ export default class Course extends React.Component {
   render(){
     let style = {};
     if(this.props.height > 0){
+      console.log('this.props.height', this.props.height)
       style.height = this.props.height + 'px'
     }
 
