@@ -71,6 +71,13 @@ export function getFullName(teacher){
   }
 }
 
+// calendrier/cours/yoga/marianne-girard
+export function getLink(course, teacher){
+  if(course && teacher){
+    return '#/calendrier/cours/' + course.slug + '/' + teacher.slug;
+  }
+}
+
 export function groupByDays(schedules){
   let scheduleDays = _create2DArray(7);
 

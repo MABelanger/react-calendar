@@ -29,13 +29,18 @@ export default class Course extends React.Component {
 
 
 
-  getRenderTeachers(teachers, classes){
+  getRenderTeachers(course, classes){
+    let teachers = course.teachers;
+
     var renderTeachers = teachers.map( function(teacher){
+      let fullName = componentHelper.getFullName(teacher);
+      let link = componentHelper.getLink(course, teacher);
+
     	return (
 				<div key={teacher._id} className={classes}>
-					<a href="#/courses/2">
+					<a href={link}>
 						<div className="teacher-name">
-							{teacher.firstName + ' ' + teacher.lastName}
+							{fullName}
 						</div>
 					</a>
 				</div>
@@ -45,7 +50,13 @@ export default class Course extends React.Component {
     return renderTeachers;
   }
 
-	getCourse() {
+	_renderCourse() {
+
+    let course = this.props.course;
+    let name = course.name;
+    let svg = course.svg;
+
+
 	    var classes = classNames( this.props.className, {
 	    	'teacher' : true,
 	    	'teacher-transition' : true,
@@ -56,22 +67,22 @@ export default class Course extends React.Component {
 			<div className="course">
 	    	<div className="course-header" onClick={this.showHideTeachers.bind(this)}>
 	    		<div className="course-header-name">
-	    			{this.props.name}
+	    			{name}
 	    		</div>
 	    		<div className="course-header-icon">
-	    			{componentHelper.renderHtml(this.props.logo)}
+	    			{componentHelper.renderHtml(svg)}
 	    		</div>
 	    	</div>
 
 	    	<div className="teachers">
-					{this.getRenderTeachers(this.props.teachers, classes)}
+					{this.getRenderTeachers(course, classes)}
 				</div>
 			</div>
 		);
 	}
 
   render(){
-    return this.getCourse();
+    return this._renderCourse();
   }
 }
 

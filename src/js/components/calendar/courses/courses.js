@@ -9,8 +9,8 @@ import './styles.scss';
 export default class Courses extends React.Component {
 
   getRenderCourses(courses){
-    var renderCourses = courses.map( function(course){
-      return <Course key={course.name} name={course.name} logo={course.svg} teachers={course.teachers} />;
+    var renderCourses = courses.map( function(course, index){
+      return <Course key={index} course={course} />;
     });
     return renderCourses;
   }

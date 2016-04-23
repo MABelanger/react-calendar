@@ -27,7 +27,7 @@ export function getScheduleDays(courses){
 
             formatedSchedules.push({
               "_id": schedule._id,
-              "link": "link1",
+              "link": componentHelper.getLink(course, teacher),
               "logo": svg,
               "dayStart": dayStart,
               "dayEnd": dayEnd,
