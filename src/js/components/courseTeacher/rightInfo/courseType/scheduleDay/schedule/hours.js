@@ -3,6 +3,8 @@ import moment from 'moment';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 
+import * as componentHelper       from '../../../../../helper';
+
 
 export default class Hours extends React.Component {
 
@@ -17,8 +19,7 @@ export default class Hours extends React.Component {
 
   render(){
     let schedule = this.props.schedule;
-    let hourStart = moment( schedule.dayStart ).utcOffset("+00:00").format("HH:mm");
-    let hourEnd = moment( schedule.dayEnd ).utcOffset("+00:00").format("HH:mm");
+    let {hourStart, hourEnd} = componentHelper.getHourRange(schedule);
     return(
       <span>
         {hourStart} à {hourEnd}

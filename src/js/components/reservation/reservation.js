@@ -2,7 +2,9 @@
 
 import React from 'react';
 
-import * as componentHelper       from '../helper'; 
+import * as componentHelper       from '../helper';
+import ReservationChoice          from './reservationChoice/reservationChoice';
+
 
 export default class Reservation extends React.Component {
 
@@ -51,6 +53,7 @@ export default class Reservation extends React.Component {
           <h3 className="text-center">Réservation</h3>
           <div className="reserv-cont-form">
             {this._getReservationHeader(course, teacher, courseType, schedule)}
+            <ReservationChoice />
           </div>
         </div>
       </div>
