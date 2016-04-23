@@ -40,41 +40,24 @@ export default class CourseTeacherPage extends React.Component {
   }
 
 
-  getCourseTeacher(courses, courseNameSlug, teacherSlug){
-
-    let course = null;
-    let teacher = null;
-
-    if(courses.length > 0){
-      course = _.find(courses, function(item) {
-          return item.slug == courseNameSlug; 
-      });
-
-      teacher = _.find(course.teachers, function(item) {
-          return item.slug == teacherSlug; 
-      });
-    }
-
-    return {
-      course: course,
-      teacher: teacher
-    };
-  }
-
-
   render(){
 
+    // reservation/cours/:courseNameSlug/:teacherSlug/:courseTypeSlug/:weekDayNameSlug/:hourStartSlug-:hourEndSlug
     const { query } = this.props.location;
     const { params } = this.props;
-    const { courseNameSlug, teacherSlug } = params;
-    const { date, filter } = query;
+    const { courseNameSlug, teacherSlug, courseTypeSlug, weekDayNameSlug, hourStartSlug, hourEndSlug } = params;
 
     let { course, teacher} = pageHelper.getCourseTeacher(this.state.courses, courseNameSlug, teacherSlug);
+    let matchSchedule = pageHelper.getMatchSchedule(this.state.courses, courseNameSlug, teacherSlug, courseTypeSlug, weekDayNameSlug, hourStartSlug, hourEndSlug );
+
+    console.log('matchSchedule', matchSchedule)
+
 
     return (
       <div className="container" style={{backgroundColor:"#F5F5F5"}}>
         <CourseTeacher course={course} teacher={teacher} />
       </div>
     );
+    return <div>ReservationPage</div>
   }
 }

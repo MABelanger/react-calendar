@@ -1,3 +1,5 @@
+/reservation/cours/yoga/sandra-duval/yoga-doux/mardi/20.00-21.15
+
       // courseWith : course.name + ' avec ' + teacher.firstName + ' ' + teacher.lastName,
       // schoolName: teacher.schoolName,
       // schoolUrl: teacher.schoolUrl,
