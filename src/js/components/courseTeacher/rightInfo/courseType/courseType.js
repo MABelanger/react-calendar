@@ -59,8 +59,6 @@ export default class RightInfo extends React.Component {
         return componentHelper.sortByHours(groupByDay);
       });
   
-      console.log('scheduleDays', scheduleDays)
-
       let rangeDates = "";//this._renderRangeDates(start, end);
 
       return (

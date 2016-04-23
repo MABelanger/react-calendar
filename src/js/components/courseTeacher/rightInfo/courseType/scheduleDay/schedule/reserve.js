@@ -16,18 +16,29 @@ export default class Reserve extends React.Component {
   }
 
 
-  render(){
+  renderReserve(schedule){
     return(
-      <span>
-        <a className="link-url" href="#/day_schedules/reserve/46">
-          Réserver
-        </a>
-
-        <strong>
-          <u>Complet</u>
-        </strong>
-      </span>
+      <a className="link-url" href="#/day_schedules/reserve/46">
+        Réserver
+      </a>
     );
+  }
+
+  _renderIsFull(){
+    return (
+      <strong>
+        <u>Complet</u>
+      </strong>
+    );
+  }
+  render(){
+    let schedule = this.props.schedule;
+    console.log('schedule', schedule)
+    if(schedule.isFull){
+      return this._renderIsFull();
+    } else{
+      return this.renderReserve(schedule);
+    }
   }
 }
 
