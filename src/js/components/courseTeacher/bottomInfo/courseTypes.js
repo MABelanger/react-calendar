@@ -45,9 +45,3 @@ export default class Reserve extends React.Component {
     );
   }
 }
-
-
-
-
-
-

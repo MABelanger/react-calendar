@@ -5,6 +5,7 @@ import ReactDOMServer from 'react-dom/server';
 
 import CourseDescription from './courseDescription';
 import CourseTypes from './courseTypes';
+import Price from './price';
 import * as componentHelper from '../../helper';
 
 
@@ -27,6 +28,7 @@ export default class LeftInfo extends React.Component {
       <div>
         <CourseDescription {...this.props} />
         <CourseTypes {...this.props} />
+        <Price {...this.props} />
       </div>
     );
   }
