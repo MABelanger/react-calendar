@@ -4,6 +4,8 @@ import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import * as componentHelper from '../../helper';
 
+import BackBtn from '../../common/backBtn';
+
 
 export default class Price extends React.Component {
 
@@ -21,7 +23,7 @@ export default class Price extends React.Component {
       price = componentHelper.renderHtml(courseDescription.price)
     }
     return(
-      <div class="row ng-scope">
+      <div class="row">
         <div class="col-sm-12">
           <div class="form-horizontal">
             <fieldset>
@@ -31,6 +33,7 @@ export default class Price extends React.Component {
               </div>
             </fieldset>
           </div>
+          <BackBtn txt='Retour au calendrier'/>
         </div>
       </div>
     );

@@ -33,7 +33,6 @@ export default class Reserve extends React.Component {
   }
   render(){
     let schedule = this.props.schedule;
-    console.log('schedule', schedule)
     if(schedule.isFull){
       return this._renderIsFull();
     } else{

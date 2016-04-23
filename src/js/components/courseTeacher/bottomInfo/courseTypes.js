@@ -18,7 +18,7 @@ export default class Reserve extends React.Component {
       let description = componentHelper.renderHtml(courseType.description);
 
       return (
-        <li className="coursed-li-schedule">
+        <li key={index} className="coursed-li-schedule">
           <span className="all-label">{name}</span>:
           {description}
         </li>
