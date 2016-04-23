@@ -56,23 +56,27 @@ function _getMatchSchedule(schedules, weekDayNameSlug, hourStartSlug, hourEndSlu
   return matchSchedule;
 }
 
-export function getMatchSchedule( courses, courseNameSlug, teacherSlug, 
+export function getMatchCourseTypeSchedule( courses, courseNameSlug, teacherSlug, 
                               courseTypeSlug, weekDayNameSlug,
                               hourStartSlug, hourEndSlug ){
 
   let {course, teacher} = getCourseTeacher(courses, courseNameSlug, teacherSlug);
 
   let matchSchedule = null;
+  let courseType = null;
 
   if (course && teacher) {
     let courseTypes = teacher.course.courseTypes;
 
-    let courseType = _.find(courseTypes, function(item) {
+    courseType = _.find(courseTypes, function(item) {
       return item.slug == courseTypeSlug; 
     });
 
     let schedules = courseType.schedules;
     matchSchedule = _getMatchSchedule(schedules, weekDayNameSlug, hourStartSlug, hourEndSlug);
   }
-  return matchSchedule;
+  return {
+    matchSchedule: matchSchedule,
+    courseType: courseType
+  };
 }

@@ -30,7 +30,11 @@ export function renderHtml(html){
 
 export function getWeekDayName(isoDate){
   moment.locale('fr');
-  return moment.weekdays( moment(isoDate).utcOffset("+00:00").day() );
+  let weekDayName = null;
+  if(isoDate){
+    weekDayName = moment.weekdays( moment(isoDate).utcOffset("+00:00").day() );
+  }
+  return weekDayName;
 }
 
 export function getDayFormat(isoDate){
@@ -77,6 +81,33 @@ export function getLink(course, teacher){
     return '#/calendrier/cours/' + course.slug + '/' + teacher.slug;
   }
 }
+
+
+export function getDateRange(schedule){
+  moment.locale('fr');
+  if(schedule){
+    let dayStart = moment( schedule.dayStart ).utcOffset("+00:00").format('LL');
+    let dayEnd = moment( schedule.dayEnd ).utcOffset("+00:00").format('LL');
+    return 'du ' + dayStart + ' au ' + dayEnd;
+  }
+  return null;
+}
+
+export function getHourRange(schedule){
+  moment.locale('fr');
+  let hourStart = null;
+  let hourEnd = null;
+  if(schedule){
+    hourStart = moment( schedule.dayStart ).utcOffset("+00:00").format("HH:mm");
+    hourEnd = moment( schedule.dayEnd ).utcOffset("+00:00").format("HH:mm");
+  }
+  return {
+    hourStart: hourStart,
+    hourEnd: hourEnd
+  }
+}
+
+
 
 export function groupByDays(schedules){
   let scheduleDays = _create2DArray(7);
