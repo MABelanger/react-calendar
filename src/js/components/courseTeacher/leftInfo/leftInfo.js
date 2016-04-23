@@ -56,36 +56,34 @@ export default class LeftInfo extends React.Component {
   }
 
   _getData(course, teacher){
-    let link = this._getLink(teacher.schoolName, teacher.schoolUrl);
-    if(link){
-      link = ReactDOMServer.renderToString(link);
+    if(course && teacher){
+      let link = this._getLink(teacher.schoolName, teacher.schoolUrl);
+      if(link){
+        link = ReactDOMServer.renderToString(link);
+      }
+      return {
+        Cours : course.name + ' avec ' + teacher.firstName + ' ' + teacher.lastName,
+        Type: teacher.course.courseType,
+        Tel: teacher.tel,
+        Lien: link,
+        Note: teacher.course.note
+      }
     }
-    return {
-      Cours : course.name + ' avec ' + teacher.firstName + ' ' + teacher.lastName,
-      Type: teacher.course.courseType,
-      Tel: teacher.tel,
-      Lien: link,
-      Note: teacher.course.note
-    }
+    return null;
   }
 
   render(){
-    if(this.props.courseTeacher){
-      let course = this.props.courseTeacher.course;
-      let teacher = this.props.courseTeacher.teacher;
-      let data = this._getData(course, teacher);
-      return (
-        <div className="col-sm-4">
-          <table>
-            <tbody>
-              {this._getTrList(data)}
-            </tbody>
-          </table>
-        </div>
-      );
-    } else {
-      return(<div></div>);
-    }
+    let {course, teacher} = this.props;
+    let data = this._getData(course, teacher);
+    return (
+      <div className="col-sm-4">
+        <table>
+          <tbody>
+            {this._getTrList(data)}
+          </tbody>
+        </table>
+      </div>
+    );
   }
 }
 

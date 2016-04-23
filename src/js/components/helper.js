@@ -65,6 +65,12 @@ export function sortByHours(scheduleDay){
   return scheduleDay;
 }
 
+export function getFullName(teacher){
+  if(teacher){
+    return teacher.firstName + ' ' + teacher.lastName;
+  }
+}
+
 export function groupByDays(schedules){
   let scheduleDays = _create2DArray(7);
 

@@ -21,24 +21,19 @@ export default class RightInfo extends React.Component {
   }
 
   render(){
-    if(this.props.courseTeacher){
-      let course = this.props.courseTeacher.course;
-      let teacher = this.props.courseTeacher.teacher;
-
+    let {course, teacher} = this.props;
+    let CourseTypes = null;
+    if(teacher){
       let courseTypes = teacher.course.courseTypes;
-
-      let CourseTypes = courseTypes.map((courseType, index) => {
+      CourseTypes = courseTypes.map((courseType, index) => {
         return <CourseType key={index} courseType={courseType}/>;
       });
-
-      return (
-        <div className="col-sm-4 info-pad-top-col-3">
-          { CourseTypes }
-        </div>
-      );
-    } else {
-      return(<div></div>);
     }
+    return (
+      <div className="col-sm-4 info-pad-top-col-3">
+        { CourseTypes }
+      </div>
+    );
   }
 }
 

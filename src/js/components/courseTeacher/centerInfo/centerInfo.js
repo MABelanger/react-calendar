@@ -23,25 +23,26 @@ export default class LeftInfo extends React.Component {
   // price: teacher.course.price
   // let courseType = teacher.course.courseType;
 
+  _gerSrc(teacher){
+    if(teacher){
+      return 'http://www.mondeavie.ca/'+ teacher.course.image;
+    }
+  }
 
   render(){
-    if(this.props.courseTeacher){
-      let course = this.props.courseTeacher.course;
-      let teacher = this.props.courseTeacher.teacher;
-      return (
-        <div className="col-sm-4 text-center">
-            <h4 className="text-center text-uppercase">{teacher.firstName + ' ' + teacher.lastName}</h4>
-            <img className="coursed-image radius-img" src={'http://www.mondeavie.ca/' + teacher.course.image}/>
-            <br/>
-            <br/>
-            <div className="text-center">
-              <a href="#/courses" className="btn my-btn"> &lt; Retour au calendrier</a>
-            </div>
-        </div>
-      );
-    } else {
-      return(<div></div>);
-    }
+    let {course, teacher} = this.props;
+    let fullName = componentHelper.getFullName(teacher);
+    return (
+      <div className="col-sm-4 text-center">
+          <h4 className="text-center text-uppercase">{fullName}</h4>
+          <img className="coursed-image radius-img" src={this._gerSrc(teacher)}/>
+          <br/>
+          <br/>
+          <div className="text-center">
+            <a href="#/courses" className="btn my-btn"> &lt; Retour au calendrier</a>
+          </div>
+      </div>
+    );
   }
 }
 

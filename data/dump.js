@@ -1,3 +1,13 @@
+      // courseWith : course.name + ' avec ' + teacher.firstName + ' ' + teacher.lastName,
+      // schoolName: teacher.schoolName,
+      // schoolUrl: teacher.schoolUrl,
+      // tel: teacher.tel,
+      // type: teacher.course.courseType,
+      // note: teacher.course.note
+      // description: teacher.course.description
+      // price: teacher.course.price
+      // let courseType = teacher.course.courseType;
+
 Yoga: <- courseType
 	Du 18 Janvier au 08 Juillet 2016
 		Lundi <- scheduleDay
