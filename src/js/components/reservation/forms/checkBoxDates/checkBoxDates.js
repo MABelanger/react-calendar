@@ -10,7 +10,7 @@ export default class CheckBox extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: '1',
+      '2016-04-27T17:30:00.000Z': 'false',
     };
   }
 
@@ -18,13 +18,36 @@ export default class CheckBox extends React.Component {
 
   }
 
+  _getMounthYear(date){
+    return 'Mai 2016';
+  }
+
+  changeValue(name, value) {
+    let newState = {};
+    newState[name] = value;
+    this.setState(newState);
+  }
+
+  _renderCheckBoxDay(name){
+    return(
+      <CheckBoxDay
+        name={name}
+        ref={name}
+        checked={this.state[name]}
+        changeValue={ (name, value) => { this.changeValue(name, value); } }
+      />
+    );
+  }
+
   _renderMounth(){
+    let mounthYear = this._getMounthYear();
+    let myDate = this._renderCheckBoxDay('2016-04-27T17:30:00.000Z');
     return(
       <tr>
-        <td class="reservation-month-name">
-          <strong>Mai 2016</strong>
+        <td className="reservation-month-name">
+          <strong>{mounthYear}</strong>
         </td>
-        <CheckBoxDay date='01'/>
+        {myDate}
         <CheckBoxDay date='02'/>
       </tr>
     );

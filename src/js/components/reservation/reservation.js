@@ -94,7 +94,7 @@ export default class Reservation extends React.Component {
               cbGetValue={this.getValue.bind(this)}
             />
           </div>
-          a: <FreeDaysForm/>
+          <FreeDaysForm/>
         </div>
       </div>
     );
