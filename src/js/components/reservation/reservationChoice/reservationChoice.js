@@ -3,7 +3,9 @@
 import React from 'react';
 
 import * as componentHelper       from '../../helper'; 
+import Dropdown                   from '../../common/dropdown/Dropdown';
 import './styles.scss';
+
 
 export default class Reservation extends React.Component {
 
@@ -14,10 +16,7 @@ export default class Reservation extends React.Component {
   componentDidMount() {
 
   }
-
-
-  render(){
-    return (
+/*
       <div class="dropdown">
         <br />
         <a class="btn my-btn dropdown-toggle" type="button" id="dropdownMenu1" aria-expanded="true"> 
@@ -45,6 +44,13 @@ export default class Reservation extends React.Component {
             </li>
         </ul>
       </div>
+*/
+
+  render(){
+    return (
+      <Dropdown
+        {...this.props}
+      />
     );
   }
 

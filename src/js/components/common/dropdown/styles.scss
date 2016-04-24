@@ -1,0 +1,24 @@
+$bgcolor: #F5F5F5;
+$size-title: 15px;
+$menu-hover: #EEEEEE;
+$link-hover: #999999;
+$txt-color-mid: #5C753F;
+$logo-fill: #333;
+
+.open>.dropdown-menu {
+    display: block;
+}
+
+/* Button */
+button {
+    /* My Button */
+    &.my-btn {
+        background: none;
+        color: #333;
+        padding: 10px;
+        font-family: Gotham, sans-serif;
+        font-weight: bold;
+        border: 1px solid #5A8727;
+
+    }
+}

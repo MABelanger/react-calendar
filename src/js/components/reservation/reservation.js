@@ -10,6 +10,9 @@ export default class Reservation extends React.Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      value: '1',
+    };
   }
 
   componentDidMount() {
@@ -43,9 +46,34 @@ export default class Reservation extends React.Component {
       </span>
     );
   }
+
+  getName(item){
+
+    return item;
+  }
+
+  getValue(){
+    if(false){
+      return this.getName(this.props.schedule);
+    } else {
+      return "Jours de cours...";
+    }
+  }
+
+  select(){
+
+  }
+
   render(){
     let {course, teacher, courseType, schedule} = this.props;
     let dateRange = componentHelper.getDateRange(schedule);
+
+    let list = [
+      "Un cour gratuit",
+      "Lundi du 2 mai au 5 avril 2016 (11 cours)",
+      "Une ou plusieur journee de cours",
+      "Un cours d'essaie"
+    ]
     console.log(dateRange)
     return (
       <div className="row">
@@ -53,7 +81,15 @@ export default class Reservation extends React.Component {
           <h3 className="text-center">Réservation</h3>
           <div className="reserv-cont-form">
             {this._getReservationHeader(course, teacher, courseType, schedule)}
-            <ReservationChoice />
+            <ReservationChoice
+              disabled={function(){}}
+              list={list}
+              label={'hello'}
+              onSelect={this.select.bind(this)}
+              value={this.state.value}
+              cbGetName={this.getName.bind(this)}
+              cbGetValue={this.getValue.bind(this)}
+            />
           </div>
         </div>
       </div>
