@@ -3,7 +3,10 @@
 import React from 'react';
 
 import * as componentHelper       from '../helper';
-import ReservationChoice          from './reservationChoice/reservationChoice';
+import Dropdown                   from '../common/dropdown/Dropdown';
+import FreeDaysForm               from './forms/freeDays';
+
+import './styles.scss';
 
 
 export default class Reservation extends React.Component {
@@ -56,12 +59,12 @@ export default class Reservation extends React.Component {
     if(false){
       return this.getName(this.props.schedule);
     } else {
-      return "Jours de cours...";
+      return "Choisir une option de réservation ...";
     }
   }
 
-  select(){
-
+  select(reservationType){
+    console.log('reservationType', reservationType)
   }
 
   render(){
@@ -81,7 +84,7 @@ export default class Reservation extends React.Component {
           <h3 className="text-center">Réservation</h3>
           <div className="reserv-cont-form">
             {this._getReservationHeader(course, teacher, courseType, schedule)}
-            <ReservationChoice
+            <Dropdown
               disabled={function(){}}
               list={list}
               label={'hello'}
@@ -91,6 +94,7 @@ export default class Reservation extends React.Component {
               cbGetValue={this.getValue.bind(this)}
             />
           </div>
+          a: <FreeDaysForm/>
         </div>
       </div>
     );

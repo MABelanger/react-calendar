@@ -1,0 +1,150 @@
+$bgcolor: #99CC66;
+$size-title: 15px;
+$menu-hover: #91C85B;
+$link-hover: #5A8727;
+$txt-color-mid: #333;
+
+/* Reservation */
+
+.modal-dialog {
+  padding-top: 100px;
+}
+
+.modal-content {
+  background-color: $bgcolor;
+}
+
+
+
+.reserv-cont-form {
+  margin-top:20px;
+}
+
+
+form.reserv {
+  margin-top:20px;
+}
+
+input.form-control, textarea.form-control {
+  background-color:$bgcolor;
+  border: 1px solid #669933;
+  color: black;
+}
+
+.form-control::-webkit-input-placeholder { /* WebKit browsers */
+  color: $link-hover;
+}
+.form-control:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color: $link-hover;
+   opacity:  1;
+}
+.form-control::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color: $link-hover;
+   opacity:  1;
+}
+.form-control:-ms-input-placeholder { /* Internet Explorer 10+ */
+  color: $link-hover;
+}
+
+textarea.form-control:focus, input:focus, input[type]:focus, .uneditable-input:focus {   
+  border-color: rgba( 72, 117, 34, 0.8);
+  box-shadow: 0 1px 1px rgba( 72, 117, 34, 0.075) inset, 0 0 8px rgba( 72, 117, 34, 0.6);
+  outline: 0 none;
+}
+
+/* http://codepen.io/CreativeJuiz/pen/BiHzp */
+/* Base for label styling */
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+  position: absolute;
+  left: -9999px;
+}
+[type="checkbox"]:not(:checked) + label,
+[type="checkbox"]:checked + label {
+  position: relative;
+  cursor: pointer;
+}
+
+/* checkbox aspect */
+[type="checkbox"]:not(:checked) + label:before,
+[type="checkbox"]:checked + label:before {
+  content: '';
+  position: absolute;
+  left:0; top: 2px;
+  width: 17px; height: 17px;
+  border: 1px solid #5A8727;
+  /*background: #f8f8f8;*/
+  border-radius: 3px;
+
+}
+/* checked mark aspect */
+[type="checkbox"]:not(:checked) + label:after,
+[type="checkbox"]:checked + label:after {
+  content: '✔';
+  position: absolute;
+  top: 0; left: 4px;
+  font-size: 14px;
+  color: black;
+  transition: all .2s;
+}
+
+/* checked mark aspect changes */
+[type="checkbox"]:not(:checked) + label:after {
+  opacity: 0;
+  transform: scale(0);
+}
+
+[type="checkbox"]:checked + label:after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* disabled checkbox */
+[type="checkbox"]:disabled:not(:checked) + label:before,
+[type="checkbox"]:disabled:checked + label:before {
+  box-shadow: none;
+  border-color: #bbb;
+  background-color: #ddd;
+}
+
+[type="checkbox"]:disabled:checked + label:after {
+  color: #999;
+}
+
+[type="checkbox"]:disabled + label {
+  color: #aaa;
+}
+
+/* accessibility */
+[type="checkbox"]:checked:focus + label:before,
+[type="checkbox"]:not(:checked):focus + label:before {
+  border: 1px solid black;
+}
+
+/* hover style just for information */
+label:hover:before {
+  border: 1px solid black!important;
+}
+
+.reservation-month-name {
+  border: 1px solid #5A8727;
+  padding-left:10px;
+  padding-right:10px;
+}
+.reservation-day {
+  border: 1px solid #5A8727;
+  padding: 5px 10px 25px 10px;
+}
+
+.reservation-checkbox {
+  margin:0;
+}
+
+.reservation-label {
+  display:block;
+  margin:0;
+}
+
+.reservation-is-day {
+  padding-top:10px;
+}
