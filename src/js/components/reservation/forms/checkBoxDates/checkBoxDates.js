@@ -2,15 +2,16 @@
 
 import React from 'react';
 
+import moment from 'moment';
+import * as componentHelper       from '../../../helper';
 import CheckBoxDay from './checkBoxDay';
 
 
-export default class CheckBox extends React.Component {
+export default class CheckBoxDates extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      '2016-04-27T17:30:00.000Z': 'false',
     };
   }
 
@@ -19,7 +20,8 @@ export default class CheckBox extends React.Component {
   }
 
   _getMounthYear(date){
-    return 'Mai 2016';
+    return moment(date).format('MMMM YYYY')
+
   }
 
   changeValue(name, value) {
@@ -31,6 +33,7 @@ export default class CheckBox extends React.Component {
   _renderCheckBoxDay(name){
     return(
       <CheckBoxDay
+        key={name}
         name={name}
         ref={name}
         checked={this.state[name]}
@@ -39,27 +42,59 @@ export default class CheckBox extends React.Component {
     );
   }
 
-  _renderMounth(){
-    let mounthYear = this._getMounthYear();
-    let myDate = this._renderCheckBoxDay('2016-04-27T17:30:00.000Z');
+
+  _renderCheckBoxDays(mounth){
+    let CheckBoxDays = mounth.map((day) => {
+      return this._renderCheckBoxDay(day);
+    });
+    return CheckBoxDays;
+  }
+
+  _renderMounth(mounth){
+    let firstDay = mounth[0];
+    let mounthYear = this._getMounthYear(firstDay);
+    let CheckBoxDays = this._renderCheckBoxDays(mounth);
     return(
-      <tr>
+      <tr key={mounthYear}>
         <td className="reservation-month-name">
           <strong>{mounthYear}</strong>
         </td>
-        {myDate}
-        <CheckBoxDay date='02'/>
+        {CheckBoxDays}
       </tr>
     );
   }
-  render(){
 
+  _renderMounths(mounths){
+    let Mounths = mounths.map((mounth) => {
+      return this._renderMounth(mounth);
+    });
+    return Mounths;
+  }
+
+  _splitWeekDatesByMounth(weekDates){
+    let mounths = componentHelper.create2DArray(12);
+    weekDates.map(function(date){
+      let index = date.format('M');
+      mounths[index].push(date);
+    });
+    return componentHelper.removeEmptyArray(mounths);    
+  }
+
+  _getMounths(dayStart, dayEnd){
+    let weekDates = componentHelper.getWeekDates(dayStart, dayEnd);
+    let mounths = this._splitWeekDatesByMounth(weekDates);
+    return mounths;
+  }
+
+  render(){
+    let {dayStart, dayEnd} = this.props;
+    let mounths = this._getMounths(dayStart, dayEnd);
     return (
-        <table>
-          <tbody>
-            {this._renderMounth()}
-          </tbody>
-        </table>
+      <table>
+        <tbody>
+          {this._renderMounths(mounths)}
+        </tbody>
+      </table>
     );
   }
 

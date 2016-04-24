@@ -77,7 +77,7 @@ export default class Reservation extends React.Component {
       "Une ou plusieur journee de cours",
       "Un cours d'essaie"
     ]
-    console.log(dateRange)
+
     return (
       <div className="row">
         <div className="col-sm-6">

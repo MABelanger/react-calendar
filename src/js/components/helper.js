@@ -2,7 +2,7 @@
 import React from 'react';
 import moment from 'moment';
 
-function _create2DArray(rows) {
+export function create2DArray(rows) {
   var arr = [];
 
   for (var i=0;i<rows;i++) {
@@ -93,6 +93,22 @@ export function getDateRange(schedule){
   return null;
 }
 
+
+export function getWeekDates(startDate, stopDate) {
+    var dateArray = [];
+    stopDate = moment( stopDate ).utcOffset("+00:00")
+    var currentDate = moment( startDate ).utcOffset("+00:00");
+    while (currentDate <= stopDate) {
+        dateArray.push( moment(currentDate) ) // .format('YYYY-MM-DD')
+        currentDate = moment(currentDate).add(7, 'days');
+    }
+    return dateArray;
+}
+
+export function removeEmptyArray(array){
+  return array.filter(function(el){ return (el.length > 0)  })
+}
+
 export function getHourRange(schedule){
   moment.locale('fr');
   let hourStart = null;
@@ -110,7 +126,7 @@ export function getHourRange(schedule){
 
 
 export function groupByDays(schedules){
-  let scheduleDays = _create2DArray(7);
+  let scheduleDays = create2DArray(7);
 
   schedules.map((schedule) => {
     let day = moment(schedule.dayStart).day();
