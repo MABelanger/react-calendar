@@ -35,8 +35,8 @@ export default class FreeDays extends React.Component {
 
 
   _getSelectedList(freeDayDates){
-    let FreeDayDates = freeDayDates.map((freeDayDate) =>{
-      return(<li>{freeDayDate}</li>);
+    let FreeDayDates = freeDayDates.map((freeDayDate, index) =>{
+      return(<li key={index}>{freeDayDate}</li>);
     });
     return FreeDayDates;
   }
