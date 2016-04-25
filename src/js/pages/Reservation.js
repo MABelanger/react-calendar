@@ -3,7 +3,7 @@
 import React                    from 'react';
 import _                        from 'lodash'
 
-import Reservation            from '../components/reservation/reservation';
+import Reservation              from '../components/reservation/reservation';
 import CourseStore              from '../stores/courseStore';
 import * as CourseActions       from '../actions/courseActions';
 import CourseConstants          from '../constants/courseConstants';
@@ -50,12 +50,14 @@ export default class CourseTeacherPage extends React.Component {
     let { course, teacher} = pageHelper.getCourseTeacher(this.state.courses, courseNameSlug, teacherSlug);
     let {courseType, matchSchedule} = pageHelper.getMatchCourseTypeSchedule(this.state.courses, courseNameSlug, teacherSlug, courseTypeSlug, weekDayNameSlug, hourStartSlug, hourEndSlug );
 
-    console.log('matchSchedule', matchSchedule)
-
-
     return (
       <div className="container" style={{backgroundColor:"#F5F5F5"}}>
-        <Reservation course={course} teacher={teacher} courseType={courseType} schedule={matchSchedule} />
+        <Reservation
+          course={course}
+          teacher={teacher}
+          courseType={courseType}
+          schedule={matchSchedule}
+        />
       </div>
     );
     return <div>ReservationPage</div>

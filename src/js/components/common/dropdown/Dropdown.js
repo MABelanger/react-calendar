@@ -54,8 +54,6 @@ export default class Dropdown extends React.Component {
   getName(item) {
     if (this.props.cbGetName){
       return this.props.cbGetName(item);
-    } else {
-      return item.name || (item.firstName + " " + item.lastName);
     }
   }
 
@@ -83,11 +81,6 @@ export default class Dropdown extends React.Component {
     if(this.props.cbGetValue){
       return this.props.cbGetValue();
     }
-    if(this.props.value){
-      return this.props.value;
-    }else {
-      return this.props.label + "...";
-    }
   }
 
   render() {
@@ -108,7 +101,6 @@ export default class Dropdown extends React.Component {
       <div className={btnGroup}>
           <button 
             type="button"
-            disable
             className={button}
             onClick={ (e) => { this.toogleDropDown(e); } }
             onBlur={ (e) => { this.blurDropDown(e); } }>

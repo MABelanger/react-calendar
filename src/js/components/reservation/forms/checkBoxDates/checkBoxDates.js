@@ -21,13 +21,6 @@ export default class CheckBoxDates extends React.Component {
 
   _getMounthYear(date){
     return moment(date).format('MMMM YYYY')
-
-  }
-
-  changeValue(name, value) {
-    let newState = {};
-    newState[name] = value;
-    this.setState(newState);
   }
 
   _renderCheckBoxDay(name){
@@ -37,11 +30,10 @@ export default class CheckBoxDates extends React.Component {
         name={name}
         ref={name}
         checked={this.state[name]}
-        changeValue={ (name, value) => { this.changeValue(name, value); } }
+        changeValue={this.props.changeValue}
       />
     );
   }
-
 
   _renderCheckBoxDays(mounth){
     let CheckBoxDays = mounth.map((day) => {
@@ -64,12 +56,7 @@ export default class CheckBoxDates extends React.Component {
     );
   }
 
-  _renderMounths(mounths){
-    let Mounths = mounths.map((mounth) => {
-      return this._renderMounth(mounth);
-    });
-    return Mounths;
-  }
+
 
   _splitWeekDatesByMounth(weekDates){
     let mounths = componentHelper.create2DArray(12);
@@ -86,6 +73,13 @@ export default class CheckBoxDates extends React.Component {
     return mounths;
   }
 
+  _renderMounths(mounths){
+    let Mounths = mounths.map((mounth) => {
+      return this._renderMounth(mounth);
+    });
+    return Mounths;
+  }
+  
   render(){
     let {dayStart, dayEnd} = this.props;
     let mounths = this._getMounths(dayStart, dayEnd);
@@ -97,7 +91,6 @@ export default class CheckBoxDates extends React.Component {
       </table>
     );
   }
-
 }
 
 
