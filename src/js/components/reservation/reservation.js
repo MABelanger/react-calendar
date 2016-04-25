@@ -6,7 +6,7 @@ import moment from 'moment';
 
 import * as componentHelper       from '../helper';
 import Dropdown                   from '../common/dropdown/Dropdown';
-import FreeDaysForm               from './forms/freeDays';
+import TryingDaysForm               from './forms/tryingDays';
 
 import './styles.scss';
 
@@ -17,7 +17,7 @@ export default class Reservation extends React.Component {
     super(props);
     this.state = {
       currentForm: null,
-      freeDayDates: [],
+      tryingDaysDates: [],
     };
 
   }
@@ -32,10 +32,10 @@ export default class Reservation extends React.Component {
 
       this.setState({
         list : [
-          {title: "Un cour gratuit", form: 'FREE_DAY'},
+          {title: "Un cour gratuit", form: 'FREE_DAYS'},
           {title: "Lundi du 2 mai au 5 avril 2016 (11 cours)", form: 'TESTING'},
           {title: "Une ou plusieur journee de cours", form: 'TESTING'},
-          {title: "Un cours d'essaie", form: 'TESTING'}
+          {title: "Un cours d'essaie", form: 'TRYING_DAYS'}
         ]
       });
     }
@@ -79,7 +79,7 @@ export default class Reservation extends React.Component {
   select(reservationType){
     this.setState({
       currentForm: reservationType,
-      freeDayDates: []
+      tryingDaysDates: []
     })
   }
 
@@ -93,30 +93,30 @@ export default class Reservation extends React.Component {
     return arr;
   }
 
-  changeValueFreeDays(name, value) {
-    let freeDayDates = this.state.freeDayDates
+  changeValueTryingDays(name, value) {
+    let tryingDaysDates = this.state.tryingDaysDates
     name = moment(name).format('LL');
 
     if(value == true){
-      freeDayDates.push(name);
+      tryingDaysDates.push(name);
     }else {
-      freeDayDates = this._removeItem(freeDayDates, name);
+      tryingDaysDates = this._removeItem(tryingDaysDates, name);
     }
-    console.log('freeDayDates', freeDayDates)
+    console.log('tryingDaysDates', tryingDaysDates)
     this.setState({
-      freeDayDates : freeDayDates
+      tryingDaysDates : tryingDaysDates
     });
   }
 
 
-  _getFreeDaysForm(schedule, freeDayDates){
+  _getTryingDaysForm(schedule, tryingDaysDates){
     return(
-      <FreeDaysForm 
+      <TryingDaysForm 
       dayStart={schedule.dayStart}
       dayEnd={schedule.dayEnd}
-      freeDayDates={freeDayDates}
+      tryingDaysDates={tryingDaysDates}
       msg="Un cour gratuit"
-      changeValue = {(name, value) => { this.changeValueFreeDays(name, value); }}
+      changeValue = {(name, value) => { this.changeValueTryingDays(name, value); }}
       />
     );
   }
@@ -126,8 +126,8 @@ export default class Reservation extends React.Component {
 
     let currentForm = null;
     if(this.state.currentForm){
-      if(this.state.currentForm.form == 'FREE_DAY'){
-        currentForm = this._getFreeDaysForm(schedule, this.state.freeDayDates)
+      if(this.state.currentForm.form == 'TRYING_DAYS'){
+        currentForm = this._getTryingDaysForm(schedule, this.state.tryingDaysDates)
       }
     }
 
