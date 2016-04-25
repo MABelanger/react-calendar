@@ -2,6 +2,8 @@
 
 import React from 'react';
 
+import moment from 'moment';
+
 import * as componentHelper       from '../helper';
 import Dropdown                   from '../common/dropdown/Dropdown';
 import FreeDaysForm               from './forms/freeDays';
@@ -27,7 +29,7 @@ export default class Reservation extends React.Component {
   componentWillReceiveProps(nextProps) {
     if(nextProps.schedule){
       let schedule = nextProps.schedule;
-      console.log('nextProps.schedule', nextProps.schedule)
+
       this.setState({
         list : [
           {title: "Un cour gratuit", form: 'FREE_DAY'},
@@ -63,7 +65,6 @@ export default class Reservation extends React.Component {
   }
 
   getName(item){
-    console.log('item.title', item.title);
     return item.title;
   }
 
@@ -77,7 +78,8 @@ export default class Reservation extends React.Component {
 
   select(reservationType){
     this.setState({
-      currentForm: reservationType
+      currentForm: reservationType,
+      freeDayDates: []
     })
   }
 
@@ -88,15 +90,19 @@ export default class Reservation extends React.Component {
     if (index >= 0) {
       arr.splice( index, 1 );
     }
+    return arr;
   }
 
   changeValueFreeDays(name, value) {
     let freeDayDates = this.state.freeDayDates
+    name = moment(name).format('LL');
+
     if(value == true){
       freeDayDates.push(name);
     }else {
-      this._removeItem(freeDayDates, name);
+      freeDayDates = this._removeItem(freeDayDates, name);
     }
+    console.log('freeDayDates', freeDayDates)
     this.setState({
       freeDayDates : freeDayDates
     });
@@ -118,13 +124,13 @@ export default class Reservation extends React.Component {
     let {course, teacher, courseType, schedule} = this.props;
     let dateRange = componentHelper.getDateRange(schedule);
 
-    let form = null;
+    let currentForm = null;
     if(this.state.currentForm){
       if(this.state.currentForm.form == 'FREE_DAY'){
-        form = this._getFreeDaysForm(schedule, this.state.freeDayDates)
+        currentForm = this._getFreeDaysForm(schedule, this.state.freeDayDates)
       }
     }
-    console.log('this.state.list', this.state.list)
+
     return (
       <div className="row">
         <div className="col-sm-6">
@@ -134,13 +140,12 @@ export default class Reservation extends React.Component {
             <Dropdown
               disabled={function(){}}
               list={this.state.list}
-              label={'hello'}
               onSelect={this.select.bind(this)}
               cbGetName={this.getName.bind(this)}
               cbGetValue={this.getValue.bind(this)}
             />
           </div>
-          {form}
+          {currentForm}
         </div>
       </div>
     );

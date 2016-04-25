@@ -11,13 +11,14 @@ export default class CheckBoxDates extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-    };
+    this.initialState = {};
+    this.state = this.initialState;
   }
 
   componentDidMount() {
 
   }
+
 
   _getMounthYear(date){
     return moment(date).format('MMMM YYYY')
