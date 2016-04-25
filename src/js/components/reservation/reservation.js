@@ -7,6 +7,7 @@ import moment from 'moment';
 import * as componentHelper       from '../helper';
 import Dropdown                   from '../common/dropdown/Dropdown';
 import TryingDaysForm               from './forms/tryingDays';
+import AllCourseDaysForm               from './forms/allCourseDays';
 
 import './styles.scss';
 
@@ -18,6 +19,7 @@ export default class Reservation extends React.Component {
     this.state = {
       currentForm: null,
       tryingDaysDates: [],
+      allCourseDaysDates: []
     };
 
   }
@@ -33,7 +35,7 @@ export default class Reservation extends React.Component {
       this.setState({
         list : [
           {title: "Un cour gratuit", form: 'FREE_DAYS'},
-          {title: "Lundi du 2 mai au 5 avril 2016 (11 cours)", form: 'TESTING'},
+          {title: "Lundi du 2 mai au 5 avril 2016 (11 cours)", form: 'ALL_COURSE_DAYS'},
           {title: "Une ou plusieur journee de cours", form: 'TESTING'},
           {title: "Un cours d'essaie", form: 'TRYING_DAYS'}
         ]
@@ -79,7 +81,8 @@ export default class Reservation extends React.Component {
   select(reservationType){
     this.setState({
       currentForm: reservationType,
-      tryingDaysDates: []
+      tryingDaysDates: [],
+      allCourseDaysDates: []
     })
   }
 
@@ -108,18 +111,46 @@ export default class Reservation extends React.Component {
     });
   }
 
+  changeValueAllCourseDays(name, value) {
+    let allCourseDaysDates = this.state.allCourseDaysDates
+    name = moment(name).format('LL');
 
-  _getTryingDaysForm(schedule, tryingDaysDates){
+    if(value == true){
+      allCourseDaysDates.push(name);
+    }else {
+      allCourseDaysDates = this._removeItem(allCourseDaysDates, name);
+    }
+    console.log('allCourseDaysDates', allCourseDaysDates)
+    this.setState({
+      allCourseDaysDates : allCourseDaysDates
+    });
+  }
+
+
+  _getTryingDaysForm(schedule, selectedDates){
     return(
       <TryingDaysForm 
       dayStart={schedule.dayStart}
       dayEnd={schedule.dayEnd}
-      tryingDaysDates={tryingDaysDates}
+      selectedDates={selectedDates}
       msg="Un cour gratuit"
       changeValue = {(name, value) => { this.changeValueTryingDays(name, value); }}
       />
     );
   }
+
+  _getAllCourseDaysForm(schedule, selectedDates){
+    return(
+      <AllCourseDaysForm 
+      dayStart={schedule.dayStart}
+      dayEnd={schedule.dayEnd}
+      selectedDates={selectedDates}
+      msg=" Une ou plusieurs journée(s) de cours"
+      changeValue = {(name, value) => { this.changeValueAllCourseDays(name, value); }}
+      />
+    );
+  }
+
   render(){
     let {course, teacher, courseType, schedule} = this.props;
     let dateRange = componentHelper.getDateRange(schedule);
@@ -128,6 +159,8 @@ export default class Reservation extends React.Component {
     if(this.state.currentForm){
       if(this.state.currentForm.form == 'TRYING_DAYS'){
         currentForm = this._getTryingDaysForm(schedule, this.state.tryingDaysDates)
+      }else if(this.state.currentForm.form == 'ALL_COURSE_DAYS'){
+        currentForm = this._getAllCourseDaysForm(schedule, this.state.allCourseDaysDates)
       }
     }
 
