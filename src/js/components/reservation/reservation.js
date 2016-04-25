@@ -30,10 +30,10 @@ export default class Reservation extends React.Component {
       console.log('nextProps.schedule', nextProps.schedule)
       this.setState({
         list : [
-          {title: "Un cour gratuit", form: this._getFreeDayForm(schedule)},
-          {title: "Lundi du 2 mai au 5 avril 2016 (11 cours)", form: this._getFreeDayForm(schedule)},
-          {title: "Une ou plusieur journee de cours", form: this._getFreeDayForm(schedule)},
-          {title: "Un cours d'essaie", form: this._getFreeDayForm(schedule)}
+          {title: "Un cour gratuit", form: 'FREE_DAY'},
+          {title: "Lundi du 2 mai au 5 avril 2016 (11 cours)", form: 'TESTING'},
+          {title: "Une ou plusieur journee de cours", form: 'TESTING'},
+          {title: "Un cours d'essaie", form: 'TESTING'}
         ]
       });
     }
@@ -103,28 +103,26 @@ export default class Reservation extends React.Component {
   }
 
 
-
-  _getFreeDayForm(schedule){
-    console.log('_getFreeDayForm', schedule)
-    let {dayStart, dayEnd}
+  _getFreeDaysForm(schedule, freeDayDates){
     return(
       <FreeDaysForm 
       dayStart={schedule.dayStart}
       dayEnd={schedule.dayEnd}
-      freeDayDates={this.state.freeDayDates}
+      freeDayDates={freeDayDates}
       msg="Un cour gratuit"
       changeValue = {(name, value) => { this.changeValueFreeDays(name, value); }}
       />
     );
   }
-
   render(){
     let {course, teacher, courseType, schedule} = this.props;
     let dateRange = componentHelper.getDateRange(schedule);
 
     let form = null;
     if(this.state.currentForm){
-      form = this.state.currentForm.form
+      if(this.state.currentForm.form == 'FREE_DAY'){
+        form = this._getFreeDaysForm(schedule, this.state.freeDayDates)
+      }
     }
     console.log('this.state.list', this.state.list)
     return (
