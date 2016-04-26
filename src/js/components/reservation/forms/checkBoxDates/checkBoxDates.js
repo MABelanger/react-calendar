@@ -68,8 +68,14 @@ export default class CheckBoxDates extends React.Component {
     return componentHelper.removeEmptyArray(mounths);    
   }
 
-  _getMounths(dayStart, dayEnd){
-    let weekDates = componentHelper.getWeekDates(dayStart, dayEnd);
+  _getMounths(dayStart, dayEnd, days){
+    let weekDates = null;
+    if(days && days.length > 0){
+      weekDates = days;
+    }else{
+      weekDates = componentHelper.getWeekDates(dayStart, dayEnd);
+    }
+    
     let mounths = this._splitWeekDatesByMounth(weekDates);
     return mounths;
   }
@@ -82,8 +88,8 @@ export default class CheckBoxDates extends React.Component {
   }
   
   render(){
-    let {dayStart, dayEnd} = this.props;
-    let mounths = this._getMounths(dayStart, dayEnd);
+    let {dayStart, dayEnd, days} = this.props;
+    let mounths = this._getMounths(dayStart, dayEnd, days);
     return (
       <table>
         <tbody>

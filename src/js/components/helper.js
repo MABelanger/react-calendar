@@ -123,6 +123,49 @@ export function getHourRange(schedule){
   }
 }
 
+export function getNow(){
+  let tzoffset = (new Date()).getTimezoneOffset() * 60000; //offset in milliseconds
+  return moment(new Date(Date.now() - tzoffset)).utcOffset(0);//.toISOString();
+}
+
+function getNextDayStart(dayStart){
+  let dayNumber = parseInt(dayStart.day());
+  let nextDayStart = getNow();
+
+  let hour = dayStart.hour();
+  let minute = dayStart.minute();
+
+  nextDayStart = nextDayStart.day(dayNumber)
+  // let nextDayStartNumber = -1;
+  // while (nextDayStartNumber != dayNumber) {
+  //     nextDayStart = nextDayStart.add(1, 'day');
+  //     nextDayStartNumber = parseInt(nextDayStart.day())
+  // }
+
+  // reset the HH:mm of the dayStart
+  nextDayStart.set({
+    hour:hour,
+    minute:minute,
+    second:0,
+    millisecond:0
+  });
+  return nextDayStart;
+}
+
+
+export function getDayStartFromNow(dayStart){
+  moment.locale('fr');
+  //let dayStart = moment('2016-04-25T23:49:19.838Z').utcOffset("+00:00");
+  let now = getNow();
+
+
+  while(now.isAfter(dayStart)){
+    dayStart = getNextDayStart(dayStart);
+  }
+
+  return dayStart;
+}
+
 
 
 export function groupByDays(schedules){

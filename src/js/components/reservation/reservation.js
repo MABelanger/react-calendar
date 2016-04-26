@@ -21,7 +21,9 @@ export default class Reservation extends React.Component {
       tryingDaysDates: [],
       allCourseDaysDates: []
     };
-
+    console.log(
+      componentHelper.getDayStartFromNow(moment('2016-04-19T23:49:19.838Z').utcOffset("+00:00")).toISOString()
+    );
   }
 
   componentDidMount() {
