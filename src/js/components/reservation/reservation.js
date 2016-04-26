@@ -105,7 +105,7 @@ export default class Reservation extends React.Component {
     }else {
       tryingDaysDates = this._removeItem(tryingDaysDates, name);
     }
-    console.log('tryingDaysDates', tryingDaysDates)
+
     this.setState({
       tryingDaysDates : tryingDaysDates
     });
@@ -120,7 +120,7 @@ export default class Reservation extends React.Component {
     }else {
       allCourseDaysDates = this._removeItem(allCourseDaysDates, name);
     }
-    console.log('allCourseDaysDates', allCourseDaysDates)
+
     this.setState({
       allCourseDaysDates : allCourseDaysDates
     });

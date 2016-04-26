@@ -24,9 +24,9 @@ export default class AllCourseDays extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    // force to reset the CheckBoxDates if the props of tryingDaysDates is empty
+    // force to reset the CheckBoxDates if the props of selectedDates is empty
     // so that can unckeck the selected checkBox with the default value of uncheck.
-    if(nextProps.tryingDaysDates && nextProps.tryingDaysDates.length == 0){
+    if(nextProps.selectedDates && nextProps.selectedDates.length == 0){
       let newKey = this.state.checkBoxDatesKey + 1;
       this.setState({
         checkBoxDatesKey: newKey
