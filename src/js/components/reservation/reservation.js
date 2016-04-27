@@ -4,11 +4,11 @@ import React from 'react';
 
 import moment from 'moment';
 
-import * as componentHelper       from '../helper';
-import Dropdown                   from '../common/dropdown/Dropdown';
-import FreeDaysForm               from './forms/freeDays';
-import TryingDaysForm               from './forms/tryingDays';
-import OneOrManyDaysForm               from './forms/oneOrManyDays';
+import * as componentHelper          from '../helper';
+import Dropdown                      from '../common/dropdown/Dropdown';
+import FreeDaysForm                  from './forms/freeDays';
+import TryingDaysForm                from './forms/tryingDays';
+import OneOrManyDaysForm             from './forms/oneOrManyDays';
 
 // Flux Reservation
 import ReservationStore              from '../../stores/reservationStore';
@@ -34,13 +34,6 @@ export default class Reservation extends React.Component {
     console.log(
       componentHelper.getDayStartFromNow(moment('2016-04-19T23:49:19.838Z').utcOffset("+00:00")).toISOString()
     );
-    let reservation = {
-      "from": "bibi@bibi.com",
-      "message": "<h1>mon Message de rest</h1><ul><li>bibi</li></ul>"
-    };
-    // get the courses from server.
-    ReservationActions.sendReservation(reservation);
-
   }
 
   componentWillMount() {
@@ -114,8 +107,6 @@ export default class Reservation extends React.Component {
       oneOrManyDaysDates: []
     })
   }
-
-
   
   _removeItem(arr, item){
     var index = arr.indexOf(item);
@@ -156,8 +147,14 @@ export default class Reservation extends React.Component {
     console.log('reservation.cancel')
   }
 
-  send(currentForm){
-    console.log('reservation.cancel')
+  send(currentForm, message){
+    console.log('reservation.send')
+    let reservation = {
+      "from": "bibi@bibi.com",
+      "message": message.name
+    };
+    // get the courses from server.
+    ReservationActions.sendReservation(reservation);
   }
 
   _getFreeDaysForm(schedule, selectedDates){
@@ -179,7 +176,7 @@ export default class Reservation extends React.Component {
       selectedDates={selectedDates}
       msg="Un cour gratuit"
       cancel={() => { this.cancel('FREE_DAYS'); }}
-      send={() => { this.send('FREE_DAYS'); }}
+      send={(message) => { this.send('FREE_DAYS', message); }}
       changeValue = {(name, value) => { this.changeValueFreeDays(name, value); }}
       />
     );

@@ -42,6 +42,11 @@ export default class FreeDays extends React.Component {
     return SelectedDates;
   }
 
+  send(){
+    let message = this.refs.textForm.getFields();
+    this.props.send(message);
+  }
+
   render(){
 
     return (
@@ -55,8 +60,11 @@ export default class FreeDays extends React.Component {
         <ul>
           {this._getSelectedList(this.props.selectedDates)}
         </ul>
-        <TextForm/>
-        <CtrlBtnForm {...this.props}/>
+        <TextForm ref="textForm"/>
+        <CtrlBtnForm
+          send={ (e) => {this.send(e);} }
+          cancel={ (e) => {this.cancel(e);} }
+        />
       </span>
     );
   }
