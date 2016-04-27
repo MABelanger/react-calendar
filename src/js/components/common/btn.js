@@ -28,7 +28,11 @@ export default class Btn extends React.Component {
     let content = this._getContent(direction, txt);
     return (
       <span className="text-center">
-        <a href={url} className="btn my-btn">{content}</a>
+        <a
+          href={url}
+          className="btn my-btn"
+          onClick={this.props.click}
+        >{content}</a>
       </span>
     );
   }

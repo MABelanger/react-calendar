@@ -1,20 +1,20 @@
 'use strict';
 
 import AppDispatcher from '../dispatcher/clientDispatcher';
-import CourseConstants from '../constants/courseConstants';
+import ReservationConstants from '../constants/reservationConstants';
 import { EventEmitter } from 'events';
 
-const CHANGE_EVENT = CourseConstants.CHANGE_EVENT;
+const CHANGE_EVENT = ReservationConstants.CHANGE_EVENT;
 
 
 // Define the public event listeners and getters that
 // the views will use to listen for changes and retrieve
 // the store
-class CourseStoreClass extends EventEmitter {
+class ReservationStoreClass extends EventEmitter {
 
   constructor() {
     super();
-    this.courses = {};
+    this.confirmation = "";
   }
 
   addChangeListener(cb) {
@@ -29,16 +29,12 @@ class CourseStoreClass extends EventEmitter {
     this.emit(CHANGE_EVENT);
   }
 
-  setCourses(courses){
-    this.courses = courses;
+  doneReservation(confirmation){
+    this.confirmation = confirmation;
   }
 
-  doneReservation(reservationMessage){
-    this.reservationMessage = reservationMessage;
-  }
-
-  getCourses(){
-    return this.courses;
+  getConfirmation(){
+    return this.confirmation;
   }
 
 }
@@ -47,7 +43,7 @@ class CourseStoreClass extends EventEmitter {
 
 // Initialize the singleton to register with the
 // dispatcher and export for React components
-const courseStore = new CourseStoreClass();
+const reservationStore = new ReservationStoreClass();
 
 // Register each of the actions with the dispatcher
 // by changing the store's data and emitting a
@@ -55,10 +51,10 @@ const courseStore = new CourseStoreClass();
 AppDispatcher.register((payload) => {
   switch (payload.actionType) {
 
-  case CourseConstants.RECEIVE_COURSES:
+  case ReservationConstants.DONE_RESERVATION:
 
-    courseStore.setCourses(payload.courses);
-    courseStore.emit(CHANGE_EVENT);
+    reservationStore.doneReservation(payload.message);
+    reservationStore.emit(CHANGE_EVENT);
     break;
 
   default:
@@ -66,4 +62,4 @@ AppDispatcher.register((payload) => {
   }
 });
 
-export default courseStore;
+export default reservationStore;

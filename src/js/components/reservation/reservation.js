@@ -127,6 +127,13 @@ export default class Reservation extends React.Component {
     this._changeValueDates('tryingDaysDates', name, value);
   }
 
+  cancel(currentForm){
+    console.log('reservation.cancel')
+  }
+
+  send(currentForm){
+    console.log('reservation.cancel')
+  }
 
   _getFreeDaysForm(schedule, selectedDates){
 
@@ -146,6 +153,8 @@ export default class Reservation extends React.Component {
       freeDays={freeDays}
       selectedDates={selectedDates}
       msg="Un cour gratuit"
+      cancel={() => { this.cancel('FREE_DAYS'); }}
+      send={() => { this.send('FREE_DAYS'); }}
       changeValue = {(name, value) => { this.changeValueFreeDays(name, value); }}
       />
     );
