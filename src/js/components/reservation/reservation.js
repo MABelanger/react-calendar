@@ -10,26 +10,51 @@ import FreeDaysForm               from './forms/freeDays';
 import TryingDaysForm               from './forms/tryingDays';
 import OneOrManyDaysForm               from './forms/oneOrManyDays';
 
+// Flux Reservation
+import ReservationStore              from '../../stores/reservationStore';
+import * as ReservationActions       from '../../actions/reservationActions';
+import ReservationConstants          from '../../constants/reservationConstants';
+
 import './styles.scss';
 
+const CHANGE_EVENT = ReservationConstants.CHANGE_EVENT;
 
 export default class Reservation extends React.Component {
 
   constructor(props) {
     super(props);
+    this.getConfirmation = this.getConfirmation.bind(this);
     this.state = {
       currentForm: null,
       tryingDaysDates: [],
       oneOrManyDaysDates: [],
-      freeDaysDates: []
+      freeDaysDates: [],
+      confirmation: {}
     };
     console.log(
       componentHelper.getDayStartFromNow(moment('2016-04-19T23:49:19.838Z').utcOffset("+00:00")).toISOString()
     );
+    let reservation = {
+      "from": "bibi@bibi.com",
+      "message": "<h1>mon Message de rest</h1><ul><li>bibi</li></ul>"
+    };
+    // get the courses from server.
+    ReservationActions.sendReservation(reservation);
+
   }
 
-  componentDidMount() {
+  componentWillMount() {
+    ReservationStore.on(CHANGE_EVENT, this.getConfirmation);
+  }
 
+  componentWillUnmount() {
+    ReservationStore.removeListener(CHANGE_EVENT, this.getConfirmation);
+  }
+
+  getConfirmation() {
+    this.setState({
+      confirmation: ReservationStore.getConfirmation()
+    });
   }
 
   componentWillReceiveProps(nextProps) {

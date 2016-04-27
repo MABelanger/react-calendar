@@ -10,11 +10,6 @@ import CourseStore              from '../stores/courseStore';
 import * as CourseActions       from '../actions/courseActions';
 import CourseConstants          from '../constants/courseConstants';
 
-// Flux Reservation
-import ReservationStore              from '../stores/reservationStore';
-import * as ReservationActions       from '../actions/reservationActions';
-import ReservationConstants          from '../constants/reservationConstants';
-
 import * as pageHelper          from './helper';
 
 
@@ -25,30 +20,20 @@ export default class CourseTeacherPage extends React.Component {
   constructor() {
     super();
     this.getCourses = this.getCourses.bind(this);
-    this.getConfirmation = this.getConfirmation.bind(this);
     this.state = {
       courses: {},
       confirmation: {}
     };
     // get the courses from server.
     CourseActions.getCourses();
-
-    let reservation = {
-      "from": "bibi@bibi.com",
-      "message": "<h1>mon Message de rest</h1><ul><li>bibi</li></ul>"
-    };
-    // get the courses from server.
-    ReservationActions.sendReservation(reservation);
   }
 
   componentWillMount() {
-    ReservationStore.on(CHANGE_EVENT, this.getConfirmation);
     CourseStore.on(CHANGE_EVENT, this.getCourses);
   }
 
   componentWillUnmount() {
     CourseStore.removeListener(CHANGE_EVENT, this.getCourses);
-    ReservationStore.removeListener(CHANGE_EVENT, this.getConfirmation);
   }
 
   getCourses() {
@@ -56,13 +41,6 @@ export default class CourseTeacherPage extends React.Component {
       courses: CourseStore.getCourses()
     });
   }
-
-  getConfirmation() {
-    this.setState({
-      confirmation: ReservationStore.getConfirmation()
-    });
-  }
-
 
   render(){
 
@@ -81,7 +59,6 @@ export default class CourseTeacherPage extends React.Component {
           teacher={teacher}
           courseType={courseType}
           schedule={matchSchedule}
-          confirmation={this.state.confirmation}
         />
       </div>
     );
