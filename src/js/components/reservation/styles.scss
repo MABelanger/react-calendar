@@ -1,8 +1,10 @@
-$bgcolor: #99CC66;
+$bgcolor: #F5F5F5;
 $size-title: 15px;
 $menu-hover: #91C85B;
 $link-hover: #5A8727;
 $txt-color-mid: #333;
+$border-color: #5A8727;
+
 
 /* Reservation */
 
@@ -27,23 +29,23 @@ form.reserv {
 
 input.form-control, textarea.form-control {
   background-color:$bgcolor;
-  border: 1px solid #669933;
+  border: 1px solid $border-color;
   color: black;
 }
 
 .form-control::-webkit-input-placeholder { /* WebKit browsers */
-  color: $link-hover;
+  color: $txt-color-mid;
 }
 .form-control:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-  color: $link-hover;
+  color: $txt-color-mid;
    opacity:  1;
 }
 .form-control::-moz-placeholder { /* Mozilla Firefox 19+ */
-  color: $link-hover;
+  color: $txt-color-mid;
    opacity:  1;
 }
 .form-control:-ms-input-placeholder { /* Internet Explorer 10+ */
-  color: $link-hover;
+  color: $txt-color-mid;
 }
 
 textarea.form-control:focus, input:focus, input[type]:focus, .uneditable-input:focus {   
