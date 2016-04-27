@@ -1,19 +1,12 @@
 
-Faire le drop down avec 4 choix
+testingDay
+TestingDay
+testing_day
 
-Construire le texte pour chaque choix
+Partager sur facebook...
+Ajouter une photo pour reservation.
 
-Afficher les dates avec crochets
-  updater le texte avec les dates sélectionné en JS
 
-Un cours gratuit (testing Day)
-  petit carre Mai 2016 x
-Lundi, du 11 juin au 13 juilliet 2016 (11 cours)
-  texte...
-une ou plusieurs journée de cours 
-  petit carre Mai 2016 x x x
-un cours d'essaie
-  petit carre Mai 2016 x x x
 
 Faire le formulaire (copier admin)
 

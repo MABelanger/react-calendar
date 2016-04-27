@@ -7,10 +7,9 @@ import * as componentHelper       from '../../helper';
 import CheckBoxDates                   from './checkBoxDates/checkBoxDates';
 
 
-// TODO make a parent for this and freeDays...
 
 
-export default class AllCourseDays extends React.Component {
+export default class FreeDays extends React.Component {
 
   constructor(props) {
     super(props);

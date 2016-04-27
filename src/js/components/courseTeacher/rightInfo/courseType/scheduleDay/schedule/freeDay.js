@@ -7,7 +7,7 @@ import * as componentHelper       from '../../../../../helper';
 
 
 
-export default class TestingDay extends React.Component {
+export default class FreeDay extends React.Component {
 
   constructor(props) {
     super(props);

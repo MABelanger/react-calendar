@@ -35,10 +35,10 @@ export default class TryingDays extends React.Component {
 
 
   _getSelectedList(selectedDates){
-    let FreeDayDates = selectedDates.map((selectedDate, index) =>{
+    let SelectedDates = selectedDates.map((selectedDate, index) =>{
       return(<li key={index}>{selectedDate}</li>);
     });
-    return FreeDayDates;
+    return SelectedDates;
   }
 
   render(){

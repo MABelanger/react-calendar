@@ -4,7 +4,7 @@ import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 
 import Reserve from './reserve';
-import TestingDay from './testingDay';
+import FreeDay from './freeDay';
 import Hours from './hours';
 
 
@@ -19,24 +19,24 @@ export default class Schedule extends React.Component {
 
   }
 
-  _renderTestingDays(testingDays){
+  _renderFreeDays(freeDays){
 
-    if(testingDays) {
-      let TestingDays = testingDays.map(function(testingDay){
-        return <TestingDay key={testingDay._id} day={testingDay.day} />
+    if(freeDays) {
+      let FreeDays = freeDays.map(function(freeDay){
+        return <FreeDay key={freeDay._id} day={freeDay.day} />
       });
-      return TestingDays;
+      return FreeDays;
     }
   }
 
   render(){
-    // 'this._renderTestingDays(this.props.schedule.testingDays)'
+    // 'this._renderFreeDays(this.props.schedule.freeDays)'
     return(
       <li className="coursed-li-hour">
         <Hours schedule={this.props.schedule} />
         <Reserve schedule={this.props.schedule} />
         <br />
-        {this._renderTestingDays(this.props.schedule.testingDays)}
+        {this._renderFreeDays(this.props.schedule.freeDays)}
       </li>
     );
   }
