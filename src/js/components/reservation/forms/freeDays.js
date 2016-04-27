@@ -6,6 +6,7 @@ import moment from 'moment';
 import * as componentHelper       from '../../helper';
 import CheckBoxDates                   from './checkBoxDates/checkBoxDates';
 import TextForm                   from './textForm';
+import CtrlBtnForm                from './ctrlBtnForm';
 
 
 
@@ -57,6 +58,7 @@ export default class FreeDays extends React.Component {
 
 
         <TextForm/>
+        <CtrlBtnForm/>
       </span>
     );
   }

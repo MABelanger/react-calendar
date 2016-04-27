@@ -13,7 +13,7 @@ export default class BackBtn extends React.Component {
 
   render(){
     return(
-      <Btn {...this.props} direction="back"/>
+      <Btn {...this.props} direction="next"/>
     );
   }
 }
