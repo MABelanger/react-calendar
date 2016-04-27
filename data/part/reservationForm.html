@@ -1,34 +1,26 @@
-<form ng-show="isForm" class="reserv ng-pristine ng-valid ng-valid-email" role="form">
-    <div errormsg="" save-error=""></div>
-    <div class="form-group">
-        <div class="text-danger ng-binding">
-            
-        </div>
-        <input type="text" class="form-control ng-pristine ng-untouched ng-valid" id="name" placeholder="Nom" ng-model=" reservation.client.name">
-    </div>
-    <div class="form-group">
-        <div class="text-danger ng-binding">
-            
-        </div>
-        <input type="text" class="form-control ng-pristine ng-untouched ng-valid" id="tel" placeholder="Téléphone" ng-model=" reservation.client.tel">
-    </div>
-    <div class="form-group">
-        <div class="text-danger ng-binding">
-            
-        </div>
-        <input type="email" class="form-control ng-pristine ng-untouched ng-valid ng-valid-email" id="email" placeholder="Courriel" ng-model=" reservation.client.email">
-    </div>
-    <div class="form-group">
-        <textarea rows="2" class="form-control ng-pristine ng-untouched ng-valid" id="note" placeholder="Note (optionnel)" ng-model=" reservation.client.note">                        </textarea>
-    </div>
-    <!-- buttons -->
-    <div class="text-right">
-        <div style="display:inline-block;">
-            <a ng-href="#/courses/" class="btn my-btn" href="#/courses/">&lt; Annuler </a>
-        </div>
 
-        <div style="margin-left:10px; display:inline-block;">
-            <a ng-disabled="send_button_disable" href="" ng-click="send()" class="btn my-btn">Envoyer &gt; </a>
-        </div>
-    </div>
-</form>
+      <form ng-show="isForm" class="reserv" role="form">
+          <div errormsg="" save-error=""></div>
+          <div class="form-group">
+              <div class="text-danger">
+                  
+              </div>
+              <input type="text" class="form-control" id="name" placeholder="Nom"/>
+          </div>
+          <div class="form-group">
+              <div class="text-danger">
+                  
+              </div>
+              <input type="text" class="form-control" id="tel" placeholder="Téléphone"/>
+          </div>
+          <div class="form-group">
+              <div class="text-danger">
+                  
+              </div>
+              <input type="email" class="form-control" id="email" placeholder="Courriel"/>
+          </div>
+          <div class="form-group">
+              <textarea rows="2" class="form-control" id="note" placeholder="Note (optionnel)"/>
+          </div>
+      </form>
+    

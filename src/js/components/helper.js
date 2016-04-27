@@ -98,9 +98,16 @@ export function getWeekDates(startDate, stopDate) {
     var dateArray = [];
     stopDate = moment( stopDate ).utcOffset("+00:00")
     var currentDate = moment( startDate ).utcOffset("+00:00");
-    while (currentDate <= stopDate) {
+
+    // TODO replace the while by for
+    let maxLoop=100;
+    while ((currentDate <= stopDate) && maxLoop > 0) {
         dateArray.push( moment(currentDate) ) // .format('YYYY-MM-DD')
         currentDate = moment(currentDate).add(7, 'days');
+        maxLoop--;
+        if(maxLoop ==0 ){
+          console.log('getWeekDates._____MAX LOOP_____')
+        }
     }
     return dateArray;
 }
@@ -135,12 +142,8 @@ function getNextDayStart(dayStart){
   let hour = dayStart.hour();
   let minute = dayStart.minute();
 
-  nextDayStart = nextDayStart.day(dayNumber)
-  // let nextDayStartNumber = -1;
-  // while (nextDayStartNumber != dayNumber) {
-  //     nextDayStart = nextDayStart.add(1, 'day');
-  //     nextDayStartNumber = parseInt(nextDayStart.day())
-  // }
+  nextDayStart = nextDayStart.day(dayNumber + 7)
+
 
   // reset the HH:mm of the dayStart
   nextDayStart.set({
@@ -158,10 +161,11 @@ export function getDayStartFromNow(dayStart){
   //let dayStart = moment('2016-04-25T23:49:19.838Z').utcOffset("+00:00");
   let now = getNow();
 
-
-  while(now.isAfter(dayStart)){
+  if(now.isAfter(dayStart)){
     dayStart = getNextDayStart(dayStart);
   }
+
+  console.log('dayStart', dayStart.toISOString())
 
   return dayStart;
 }
