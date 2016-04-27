@@ -35,17 +35,19 @@ export default class FreeDays extends React.Component {
 
 
   _getSelectedList(selectedDates){
-    let FreeDayDates = selectedDates.map((selectedDate, index) =>{
+    let SelectedDates = selectedDates.map((selectedDate, index) =>{
       return(<li key={index}>{selectedDate}</li>);
     });
-    return FreeDayDates;
+    return SelectedDates;
   }
 
   render(){
+
     return (
       <span>
         <CheckBoxDates
           key={this.state.checkBoxDatesKey}
+          days={this.props.freeDays}
           {...this.props}
         />
         {this.props.msg}

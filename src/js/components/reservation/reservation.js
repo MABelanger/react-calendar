@@ -129,8 +129,18 @@ export default class Reservation extends React.Component {
 
 
   _getFreeDaysForm(schedule, selectedDates){
-    console.log('schedule', schedule);
-    let freeDays = schedule.freeDays;
+
+    let freeDays = schedule.freeDays.map((freeDay, index) =>{
+
+      // TODO to remove whe fix the db
+      if(! freeDay.day){
+        console.log('! freeDay', freeDay._id)
+        return moment('2016-01-11T16:15:00.000Z');
+      }
+        
+      return freeDay.day;
+    });
+
     return(
       <FreeDaysForm 
       freeDays={freeDays}

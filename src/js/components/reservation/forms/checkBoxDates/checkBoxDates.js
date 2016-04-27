@@ -38,7 +38,8 @@ export default class CheckBoxDates extends React.Component {
 
   _renderCheckBoxDays(mounth){
     let CheckBoxDays = mounth.map((day) => {
-      return this._renderCheckBoxDay(day);
+      let isoString = day.toISOString();
+      return this._renderCheckBoxDay(isoString);
     });
     return CheckBoxDays;
   }
@@ -69,7 +70,7 @@ export default class CheckBoxDates extends React.Component {
   }
 
   _getMounths(dayStart, dayEnd, days){
-    let weekDates = null;
+    let weekDates = [];
     if(days && days.length > 0){
       weekDates = days;
     }else{
