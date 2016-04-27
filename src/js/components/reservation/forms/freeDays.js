@@ -5,7 +5,7 @@ import React from 'react';
 import moment from 'moment';
 import * as componentHelper       from '../../helper';
 import CheckBoxDates                   from './checkBoxDates/checkBoxDates';
-
+import TextForm                   from './textForm';
 
 
 
@@ -54,6 +54,9 @@ export default class FreeDays extends React.Component {
         <ul>
           {this._getSelectedList(this.props.selectedDates)}
         </ul>
+
+
+        <TextForm/>
       </span>
     );
   }
