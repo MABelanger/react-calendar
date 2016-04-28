@@ -130,6 +130,8 @@ label:hover:before {
 
 
 
+
+
 .checkbox-wrapper {
   &.has-error{
     td {
@@ -166,4 +168,9 @@ label:hover:before {
 
 .reservation-is-day {
   padding-top:10px;
+}
+
+/* offset toastr */
+.toast-top-right {
+  top: 80px;
 }

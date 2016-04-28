@@ -1,8 +1,10 @@
 "use strict";
 
 import React from 'react';
-
+import ReactDomServer from 'react-dom/server';
 import moment from 'moment';
+import toastr                        from 'toastr';
+import 'toastr/build/toastr.css';
 
 import * as componentHelper          from '../helper';
 import Dropdown                      from '../common/dropdown/Dropdown';
@@ -26,15 +28,13 @@ export default class Reservation extends React.Component {
     this.getConfirmation = this.getConfirmation.bind(this);
     this.state = {
       currentForm: null,
+      reservationHeader: "",
       tryingDaysDates: [],
       oneOrManyDaysDates: [],
       freeDaysDates: [],
       confirmation: {},
       errors: {}
     };
-    console.log(
-      componentHelper.getDayStartFromNow(moment('2016-04-19T23:49:19.838Z').utcOffset("+00:00")).toISOString()
-    );
   }
 
   componentWillMount() {
@@ -47,21 +47,24 @@ export default class Reservation extends React.Component {
 
   getConfirmation() {
     let confirmation = ReservationStore.getConfirmation();
-    console.log('confirmation', confirmation);
 
     if(confirmation.errors){
-      console.log('confirmation.errors', confirmation.errors);
       this.setState({
+        confirmation: {},
         errors: confirmation.errors
       });
+
     } else {
-      console.log('confirmation.message', confirmation.status);
       this.setState({
-        confirmation: confirmation.status
+        confirmation: confirmation.status,
+        tryingDaysDates: [],
+        oneOrManyDaysDates: [],
+        freeDaysDates: [],
+        confirmation: {},
+        errors: {}
       });
+      toastr.success("Votre message à été envoyé avec succes");
     }
-
-
   }
 
   componentWillReceiveProps(nextProps) {
@@ -75,6 +78,12 @@ export default class Reservation extends React.Component {
           {title: "Une ou plusieur journee de cours", form: 'ONE_OR_MANY_DAYS'},
           {title: "Un cour d'essaie", form: 'TRYING_DAYS'}
         ]
+      });
+    }
+    if(nextProps.course){
+      let {course, teacher, courseType, schedule} = nextProps;
+      this.setState({
+        reservationHeader : this._getReservationHeader(course, teacher, courseType, schedule)
       });
     }
   }
@@ -119,7 +128,9 @@ export default class Reservation extends React.Component {
       currentForm: reservationType,
       tryingDaysDates: [],
       oneOrManyDaysDates: [],
-      errors: []
+      freeDaysDates: [],
+      confirmation: {},
+      errors: {}
     })
   }
   
@@ -162,10 +173,17 @@ export default class Reservation extends React.Component {
     console.log('reservation.cancel')
   }
 
+  _renderReservationHeader(){
+    // render the component to htmlString
+    let reservationHeader = ReactDomServer.renderToStaticMarkup(this.state.reservationHeader);
+    reservationHeader += "<br/>";
+    reservationHeader += "<b>pour: </b>" + this.getName(this.state.currentForm) + "<br/>";
+    return reservationHeader;
+  }
+
   send(currentForm, reservation){
     console.log('reservation.send')
-
-    // get the courses from server.
+    reservation.reservationHeader = this._renderReservationHeader();
     ReservationActions.sendReservation(reservation);
   }
 
@@ -227,26 +245,29 @@ export default class Reservation extends React.Component {
 
 
   render(){
-    let {course, teacher, courseType, schedule} = this.props;
-    let dateRange = componentHelper.getDateRange(schedule);
-
+    let {schedule} = this.props;
     let currentForm = null;
+
     if(this.state.currentForm){
+
       if(this.state.currentForm.form == 'TRYING_DAYS'){
         currentForm = this._getTryingDaysForm(schedule, this.state.tryingDaysDates)
+
       }else if(this.state.currentForm.form == 'ONE_OR_MANY_DAYS'){
-        currentForm = this._getOneOrManyDaysForm(schedule, this.state.oneOrManyDaysDates)
+        currentForm = this._getOneOrManyDaysForm(schedule, this.state.oneOrManyDaysDates);
+
       }else if(this.state.currentForm.form == 'FREE_DAYS'){
         currentForm = this._getFreeDaysForm(schedule, this.state.freeDaysDates)
       }
     }
+
 
     return (
       <div className="row">
         <div className="col-sm-6">
           <h3 className="text-center">Réservation</h3>
           <div className="reserv-cont-form">
-            {this._getReservationHeader(course, teacher, courseType, schedule)}
+            {this.state.reservationHeader}
             <Dropdown
               disabled={function(){}}
               list={this.state.list}

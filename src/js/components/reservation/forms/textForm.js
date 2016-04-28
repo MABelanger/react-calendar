@@ -21,24 +21,29 @@ const NOTE = 'note';
 
 const CHANGE_EVENT = ReservationConstants.CHANGE_EVENT;
 
-const initialState = {
-    /* etc */
-};
 
 export default class TextForm extends React.Component {
 
   constructor(props) {
     super(props);
-    this.clearFields = this.clearFields.bind(this);
-    this.state = initialState;
+    this.getConfirmation = this.getConfirmation.bind(this);
+    this.state = {};
   }
 
   componentWillMount() {
-    //ReservationStore.on(CHANGE_EVENT, this.clearFields);
+    ReservationStore.on(CHANGE_EVENT, this.getConfirmation);
   }
 
   componentWillUnmount() {
-    //ReservationStore.removeListener(CHANGE_EVENT, this.clearFields);
+    ReservationStore.removeListener(CHANGE_EVENT, this.getConfirmation);
+  }
+
+  getConfirmation() {
+    let confirmation = ReservationStore.getConfirmation();
+
+    if(!confirmation.errors){
+      this.clearFields();
+    }
   }
 
   getFields(){
