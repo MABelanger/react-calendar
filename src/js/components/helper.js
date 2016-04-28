@@ -196,3 +196,20 @@ export function getError(name, errors) {
     return '';
   }
 }
+
+export function renderRangeDates(start, end){
+  let yearStart = moment( start ).utcOffset("+00:00").format("YYYY");
+  let yearEnd = moment( end ).utcOffset("+00:00").format("YYYY");
+
+  let dateStart = moment( start ).utcOffset("+00:00").format("DD MMM");
+  let dateEnd = moment( end ).utcOffset("+00:00").format("DD MMM");
+
+  if(yearStart == yearEnd){
+    // 2 mai au 5 avril 2016
+    return dateStart + " au " + dateEnd + " " + yearEnd;
+  } else {
+    // 2 decembre 2016 au 5 janvier 2017
+    return dateStart + " " + yearStart + " au " + dateEnd + " " + yearEnd;
+  }
+
+}

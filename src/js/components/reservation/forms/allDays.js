@@ -40,7 +40,7 @@ export default class OneOrManyDays extends React.Component {
   render(){
     return (
       <span>
-        {this.props.msg}
+        <strong>Pour:</strong> {this.props.msg}
         <TextForm
           ref="textForm"
           errors={this.props.errors}

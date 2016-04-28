@@ -68,6 +68,24 @@ export default class Reservation extends React.Component {
     }
   }
 
+
+  _getTitleAllDays(schedule){
+
+    let rangeDates = null
+    let weekDayName = null;
+    let nbCourse = null;
+
+    if(schedule){
+      rangeDates = componentHelper.renderRangeDates(schedule.dayStart, schedule.dayEnd);
+      weekDayName = componentHelper.getWeekDayName(schedule.dayStart);
+    }
+
+    return(
+      <span>
+        {weekDayName} du {rangeDates} (11 cours)
+      </span>
+    );
+  }
   componentWillReceiveProps(nextProps) {
     if(nextProps.schedule){
       let schedule = nextProps.schedule;
@@ -75,7 +93,7 @@ export default class Reservation extends React.Component {
       this.setState({
         list : [
           {title: "Un cour gratuit", form: 'FREE_DAYS'},
-          {title: "Lundi du 2 mai au 5 avril 2016 (11 cours)", form: 'ALL_DAYS'},
+          {title: this._getTitleAllDays(schedule), form: 'ALL_DAYS'},
           {title: "Une ou plusieur journee de cours", form: 'ONE_OR_MANY_DAYS'},
           {title: "Un cour d'essaie", form: 'TRYING_DAYS'}
         ]
@@ -250,7 +268,7 @@ export default class Reservation extends React.Component {
       dayStart={schedule.dayStart}
       dayEnd={schedule.dayEnd}
       errors={this.state.errors}
-      msg="Jeudi, du 28 avril au 02 juin 2016 (6 cours)"
+      msg={this.getName(this.state.currentForm)}
       cancel={() => { this.cancel('ALL_DAYS'); }}
       send={(reservation) => { this.send('ALL_DAYS', reservation); }}
       />

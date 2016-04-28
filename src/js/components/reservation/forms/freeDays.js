@@ -62,7 +62,7 @@ export default class FreeDays extends React.Component {
           error={componentHelper.getError('selectedDates', this.props.errors)}
           {...this.props}
         />
-        {this.props.msg}
+        <strong>Pour:</strong> {this.props.msg}
         <ul>
           {this._getSelectedList(this.props.selectedDates)}
         </ul>
