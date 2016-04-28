@@ -46,8 +46,12 @@ export default class OneOrManyDays extends React.Component {
 
   send(){
     let reservation = this.refs.textForm.getFields();
-    reservation.selectedDates = this.props.selectedDates
+    reservation.selectedDates = this.props.selectedDates;
     this.props.send(reservation);
+  }
+
+  cancel(){
+    this.props.cancel();
   }
 
   render(){
@@ -55,13 +59,17 @@ export default class OneOrManyDays extends React.Component {
       <span>
         <CheckBoxDates
           key={this.state.checkBoxDatesKey}
+          error={componentHelper.getError('selectedDates', this.props.errors)}
           {...this.props}
         />
         {this.props.msg}
         <ul>
           {this._getSelectedList(this.props.selectedDates)}
         </ul>
-        <TextForm ref="textForm"/>
+        <TextForm
+          ref="textForm"
+          errors={this.props.errors}
+        />
         <CtrlBtnForm
           send={ () => {this.send();} }
           cancel={ () => {this.cancel();} }

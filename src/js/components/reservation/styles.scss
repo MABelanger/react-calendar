@@ -132,9 +132,9 @@ label:hover:before {
 
 .checkbox-wrapper {
   &.has-error{
-    table {
+    td {
       /* .has-error */
-      border: 2px solid #a94442;
+      border: 1px solid #a94442;
     }
   }
 }

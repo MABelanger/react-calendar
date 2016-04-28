@@ -118,7 +118,8 @@ export default class Reservation extends React.Component {
     this.setState({
       currentForm: reservationType,
       tryingDaysDates: [],
-      oneOrManyDaysDates: []
+      oneOrManyDaysDates: [],
+      errors: []
     })
   }
   
@@ -199,6 +200,7 @@ export default class Reservation extends React.Component {
       <OneOrManyDaysForm 
       dayStart={schedule.dayStart}
       dayEnd={schedule.dayEnd}
+      errors={this.state.errors}
       selectedDates={selectedDates}
       msg=" Une ou plusieurs journée(s) de cours"
       cancel={() => { this.cancel('ONE_OR_MANY_DAYS'); }}
@@ -213,8 +215,11 @@ export default class Reservation extends React.Component {
       <TryingDaysForm 
       dayStart={schedule.dayStart}
       dayEnd={schedule.dayEnd}
+      errors={this.state.errors}
       selectedDates={selectedDates}
       msg="Un cour d'essaie (gratuit)"
+      cancel={() => { this.cancel('TRYING_DAYS'); }}
+      send={(reservation) => { this.send('TRYING_DAYS', reservation); }}
       changeValue = {(name, value) => { this.changeValueTryingDays(name, value); }}
       />
     );

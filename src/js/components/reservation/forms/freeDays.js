@@ -44,9 +44,12 @@ export default class FreeDays extends React.Component {
 
   send(){
     let reservation = this.refs.textForm.getFields();
-    console.log('this.props.selectedDates', this.props.selectedDates)
-    reservation.selectedDates = this.props.selectedDates
+    reservation.selectedDates = this.props.selectedDates;
     this.props.send(reservation);
+  }
+
+  cancel(){
+    this.props.cancel();
   }
 
   render(){
