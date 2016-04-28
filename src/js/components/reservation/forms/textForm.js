@@ -33,11 +33,11 @@ export default class TextForm extends React.Component {
   }
 
   componentWillMount() {
-    ReservationStore.on(CHANGE_EVENT, this.clearFields);
+    //ReservationStore.on(CHANGE_EVENT, this.clearFields);
   }
 
   componentWillUnmount() {
-    ReservationStore.removeListener(CHANGE_EVENT, this.clearFields);
+    //ReservationStore.removeListener(CHANGE_EVENT, this.clearFields);
   }
 
   getFields(){

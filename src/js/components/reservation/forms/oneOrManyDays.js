@@ -5,6 +5,8 @@ import React from 'react';
 import moment from 'moment';
 import * as componentHelper       from '../../helper';
 import CheckBoxDates                   from './checkBoxDates/checkBoxDates';
+import TextForm                   from './textForm';
+import CtrlBtnForm                from './ctrlBtnForm';
 
 
 // TODO make a parent for this and freeDays...
@@ -42,6 +44,12 @@ export default class OneOrManyDays extends React.Component {
     return SelectedDates;
   }
 
+  send(){
+    let reservation = this.refs.textForm.getFields();
+    reservation.selectedDates = this.props.selectedDates
+    this.props.send(reservation);
+  }
+
   render(){
     return (
       <span>
@@ -53,6 +61,11 @@ export default class OneOrManyDays extends React.Component {
         <ul>
           {this._getSelectedList(this.props.selectedDates)}
         </ul>
+        <TextForm ref="textForm"/>
+        <CtrlBtnForm
+          send={ () => {this.send();} }
+          cancel={ () => {this.cancel();} }
+        />
       </span>
     );
   }

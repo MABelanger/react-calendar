@@ -147,12 +147,9 @@ export default class Reservation extends React.Component {
     console.log('reservation.cancel')
   }
 
-  send(currentForm, message){
+  send(currentForm, reservation){
     console.log('reservation.send')
-    let reservation = {
-      "from": "bibi@bibi.com",
-      "message": message.name
-    };
+
     // get the courses from server.
     ReservationActions.sendReservation(reservation);
   }
@@ -176,7 +173,7 @@ export default class Reservation extends React.Component {
       selectedDates={selectedDates}
       msg="Un cour gratuit"
       cancel={() => { this.cancel('FREE_DAYS'); }}
-      send={(message) => { this.send('FREE_DAYS', message); }}
+      send={(reservation) => { this.send('FREE_DAYS', reservation); }}
       changeValue = {(name, value) => { this.changeValueFreeDays(name, value); }}
       />
     );
@@ -189,6 +186,8 @@ export default class Reservation extends React.Component {
       dayEnd={schedule.dayEnd}
       selectedDates={selectedDates}
       msg=" Une ou plusieurs journée(s) de cours"
+      cancel={() => { this.cancel('ONE_OR_MANY_DAYS'); }}
+      send={(reservation) => { this.send('ONE_OR_MANY_DAYS', reservation); }}
       changeValue = {(name, value) => { this.changeValueOneOrManyDays(name, value); }}
       />
     );
