@@ -11,6 +11,7 @@ import Dropdown                      from '../common/dropdown/Dropdown';
 import FreeDaysForm                  from './forms/freeDays';
 import TryingDaysForm                from './forms/tryingDays';
 import OneOrManyDaysForm             from './forms/oneOrManyDays';
+import AllDaysForm                   from './forms/allDays';
 
 // Flux Reservation
 import ReservationStore              from '../../stores/reservationStore';
@@ -74,7 +75,7 @@ export default class Reservation extends React.Component {
       this.setState({
         list : [
           {title: "Un cour gratuit", form: 'FREE_DAYS'},
-          {title: "Lundi du 2 mai au 5 avril 2016 (11 cours)", form: 'TEST'},
+          {title: "Lundi du 2 mai au 5 avril 2016 (11 cours)", form: 'ALL_DAYS'},
           {title: "Une ou plusieur journee de cours", form: 'ONE_OR_MANY_DAYS'},
           {title: "Un cour d'essaie", form: 'TRYING_DAYS'}
         ]
@@ -243,6 +244,19 @@ export default class Reservation extends React.Component {
     );
   }
 
+  _getAllDaysForm(schedule){
+    return(
+      <AllDaysForm 
+      dayStart={schedule.dayStart}
+      dayEnd={schedule.dayEnd}
+      errors={this.state.errors}
+      msg="Jeudi, du 28 avril au 02 juin 2016 (6 cours)"
+      cancel={() => { this.cancel('ALL_DAYS'); }}
+      send={(reservation) => { this.send('ALL_DAYS', reservation); }}
+      />
+    );
+  }
+
 
   render(){
     let {schedule} = this.props;
@@ -251,13 +265,16 @@ export default class Reservation extends React.Component {
     if(this.state.currentForm){
 
       if(this.state.currentForm.form == 'TRYING_DAYS'){
-        currentForm = this._getTryingDaysForm(schedule, this.state.tryingDaysDates)
+        currentForm = this._getTryingDaysForm(schedule, this.state.tryingDaysDates);
 
       }else if(this.state.currentForm.form == 'ONE_OR_MANY_DAYS'){
         currentForm = this._getOneOrManyDaysForm(schedule, this.state.oneOrManyDaysDates);
 
       }else if(this.state.currentForm.form == 'FREE_DAYS'){
-        currentForm = this._getFreeDaysForm(schedule, this.state.freeDaysDates)
+        currentForm = this._getFreeDaysForm(schedule, this.state.freeDaysDates);
+
+      }else if(this.state.currentForm.form == 'ALL_DAYS'){
+        currentForm = this._getAllDaysForm(schedule);
       }
     }
 
