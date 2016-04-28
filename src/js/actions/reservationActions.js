@@ -12,9 +12,10 @@ export function sendReservation(reservation) {
     .type('application/json')
     .send(reservation)
     .end((err, res) => {
+      console.log('res.body', res.body)
       ClientDispatcher.dispatch({
         actionType: ReservationConstants.DONE_RESERVATION,
-        courses: res.body
+        confirmation: res.body
       });
     });
 }

@@ -6,6 +6,7 @@ import moment from 'moment';
 import * as componentHelper       from '../../helper';
 import TextInput                  from '../../common/textInput';
 
+
 // Flux Reservation
 import ReservationStore              from '../../../stores/reservationStore';
 import * as ReservationActions       from '../../../actions/reservationActions';
@@ -57,7 +58,6 @@ export default class TextForm extends React.Component {
       }
     }
     this.setState( newState );
-    console.log('clearFields', this.state);
   }
 
   componentDidMount() {
@@ -69,13 +69,9 @@ export default class TextForm extends React.Component {
     let newState = {};
     newState[name] = value;
     this.setState(newState);
-    console.log('this.state', this.state)
-    
   }
 
   render(){
-    //sectionHelper.getError("tel", this.props.errors)
-
     return (
       <form class="reserv" role="form">
         
@@ -83,7 +79,7 @@ export default class TextForm extends React.Component {
           placeholder="Nom"
           name={NAME}
           ref={NAME}
-          error=""
+          error={componentHelper.getError(NAME, this.props.errors)}
           value={this.state[NAME]}
           changeValue={ (name, value) => { this.changeValue(name, value); } }
         />
@@ -92,7 +88,7 @@ export default class TextForm extends React.Component {
           placeholder="Téléphone"
           name={TEL}
           ref={TEL}
-          error=""
+          error={componentHelper.getError(TEL, this.props.errors)}
           value={this.state[TEL]}
           changeValue={ (name, value) => { this.changeValue(name, value); } }
         />
@@ -101,7 +97,7 @@ export default class TextForm extends React.Component {
           placeholder="Courriel"
           name={EMAIL}
           ref={EMAIL}
-          error=""
+          error={componentHelper.getError(EMAIL, this.props.errors)}
           value={this.state[EMAIL]}
           changeValue={ (name, value) => { this.changeValue(name, value); } }
         />
@@ -110,7 +106,7 @@ export default class TextForm extends React.Component {
           placeholder="Note (optionnel)"
           name={NOTE}
           ref={NOTE}
-          error=""
+          error={componentHelper.getError(NOTE, this.props.errors)}
           value={this.state[NOTE]}
           rows={2}
           changeValue={ (name, value) => { this.changeValue(name, value); } }

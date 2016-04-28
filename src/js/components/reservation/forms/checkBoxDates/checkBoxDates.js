@@ -91,12 +91,25 @@ export default class CheckBoxDates extends React.Component {
   render(){
     let {dayStart, dayEnd, days} = this.props;
     let mounths = this._getMounths(dayStart, dayEnd, days);
+
+    console.log('this.props.error', this.props.error)
+
+    var wrapperClass = 'form-group checkbox-wrapper';
+    
+    if (this.props.error && this.props.error.length > 0) {
+      wrapperClass += " " + 'has-error';
+    }
+
+
     return (
-      <table>
-        <tbody>
-          {this._renderMounths(mounths)}
-        </tbody>
-      </table>
+      <div className={wrapperClass}>
+        <table>
+          <tbody>
+            {this._renderMounths(mounths)}
+          </tbody>
+        </table>
+        <div className="input">{this.props.error}</div>
+      </div>
     );
   }
 }

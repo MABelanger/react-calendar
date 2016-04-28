@@ -128,6 +128,23 @@ label:hover:before {
   border: 1px solid black!important;
 }
 
+
+
+.checkbox-wrapper {
+  &.has-error{
+    table {
+      /* .has-error */
+      border: 2px solid #a94442;
+    }
+  }
+}
+
+.has-error{
+  .input {
+    color: #a94442;
+  }
+}
+
 .reservation-month-name {
   border: 1px solid #5A8727;
   padding-left:10px;

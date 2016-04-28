@@ -53,7 +53,7 @@ AppDispatcher.register((payload) => {
 
   case ReservationConstants.DONE_RESERVATION:
 
-    reservationStore.doneReservation(payload.message);
+    reservationStore.doneReservation(payload.confirmation);
     reservationStore.emit(CHANGE_EVENT);
     break;
 

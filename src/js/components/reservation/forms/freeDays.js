@@ -44,6 +44,7 @@ export default class FreeDays extends React.Component {
 
   send(){
     let reservation = this.refs.textForm.getFields();
+    console.log('this.props.selectedDates', this.props.selectedDates)
     reservation.selectedDates = this.props.selectedDates
     this.props.send(reservation);
   }
@@ -55,13 +56,17 @@ export default class FreeDays extends React.Component {
         <CheckBoxDates
           key={this.state.checkBoxDatesKey}
           days={this.props.freeDays}
+          error={componentHelper.getError('selectedDates', this.props.errors)}
           {...this.props}
         />
         {this.props.msg}
         <ul>
           {this._getSelectedList(this.props.selectedDates)}
         </ul>
-        <TextForm ref="textForm"/>
+        <TextForm 
+          ref="textForm"
+          errors={this.props.errors}
+        />
         <CtrlBtnForm
           send={ () => {this.send();} }
           cancel={ () => {this.cancel();} }

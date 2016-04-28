@@ -29,7 +29,8 @@ export default class Reservation extends React.Component {
       tryingDaysDates: [],
       oneOrManyDaysDates: [],
       freeDaysDates: [],
-      confirmation: {}
+      confirmation: {},
+      errors: {}
     };
     console.log(
       componentHelper.getDayStartFromNow(moment('2016-04-19T23:49:19.838Z').utcOffset("+00:00")).toISOString()
@@ -45,9 +46,22 @@ export default class Reservation extends React.Component {
   }
 
   getConfirmation() {
-    this.setState({
-      confirmation: ReservationStore.getConfirmation()
-    });
+    let confirmation = ReservationStore.getConfirmation();
+    console.log('confirmation', confirmation);
+
+    if(confirmation.errors){
+      console.log('confirmation.errors', confirmation.errors);
+      this.setState({
+        errors: confirmation.errors
+      });
+    } else {
+      console.log('confirmation.message', confirmation.status);
+      this.setState({
+        confirmation: confirmation.status
+      });
+    }
+
+
   }
 
   componentWillReceiveProps(nextProps) {
@@ -170,6 +184,7 @@ export default class Reservation extends React.Component {
     return(
       <FreeDaysForm 
       freeDays={freeDays}
+      errors={this.state.errors}
       selectedDates={selectedDates}
       msg="Un cour gratuit"
       cancel={() => { this.cancel('FREE_DAYS'); }}
