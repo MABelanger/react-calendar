@@ -2,6 +2,8 @@
 
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
+import { Link } from "react-router";
+
 
 import BackBtn from '../../common/backBtn';
 
@@ -40,7 +42,10 @@ export default class LeftInfo extends React.Component {
           <img className="coursed-image radius-img" src={this._gerSrc(teacher)}/>
           <br/>
           <br/>
-          <BackBtn txt='Retour au calendrier'/>
+          <BackBtn 
+            txt='Retour au calendrier'
+            click={this.props.backBtnClick}
+          />
       </div>
     );
   }

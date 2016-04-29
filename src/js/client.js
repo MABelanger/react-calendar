@@ -20,10 +20,10 @@ const app = document.getElementById('app');
 ReactDOM.render(
   <Router history={hashHistory}>
     <Route path="/" component={Layout}>
-      <IndexRoute component={CalendarPage}></IndexRoute>
-      <Route path="calendrier/cours/:courseNameSlug/:teacherSlug" name="courses" component={CourseTeacherPage}></Route>
-      <Route path="reservation/cours/:courseNameSlug/:teacherSlug/:courseTypeSlug/:weekDayNameSlug/:hourStartSlug-:hourEndSlug" name="reservation" component={ReservationPage}></Route>
-      <Route path="settings" name="settings" component={CalendarPage}></Route>
+      <IndexRoute name="calendarPage" component={CalendarPage}></IndexRoute>
+      <Route path="calendrier/cours/:courseNameSlug/:teacherSlug" name="courseTeacherPage" component={CourseTeacherPage}></Route>
+      <Route path="reservation/cours/:courseNameSlug/:teacherSlug/:courseTypeSlug/:weekDayNameSlug/:hourStartSlug-:hourEndSlug" name="reservationPage" component={ReservationPage}></Route>
+      <Route path="settings" name="nameSettings" component={CalendarPage}></Route>
     </Route>
   </Router>,
 app);

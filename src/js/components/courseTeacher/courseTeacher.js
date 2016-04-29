@@ -21,11 +21,11 @@ export default class Calendar extends React.Component {
     return (
       <div>
         <div className="row">
-          <LeftInfo {...this.props} />
-          <CenterInfo {...this.props} />
+          <LeftInfo  {...this.props}/>
+          <CenterInfo  {...this.props} />
           <RightInfo {...this.props} />
         </div>
-        <BottomInfo {...this.props} />
+        <BottomInfo  {...this.props} />
       </div>
     );
   }

@@ -2,6 +2,7 @@
 import React from 'react';
 import moment from 'moment';
 
+
 export function create2DArray(rows) {
   var arr = [];
 
@@ -24,7 +25,9 @@ function _getHourMinute(isoDate){
 
 export function renderHtml(html){
   return (
-    <span dangerouslySetInnerHTML={{__html: html }} ></span>
+    <span>
+      <span dangerouslySetInnerHTML={{__html: html }}></span>
+    </span>
   );
 }
 
@@ -95,6 +98,7 @@ export function getDateRange(schedule){
 
 
 export function getWeekDates(startDate, stopDate) {
+    moment.locale('fr');
     var dateArray = [];
     stopDate = moment( stopDate ).utcOffset("+00:00")
     var currentDate = moment( startDate ).utcOffset("+00:00");
@@ -131,11 +135,13 @@ export function getHourRange(schedule){
 }
 
 export function getNow(){
+  moment.locale('fr');
   let tzoffset = (new Date()).getTimezoneOffset() * 60000; //offset in milliseconds
   return moment(new Date(Date.now() - tzoffset)).utcOffset(0);//.toISOString();
 }
 
 function getNextDayStart(dayStart){
+  moment.locale('fr');
   let dayNumber = parseInt(dayStart.day());
   let nextDayStart = getNow();
 
@@ -198,18 +204,91 @@ export function getError(name, errors) {
 }
 
 export function renderRangeDates(start, end){
+  moment.locale('fr');
   let yearStart = moment( start ).utcOffset("+00:00").format("YYYY");
   let yearEnd = moment( end ).utcOffset("+00:00").format("YYYY");
 
-  let dateStart = moment( start ).utcOffset("+00:00").format("DD MMM");
-  let dateEnd = moment( end ).utcOffset("+00:00").format("DD MMM");
+  let dateStart = moment( start ).utcOffset("+00:00").format("DD MMMM");
+  let dateEnd = moment( end ).utcOffset("+00:00").format("DD MMMM");
 
+  let rangeDates = null;
   if(yearStart == yearEnd){
     // 2 mai au 5 avril 2016
-    return dateStart + " au " + dateEnd + " " + yearEnd;
+    rangeDates = dateStart + " au " + dateEnd + " " + yearEnd;
   } else {
     // 2 decembre 2016 au 5 janvier 2017
-    return dateStart + " " + yearStart + " au " + dateEnd + " " + yearEnd;
+    rangeDates = dateStart + " " + yearStart + " au " + dateEnd + " " + yearEnd;
   }
 
+  return rangeDates;
+
+}
+
+export function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+export function getNumberDates(startDate, stopDate){
+  return getWeekDates(startDate, stopDate).length;
+}
+
+
+export function momentSchedules(schedules){
+  moment.locale('fr');
+  let momentSchedules = schedules.map((schedule)=>{
+    let {dayStart, dayEnd} = schedule;
+    dayStart =  moment( dayStart ).utcOffset("+00:00");
+    dayEnd =  moment( dayEnd ).utcOffset("+00:00");
+
+    // Overwrite dayStart and dayEnd
+    schedule.dayStart = dayStart;
+    schedule.dayEnd = dayEnd;
+
+    return schedule;
+  });
+
+  return momentSchedules;
+}
+export function getRangeSchedules(schedules){
+
+  let dayStart, dayEnd = null;
+  if(schedules){
+    // convert the date of schedules list to moment date.
+     schedules = momentSchedules(schedules);
+
+    // init with the first schedule
+    dayStart = schedules[0].dayStart;
+    dayEnd = schedules[0].dayEnd;
+
+    schedules.map( (schedule) => {
+      if(dayStart.isAfter(schedule.dayStart)){
+        dayStart = schedule.dayStart;
+      }
+
+      if(dayEnd.isBefore(schedule.dayEnd)){
+        dayEnd = schedule.dayEnd;
+      }
+    });
+  }
+
+  return {
+    dayStart: dayStart,
+    dayEnd: dayEnd
+  }
+}
+
+// reservation/cours/yoga/marianne-girard/yoga/lundi/16.15-17.30/
+// reservation/cours/yoga/isabelle-nadeau/mardi/13.00-14.15/
+export function getUrlReservation(courseNameSlug, teacherSlug, courseTypeSlug, weekDayNameSlug, schedule){
+  let hourStart = moment(schedule.dayStart).utcOffset("+00:00").format("HH.mm");
+  let hourEnd = moment(schedule.dayEnd).utcOffset("+00:00").format("HH.mm");
+
+  let url = '/#/reservation/cours/'
+    + courseNameSlug + '/' 
+    + teacherSlug + '/'
+    + courseTypeSlug + '/'
+    + weekDayNameSlug + '/'
+    + hourStart + '-'
+    + hourEnd + '/'
+  return url;
 }

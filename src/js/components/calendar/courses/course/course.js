@@ -70,7 +70,7 @@ export default class Course extends React.Component {
 	    			{name}
 	    		</div>
 	    		<div className="course-header-icon">
-	    			{componentHelper.renderHtml(svg)}
+            <span dangerouslySetInnerHTML={{__html: svg }}></span>
 	    		</div>
 	    	</div>
 

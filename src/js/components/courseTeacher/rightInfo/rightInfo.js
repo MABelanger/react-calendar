@@ -26,7 +26,12 @@ export default class RightInfo extends React.Component {
     if(teacher){
       let courseTypes = teacher.course.courseTypes;
       CourseTypes = courseTypes.map((courseType, index) => {
-        return <CourseType key={index} courseType={courseType}/>;
+        return <CourseType
+          key={index}
+          courseType={courseType}
+          teacherSlug={teacher.slug}
+          courseNameSlug={course.slug}
+          />;
       });
     }
     return (

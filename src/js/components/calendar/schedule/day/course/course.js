@@ -44,7 +44,7 @@ export default class Course extends React.Component {
         style={style}
       >
         <div>
-          {componentHelper.renderHtml(this.props.logo)}
+          <span dangerouslySetInnerHTML={{__html: this.props.logo }}></span>
           <br />&nbsp;
           {this.props.hourStart}-<br />
           {this.props.hourEnd}<br />

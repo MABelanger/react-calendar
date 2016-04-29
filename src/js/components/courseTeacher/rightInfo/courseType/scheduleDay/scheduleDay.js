@@ -20,8 +20,17 @@ export default class ScheduleDay extends React.Component {
 
   _renderSchedules(schedules){
     let Schedules = schedules.map( (schedule) => {
-      return <Schedule key={schedule._id} schedule={schedule} />;
+      let weekDayName = componentHelper.getWeekDayName(schedule.dayStart);
+      return <Schedule 
+        key={schedule._id}
+        schedule={schedule}
+        weekDayNameSlug={weekDayName}
+        courseNameSlug={this.props.courseNameSlug}
+        courseTypeSlug={this.props.courseTypeSlug}
+        teacherSlug={this.props.teacherSlug}
+      />;
     });
+
     return Schedules;
   }
 

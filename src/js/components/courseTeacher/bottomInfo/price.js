@@ -20,18 +20,18 @@ export default class Price extends React.Component {
 
     if(course && teacher){
       let courseDescription = teacher.course;
-      price = componentHelper.renderHtml(courseDescription.price)
+      price = courseDescription.price
     }
     return(
       <div class="row">
         <div class="col-sm-12">
           <div class="form-horizontal">
-            <fieldset>
+
               <div class="control-group">
                 <span class="all-label">coût:</span>
-                {price}
+                <span dangerouslySetInnerHTML={{__html: price }}></span>
               </div>
-            </fieldset>
+
           </div>
           <BackBtn txt='Retour au calendrier'/>
         </div>

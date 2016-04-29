@@ -73,27 +73,28 @@ export default class Reservation extends React.Component {
 
     let rangeDates = null
     let weekDayName = null;
-    let nbCourse = null;
+    let numberDates = null;
 
     if(schedule){
       rangeDates = componentHelper.renderRangeDates(schedule.dayStart, schedule.dayEnd);
+      numberDates = componentHelper.getNumberDates(schedule.dayStart, schedule.dayEnd)
       weekDayName = componentHelper.getWeekDayName(schedule.dayStart);
     }
 
-    return(
-      <span>
-        {weekDayName} du {rangeDates} (11 cours)
-      </span>
-    );
+    return weekDayName + " du " + rangeDates + " " + "(" + numberDates + " cours)"
+
+    ;
   }
   componentWillReceiveProps(nextProps) {
     if(nextProps.schedule){
       let schedule = nextProps.schedule;
 
+      let allDaysTitle =  componentHelper.capitalizeFirstLetter(this._getTitleAllDays(schedule));
+
       this.setState({
         list : [
           {title: "Un cour gratuit", form: 'FREE_DAYS'},
-          {title: this._getTitleAllDays(schedule), form: 'ALL_DAYS'},
+          {title: allDaysTitle, form: 'ALL_DAYS'},
           {title: "Une ou plusieur journee de cours", form: 'ONE_OR_MANY_DAYS'},
           {title: "Un cour d'essaie", form: 'TRYING_DAYS'}
         ]
@@ -195,8 +196,9 @@ export default class Reservation extends React.Component {
   _renderReservationHeader(){
     // render the component to htmlString
     let reservationHeader = ReactDomServer.renderToStaticMarkup(this.state.reservationHeader);
+    let title = this.getName(this.state.currentForm)
     reservationHeader += "<br/>";
-    reservationHeader += "<b>pour: </b>" + this.getName(this.state.currentForm) + "<br/>";
+    reservationHeader += "<b>pour: </b>" + title + "<br/>";
     return reservationHeader;
   }
 

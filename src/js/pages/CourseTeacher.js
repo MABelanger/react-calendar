@@ -2,6 +2,7 @@
 
 import React                    from 'react';
 import _                        from 'lodash'
+import { hashHistory }       from 'react-router'
 
 import CourseTeacher            from '../components/courseTeacher/courseTeacher';
 import CourseStore              from '../stores/courseStore';
@@ -62,6 +63,13 @@ export default class CourseTeacherPage extends React.Component {
   }
 
 
+  backBtnClick(e){
+    e.preventDefault();
+    console.log('backBtnClick');
+    this.props.history.pushState(null, '/')
+  }
+
+
   render(){
 
     const { query } = this.props.location;
@@ -73,7 +81,11 @@ export default class CourseTeacherPage extends React.Component {
 
     return (
       <div className="container" style={{backgroundColor:"#F5F5F5"}}>
-        <CourseTeacher course={course} teacher={teacher} />
+        <CourseTeacher
+          course={course}
+          teacher={teacher}
+          backBtnClick={(e)=>{ this.backBtnClick(e); }}
+        />
       </div>
     );
   }

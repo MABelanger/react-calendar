@@ -24,12 +24,12 @@ export default class LeftInfo extends React.Component {
     if(course && teacher){
       courseName = course.name;
       fullName = componentHelper.getFullName(teacher);
-      description = componentHelper.renderHtml(teacher.course.description);
+      description = teacher.course.description;
     }
     return {
       courseName: courseName,
       fullName: fullName,
-      description: description
+      description: <span dangerouslySetInnerHTML={{__html: description }}></span>
     }
   }
 

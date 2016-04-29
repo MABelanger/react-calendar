@@ -23,7 +23,7 @@ export default class LeftInfo extends React.Component {
       <tr key={label} className="tr-space">
         <td className="all-label all-label-align">{label}:</td>
         <td className="coursed-data">
-          {componentHelper.renderHtml(data)}
+          <span dangerouslySetInnerHTML={{__html: data }}></span>
         </td>
       </tr>
     );

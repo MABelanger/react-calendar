@@ -27,8 +27,8 @@ export default class LeftInfo extends React.Component {
     return(
       <div>
         <CourseDescription {...this.props} />
-        <CourseTypes {...this.props} />
-        <Price {...this.props} />
+        <CourseTypes  />
+        <Price  {...this.props} />
       </div>
     );
   }

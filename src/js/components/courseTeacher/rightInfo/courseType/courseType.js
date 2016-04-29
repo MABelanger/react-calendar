@@ -38,9 +38,16 @@ export default class RightInfo extends React.Component {
   }
 
   _renderScheduleDays(scheduleDays){
+    let courseTypeSlug = this.props.courseType.slug;
     let ScheduleDays = scheduleDays.map( (schedules, index) => {
       if(schedules.length > 0){
-        return <ScheduleDay key={index} schedules={schedules} />
+        return <ScheduleDay
+          key={index}
+          schedules={schedules}
+          courseTypeSlug={courseTypeSlug}
+          courseNameSlug={this.props.courseNameSlug}
+          teacherSlug={this.props.teacherSlug}
+          />
       }
     });
     return ScheduleDays;
@@ -58,8 +65,9 @@ export default class RightInfo extends React.Component {
       let scheduleDays = groupByDays.map( function(groupByDay){
         return componentHelper.sortByHours(groupByDay);
       });
-  
-      let rangeDates = "";//this._renderRangeDates(start, end);
+
+      let {dayStart, dayEnd} = componentHelper.getRangeSchedules(courseType.schedules);
+      let rangeDates = componentHelper.renderRangeDates(dayStart, dayEnd);
 
       return (
         <div>
@@ -67,7 +75,7 @@ export default class RightInfo extends React.Component {
             {courseType.name}:
           </div>
           <div className="tab">
-            {rangeDates}
+            Du {rangeDates}
             {this._renderScheduleDays(scheduleDays)}
           </div>
         </div>

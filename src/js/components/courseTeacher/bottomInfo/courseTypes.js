@@ -15,12 +15,12 @@ export default class Reserve extends React.Component {
   _renderCourseType(courseTypes){
     let CourseTypes = courseTypes.map((courseType, index) => {
       let name = courseType.name;
-      let description = componentHelper.renderHtml(courseType.description);
+      let description = courseType.description;
 
       return (
         <li key={index} className="coursed-li-schedule">
           <span className="all-label">{name}</span>:
-          {description}
+          <span dangerouslySetInnerHTML={{__html: description }}></span>
         </li>
       );
     });
