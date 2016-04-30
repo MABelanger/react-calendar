@@ -50,7 +50,12 @@ export default class LeftInfo extends React.Component {
     //return '<a className="link-url" href="'+ url + '">' + label + '</a>';
     let link = null;
     if(url) {
-      link = <a className="link-url" href={url}>{label}</a>
+      link = <a 
+        target="_blank"
+        className="link-url"
+        href={url}>
+          {label}
+      </a>
     }
     return link;
   }
