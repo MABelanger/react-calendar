@@ -8,7 +8,7 @@ export default class Layout extends React.Component {
   render() {
     const { location } = this.props;
     const containerStyle = {
-      marginTop: "60px"
+      marginTop: "60px",
     };
 
     return (
@@ -17,11 +17,7 @@ export default class Layout extends React.Component {
         <Nav location={location} />
 
         <div className="container" style={containerStyle}>
-          <div className="row">
-            <div className="col-lg-12">
-              {this.props.children}
-            </div>
-          </div>
+          {this.props.children}
           <Footer/>
         </div>
       </div>

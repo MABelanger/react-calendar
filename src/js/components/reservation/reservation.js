@@ -298,31 +298,38 @@ export default class Reservation extends React.Component {
       }
     }
 
-
-  
-
+/*
+<div className="row">
+  <div className="col-sm-12 text-center">
+    <BackBtn
+      txt='Retour au calendrier'
+      click={this.props.backBtnClick}
+    />
+  </div>
+</div>
+*/
     return (
-      <div className="row">
-        <div className="col-sm-6">
-          <h3 className="text-center">Réservation</h3>
-          <div className="reserv-cont-form">
-            {this.state.reservationHeader}
-            <Dropdown
-              disabled={function(){}}
-              list={this.state.list}
-              onSelect={this.select.bind(this)}
-              cbGetName={this.getName.bind(this)}
-              cbGetValue={this.getValue.bind(this)}
-            />
+      <div>
+        <div className="row">
+          <div className="col-sm-offset-3 col-sm-6 col-sm-offset-3">
+            <h3 className="text-center">Réservation</h3>
+            <div className="reserv-cont-form">
+              {this.state.reservationHeader}
+              <br/>
+              <br/>
+              <Dropdown
+                disabled={function(){}}
+                list={this.state.list}
+                onSelect={this.select.bind(this)}
+                cbGetName={this.getName.bind(this)}
+                cbGetValue={this.getValue.bind(this)}
+              />
+            </div>
+            <br/>
+            {currentForm}
           </div>
-          {currentForm}
-          <BackBtn 
-            txt='Retour au calendrier'
-            click={this.props.backBtnClick}
-          />
         </div>
       </div>
     );
   }
-
 }

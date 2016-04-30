@@ -66,17 +66,14 @@ export default class CourseTeacherPage extends React.Component {
     let {courseType, matchSchedule} = pageHelper.getMatchCourseTypeSchedule(this.state.courses, courseNameSlug, teacherSlug, courseTypeSlug, weekDayNameSlug, hourStartSlug, hourEndSlug );
 
     return (
-      <div className="container" style={{backgroundColor:"#F5F5F5"}}>
-        <Reservation
-          course={course}
-          teacher={teacher}
-          courseType={courseType}
-          schedule={matchSchedule}
-          backBtnClick={(e)=>{ this.backBtnClick(e); }}
-        />
-      </div>
+      <Reservation
+        course={course}
+        teacher={teacher}
+        courseType={courseType}
+        schedule={matchSchedule}
+        backBtnClick={(e)=>{ this.backBtnClick(e); }}
+      />
     );
-    return <div>ReservationPage</div>
   }
 }
 
