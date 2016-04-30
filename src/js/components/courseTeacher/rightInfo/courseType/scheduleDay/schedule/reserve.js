@@ -1,6 +1,7 @@
 "use strict";
 import moment from 'moment';
 import React from 'react';
+import {Link} from 'react-router';
 import ReactDOMServer from 'react-dom/server';
 
 
@@ -21,9 +22,7 @@ export default class Reserve extends React.Component {
     let url = this.props.url;
     console.log('url', url)
     return(
-      <a className="link-url" href={url}>
-        Réserver
-      </a>
+      <Link className="link-url" to={url}>Réserver</Link>
     );
   }
 

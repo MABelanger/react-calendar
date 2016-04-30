@@ -79,9 +79,9 @@ export function getFullName(teacher){
 }
 
 // calendrier/cours/yoga/marianne-girard
-export function getLink(course, teacher){
+export function getCourseTeacherLink(course, teacher){
   if(course && teacher){
-    return '#/calendrier/cours/' + course.slug + '/' + teacher.slug;
+    return '/calendrier/cours/' + course.slug + '/' + teacher.slug;
   }
 }
 
@@ -278,17 +278,17 @@ export function getRangeSchedules(schedules){
 }
 
 // reservation/cours/yoga/marianne-girard/yoga/lundi/16.15-17.30/
-// reservation/cours/yoga/isabelle-nadeau/mardi/13.00-14.15/
 export function getUrlReservation(courseNameSlug, teacherSlug, courseTypeSlug, weekDayNameSlug, schedule){
   let hourStart = moment(schedule.dayStart).utcOffset("+00:00").format("HH.mm");
   let hourEnd = moment(schedule.dayEnd).utcOffset("+00:00").format("HH.mm");
 
-  let url = '/#/reservation/cours/'
+  let url = 'reservation/cours/'
     + courseNameSlug + '/' 
     + teacherSlug + '/'
     + courseTypeSlug + '/'
     + weekDayNameSlug + '/'
     + hourStart + '-'
     + hourEnd + '/'
+
   return url;
 }

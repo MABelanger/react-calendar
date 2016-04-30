@@ -1,7 +1,7 @@
 "use strict";
 
 import React from 'react';
-
+import {Link} from 'react-router';
 import classNames from  'classnames'; 
 
 import * as componentHelper from '../../../helper';
@@ -34,15 +34,15 @@ export default class Course extends React.Component {
 
     var renderTeachers = teachers.map( function(teacher, index){
       let fullName = componentHelper.getFullName(teacher);
-      let link = componentHelper.getLink(course, teacher);
+      let link = componentHelper.getCourseTeacherLink(course, teacher);
 
     	return (
 				<div key={index} className={classes}>
-					<a href={link}>
+					<Link to={link}>
 						<div className="teacher-name">
 							{fullName}
 						</div>
-					</a>
+					</Link>
 				</div>
 			);
 

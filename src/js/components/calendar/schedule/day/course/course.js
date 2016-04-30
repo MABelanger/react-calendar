@@ -2,6 +2,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {Link} from 'react-router';
 import * as componentHelper from '../../../../helper';
 
 
@@ -37,10 +38,10 @@ export default class Course extends React.Component {
     }
 
     return (
-      <a 
+      <Link className="link-url" 
         ref="course"
         className="cal"
-        href={this.props.link}
+        to={this.props.link}
         style={style}
       >
         <div>
@@ -50,7 +51,7 @@ export default class Course extends React.Component {
           {this.props.hourEnd}<br />
           {this.props.professorName}
         </div>
-      </a>
+      </Link>
     );
   }
 }
