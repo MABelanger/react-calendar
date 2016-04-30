@@ -9,6 +9,8 @@ import CourseType from './courseType/courseType';
 
 
 
+
+
 export default class RightInfo extends React.Component {
 
   constructor(props) {

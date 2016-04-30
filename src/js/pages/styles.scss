@@ -1,3 +1,84 @@
+/*$bgcolor: #99CC66;*/
+$bgcolor: #F5F5F5;
+$size-title: 15px;
+$menu-hover: #EEEEEE;
+$link-hover: #999999;
+$txt-color-mid: #333;
+$logo-fill: #333;
+
 .txt-red{
 	color: #a13232;
+}
+
+body {
+    /*font-family: 'Montserrat', sans-serif;*/
+    background-color: $bgcolor;
+    font-family: 'Open Sans', Verdana, 'DejaVu Sans', sans-serif;
+    /*font-family: Gotham, sans-serif;*/
+    font-size: 16px;
+}
+
+h4 {
+   font-size: $size-title;
+   font-weight: bold;
+   line-height: 1.3em;
+}
+
+/* General links */
+a {
+    &:link, &:visited {
+        text-decoration: none;
+        outline: none;
+    }
+
+    &:hover {
+        text-decoration: none;
+        background-color: $menu-hover;
+    }
+
+    &:active {
+        text-decoration: none;
+        outline: none;
+    }
+}
+
+
+/* Link in the text */
+a {
+    &.link-url {
+        color: $txt-color-mid;
+        text-decoration: underline;
+
+        &:link, &:visited, &:hover, &:active {
+            text-decoration: underline;
+            outline: none;
+        }
+    }
+}
+
+/* Image Center */
+.radius-img {
+    border-radius: 5%;
+    width: 100%;
+}
+
+.all-label {
+    font-family: Gotham, sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    color: $txt-color-mid;
+}
+
+.all-label-align {
+    vertical-align: top;
+    text-align: right;
+    padding: 0px 5px 3px 0px;
+}
+
+.txt-red {
+    color: rgb(161, 50, 50);
+}
+
+.tab {
+    margin-left: 30px;
 }
