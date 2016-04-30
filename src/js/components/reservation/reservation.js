@@ -25,6 +25,10 @@ const CHANGE_EVENT = ReservationConstants.CHANGE_EVENT;
 
 export default class Reservation extends React.Component {
 
+  static contextTypes = {
+    router: React.PropTypes.object
+  }
+
   constructor(props) {
     super(props);
     this.getConfirmation = this.getConfirmation.bind(this);
@@ -38,6 +42,8 @@ export default class Reservation extends React.Component {
       errors: {}
     };
   }
+
+
 
   componentWillMount() {
     ReservationStore.on(CHANGE_EVENT, this.getConfirmation);
@@ -190,8 +196,14 @@ export default class Reservation extends React.Component {
     this._changeValueDates('tryingDaysDates', name, value);
   }
 
-  cancel(currentForm){
-    console.log('reservation.cancel')
+  // TODO put it into helper or extend from parent
+  backBtnClick(){
+    const { router } = this.context
+    router.push('/')
+  }
+
+  cancel(){
+    this.backBtnClick();
   }
 
   _renderReservationHeader(){

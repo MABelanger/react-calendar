@@ -1,12 +1,13 @@
 import React from "react";
 
+import './footer.scss';
 
 export default class Footer extends React.Component {
   render() {
     return (
       <footer>
         <div className="row">
-          <div className="col-lg-12">
+          <div className="col-lg-12 footer-margin">
             
           </div>
         </div>

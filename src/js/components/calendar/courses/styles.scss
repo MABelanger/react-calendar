@@ -68,7 +68,9 @@ a {
         }
     }
 
+    /* TODO enlarge the link and remove cursor: default */
     .teachers {
+        cursor: default;
         .teacher {
             &:hover{
                     background-color: $menu-hover;

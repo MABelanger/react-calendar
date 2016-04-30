@@ -23,17 +23,26 @@ export default class Price extends React.Component {
       price = courseDescription.price
     }
     return(
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="form-horizontal">
+      <div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-horizontal">
 
-              <div class="control-group">
-                <span class="all-label">coût:</span>
-                <span dangerouslySetInnerHTML={{__html: price }}></span>
-              </div>
+                <div class="control-group">
+                  <span class="all-label">coût:</span>
+                  <span dangerouslySetInnerHTML={{__html: price }}></span>
+                </div>
 
+            </div>
           </div>
-          <BackBtn txt='Retour au calendrier'/>
+        </div>
+        <div className="row">
+          <div class="col-sm-12 text-center">
+            <BackBtn
+              txt='Retour au calendrier'
+              click={this.props.backBtnClick}
+            />
+          </div>
         </div>
       </div>
     );

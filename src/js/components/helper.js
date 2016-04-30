@@ -46,9 +46,9 @@ export function getDayFormat(isoDate){
 }
 
 export function isNotExpired(momentDate){
-  let now = moment();
-  let isBefore = moment(now).isBefore(momentDate)
-  return isBefore;
+  let now = moment().utcOffset("+00:00").startOf('day');
+  let isNotExpired = moment(now).isBefore(momentDate) || moment(now).isSame(momentDate)
+  return isNotExpired;
 }
 
 
