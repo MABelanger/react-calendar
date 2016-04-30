@@ -43,12 +43,14 @@ a {
 
 /* links of cal-menu */
 .course {
-    width: 100%;
     text-align: right;
+    cursor: pointer;
     .course-header {
         color: $logo-fill;
         font-family: Gotham, sans-serif;
         font-weight: bold;
+        height:100%;
+
 
         &:hover{
                 background-color: $menu-hover;
@@ -91,12 +93,16 @@ a {
             opacity: 1;
             padding-top: 2px;
             padding-bottom: 2px;
+
         }
 
         .teacher-hide {
             line-height: 0;
             opacity: 0;
             padding: 0px;
+            /* disable link */
+            pointer-events: none;
+            cursor: default;
         }
     }
 }

@@ -2,7 +2,7 @@
 
 import React                    from 'react';
 import _                        from 'lodash'
-import { hashHistory }       from 'react-router'
+import { hashHistory }          from 'react-router'
 
 import CourseTeacher            from '../components/courseTeacher/courseTeacher';
 import CourseStore              from '../stores/courseStore';
@@ -19,7 +19,7 @@ export default class CourseTeacherPage extends React.Component {
   static contextTypes = {
     router: React.PropTypes.object
   }
-  
+
   constructor() {
     super();
     this.getCourses = this.getCourses.bind(this);
