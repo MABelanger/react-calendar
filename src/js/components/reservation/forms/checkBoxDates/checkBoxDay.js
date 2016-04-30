@@ -13,7 +13,6 @@ export default class CheckboxDay extends React.Component {
   }
 
   uncheck(){
-    console.log('uncheck', uncheck)
     this.setState = ({
       checked: false
     });

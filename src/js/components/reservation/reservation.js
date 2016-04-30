@@ -204,7 +204,6 @@ export default class Reservation extends React.Component {
   }
 
   send(currentForm, reservation){
-    console.log('reservation.send')
     reservation.reservationHeader = this._renderReservationHeader();
     ReservationActions.sendReservation(reservation);
   }
@@ -215,7 +214,7 @@ export default class Reservation extends React.Component {
 
       // TODO to remove whe fix the db
       if(! freeDay.day){
-        console.log('! freeDay', freeDay._id)
+        console.error('! freeDay', freeDay._id)
         return moment('2016-01-11T16:15:00.000Z');
       }
         

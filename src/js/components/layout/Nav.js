@@ -17,8 +17,7 @@ export default class Nav extends React.Component {
   render() {
     const { location } = this.props;
     const { collapsed } = this.state;
-    const featuredClass = location.pathname === "/" ? "active" : "";
-    const coursesClass = location.pathname.match(/^\/courses/) ? "active" : "";
+    const coursesClass = location.pathname === "/" ? "active" : "";
     const settingsClass = location.pathname.match(/^\/settings/) ? "active" : "";
     const navClass = collapsed ? "collapse" : "";
 
@@ -35,14 +34,16 @@ export default class Nav extends React.Component {
           </div>
           <div className={"navbar-collapse " + navClass} id="bs-example-navbar-collapse-1">
             <ul className="nav navbar-nav">
-              <li className={featuredClass}>
-                <IndexLink to="/" onClick={this.toggleCollapse.bind(this)}>Featured</IndexLink>
+              <li>
+                <a href="http://www.mondeavie.ca" onClick={this.toggleCollapse.bind(this)}>
+                  <span dangerouslySetInnerHTML={{__html: " &lt; RETOUR AU SITE" }}></span>
+                </a>
               </li>
               <li className={coursesClass}>
-                <Link to="courses" onClick={this.toggleCollapse.bind(this)}>Cours</Link>
+                <IndexLink to="/" onClick={this.toggleCollapse.bind(this)}>CALENDRIER DES COURS</IndexLink>
               </li>
               <li className={settingsClass}>
-                <Link to="settings" onClick={this.toggleCollapse.bind(this)}>Settings</Link>
+                <Link to="settings" onClick={this.toggleCollapse.bind(this)}>CONFÉRENCES ET ATELIERS</Link>
               </li>
             </ul>
           </div>

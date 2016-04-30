@@ -99,21 +99,32 @@ export function getDateRange(schedule){
 
 export function getWeekDates(startDate, stopDate) {
     moment.locale('fr');
-    var dateArray = [];
+    var weekDates = [];
     stopDate = moment( stopDate ).utcOffset("+00:00")
     var currentDate = moment( startDate ).utcOffset("+00:00");
 
     // TODO replace the while by for
     let maxLoop=100;
     while ((currentDate <= stopDate) && maxLoop > 0) {
-        dateArray.push( moment(currentDate) ) // .format('YYYY-MM-DD')
+        weekDates.push( moment(currentDate) ) // .format('YYYY-MM-DD')
         currentDate = moment(currentDate).add(7, 'days');
         maxLoop--;
         if(maxLoop ==0 ){
-          console.log('getWeekDates._____MAX LOOP_____')
+          console.error('getWeekDates._____MAX LOOP_____')
         }
     }
-    return dateArray;
+    return weekDates;
+}
+
+export function getDays(_days) {
+    moment.locale('fr');
+    let days = null;
+    if(_days && _days.length > 0){
+      days = _days.map((day) =>{
+        return moment( day ).utcOffset("+00:00");
+      })
+    }
+    return days;
 }
 
 export function removeEmptyArray(array){
@@ -170,8 +181,6 @@ export function getDayStartFromNow(dayStart){
   if(now.isAfter(dayStart)){
     dayStart = getNextDayStart(dayStart);
   }
-
-  console.log('dayStart', dayStart.toISOString())
 
   return dayStart;
 }

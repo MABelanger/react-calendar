@@ -72,7 +72,7 @@ export default class CheckBoxDates extends React.Component {
   _getMounths(dayStart, dayEnd, days){
     let weekDates = [];
     if(days && days.length > 0){
-      weekDates = days;
+      weekDates = componentHelper.getDays(days);
     }else{
       weekDates = componentHelper.getWeekDates(dayStart, dayEnd);
     }
@@ -91,8 +91,6 @@ export default class CheckBoxDates extends React.Component {
   render(){
     let {dayStart, dayEnd, days} = this.props;
     let mounths = this._getMounths(dayStart, dayEnd, days);
-
-    console.log('this.props.error', this.props.error)
 
     var wrapperClass = 'form-group checkbox-wrapper';
     

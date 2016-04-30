@@ -6,9 +6,7 @@ import { Link } from "react-router";
 
 
 import BackBtn from '../../common/backBtn';
-
 import * as componentHelper from '../../helper';
-
 import './styles.scss';
 
 export default class LeftInfo extends React.Component {
@@ -28,9 +26,13 @@ export default class LeftInfo extends React.Component {
   // let courseType = teacher.course.courseType;
 
   _gerSrc(teacher){
-    if(teacher){
-      return 'http://www.mondeavie.ca/'+ teacher.course.image;
+    let imgSrc = null;
+    if (teacher) {
+      if (teacher.course && teacher.course.image && teacher.course.image.url) {
+        imgSrc = 'http://localhost:3000/' + teacher.course.image.url;
+      }
     }
+    return imgSrc;
   }
 
   render(){
@@ -50,5 +52,3 @@ export default class LeftInfo extends React.Component {
     );
   }
 }
-
-

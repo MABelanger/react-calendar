@@ -32,10 +32,7 @@ export default class Schedule extends React.Component {
 
   // reservation/cours/yoga/marianne-girard/yoga/lundi/16.15-17.30/
   getUrlReservation(){
-    
     let {courseNameSlug, teacherSlug, courseTypeSlug, weekDayNameSlug, schedule} = this.props;
-    console.log('getUrlReservation.coursNameSlug', courseNameSlug)
-
     return componentHelper.getUrlReservation(courseNameSlug, teacherSlug, courseTypeSlug, weekDayNameSlug, schedule);
   }
 

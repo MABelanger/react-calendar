@@ -70,7 +70,6 @@ export default class CourseTeacherPage extends React.Component {
   // TODO put it into helper or extend from parent
   backBtnClick(e){
     e.preventDefault();
-    console.log('backBtnClick');
     const { router } = this.context
     router.push('/')
   }
