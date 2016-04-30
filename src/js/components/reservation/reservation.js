@@ -1,8 +1,8 @@
 "use strict";
 
-import React from 'react';
-import ReactDomServer from 'react-dom/server';
-import moment from 'moment';
+import React                         from 'react';
+import ReactDomServer                from 'react-dom/server';
+import moment                        from 'moment';
 import toastr                        from 'toastr';
 import 'toastr/build/toastr.css';
 
@@ -12,6 +12,7 @@ import FreeDaysForm                  from './forms/freeDays';
 import TryingDaysForm                from './forms/tryingDays';
 import OneOrManyDaysForm             from './forms/oneOrManyDays';
 import AllDaysForm                   from './forms/allDays';
+import BackBtn                       from '../common/backBtn';
 
 // Flux Reservation
 import ReservationStore              from '../../stores/reservationStore';
@@ -299,6 +300,8 @@ export default class Reservation extends React.Component {
     }
 
 
+  
+
     return (
       <div className="row">
         <div className="col-sm-6">
@@ -314,6 +317,10 @@ export default class Reservation extends React.Component {
             />
           </div>
           {currentForm}
+          <BackBtn 
+            txt='Retour au calendrier'
+            click={this.props.backBtnClick}
+          />
         </div>
       </div>
     );

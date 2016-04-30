@@ -3,6 +3,7 @@
 import React                    from 'react';
 import _                        from 'lodash'
 
+
 import Reservation              from '../components/reservation/reservation';
 
 // Flux Course
@@ -17,8 +18,12 @@ const CHANGE_EVENT = CourseConstants.CHANGE_EVENT;
 
 export default class CourseTeacherPage extends React.Component {
 
-  constructor() {
-    super();
+  static contextTypes = {
+    router: React.PropTypes.object
+  }
+
+  constructor(props, context) {
+    super(props, context);
     this.getCourses = this.getCourses.bind(this);
     this.state = {
       courses: {},
@@ -26,6 +31,7 @@ export default class CourseTeacherPage extends React.Component {
     };
     // get the courses from server.
     CourseActions.getCourses();
+
   }
 
   componentWillMount() {
@@ -40,6 +46,14 @@ export default class CourseTeacherPage extends React.Component {
     this.setState({
       courses: CourseStore.getCourses()
     });
+  }
+
+  // TODO put it into helper or extend from parent
+  backBtnClick(e){
+    e.preventDefault();
+    console.log('backBtnClick');
+    const { router } = this.context
+    router.push('/')
   }
 
   render(){
@@ -59,9 +73,11 @@ export default class CourseTeacherPage extends React.Component {
           teacher={teacher}
           courseType={courseType}
           schedule={matchSchedule}
+          backBtnClick={(e)=>{ this.backBtnClick(e); }}
         />
       </div>
     );
     return <div>ReservationPage</div>
   }
 }
+

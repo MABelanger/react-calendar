@@ -16,6 +16,10 @@ const CHANGE_EVENT = CourseConstants.CHANGE_EVENT;
 
 export default class CourseTeacherPage extends React.Component {
 
+  static contextTypes = {
+    router: React.PropTypes.object
+  }
+  
   constructor() {
     super();
     this.getCourses = this.getCourses.bind(this);
@@ -63,10 +67,12 @@ export default class CourseTeacherPage extends React.Component {
   }
 
 
+  // TODO put it into helper or extend from parent
   backBtnClick(e){
     e.preventDefault();
     console.log('backBtnClick');
-    this.props.history.pushState(null, '/')
+    const { router } = this.context
+    router.push('/')
   }
 
 
