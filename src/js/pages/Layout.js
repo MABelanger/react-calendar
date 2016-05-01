@@ -1,9 +1,15 @@
-import React from "react";
-import { Link } from "react-router";
+"use strict";
 
-import Footer from "../components/layout/Footer";
-import Nav from "../components/layout/Nav";
+// Vendor modules
+import React                          from 'react';
+import moment                         from 'moment';
+import { Link }                       from "react-router";
 
+// Project modules
+import Footer                         from "../components/layout/Footer";
+import Nav                            from "../components/layout/Nav";
+
+// Project styles
 import './styles.scss';
 
 export default class Layout extends React.Component {
@@ -12,7 +18,6 @@ export default class Layout extends React.Component {
     const containerStyle = {
       marginTop: "60px",
     };
-
     return (
       <div>
         <Nav location={location} />

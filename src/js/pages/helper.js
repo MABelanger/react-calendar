@@ -1,6 +1,10 @@
 "use strict";
-import React from 'react';
-import moment from 'moment';
+
+// Vendor modules
+import React                          from 'react';
+import moment                         from 'moment';
+
+// Project modules
 import * as componentHelper from '../components/helper';
 
 export function getCourseTeacher(courses, courseNameSlug, teacherSlug){
@@ -16,13 +20,11 @@ export function getCourseTeacher(courses, courseNameSlug, teacherSlug){
         return item.slug == teacherSlug; 
     });
   }
-
   return {
     course: course,
     teacher: teacher
   };
 }
-
 
 function _isMatchHours(schedule, hourStartSlug, hourEndSlug){
   let hourStart = moment(schedule.dayStart).utcOffset("+00:00").format("HH.mm");
@@ -36,18 +38,16 @@ function _isMatchWeekDayName(schedule, weekDayNameSlug){
   return (weekDayName == weekDayNameSlug);
 }
 
-
 function _isMatchSchedule(schedule, weekDayNameSlug, hourStartSlug, hourEndSlug){
-  return _isMatchWeekDayName(schedule, weekDayNameSlug) 
+  return    _isMatchWeekDayName(schedule, weekDayNameSlug) 
          && _isMatchHours(schedule, hourStartSlug, hourEndSlug)
-
 }
 
 function _getMatchSchedule(schedules, weekDayNameSlug, hourStartSlug, hourEndSlug){
   let matchSchedule = null;
+
   for (let i=0; i < schedules.length; i++) {
     let schedule = schedules[i];
-    let match
     if( _isMatchSchedule(schedule, weekDayNameSlug, hourStartSlug, hourEndSlug) ){
       matchSchedule = schedule;
       break;
@@ -61,7 +61,6 @@ export function getMatchCourseTypeSchedule( courses, courseNameSlug, teacherSlug
                               hourStartSlug, hourEndSlug ){
 
   let {course, teacher} = getCourseTeacher(courses, courseNameSlug, teacherSlug);
-
   let matchSchedule = null;
   let courseType = null;
 

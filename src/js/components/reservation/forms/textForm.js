@@ -112,6 +112,3 @@ export default class TextForm extends React.Component {
     );
   }
 }
-
-
-            

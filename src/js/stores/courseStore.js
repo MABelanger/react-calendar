@@ -1,8 +1,9 @@
-'use strict';
+"use strict";
 
-import AppDispatcher from '../dispatcher/clientDispatcher';
-import CourseConstants from '../constants/courseConstants';
-import { EventEmitter } from 'events';
+// Flux CourseStore
+import AppDispatcher                  from '../dispatcher/clientDispatcher';
+import CourseConstants                from '../constants/courseConstants';
+import { EventEmitter }               from 'events';
 
 const CHANGE_EVENT = CourseConstants.CHANGE_EVENT;
 

@@ -1,18 +1,17 @@
 "use strict";
 
-import React                    from 'react';
-import _                        from 'lodash'
+// Vendor modules
+import React                          from 'react';
+import _                              from 'lodash'
 
+// Flux CourseStore
+import CourseStore                    from '../stores/courseStore';
+import * as CourseActions             from '../actions/courseActions';
+import CourseConstants                from '../constants/courseConstants';
 
-import Reservation              from '../components/reservation/reservation';
-
-// Flux Course
-import CourseStore              from '../stores/courseStore';
-import * as CourseActions       from '../actions/courseActions';
-import CourseConstants          from '../constants/courseConstants';
-
-import * as pageHelper          from './helper';
-
+// Project modules
+import Reservation                    from '../components/reservation/reservation';
+import * as pageHelper                from './helper';
 
 const CHANGE_EVENT = CourseConstants.CHANGE_EVENT;
 
@@ -31,7 +30,6 @@ export default class CourseTeacherPage extends React.Component {
     };
     // get the courses from server.
     CourseActions.getCourses();
-
   }
 
   componentWillMount() {
@@ -56,7 +54,6 @@ export default class CourseTeacherPage extends React.Component {
   }
 
   render(){
-
     // reservation/cours/:courseNameSlug/:teacherSlug/:courseTypeSlug/:weekDayNameSlug/:hourStartSlug-:hourEndSlug
     const { query } = this.props.location;
     const { params } = this.props;
@@ -76,4 +73,3 @@ export default class CourseTeacherPage extends React.Component {
     );
   }
 }
-

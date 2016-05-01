@@ -1,15 +1,16 @@
 "use strict";
 
-import React                    from 'react';
-import _                        from 'lodash'
-import { hashHistory }          from 'react-router'
+// Vendor modules
+import React                          from 'react';
+import _                              from 'lodash'
+import { hashHistory }                from 'react-router'
 
-import CourseTeacher            from '../components/courseTeacher/courseTeacher';
-import CourseStore              from '../stores/courseStore';
-import * as CourseActions       from '../actions/courseActions';
-import CourseConstants          from '../constants/courseConstants';
-
-import * as pageHelper          from './helper';
+// Proejct modules
+import CourseTeacher                  from '../components/courseTeacher/courseTeacher';
+import CourseStore                    from '../stores/courseStore';
+import CourseConstants                from '../constants/courseConstants';
+import * as CourseActions             from '../actions/courseActions';
+import * as pageHelper                from './helper';
 
 
 const CHANGE_EVENT = CourseConstants.CHANGE_EVENT;
@@ -44,7 +45,6 @@ export default class CourseTeacherPage extends React.Component {
     });
   }
 
-
   getCourseTeacher(courses, courseNameSlug, teacherSlug){
 
     let course = null;
@@ -66,7 +66,6 @@ export default class CourseTeacherPage extends React.Component {
     };
   }
 
-
   // TODO put it into helper or extend from parent
   backBtnClick(e){
     e.preventDefault();
@@ -74,9 +73,7 @@ export default class CourseTeacherPage extends React.Component {
     router.push('/')
   }
 
-
   render(){
-
     const { query } = this.props.location;
     const { params } = this.props;
     const { courseNameSlug, teacherSlug } = params;

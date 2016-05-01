@@ -1,7 +1,10 @@
 "use strict";
 
-import React from 'react';
-import CalendarComponent from '../components/calendar/calendar';
+// Vendor modules
+import React                          from 'react';
+
+// Project modules
+import CalendarComponent              from '../components/calendar/calendar';
 
 export default class Calendar extends React.Component {
   render(){
