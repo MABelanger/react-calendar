@@ -1,24 +1,27 @@
 "use strict";
 
-import React                         from 'react';
-import ReactDomServer                from 'react-dom/server';
-import moment                        from 'moment';
-import toastr                        from 'toastr';
-import 'toastr/build/toastr.css';
+// Vendor modules
+import React                          from 'react';
+import ReactDomServer                 from 'react-dom/server';
+import moment                         from 'moment';
+import toastr                         from 'toastr';
 
-import * as componentHelper          from '../helper';
-import Dropdown                      from '../common/dropdown/Dropdown';
-import FreeDaysForm                  from './forms/freeDays';
-import TryingDaysForm                from './forms/tryingDays';
-import OneOrManyDaysForm             from './forms/oneOrManyDays';
-import AllDaysForm                   from './forms/allDays';
-import BackBtn                       from '../common/backBtn';
+// Project modules
+import * as componentHelper           from '../helper';
+import Dropdown                       from '../common/dropdown/Dropdown';
+import FreeDaysForm                   from './forms/freeDays';
+import TryingDaysForm                 from './forms/tryingDays';
+import OneOrManyDaysForm              from './forms/oneOrManyDays';
+import AllDaysForm                    from './forms/allDays';
+import BackBtn                        from '../common/backBtn';
 
 // Flux Reservation
-import ReservationStore              from '../../stores/reservationStore';
-import * as ReservationActions       from '../../actions/reservationActions';
-import ReservationConstants          from '../../constants/reservationConstants';
+import ReservationStore               from '../../stores/reservationStore';
+import * as ReservationActions        from '../../actions/reservationActions';
+import ReservationConstants           from '../../constants/reservationConstants';
 
+// Styles
+import 'toastr/build/toastr.css';
 import './styles.scss';
 
 const CHANGE_EVENT = ReservationConstants.CHANGE_EVENT;

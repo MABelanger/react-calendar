@@ -1,6 +1,16 @@
 "use strict";
 
-import React from "react";
+// Vendor module
+import React                          from "react";
+
+// require propTypes
+TextInput.propTypes = {
+  name: React.PropTypes.string.isRequired,
+  changeValue: React.PropTypes.func.isRequired,
+  placeholder: React.PropTypes.string,
+  value: React.PropTypes.string,
+  error: React.PropTypes.string
+};
 
 export default class TextInput extends React.Component {
 
@@ -8,7 +18,6 @@ export default class TextInput extends React.Component {
     const value = e.target.value;
     this.props.changeValue(this.props.name, value);
   }
-
 
   _getInput(props){
 
@@ -38,6 +47,7 @@ export default class TextInput extends React.Component {
       );
     }
   }
+
   render() {
     var wrapperClass = 'form-group no-margin';
     
@@ -53,11 +63,3 @@ export default class TextInput extends React.Component {
     );
   }
 }
-
-TextInput.propTypes = {
-  name: React.PropTypes.string.isRequired,
-  changeValue: React.PropTypes.func.isRequired,
-  placeholder: React.PropTypes.string,
-  value: React.PropTypes.string,
-  error: React.PropTypes.string
-};

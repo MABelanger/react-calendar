@@ -1,11 +1,11 @@
 "use strict";
 
-import React from 'react';
-import ReactDOMServer from 'react-dom/server';
+import React                         from 'react';
+import ReactDOMServer                from 'react-dom/server';
 
-import * as componentHelper from '../../helper';
+// Project components
+import * as componentHelper          from '../../helper';
 
-import './styles.css';
 
 export default class LeftInfo extends React.Component {
 
@@ -42,12 +42,8 @@ export default class LeftInfo extends React.Component {
     return trList
   }
 
-  // description: teacher.course.description
-  // price: teacher.course.price
-  // let courseType = teacher.course.courseType;
 
   _getLink(label, url){
-    //return '<a className="link-url" href="'+ url + '">' + label + '</a>';
     let link = null;
     if(url) {
       link = <a 
@@ -91,5 +87,3 @@ export default class LeftInfo extends React.Component {
     );
   }
 }
-
-

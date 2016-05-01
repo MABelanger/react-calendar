@@ -1,13 +1,17 @@
 "use strict";
 
-// Setting The State Based On Rendered DOM Elements In ReactJS 
-// bennadel.com/blog/2915-setting-the-state-based-on-rendered-dom-elements-in-reactjs.htm
+/* Setting The State Based On Rendered DOM Elements In ReactJS 
+ * bennadel.com/blog/2915-setting-the-state-based-on-rendered-dom-elements-in-reactjs.htm
+ */
 
-import React from 'react';
+// Vendor modules
+import React                          from 'react';
 
-import * as scheduleApi from './api/scheduleApi';
-import Day from './day/day';
+// Project modules
+import Day                            from './day/day';
+import * as scheduleApi               from './api/scheduleApi';
 
+// Project styles
 import './styles.scss';
 
 export default class Schedule extends React.Component {

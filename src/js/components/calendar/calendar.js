@@ -1,14 +1,14 @@
 "use strict";
 
-import React from 'react';
-import Request from 'superagent';
-import Schedule from './schedule/schedule';
+// Vendor modules
+import React                          from 'react';
+import Request                        from 'superagent';
 
-import Courses from './courses/courses';
-
+// Project modules
+import Schedule                       from './schedule/schedule';
+import Courses                        from './courses/courses';
 
 export default class Calendar extends React.Component {
-
 
   constructor(props) {
     super(props);

@@ -1,10 +1,12 @@
 "use strict";
 
-import React from 'react';
-import ReactDOM from 'react-dom';
-import {Link} from 'react-router';
-import * as componentHelper from '../../../../helper';
+// Vendor modules
+import React                          from 'react';
+import ReactDOM                       from 'react-dom';
+import {Link}                         from 'react-router';
 
+// Project modules
+import * as componentHelper           from '../../../../helper';
 
 export default class Course extends React.Component {
 

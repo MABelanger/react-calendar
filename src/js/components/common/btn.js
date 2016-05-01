@@ -1,14 +1,13 @@
 "use strict";
 
-import React from 'react';
-import ReactDOMServer from 'react-dom/server';
-
+// Vendor modules
+import React                          from 'react';
+import ReactDOMServer                 from 'react-dom/server';
 
 export default class Btn extends React.Component {
 
   constructor(props) {
     super(props);
-
   }
 
   _getContent(direction, txt){

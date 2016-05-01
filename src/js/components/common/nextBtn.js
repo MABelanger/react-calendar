@@ -1,14 +1,15 @@
 "use strict";
 
+// Vendor modules
 import React from 'react';
-import Btn from './btn';
 
+// Project modules
+import Btn from './btn';
 
 export default class BackBtn extends React.Component {
 
   constructor(props) {
     super(props);
-
   }
 
   render(){
@@ -17,7 +18,3 @@ export default class BackBtn extends React.Component {
     );
   }
 }
-
-
-
-

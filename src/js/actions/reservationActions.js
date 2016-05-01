@@ -1,7 +1,11 @@
-import Request                    from "superagent";
+"use strict";
 
-import ClientDispatcher from "../dispatcher/clientDispatcher";
-import ReservationConstants from "../constants/reservationConstants";
+// Vendor modules
+import Request                        from "superagent";
+
+// Project modules
+import ClientDispatcher               from "../dispatcher/clientDispatcher";
+import ReservationConstants           from "../constants/reservationConstants";
 
 export function sendReservation(reservation) {
   const URL = 'http://localhost:3000/api/reservations';

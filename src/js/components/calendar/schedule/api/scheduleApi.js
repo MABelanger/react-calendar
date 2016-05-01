@@ -1,11 +1,12 @@
 "use strict";
 
+// Vendor modules
 import moment                     from "moment";
+
+// Project modules
 import * as componentHelper       from '../../../helper';        
 
-
 export function getScheduleDays(courses){
-
   let formatedSchedules = [];
   courses.map( function(course){
     let svg = course.svg;

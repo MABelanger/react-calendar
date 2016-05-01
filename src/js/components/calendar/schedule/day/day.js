@@ -1,17 +1,17 @@
 "use strict";
 
-import React from 'react';
-import moment from 'moment';
+// Vendor modules
+import React                from 'react';
+import moment               from 'moment';
 
-import Course from './course/course';
-
+// Project modules
+import Course               from './course/course';
 
 export default class Day extends React.Component {
 
   _getHours(isoDate){
     return moment( isoDate ).utcOffset("+00:00").format("HH:mm");
   }
-
 
   eachCourse(course, i) {
     return (

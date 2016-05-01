@@ -1,8 +1,14 @@
-import React                               from "react";
-import ClassNames                          from "classnames";
-import 'bootstrap/dist/css/bootstrap.css';
-import './styles.scss';
+"use strict";
 
+// Vendor modules
+import React                          from "react";
+import ClassNames                     from "classnames";
+
+// Vendor styles
+import 'bootstrap/dist/css/bootstrap.css';
+
+// Project styles
+import './styles.scss';
 
 export default class Dropdown extends React.Component {
 
@@ -122,6 +128,3 @@ export default class Dropdown extends React.Component {
     );
   }
 }
-
-
-

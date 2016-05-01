@@ -1,9 +1,13 @@
 "use strict";
 
+// Vendor modules
 import React from 'react';
 import Course from './course/course';
 
+// Vendor styles
 import 'bootstrap/dist/css/bootstrap.css';
+
+// Project styles
 import './styles.scss';
 
 export default class Courses extends React.Component {
@@ -17,10 +21,9 @@ export default class Courses extends React.Component {
 
   render(){
     return (
-    	<div className="courses col-sm-3">
+      <div className="courses col-sm-3">
         {this.getRenderCourses(this.props.courses)}
-	    </div>
-   	);
+      </div>
+     );
   }
 }
-
