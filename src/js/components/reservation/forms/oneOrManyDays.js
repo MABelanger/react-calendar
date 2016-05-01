@@ -1,17 +1,16 @@
 "use strict";
 
-import React from 'react';
+// Vendor modules
+import React                          from 'react';
+import moment                         from 'moment';
 
-import moment from 'moment';
-import * as componentHelper       from '../../helper';
-import CheckBoxDates                   from './checkBoxDates/checkBoxDates';
-import TextForm                   from './textForm';
-import CtrlBtnForm                from './ctrlBtnForm';
-
+// Project modules
+import * as componentHelper           from '../../helper';
+import CheckBoxDates                  from './checkBoxDates/checkBoxDates';
+import TextForm                       from './textForm';
+import CtrlBtnForm                    from './ctrlBtnForm';
 
 // TODO make a parent for this and freeDays...
-
-
 export default class OneOrManyDays extends React.Component {
 
   constructor(props) {
@@ -19,10 +18,6 @@ export default class OneOrManyDays extends React.Component {
     this.state = {
       checkBoxDatesKey: 1
     }
-  }
-
-  componentDidMount() {
-
   }
 
   componentWillReceiveProps(nextProps) {
@@ -35,7 +30,6 @@ export default class OneOrManyDays extends React.Component {
       });
     }
   }
-
 
   _getSelectedList(selectedDates){
     let SelectedDates = selectedDates.map((selectedDate, index) =>{
@@ -78,6 +72,3 @@ export default class OneOrManyDays extends React.Component {
     );
   }
 }
-
-
-            

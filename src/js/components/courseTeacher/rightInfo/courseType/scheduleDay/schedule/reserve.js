@@ -1,22 +1,16 @@
 "use strict";
+
+// Vendor modules
 import moment from 'moment';
 import React from 'react';
 import {Link} from 'react-router';
 import ReactDOMServer from 'react-dom/server';
 
-
 export default class Reserve extends React.Component {
 
   constructor(props) {
     super(props);
-
   }
-
-  componentDidMount() {
-
-  }
-
-
 
   renderReserve(schedule){
     let url = this.props.url;
@@ -32,6 +26,7 @@ export default class Reserve extends React.Component {
       </strong>
     );
   }
+
   render(){
     let schedule = this.props.schedule;
     if(schedule.isFull){

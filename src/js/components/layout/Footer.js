@@ -1,5 +1,9 @@
-import React from "react";
+"use strict";
 
+// Vendor modules
+import React                          from "react";
+
+// Project stules
 import './footer.scss';
 
 export default class Footer extends React.Component {

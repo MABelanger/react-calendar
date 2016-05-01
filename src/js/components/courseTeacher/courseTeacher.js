@@ -1,20 +1,18 @@
 "use strict";
 
+// Vendor modules
 import React from 'react';
-import LeftInfo from './leftInfo/leftInfo';
-import CenterInfo from './centerInfo/centerInfo';
-import RightInfo from './rightInfo/rightInfo';
 
-import BottomInfo from './bottomInfo/bottomInfo';
+// Project modules
+import LeftInfo                       from './leftInfo/leftInfo';
+import CenterInfo                     from './centerInfo/centerInfo';
+import RightInfo                      from './rightInfo/rightInfo';
+import BottomInfo                     from './bottomInfo/bottomInfo';
 
 export default class Calendar extends React.Component {
 
   constructor(props) {
     super(props);
-  }
-
-  componentDidMount() {
-
   }
 
   render(){
@@ -29,5 +27,4 @@ export default class Calendar extends React.Component {
       </div>
     );
   }
-
 }

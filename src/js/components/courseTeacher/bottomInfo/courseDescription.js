@@ -1,31 +1,29 @@
 "use strict";
 
-import React from 'react';
-import ReactDOMServer from 'react-dom/server';
+// Vendor modules
+import React                          from 'react';
+import ReactDOMServer                 from 'react-dom/server';
 
-import * as componentHelper from '../../helper';
-
+// Project modules
+import * as componentHelper           from '../../helper';
 
 export default class LeftInfo extends React.Component {
 
   constructor(props) {
     super(props);
-
-  }
-
-  componentDidMount() {
-
   }
 
   _getValue(course, teacher){
     let courseName = null;
     let fullName = null;
-    let description = null
+    let description = null;
+
     if(course && teacher){
       courseName = course.name;
       fullName = componentHelper.getFullName(teacher);
       description = teacher.course.description;
     }
+
     return {
       courseName: courseName,
       fullName: fullName,
@@ -49,7 +47,4 @@ export default class LeftInfo extends React.Component {
       </div>
     )
   }
-
 }
-
-

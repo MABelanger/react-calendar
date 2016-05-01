@@ -1,26 +1,23 @@
 "use strict";
-import moment from 'moment';
-import React from 'react';
-import ReactDOMServer from 'react-dom/server';
 
-import ScheduleDay from './scheduleDay/scheduleDay';
+// Vendor modules
+import moment                         from 'moment';
+import React                          from 'react';
+import ReactDOMServer                 from 'react-dom/server';
 
-import * as componentHelper       from '../../../helper';  
+// Project modules
+import ScheduleDay                    from './scheduleDay/scheduleDay';
+import * as componentHelper           from '../../../helper';  
 
+// Project styles
 import './styles.scss';
 
 export default class RightInfo extends React.Component {
 
   constructor(props) {
     super(props);
-
   }
 
-  componentDidMount() {
-
-  }
-
-  // add moment
   _getRangeDates(schedules){
     let dayStart = schedules[0].dayStart;
     let dayEnd = schedules[0].dayEnd;
@@ -33,7 +30,6 @@ export default class RightInfo extends React.Component {
       if( schedule.dayStart < dayStart ){
         dayStart = schedule.dayStart;
       }
-
     });
   }
 
@@ -53,6 +49,7 @@ export default class RightInfo extends React.Component {
     return ScheduleDays;
   }
 
+  // TODO refactor the return
   render(){
     if(this.props.courseType){
       let courseType = this.props.courseType;
@@ -85,5 +82,3 @@ export default class RightInfo extends React.Component {
     }
   }
 }
-
-

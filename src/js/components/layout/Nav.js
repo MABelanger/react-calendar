@@ -1,5 +1,8 @@
-import React from "react";
-import { IndexLink, Link } from "react-router";
+"use strict";
+
+// Vendor modules
+import React                          from "react";
+import { IndexLink, Link }            from "react-router";
 
 export default class Nav extends React.Component {
   constructor() {

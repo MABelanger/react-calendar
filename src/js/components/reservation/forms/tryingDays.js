@@ -1,14 +1,14 @@
 "use strict";
 
-import React from 'react';
+// Vendor modules
+import React                          from 'react';
+import moment                         from 'moment';
 
-import moment from 'moment';
-import * as componentHelper       from '../../helper';
-import CheckBoxDates                   from './checkBoxDates/checkBoxDates';
-import TextForm                   from './textForm';
-import CtrlBtnForm                from './ctrlBtnForm';
-
-
+// Project modules
+import * as componentHelper           from '../../helper';
+import CheckBoxDates                  from './checkBoxDates/checkBoxDates';
+import TextForm                       from './textForm';
+import CtrlBtnForm                    from './ctrlBtnForm';
 
 export default class TryingDays extends React.Component {
 
@@ -17,10 +17,6 @@ export default class TryingDays extends React.Component {
     this.state = {
       checkBoxDatesKey: 1
     }
-  }
-
-  componentDidMount() {
-
   }
 
   componentWillReceiveProps(nextProps) {
@@ -33,7 +29,6 @@ export default class TryingDays extends React.Component {
       });
     }
   }
-
 
   send(){
     let reservation = this.refs.textForm.getFields();
@@ -76,6 +71,3 @@ export default class TryingDays extends React.Component {
     );
   }
 }
-
-
-            

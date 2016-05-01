@@ -1,7 +1,8 @@
 "use strict";
-import React from 'react';
-import moment from 'moment';
 
+// Vendor modules
+import React                          from 'react';
+import moment                         from 'moment';
 
 export function create2DArray(rows) {
   var arr = [];
@@ -51,7 +52,6 @@ export function isNotExpired(momentDate){
   return isNotExpired;
 }
 
-
 export function sortByHours(scheduleDay){
   scheduleDay.sort(function(a, b) {
 
@@ -85,7 +85,6 @@ export function getCourseTeacherLink(course, teacher){
   }
 }
 
-
 export function getDateRange(schedule){
   moment.locale('fr');
   if(schedule){
@@ -95,7 +94,6 @@ export function getDateRange(schedule){
   }
   return null;
 }
-
 
 export function getWeekDates(startDate, stopDate) {
     moment.locale('fr');
@@ -172,7 +170,6 @@ function getNextDayStart(dayStart){
   return nextDayStart;
 }
 
-
 export function getDayStartFromNow(dayStart){
   moment.locale('fr');
   //let dayStart = moment('2016-04-25T23:49:19.838Z').utcOffset("+00:00");
@@ -184,8 +181,6 @@ export function getDayStartFromNow(dayStart){
 
   return dayStart;
 }
-
-
 
 export function groupByDays(schedules){
   let scheduleDays = create2DArray(7);
@@ -202,7 +197,6 @@ export function groupByDays(schedules){
 
   return scheduleDays;
 }
-
 
 export function getError(name, errors) {
   if (errors && errors[name]){
@@ -230,7 +224,6 @@ export function renderRangeDates(start, end){
   }
 
   return rangeDates;
-
 }
 
 export function capitalizeFirstLetter(string) {
@@ -240,7 +233,6 @@ export function capitalizeFirstLetter(string) {
 export function getNumberDates(startDate, stopDate){
   return getWeekDates(startDate, stopDate).length;
 }
-
 
 export function momentSchedules(schedules){
   moment.locale('fr');
@@ -255,11 +247,10 @@ export function momentSchedules(schedules){
 
     return schedule;
   });
-
   return momentSchedules;
 }
-export function getRangeSchedules(schedules){
 
+export function getRangeSchedules(schedules){
   let dayStart, dayEnd = null;
   if(schedules){
     // convert the date of schedules list to moment date.
@@ -286,8 +277,8 @@ export function getRangeSchedules(schedules){
   }
 }
 
-// reservation/cours/yoga/marianne-girard/yoga/lundi/16.15-17.30/
 export function getUrlReservation(courseNameSlug, teacherSlug, courseTypeSlug, weekDayNameSlug, schedule){
+  // reservation/cours/yoga/marianne-girard/yoga/lundi/16.15-17.30/
   let hourStart = moment(schedule.dayStart).utcOffset("+00:00").format("HH.mm");
   let hourEnd = moment(schedule.dayEnd).utcOffset("+00:00").format("HH.mm");
 

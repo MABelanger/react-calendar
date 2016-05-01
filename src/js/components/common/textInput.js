@@ -3,16 +3,15 @@
 // Vendor module
 import React                          from "react";
 
-// require propTypes
-TextInput.propTypes = {
-  name: React.PropTypes.string.isRequired,
-  changeValue: React.PropTypes.func.isRequired,
-  placeholder: React.PropTypes.string,
-  value: React.PropTypes.string,
-  error: React.PropTypes.string
-};
-
 export default class TextInput extends React.Component {
+  // require propTypes
+  static propTypes = {
+    name: React.PropTypes.string.isRequired,
+    changeValue: React.PropTypes.func.isRequired,
+    placeholder: React.PropTypes.string,
+    value: React.PropTypes.string,
+    error: React.PropTypes.string
+  };
 
   handleChange(e) {
     const value = e.target.value;

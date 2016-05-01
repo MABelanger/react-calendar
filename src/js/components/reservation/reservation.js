@@ -20,12 +20,16 @@ import ReservationStore               from '../../stores/reservationStore';
 import * as ReservationActions        from '../../actions/reservationActions';
 import ReservationConstants           from '../../constants/reservationConstants';
 
-// Styles
+// Vendor styles
 import 'toastr/build/toastr.css';
+
+// Project styles
 import './styles.scss';
 
 const CHANGE_EVENT = ReservationConstants.CHANGE_EVENT;
 
+
+// TODO split this files
 export default class Reservation extends React.Component {
 
   static contextTypes = {
@@ -45,8 +49,6 @@ export default class Reservation extends React.Component {
       errors: {}
     };
   }
-
-
 
   componentWillMount() {
     ReservationStore.on(CHANGE_EVENT, this.getConfirmation);
@@ -313,16 +315,6 @@ export default class Reservation extends React.Component {
       }
     }
 
-/*
-<div className="row">
-  <div className="col-sm-12 text-center">
-    <BackBtn
-      txt='Retour au calendrier'
-      click={this.props.backBtnClick}
-    />
-  </div>
-</div>
-*/
     return (
       <div>
         <div className="row">

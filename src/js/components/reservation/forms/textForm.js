@@ -1,26 +1,24 @@
 "use strict";
 
-import React from 'react';
+// Vendor modules
+import React                          from 'react';
+import moment                         from 'moment';
 
-import moment from 'moment';
-import * as componentHelper       from '../../helper';
-import TextInput                  from '../../common/textInput';
-
+// Project modules
+import * as componentHelper           from '../../helper';
+import TextInput                      from '../../common/textInput';
 
 // Flux Reservation
-import ReservationStore              from '../../../stores/reservationStore';
-import * as ReservationActions       from '../../../actions/reservationActions';
-import ReservationConstants          from '../../../constants/reservationConstants';
+import ReservationStore               from '../../../stores/reservationStore';
+import * as ReservationActions        from '../../../actions/reservationActions';
+import ReservationConstants           from '../../../constants/reservationConstants';
 
 // TODO make a parent for this and freeDays...
-
 const NAME = 'name';
 const TEL = 'tel';
 const EMAIL = 'email';
 const NOTE = 'note';
-
 const CHANGE_EVENT = ReservationConstants.CHANGE_EVENT;
-
 
 export default class TextForm extends React.Component {
 
@@ -65,11 +63,6 @@ export default class TextForm extends React.Component {
     this.setState( newState );
   }
 
-  componentDidMount() {
-
-  }
-
-
   changeValue(name, value) {
     let newState = {};
     newState[name] = value;
@@ -79,7 +72,6 @@ export default class TextForm extends React.Component {
   render(){
     return (
       <form class="reserv" role="form">
-        
         <TextInput
           placeholder="Nom"
           name={NAME}
@@ -116,7 +108,6 @@ export default class TextForm extends React.Component {
           rows={2}
           changeValue={ (name, value) => { this.changeValue(name, value); } }
         />
-
       </form>
     );
   }

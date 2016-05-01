@@ -1,20 +1,18 @@
 "use strict";
-import moment from 'moment';
-import React from 'react';
-import ReactDOMServer from 'react-dom/server';
 
-import * as componentHelper       from '../../../../helper';  
+// Vendor modules
+import moment                         from 'moment';
+import React                          from 'react';
+import ReactDOMServer                 from 'react-dom/server';
 
-import Schedule from './schedule/schedule';
+// Project modules
+import * as componentHelper           from '../../../../helper';  
+import Schedule                       from './schedule/schedule';
 
 export default class ScheduleDay extends React.Component {
 
   constructor(props) {
     super(props);
-
-  }
-
-  componentDidMount() {
 
   }
 
@@ -30,7 +28,6 @@ export default class ScheduleDay extends React.Component {
         teacherSlug={this.props.teacherSlug}
       />;
     });
-
     return Schedules;
   }
 
@@ -50,7 +47,4 @@ export default class ScheduleDay extends React.Component {
       </ul>
     );
   }
-
 }
-
-

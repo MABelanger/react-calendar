@@ -1,30 +1,23 @@
 "use strict";
 
-import React from 'react';
-import ReactDOMServer from 'react-dom/server';
+// Vendor modules
+import React                          from 'react';
+import ReactDOMServer                 from 'react-dom/server';
 
-import * as componentHelper from '../../helper';
-
-import CourseType from './courseType/courseType';
-
-
-
-
+// Project modules
+import * as componentHelper           from '../../helper';
+import CourseType                     from './courseType/courseType';
 
 export default class RightInfo extends React.Component {
 
   constructor(props) {
     super(props);
-
-  }
-
-  componentDidMount() {
-
   }
 
   render(){
     let {course, teacher} = this.props;
     let CourseTypes = null;
+
     if(teacher){
       let courseTypes = teacher.course.courseTypes;
       CourseTypes = courseTypes.map((courseType, index) => {
@@ -36,6 +29,7 @@ export default class RightInfo extends React.Component {
           />;
       });
     }
+
     return (
       <div className="col-sm-4 info-pad-top-col-3">
         { CourseTypes }
@@ -43,5 +37,3 @@ export default class RightInfo extends React.Component {
     );
   }
 }
-
-

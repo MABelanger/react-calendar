@@ -1,11 +1,12 @@
 "use strict";
 
-import React from 'react';
+// Vendor modules
+import React                          from 'react';
+import moment                         from 'moment';
 
-import moment from 'moment';
-import * as componentHelper       from '../../../helper';
-import CheckBoxDay from './checkBoxDay';
-
+// Project modules
+import * as componentHelper           from '../../../helper';
+import CheckBoxDay                    from './checkBoxDay';
 
 export default class CheckBoxDates extends React.Component {
 
@@ -14,11 +15,6 @@ export default class CheckBoxDates extends React.Component {
     this.initialState = {};
     this.state = this.initialState;
   }
-
-  componentDidMount() {
-
-  }
-
 
   _getMounthYear(date){
     return moment(date).format('MMMM YYYY')
@@ -58,8 +54,6 @@ export default class CheckBoxDates extends React.Component {
     );
   }
 
-
-
   _splitWeekDatesByMounth(weekDates){
     let mounths = componentHelper.create2DArray(12);
     weekDates.map(function(date){
@@ -91,13 +85,11 @@ export default class CheckBoxDates extends React.Component {
   render(){
     let {dayStart, dayEnd, days} = this.props;
     let mounths = this._getMounths(dayStart, dayEnd, days);
-
-    var wrapperClass = 'form-group checkbox-wrapper';
+    let wrapperClass = 'form-group checkbox-wrapper';
     
     if (this.props.error && this.props.error.length > 0) {
       wrapperClass += " " + 'has-error';
     }
-
 
     return (
       <div className={wrapperClass}>
@@ -111,6 +103,3 @@ export default class CheckBoxDates extends React.Component {
     );
   }
 }
-
-
-            

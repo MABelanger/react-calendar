@@ -1,7 +1,8 @@
 "use strict";
-import React                      from "react";
 
-import moment                     from "moment";
+// Vendor modules
+import React                          from "react";
+import moment                         from "moment";
 
 export default class CheckboxDay extends React.Component {
 
@@ -26,7 +27,7 @@ export default class CheckboxDay extends React.Component {
   _getDayNumber(date){
     return moment( date ).utcOffset("+00:00").format('DD');
   }
-  // <input id={name} class="reservation-checkbox" name="selectedDays" type="checkbox" value={name} />
+
   render(){
     let {name} = this.props;
     let dayNumber = this._getDayNumber(name);
@@ -51,5 +52,3 @@ export default class CheckboxDay extends React.Component {
     );
   }
 }
-
-            

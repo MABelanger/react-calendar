@@ -1,21 +1,17 @@
 "use strict";
 
-import React                         from 'react';
-import ReactDOMServer                from 'react-dom/server';
+// Vendor modules
+import React                          from 'react';
+import ReactDOMServer                 from 'react-dom/server';
 
-// Project components
-import * as componentHelper          from '../../helper';
+// Project modules
+import * as componentHelper           from '../../helper';
 
 
 export default class LeftInfo extends React.Component {
 
   constructor(props) {
     super(props);
-
-  }
-
-  componentDidMount() {
-
   }
 
   _eachTr(label, data){
@@ -41,7 +37,6 @@ export default class LeftInfo extends React.Component {
     }
     return trList
   }
-
 
   _getLink(label, url){
     let link = null;

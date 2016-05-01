@@ -1,11 +1,13 @@
 "use strict";
 
-import React from 'react';
+// Vendor modules
+import React                          from 'react';
 
-import * as componentHelper       from '../../helper';
+// Project modules
+import * as componentHelper           from '../../helper';
 
+// Project styles
 import './styles.scss';
-
 
 export default class CheckBox extends React.Component {
 
@@ -16,12 +18,7 @@ export default class CheckBox extends React.Component {
     };
   }
 
-  componentDidMount() {
-
-  }
-
   render(){
-
     return (
       <td class="text-center reservation-day">
         <label class="reservation-label" for="02 mai 2016"> 02 </label>
@@ -30,8 +27,4 @@ export default class CheckBox extends React.Component {
       </td>
     );
   }
-
 }
-
-
-            
