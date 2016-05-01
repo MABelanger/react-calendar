@@ -64,9 +64,9 @@ export default class Dropdown extends React.Component {
   }
 
 
-  getItem(item){
+  getItem(item, index){
     return(
-      <li key={item._id}>
+      <li key={index}>
           <a href="#" onClick={ (e) => { this.onSelect(item); } }>
               { this.getName(item) }
           </a>
@@ -78,7 +78,7 @@ export default class Dropdown extends React.Component {
     var items = [];
     for (var index in list) {
       var item = list[index];
-      items.push( this.getItem(item) );
+      items.push( this.getItem(item, index) );
     }
     return items;
   }
