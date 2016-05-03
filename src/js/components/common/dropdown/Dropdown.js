@@ -63,7 +63,6 @@ export default class Dropdown extends React.Component {
     }
   }
 
-
   getItem(item, index){
     return(
       <li key={index}>
