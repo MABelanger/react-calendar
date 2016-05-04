@@ -22,27 +22,26 @@ export default class Course extends React.Component {
     this.setState({showTeachers: !this.state.showTeachers});
   }
 
-  getTeachers(){
-    return '';
+  _renderTeacher(index, classes, fullName, link){
+    return (
+      <div key={index} className={classes}>
+        <Link to={link}>
+          <div className="teacher-name">
+            {fullName}
+          </div>
+        </Link>
+      </div>
+    );
   }
 
   getRenderTeachers(course, classes){
     let teachers = course.teachers;
-
-    var renderTeachers = teachers.map( function(teacher, index){
-      let fullName = componentHelper.getFullName(teacher);
-      let link = componentHelper.getCourseTeacherLink(course, teacher);
-
-      return (
-        <div key={index} className={classes}>
-          <Link to={link}>
-            <div className="teacher-name">
-              {fullName}
-            </div>
-          </Link>
-        </div>
-      );
-
+    var renderTeachers = teachers.map( (teacher, index)=>{
+      if(teacher.course.isVisible){
+        let fullName = componentHelper.getFullName(teacher);
+        let link = componentHelper.getCourseTeacherLink(course, teacher);
+        return this._renderTeacher(index, classes, fullName, link);
+      }
     });
     return renderTeachers;
   }
