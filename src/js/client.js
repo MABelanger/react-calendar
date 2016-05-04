@@ -11,6 +11,7 @@ import Layout from './pages/Layout';
 import CalendarPage from './pages/Calendar';
 import CourseTeacherPage from './pages/CourseTeacher';
 import ReservationPage from './pages/Reservation';
+import ConferencePage from './pages/Conference';
 
 const APP = document.getElementById('app');
 ReactDOM.render(
@@ -29,9 +30,9 @@ ReactDOM.render(
               name="reservationPage"
               component={ReservationPage}>
       </Route>
-      <Route  path="settings"
-              name="nameSettings"
-              component={CalendarPage}>
+      <Route  path="/conferences"
+              name="conferencePage"
+              component={ConferencePage}>
       </Route>
     </Route>
   </Router>,APP);

@@ -1,4 +1,7 @@
 
+
+yoga, marieve monfils :
+  visible ou pas visible pour type de cours, fait planter...
 testingDay
 TestingDay
 testing_day
@@ -10,7 +13,6 @@ Ajouter une photo pour reservation.
 
 Faire le formulaire (copier admin)
 
-Envoyer un email 
 Confirmation email envoyé
 
 
