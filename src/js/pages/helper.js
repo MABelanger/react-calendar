@@ -71,8 +71,10 @@ export function getMatchCourseTypeSchedule( courses, courseNameSlug, teacherSlug
       return item.slug == courseTypeSlug; 
     });
 
-    let schedules = courseType.schedules;
-    matchSchedule = _getMatchSchedule(schedules, weekDayNameSlug, hourStartSlug, hourEndSlug);
+    if(courseType){
+      let schedules = courseType.schedules;
+      matchSchedule = _getMatchSchedule(schedules, weekDayNameSlug, hourStartSlug, hourEndSlug);
+    }
   }
   return {
     matchSchedule: matchSchedule,
