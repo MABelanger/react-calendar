@@ -10,7 +10,7 @@ import * as ConferenceActions         from '../../actions/conferenceActions';
 import ConferenceConstants            from '../../constants/conferenceConstants';
 
 // Project modules
-import ConferenceComponent            from '../../components/conference/conference';
+import ConferenceDetailComponent            from '../../components/conference/conferenceDetail';
 import * as helperPage                from '../helperPage';
 
 const CHANGE_EVENT = ConferenceConstants.CHANGE_EVENT;
@@ -59,7 +59,7 @@ export default class ConferenceDetailPage extends React.Component {
 
     let conference = helperPage.getConference(this.state.conferences, conferenceSlug, speakerSlug);
     return (
-      <ConferenceComponent
+      <ConferenceDetailComponent
         conference={conference}
       />
     );

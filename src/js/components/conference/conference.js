@@ -62,7 +62,7 @@ export default class Conference extends React.Component {
   showMore(e, conference){
     e.preventDefault();
     const { router } = this.context;
-    let link = componentHelper.getConferenceLink(conference);
+    let link = componentHelper.getConferenceDetailLink(conference);
     router.push(link);
   }
 
