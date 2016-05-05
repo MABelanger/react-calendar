@@ -85,6 +85,15 @@ export function getCourseTeacherLink(course, teacher){
   }
 }
 
+// /conferences/introduction-a-laromatherapie/brigitte-berube/
+export function getConferenceDetailLink(conference){
+  if(conference){
+    return '/reservation/conference/' + conference.slug + '/' + conference.speaker.slug;
+  }
+}
+
+
+
 export function getDateRange(schedule){
   moment.locale('fr');
   if(schedule){
@@ -204,6 +213,12 @@ export function getError(name, errors) {
   } else {
     return '';
   }
+}
+
+// 28 avril 2016
+export function renderDateDDMMMM(date){
+  moment.locale('fr');
+  return moment( date ).utcOffset("+00:00").format("DD MMMM");
 }
 
 export function renderRangeDates(start, end){

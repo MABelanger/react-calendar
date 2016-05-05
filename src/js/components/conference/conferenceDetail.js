@@ -11,7 +11,7 @@ import './styles.scss';
 // Project modules
 
 
-export default class Conference extends React.Component {
+export default class ConferenceDetail extends React.Component {
 
   static contextTypes = {
     router: React.PropTypes.object

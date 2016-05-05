@@ -4,7 +4,7 @@
 import React                          from 'react';
 
 // Project modules
-import CalendarComponent              from '../components/calendar/calendar';
+import CalendarComponent              from '../../components/calendar/calendar';
 
 export default class Calendar extends React.Component {
   render(){

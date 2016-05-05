@@ -8,10 +8,11 @@ import { Router, Route, IndexRoute,
 
 // Project modules
 import Layout from './pages/Layout';
-import CalendarPage from './pages/Calendar';
-import CourseTeacherPage from './pages/CourseTeacher';
-import ReservationPage from './pages/Reservation';
-import ConferencePage from './pages/Conference';
+import CalendarPage from './pages/calendar/CalendarPage';
+import CourseTeacherPage from './pages/calendar/CourseTeacherPage';
+import ReservationCoursePage from './pages/calendar/ReservationCoursePage';
+import ConferencesPage from './pages/conference/ConferencesPage';
+import ConferenceDetailPage from './pages/conference/ConferenceDetailPage';
 
 const APP = document.getElementById('app');
 ReactDOM.render(
@@ -28,12 +29,16 @@ ReactDOM.render(
       </Route>
       <Route  path="/reservation/cours/:courseNameSlug/:teacherSlug/:courseTypeSlug/:weekDayNameSlug/:hourStartSlug-:hourEndSlug"
               name="reservationPage"
-              component={ReservationPage}>
+              component={ReservationCoursePage}>
       </Route>
       <Route  path="/conferences"
               name="conferencePage"
-              component={ConferencePage}>
+              component={ConferencesPage}>
+      </Route>
+      <Route  path="/reservation/conference/:conferenceSlug/:speakerSlug"
+              name="conferenceDetailPage"
+              component={ConferenceDetailPage}>
       </Route>
     </Route>
   </Router>,APP);
-
+// 

@@ -5,13 +5,13 @@ import React                          from 'react';
 import _                              from 'lodash'
 
 // Flux ConferenceStore
-import ConferenceStore                from '../stores/conferenceStore';
-import * as ConferenceActions         from '../actions/conferenceActions';
-import ConferenceConstants            from '../constants/conferenceConstants';
+import ConferenceStore                from '../../stores/conferenceStore';
+import * as ConferenceActions         from '../../actions/conferenceActions';
+import ConferenceConstants            from '../../constants/conferenceConstants';
 
 // Project modules
-import ConferencesComponent            from '../components/conference/conferences';
-import * as pageHelper                from './helper';
+import ConferencesComponent            from '../../components/conference/conferences';
+import * as helperPage                from '../helperPage';
 
 const CHANGE_EVENT = ConferenceConstants.CHANGE_EVENT;
 

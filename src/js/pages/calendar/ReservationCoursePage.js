@@ -5,13 +5,13 @@ import React                          from 'react';
 import _                              from 'lodash'
 
 // Flux CourseStore
-import CourseStore                    from '../stores/courseStore';
-import * as CourseActions             from '../actions/courseActions';
-import CourseConstants                from '../constants/courseConstants';
+import CourseStore                    from '../../stores/courseStore';
+import * as CourseActions             from '../../actions/courseActions';
+import CourseConstants                from '../../constants/courseConstants';
 
 // Project modules
-import Reservation                    from '../components/reservation/reservation';
-import * as pageHelper                from './helper';
+import ReservationCourse                    from '../../components/reservation/reservationCourse';
+import * as helperPage                from '../helperPage';
 
 const CHANGE_EVENT = CourseConstants.CHANGE_EVENT;
 
@@ -59,11 +59,11 @@ export default class CourseTeacherPage extends React.Component {
     const { params } = this.props;
     const { courseNameSlug, teacherSlug, courseTypeSlug, weekDayNameSlug, hourStartSlug, hourEndSlug } = params;
 
-    let { course, teacher} = pageHelper.getCourseTeacher(this.state.courses, courseNameSlug, teacherSlug);
-    let {courseType, matchSchedule} = pageHelper.getMatchCourseTypeSchedule(this.state.courses, courseNameSlug, teacherSlug, courseTypeSlug, weekDayNameSlug, hourStartSlug, hourEndSlug );
+    let { course, teacher} = helperPage.getCourseTeacher(this.state.courses, courseNameSlug, teacherSlug);
+    let {courseType, matchSchedule} = helperPage.getMatchCourseTypeSchedule(this.state.courses, courseNameSlug, teacherSlug, courseTypeSlug, weekDayNameSlug, hourStartSlug, hourEndSlug );
 
     return (
-      <Reservation
+      <ReservationCourse
         course={course}
         teacher={teacher}
         courseType={courseType}

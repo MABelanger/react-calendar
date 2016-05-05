@@ -1,0 +1,43 @@
+$bgcolor: #F5F5F5;
+$size-title: 15px;
+$menu-hover: #EEEEEE;
+$link-hover: #999999;
+$txt-color-mid: #5C753F;
+$logo-fill: #333;
+
+.conf-top-container {
+    margin-top: 30px;
+}
+
+.conf-container {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid $link-hover;
+}
+
+.conf-image {
+    max-width: 130px;
+}
+
+.conf-table {
+    margin-left: 14px;
+}
+
+.conf-description {
+    margin-left:14px;
+    padding-top:.2em;
+    text-align: justify;
+}
+
+.conf-description-detail {
+    text-align: justify;
+    padding-top: 1em;
+}
+
+.marg-bottom {
+    margin-bottom: 20px;
+}
+
+.row-top-margin {
+    margin-top:30px;
+}

@@ -6,11 +6,11 @@ import _                              from 'lodash'
 import { hashHistory }                from 'react-router'
 
 // Proejct modules
-import CourseTeacher                  from '../components/courseTeacher/courseTeacher';
-import CourseStore                    from '../stores/courseStore';
-import CourseConstants                from '../constants/courseConstants';
-import * as CourseActions             from '../actions/courseActions';
-import * as pageHelper                from './helper';
+import CourseTeacher                  from '../../components/courseTeacher/courseTeacher';
+import CourseStore                    from '../../stores/courseStore';
+import CourseConstants                from '../../constants/courseConstants';
+import * as CourseActions             from '../../actions/courseActions';
+import * as helperPage                from '../helperPage';
 
 
 const CHANGE_EVENT = CourseConstants.CHANGE_EVENT;
@@ -79,7 +79,7 @@ export default class CourseTeacherPage extends React.Component {
     const { courseNameSlug, teacherSlug } = params;
     const { date, filter } = query;
 
-    let { course, teacher} = pageHelper.getCourseTeacher(this.state.courses, courseNameSlug, teacherSlug);
+    let { course, teacher} = helperPage.getCourseTeacher(this.state.courses, courseNameSlug, teacherSlug);
 
     return (
       <div className="container" style={{backgroundColor:"#F5F5F5"}}>
