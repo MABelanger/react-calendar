@@ -64,11 +64,13 @@ export default class CheckBoxDates extends React.Component {
   }
 
   _getMounths(dayStart, dayEnd, days){
+    console.log('days', days)
     let weekDates = [];
-    if(days && days.length > 0){
+    if(days != undefined ){ // 
       weekDates = componentHelper.getDays(days);
     }else{
       weekDates = componentHelper.getWeekDates(dayStart, dayEnd);
+      
     }
     
     let mounths = this._splitWeekDatesByMounth(weekDates);

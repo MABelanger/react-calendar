@@ -1,14 +1,13 @@
+hide pass dates.
+nb cours selon date aujourd'hui.
 
+
+
+
+Nice to have : 
 make Slug modules
-
-yoga, marieve monfils :
-  visible ou pas visible pour type de cours, fait planter...
-testingDay
-TestingDay
-testing_day
-
 Partager sur facebook...
-Ajouter une photo pour reservation.
+Ajouter une photo pour reservation. 
 
 
 

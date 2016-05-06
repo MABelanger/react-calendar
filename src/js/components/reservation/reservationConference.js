@@ -129,8 +129,7 @@ export default class Reservation extends React.Component {
 
   }
 
-  send(){
-    let {conference, schedule} = this.props;
+  send(conference, schedule){
     let reservation = this.refs.textForm.getFields();
     let reservationHeader = ReactDomServer.renderToStaticMarkup(
         this._renderReservationHeader(conference, schedule)
@@ -169,7 +168,7 @@ export default class Reservation extends React.Component {
               errors={this.state.errors}
             />
             <CtrlBtnForm
-              send={ () => {this.send();} }
+              send={ () => {this.send(conference, schedule);} }
               cancel={ () => {this.cancel();} }
             />
           </div>

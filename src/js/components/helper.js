@@ -102,7 +102,7 @@ export function getConferenceReservationLink(conference, schedule){
             + conference.slug + '/' 
             + conference.speaker.slug + '/'
             + daySlug + '/'
-            + hourSlug
+            + hourSlug;
   }
 }
 
@@ -139,7 +139,7 @@ export function getWeekDates(startDate, stopDate) {
 
 export function getDays(_days) {
     moment.locale('fr');
-    let days = null;
+    let days = [];
     if(_days && _days.length > 0){
       days = _days.map((day) =>{
         return moment( day ).utcOffset("+00:00");
@@ -204,6 +204,7 @@ export function getDayStartFromNow(dayStart){
 
   return dayStart;
 }
+
 
 export function groupByDays(schedules){
   let scheduleDays = create2DArray(7);

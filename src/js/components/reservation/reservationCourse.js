@@ -93,9 +93,7 @@ export default class Reservation extends React.Component {
       weekDayName = componentHelper.getWeekDayName(schedule.dayStart);
     }
 
-    return weekDayName + " du " + rangeDates + " " + "(" + numberDates + " cours)"
-
-    ;
+    return weekDayName + " du " + rangeDates + " " + "(" + numberDates + " cours)";
   }
   componentWillReceiveProps(nextProps) {
     if(nextProps.schedule){
@@ -229,14 +227,16 @@ export default class Reservation extends React.Component {
 
     let freeDays = schedule.freeDays.map((freeDay, index) =>{
 
-      // TODO to remove whe fix the db
-      if(! freeDay.day){
-        console.error('! freeDay', freeDay._id)
-        return moment('2016-01-11T16:15:00.000Z');
-      }
+      // // TODO to remove whe fix the db
+      // if(! freeDay.day){
+      //   console.error('! freeDay', freeDay._id)
+      //   return moment('2016-01-11T16:15:00.000Z');
+      // }
         
       return freeDay.day;
     });
+
+    console.log('freeDays', freeDays)
 
     return(
       <FreeDaysForm 
