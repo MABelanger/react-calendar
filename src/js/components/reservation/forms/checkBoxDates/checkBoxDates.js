@@ -63,14 +63,14 @@ export default class CheckBoxDates extends React.Component {
     return componentHelper.removeEmptyArray(mounths);    
   }
 
+  // used by FreeDays and OnOrManyDays
+  // if days == undefined -> OnOrManyDays else is FreeDays
   _getMounths(dayStart, dayEnd, days){
-    console.log('days', days)
     let weekDates = [];
-    if(days != undefined ){ // 
+    if(days != undefined ){
       weekDates = componentHelper.getDays(days);
     }else{
       weekDates = componentHelper.getWeekDates(dayStart, dayEnd);
-      
     }
     
     let mounths = this._splitWeekDatesByMounth(weekDates);

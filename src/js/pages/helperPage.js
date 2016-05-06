@@ -113,3 +113,37 @@ export function getMatchReservationSchedule(schedules, dateSlug, hourStartSlug){
 
     return matchSchedule;
 }
+
+
+function _getFreeDaysFromNow(freeDays){
+  let freeDaysFromNow = undefined;
+  freeDays.map(function(freeDay){
+    console.log('_getFreeDaysFromNow.freeDay', freeDay)
+    let day = moment( freeDay.day ).utcOffset("+00:00");
+    if(componentHelper.isNotExpired(day)){
+      if(freeDaysFromNow == undefined){
+        freeDaysFromNow = []
+      }
+      freeDaysFromNow.push(freeDay);
+    }
+  });
+  return freeDaysFromNow;
+}
+
+function _getDayStartFromNow(dayStartISOString){
+  let day = moment( dayStartISOString ).utcOffset("+00:00");
+  return componentHelper.getDayStartFromNow(day).toISOString();
+}
+
+// return date from features.
+export function getReservationScheduleFromNow(schedule){
+  
+  if(schedule){
+    console.log('before', schedule.freeDays)
+    schedule.dayStart = _getDayStartFromNow(schedule.dayStart);
+    schedule.freeDays = _getFreeDaysFromNow(schedule.freeDays);
+    console.log('after', schedule.freeDays)
+  }
+
+  return schedule;
+}

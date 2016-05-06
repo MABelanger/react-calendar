@@ -100,14 +100,25 @@ export default class Reservation extends React.Component {
       let schedule = nextProps.schedule;
 
       let allDaysTitle =  componentHelper.capitalizeFirstLetter(this._getTitleAllDays(schedule));
+      let freeDays = schedule.freeDays;
+      let dropDownList = [];
+
+      console.log('schedule', schedule)
+      // show in the select only if freeDays have days.
+      if (freeDays && freeDays.length >0){
+        dropDownList.push(
+          {title: "Un cour gratuit", form: 'FREE_DAYS'}
+        );
+      }
+
+      dropDownList.push(
+        {title: allDaysTitle, form: 'ALL_DAYS'},
+        {title: "Une ou plusieur journee de cours", form: 'ONE_OR_MANY_DAYS'},
+        {title: "Un cour d'essaie", form: 'TRYING_DAYS'}
+      );
 
       this.setState({
-        list : [
-          {title: "Un cour gratuit", form: 'FREE_DAYS'},
-          {title: allDaysTitle, form: 'ALL_DAYS'},
-          {title: "Une ou plusieur journee de cours", form: 'ONE_OR_MANY_DAYS'},
-          {title: "Un cour d'essaie", form: 'TRYING_DAYS'}
-        ]
+        dropDownList : dropDownList
       });
     }
     if(nextProps.course){
@@ -236,8 +247,6 @@ export default class Reservation extends React.Component {
       return freeDay.day;
     });
 
-    console.log('freeDays', freeDays)
-
     return(
       <FreeDaysForm 
       freeDays={freeDays}
@@ -326,7 +335,7 @@ export default class Reservation extends React.Component {
               <br/>
               <Dropdown
                 disabled={function(){}}
-                list={this.state.list}
+                list={this.state.dropDownList}
                 onSelect={this.select.bind(this)}
                 cbGetName={this.getName.bind(this)}
                 cbGetValue={this.getValue.bind(this)}

@@ -62,6 +62,11 @@ export default class CourseTeacherPage extends React.Component {
     let { course, teacher} = helperPage.getCourseTeacher(this.state.courses, courseNameSlug, teacherSlug);
     let {courseType, matchSchedule} = helperPage.getMatchCourseTypeSchedule(this.state.courses, courseNameSlug, teacherSlug, courseTypeSlug, weekDayNameSlug, hourStartSlug, hourEndSlug );
 
+    
+    // if(matchSchedule)
+    //   matchSchedule.dayStart = "2016-01-04T15:30:00.000Z"
+
+    matchSchedule = helperPage.getReservationScheduleFromNow(matchSchedule)
     return (
       <ReservationCourse
         course={course}
