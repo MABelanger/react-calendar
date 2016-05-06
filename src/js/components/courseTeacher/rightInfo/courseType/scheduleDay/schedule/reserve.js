@@ -1,10 +1,13 @@
 "use strict";
 
 // Vendor modules
-import moment from 'moment';
-import React from 'react';
-import {Link} from 'react-router';
-import ReactDOMServer from 'react-dom/server';
+import moment                         from 'moment';
+import React                          from 'react';
+import {Link}                         from 'react-router';
+import ReactDOMServer                 from 'react-dom/server';
+
+// Project modules
+import * as componentHelper           from '../../../../../helper';
 
 export default class Reserve extends React.Component {
 
@@ -27,11 +30,21 @@ export default class Reserve extends React.Component {
     );
   }
 
+  _renderIsCompleted(){
+    return (
+      <strong>
+        <u>Terminé</u>
+      </strong>
+    );
+  }
+
   render(){
     let schedule = this.props.schedule;
     if(schedule.isFull){
       return this._renderIsFull();
-    } else{
+    } else if ( !componentHelper.isNotExpired(schedule.dayEnd) ){
+      return this._renderIsCompleted();
+    } else {
       return this.renderReserve(schedule);
     }
   }

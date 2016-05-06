@@ -34,7 +34,7 @@ export default class Schedule extends React.Component {
   render(){
     return(
       <li className="coursed-li-hour">
-        <Hours schedule={this.props.schedule} />
+        <Hours schedule={this.props.schedule} />&nbsp;
         <Reserve
           schedule={this.props.schedule}
           url={this.getUrlReservation()}
