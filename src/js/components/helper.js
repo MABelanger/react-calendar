@@ -88,7 +88,21 @@ export function getCourseTeacherLink(course, teacher){
 // /conferences/introduction-a-laromatherapie/brigitte-berube/
 export function getConferenceDetailLink(conference){
   if(conference){
-    return '/reservation/conference/' + conference.slug + '/' + conference.speaker.slug;
+    return '/conferences/detail/' + conference.slug + '/' + conference.speaker.slug;
+  }
+}
+// ***
+// /reservation/conference/introduction-a-laromatherapie/brigitte-berube/2016-06-05/09.00
+export function getConferenceReservationLink(conference, schedule){
+  if(conference){
+    let day = moment( schedule.dayStart ).utcOffset("+00:00")
+    let daySlug = day.format('YYYY-MM-DD');
+    let hourSlug = day.format('HH.mm');
+    return '/reservation/conference/' 
+            + conference.slug + '/' 
+            + conference.speaker.slug + '/'
+            + daySlug + '/'
+            + hourSlug
   }
 }
 

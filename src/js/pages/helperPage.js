@@ -99,3 +99,17 @@ export function getMatchCourseTypeSchedule( courses, courseNameSlug, teacherSlug
     courseType: courseType
   };
 }
+
+export function getMatchReservationSchedule(schedules, dateSlug, hourStartSlug){
+  let matchSchedule = null;
+
+  if (schedules) {
+    matchSchedule = _.find(schedules, function(item) {
+      let day = moment( item.dayStart ).utcOffset("+00:00")
+      return day.format('YYYY-MM-DD') == dateSlug
+          && day.format('HH.mm') == hourStartSlug
+    });
+  }
+
+    return matchSchedule;
+}

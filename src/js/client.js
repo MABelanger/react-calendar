@@ -13,6 +13,8 @@ import CourseTeacherPage from './pages/calendar/CourseTeacherPage';
 import ReservationCoursePage from './pages/calendar/ReservationCoursePage';
 import ConferencesPage from './pages/conference/ConferencesPage';
 import ConferenceDetailPage from './pages/conference/ConferenceDetailPage';
+import ReservationConferencePage from './pages/conference/ReservationConferencePage';
+
 
 const APP = document.getElementById('app');
 ReactDOM.render(
@@ -35,9 +37,14 @@ ReactDOM.render(
               name="conferencePage"
               component={ConferencesPage}>
       </Route>
-      <Route  path="/reservation/conference/:conferenceSlug/:speakerSlug"
+      <Route  path="/conferences/detail/:conferenceSlug/:speakerSlug"
               name="conferenceDetailPage"
               component={ConferenceDetailPage}>
+      </Route>
+      
+      <Route  path="/reservation/conference/:conferenceSlug/:speakerSlug/:dateSlug/:hourStartSlug"
+              name="conferenceDetailPage"
+              component={ReservationConferencePage}>
       </Route>
     </Route>
   </Router>,APP);

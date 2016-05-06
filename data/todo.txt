@@ -1,4 +1,5 @@
 
+make Slug modules
 
 yoga, marieve monfils :
   visible ou pas visible pour type de cours, fait planter...

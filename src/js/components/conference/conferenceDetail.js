@@ -2,6 +2,7 @@
 
 // Vendor modules
 import React                          from 'react';
+import {Link}                         from 'react-router';
 import Request                        from 'superagent';
 import * as componentHelper           from '../helper';
 import BackBtn                        from '../common/backBtn';
@@ -25,20 +26,36 @@ export default class ConferenceDetail extends React.Component {
 
   }
 
-  _renderSchedule(schedule){
+  _renderIsFull(isFull){
+    let Full = null;
+    if(isFull){
+      Full = <span><strong><u>Complet</u></strong></span>;
+    }
+    return Full;
+
+  }
+  _renderSchedule(conference, schedule){
     let day = componentHelper.renderDateDDMMMM(schedule.dayStart);
     let {hourStart, hourEnd} = componentHelper.getHourRange(schedule);
+    let Full = this._renderIsFull(schedule.isFull);
+    let link = componentHelper.getConferenceReservationLink(conference, schedule);
     return(
-      <div class="confd-day">08 juillet 2016, <strong>19:00 à 21:00</strong> <a class="link-url" href="#/day_conferences/reserve/94">Réserver</a> <span class="ng-hide"><strong><u>Complet</u></strong></span></div>
-    );
-    return(
-      <div>{day} de <strong>{hourStart} à {hourEnd}</strong><br/></div>
+      <div class="confd-day">
+        {day},
+        <strong>{hourStart} à {hourEnd}</strong>&nbsp;
+        <Link 
+          class="link-url"
+          to={link}
+         >Réserver
+        </Link>
+        {Full}
+      </div>
     );
   }
 
-  _renderSchedules(schedules){
+  _renderSchedules(conference, schedules){
     let Schedules = schedules.map((schedule)=>{
-      return this._renderSchedule(schedule);
+      return this._renderSchedule(conference, schedule);
     });
 
     return Schedules;
@@ -46,7 +63,7 @@ export default class ConferenceDetail extends React.Component {
 
   _renderInfoTable(conference){
     let schedules = conference.schedules;
-    let Schedules = this._renderSchedules(schedules);
+    let Schedules = this._renderSchedules(conference, schedules);
     let fullName = componentHelper.getFullName(conference.speaker);
     let tel = conference.tel;
     let schoolName = conference.schoolName;
@@ -84,7 +101,7 @@ export default class ConferenceDetail extends React.Component {
               <span dangerouslySetInnerHTML={{__html: price }}></span>
             </td>
           </tr>
-          <tr class="ng-hide">
+          <tr>
             <td class="all-label all-label-align">Note:</td>
             <td>
               <span dangerouslySetInnerHTML={{__html: note }}></span>
@@ -95,11 +112,10 @@ export default class ConferenceDetail extends React.Component {
     );
   }
 
-  showMore(e, conference){
+  backConferences(e){
     e.preventDefault();
     const { router } = this.context;
-    let link = componentHelper.getConferenceLink(conference);
-    router.push(link);
+    router.push('/conferences');
   }
 
   render(){
@@ -138,7 +154,7 @@ export default class ConferenceDetail extends React.Component {
             <div className="text-center">
               <BackBtn
                 txt="Retour Conférence et Ateliers"
-                click={(e) => {this.showMore(e, conference);}}
+                click={(e) => {this.backConferences(e);}}
               />
             </div>
           </div>
