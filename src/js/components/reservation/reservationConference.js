@@ -132,8 +132,11 @@ export default class Reservation extends React.Component {
     this.backBtnClick();
   }
 
+  // ReactDomServer.renderToStaticMarkup(this.state.reservationHeader);
   _renderReservationHeader(conference, schedule){
+    moment.locale('fr'); 
     let fullName = componentHelper.getFullName(conference.speaker);
+    let day = moment( schedule.dayStart ).utcOffset("+00:00").format("LL");
     let {hourStart, hourEnd} = componentHelper.getHourRange(schedule);
 
     return(
@@ -142,7 +145,7 @@ export default class Reservation extends React.Component {
         <strong>{conference.title}</strong>&nbsp;
         avec&nbsp;
         <strong>{fullName}</strong>&nbsp;
-        12 novembre 2016 de {hourStart} à {hourEnd}. 
+        le {day} de {hourStart} à {hourEnd}. 
       </span>
     )
 
