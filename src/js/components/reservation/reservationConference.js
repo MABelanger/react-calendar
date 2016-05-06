@@ -87,28 +87,6 @@ export default class Reservation extends React.Component {
     // }
   }
 
-  _getReservationHeader(course, teacher, courseType, schedule){
-
-    let courseName = null;
-    let courseTypeName = null;
-    let fullName = null;
-    let {hourStart, hourEnd} = componentHelper.getHourRange(schedule);
-    let weekDayName = null;
-
-    if(course && teacher && courseType && schedule){
-      courseName = course.name;
-      courseTypeName = courseType.name;
-      fullName = componentHelper.getFullName(teacher)
-      weekDayName = componentHelper.getWeekDayName(schedule.dayStart);
-    }
-
-    return(
-      <span>
-        Demande de réservation pour cours <strong>{courseName}, {courseTypeName} </strong>
-        avec {fullName} le {weekDayName} de {hourStart} à {hourEnd}.
-      </span>
-    );
-  }
 
 
 
@@ -132,7 +110,7 @@ export default class Reservation extends React.Component {
     this.backBtnClick();
   }
 
-  // ReactDomServer.renderToStaticMarkup(this.state.reservationHeader);
+
   _renderReservationHeader(conference, schedule){
     moment.locale('fr'); 
     let fullName = componentHelper.getFullName(conference.speaker);
@@ -151,23 +129,20 @@ export default class Reservation extends React.Component {
 
   }
 
-  send(currentForm, reservation){
-    reservation.reservationHeader = this._renderReservationHeader();
+  send(){
+    let {conference, schedule} = this.props;
+    let reservation = this.refs.textForm.getFields();
+    let reservationHeader = ReactDomServer.renderToStaticMarkup(
+        this._renderReservationHeader(conference, schedule)
+    );
+    reservation.reservationHeader = reservationHeader + "<br/>";
     ReservationActions.sendReservation(reservation);
   }
 
 
-
-
-
-  send(){
-    let reservation = this.refs.textForm.getFields();
-    reservation.selectedDates = this.props.selectedDates;
-    this.props.send(reservation);
-  }
-
   cancel(){
-    this.props.cancel();
+    const { router } = this.context
+    router.push('/conferences')
   }
 
 
@@ -191,7 +166,7 @@ export default class Reservation extends React.Component {
             <br/>
             <TextForm 
               ref="textForm"
-              errors={this.props.errors}
+              errors={this.state.errors}
             />
             <CtrlBtnForm
               send={ () => {this.send();} }
