@@ -3,6 +3,7 @@
 // Vendor modules
 import React                          from "react";
 import { IndexLink, Link }            from "react-router";
+import './nav.scss';
 
 export default class Nav extends React.Component {
   constructor() {
@@ -25,7 +26,7 @@ export default class Nav extends React.Component {
     const navClass = collapsed ? "collapse" : "";
 
     return (
-      <nav className="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <nav className="navbar transparent navbar-inverse navbar-inner navbar-fixed-top" role="navigation">
         <div className="container">
           <div className="navbar-header">
             <button type="button" className="navbar-toggle" onClick={this.toggleCollapse.bind(this)} >
