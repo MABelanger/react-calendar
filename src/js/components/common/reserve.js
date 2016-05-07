@@ -7,7 +7,7 @@ import {Link}                         from 'react-router';
 import ReactDOMServer                 from 'react-dom/server';
 
 // Project modules
-import * as componentHelper           from '../../../../../helper';
+import * as componentHelper           from '../helper';
 
 export default class Reserve extends React.Component {
 
@@ -42,8 +42,10 @@ export default class Reserve extends React.Component {
     let schedule = this.props.schedule;
     if(schedule.isFull){
       return this._renderIsFull();
+
     } else if ( !componentHelper.isNotExpired(schedule.dayEnd) ){
       return this._renderIsCompleted();
+
     } else {
       return this.renderReserve(schedule);
     }

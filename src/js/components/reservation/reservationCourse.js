@@ -93,7 +93,7 @@ export default class Reservation extends React.Component {
       weekDayName = componentHelper.getWeekDayName(schedule.dayStart);
     }
 
-    return weekDayName + " du " + rangeDates + " " + "(" + numberDates + " cours)";
+    return weekDayName + ", du " + rangeDates + " " + "(" + numberDates + " cours)";
   }
   componentWillReceiveProps(nextProps) {
     if(nextProps.schedule){

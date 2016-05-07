@@ -6,7 +6,7 @@ import React                          from 'react';
 import ReactDOMServer                 from 'react-dom/server';
 
 // Project modules
-import * as componentHelper           from '../../../../../helper';
+import * as componentHelper           from '../helper';
 
 export default class Hours extends React.Component {
 

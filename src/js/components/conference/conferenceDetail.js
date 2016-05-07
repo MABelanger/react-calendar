@@ -7,6 +7,9 @@ import Request                        from 'superagent';
 import * as componentHelper           from '../helper';
 import BackBtn                        from '../common/backBtn';
 
+import Reserve                        from '../common/reserve';
+import Hours                          from '../common/hours';
+
 import './styles.scss';
 
 // Project modules
@@ -36,19 +39,15 @@ export default class ConferenceDetail extends React.Component {
   }
   _renderSchedule(conference, schedule){
     let day = componentHelper.renderDateDDMMMM(schedule.dayStart);
-    let {hourStart, hourEnd} = componentHelper.getHourRange(schedule);
-    let Full = this._renderIsFull(schedule.isFull);
-    let link = componentHelper.getConferenceReservationLink(conference, schedule);
+
     return(
       <div class="confd-day">
         {day},
-        <strong>{hourStart} à {hourEnd}</strong>&nbsp;
-        <Link 
-          class="link-url"
-          to={link}
-         >Réserver
-        </Link>
-        {Full}
+        <Hours schedule={schedule} />&nbsp;
+        <Reserve
+          schedule={schedule}
+          url={link}
+        />
       </div>
     );
   }

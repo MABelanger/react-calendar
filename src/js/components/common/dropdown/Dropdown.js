@@ -15,8 +15,7 @@ export default class Dropdown extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      open: false,
-      dirty: false
+      open: false
     };
     // bind the functions to this because is not Autobinding with class es6
   }
@@ -74,6 +73,7 @@ export default class Dropdown extends React.Component {
   }
 
   getRenderList(list){
+    console.log('list', list)
     var items = [];
     for (var index in list) {
       var item = list[index];
@@ -93,6 +93,8 @@ export default class Dropdown extends React.Component {
       'btn-group' : true,
       'open': ( this.state.open == true ),
     });
+
+
 
 
     var button = ClassNames(this.props.className, {

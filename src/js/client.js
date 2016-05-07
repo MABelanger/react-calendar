@@ -3,7 +3,7 @@
 // Vendor modules
 import React                          from "react";
 import ReactDOM                       from "react-dom";
-import { Router, Route, IndexRoute,
+import { Router, Route, IndexRoute, Redirect,
   hashHistory, browserHistory }       from "react-router";
 
 // Project modules
@@ -19,30 +19,32 @@ import ReservationConferencePage from './pages/conference/ReservationConferenceP
 const APP = document.getElementById('app');
 ReactDOM.render(
   <Router history={hashHistory}>
+    <Redirect from="/" to="calendrier/cours/" />
     <Route  path="/"
             component={Layout}>
-      <IndexRoute
+
+      <Route path = "calendrier/cours/"
               name="calendarPage"
               component={CalendarPage}>
-      </IndexRoute>
-      <Route  path="/calendrier/cours/:courseNameSlug/:teacherSlug"
+      </Route>
+      <Route  path="calendrier/cours/:courseNameSlug/:teacherSlug"
               name="courseTeacherPage"
               component={CourseTeacherPage}>
       </Route>
-      <Route  path="/reservation/cours/:courseNameSlug/:teacherSlug/:courseTypeSlug/:weekDayNameSlug/:hourStartSlug-:hourEndSlug"
+      <Route  path="reservation/cours/:courseNameSlug/:teacherSlug/:courseTypeSlug/:weekDayNameSlug/:hourStartSlug-:hourEndSlug"
               name="reservationPage"
               component={ReservationCoursePage}>
       </Route>
-      <Route  path="/conferences"
+      <Route  path="conferences"
               name="conferencePage"
               component={ConferencesPage}>
       </Route>
-      <Route  path="/conferences/detail/:conferenceSlug/:speakerSlug"
+      <Route  path="conferences/detail/:conferenceSlug/:speakerSlug"
               name="conferenceDetailPage"
               component={ConferenceDetailPage}>
       </Route>
       
-      <Route  path="/reservation/conference/:conferenceSlug/:speakerSlug/:dateSlug/:hourStartSlug"
+      <Route  path="reservation/conference/:conferenceSlug/:speakerSlug/:dateSlug/:hourStartSlug"
               name="conferenceDetailPage"
               component={ReservationConferencePage}>
       </Route>

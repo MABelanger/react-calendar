@@ -7,9 +7,9 @@ import ReactDOMServer                 from 'react-dom/server';
 import * as componentHelper           from '../../../../../helper';
 
 // Project modules
-import Reserve from './reserve';
-import FreeDay from './freeDay';
-import Hours from './hours';
+import Reserve                        from '../../../../../common/reserve';
+import Hours                          from '../../../../../common/hours';
+import FreeDay                        from './freeDay';
 
 export default class Schedule extends React.Component {
 
