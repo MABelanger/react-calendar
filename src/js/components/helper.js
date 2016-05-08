@@ -172,6 +172,19 @@ export function getNow(){
   return moment(new Date(Date.now() - tzoffset)).utcOffset(0);//.toISOString();
 }
 
+export function isScheduleExpired(schedules){
+  let isExpired = true;
+  if(schedules && schedules.length > 0){
+    for(let index in schedules){
+      let dayEnd = schedules[index].dayEnd;
+      if( isNotExpired(dayEnd) ){
+        isExpired = false;
+      }
+    }
+  }
+  return isExpired;
+}
+
 function getNextDayStart(dayStart){
   moment.locale('fr');
   let dayNumber = parseInt(dayStart.day());

@@ -23,33 +23,14 @@ export default class Calendar extends React.Component {
     // bind the functions to this because is not Autobinding with class es6
   }
 
-  /**
-   * Read
-   **/
-  list(callback) {
-    var URL = 'http://localhost:3000/api/courses';
-    Request
-    .get(URL, function(err, res){
-      callback(res.body);
-    });
-  }
-
-  componentDidMount() {
-    this.serverRequest = this.list(function (result) {
-
-      this.setState({
-        courses: result
-      });
-
-    }.bind(this));
-  }
 
 
   render(){
+    console.log('this.props.courses', this.props.courses)
     return (
       <div className="row">
-        <Courses courses={this.state.courses}/>
-        <Schedule courses={this.state.courses}/>
+        <Courses courses={this.props.courses}/>
+        <Schedule courses={this.props.courses}/>
       </div>
     );
   }

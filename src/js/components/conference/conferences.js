@@ -3,6 +3,7 @@
 // Vendor modules
 import React                          from 'react';
 import Conference                     from './conference';
+import * as componentHelper           from '../helper';
 
 // Project modules
 
@@ -20,6 +21,12 @@ export default class Conferences extends React.Component {
 
   _renderConferences(conferences){
     let Conferences = conferences.map((conference, index) =>{
+    let scheduleCompleted = componentHelper.isScheduleExpired(conference.schedules);
+    console.log('scheduleCompleted', scheduleCompleted)
+
+    if(scheduleCompleted){
+      return null;
+    }
       return (
         <Conference 
           key={index}

@@ -18,7 +18,7 @@ export default class Reserve extends React.Component {
   renderReserve(schedule){
     let url = this.props.url;
     return(
-      <Link className="link-url" to={url}> Réserver</Link>
+      <Link className="link-url" to={url}>Réserver</Link>
     );
   }
 

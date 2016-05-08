@@ -39,7 +39,7 @@ export default class ConferenceDetail extends React.Component {
   }
   _renderSchedule(conference, schedule){
     let day = componentHelper.renderDateDDMMMM(schedule.dayStart);
-
+    let link = componentHelper.getConferenceReservationLink(conference, schedule);
     return(
       <div class="confd-day">
         {day},

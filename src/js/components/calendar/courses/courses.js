@@ -13,10 +13,12 @@ import './styles.scss';
 export default class Courses extends React.Component {
 
   getRenderCourses(courses){
-    var renderCourses = courses.map( function(course, index){
-      return <Course key={index} course={course} />;
-    });
-    return renderCourses;
+    if(courses && courses.length > 0){
+      var renderCourses = courses.map( function(course, index){
+        return <Course key={index} course={course} />;
+      });
+      return renderCourses;
+    }
   }
 
   render(){
