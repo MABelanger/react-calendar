@@ -12,21 +12,9 @@ export default class Calendar extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      schedule : {
-        headers : [],
-        days: []
-      },
-      logos: [],
-      courses : []
-    };
-    // bind the functions to this because is not Autobinding with class es6
   }
 
-
-
   render(){
-    console.log('this.props.courses', this.props.courses)
     return (
       <div className="row">
         <Courses courses={this.props.courses}/>
@@ -34,5 +22,4 @@ export default class Calendar extends React.Component {
       </div>
     );
   }
-
 }
