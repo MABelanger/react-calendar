@@ -9,7 +9,7 @@ import ConferenceConstants                from "../constants/conferenceConstants
 
 
 export function getConferences() {
-  const URL = 'http://localhost:3000/api/conferences';
+  const URL = 'http://localhost:3000/public/api/conferences';
 
   Request
   .get(URL, function(err, res){

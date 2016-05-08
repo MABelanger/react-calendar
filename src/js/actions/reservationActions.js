@@ -8,7 +8,7 @@ import ClientDispatcher               from "../dispatcher/clientDispatcher";
 import ReservationConstants           from "../constants/reservationConstants";
 
 export function sendReservation(reservation) {
-  const URL = 'http://localhost:3000/api/reservations';
+  const URL = 'http://localhost:3000/public/api/reservations';
 
   Request
     .post(URL)
