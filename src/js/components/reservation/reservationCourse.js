@@ -103,7 +103,6 @@ export default class Reservation extends React.Component {
       let freeDays = schedule.freeDays;
       let dropDownList = [];
 
-      console.log('schedule', schedule)
       // show in the select only if freeDays have days.
       if (freeDays && freeDays.length >0){
         dropDownList.push(

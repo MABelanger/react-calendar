@@ -63,7 +63,6 @@ export default class ConferenceTeacherPage extends React.Component {
       let schedules = conference.schedules;
       matchSchedule = helperPage.getMatchReservationSchedule(schedules, dateSlug, hourStartSlug);
     }
-    console.log('matchSchedule', matchSchedule);
 
     return (
       <ReservationConference

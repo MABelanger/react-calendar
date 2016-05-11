@@ -37,11 +37,14 @@ export default class ConferenceDetail extends React.Component {
     return Full;
 
   }
-  _renderSchedule(conference, schedule){
+  _renderSchedule(conference, schedule, index){
     let day = componentHelper.renderDateDDMMMM(schedule.dayStart);
     let link = componentHelper.getConferenceReservationLink(conference, schedule);
     return(
-      <div class="confd-day">
+      <div 
+        key={index}
+        class="confd-day"
+      >
         {day},
         <Hours schedule={schedule} />&nbsp;
         <Reserve
@@ -53,8 +56,8 @@ export default class ConferenceDetail extends React.Component {
   }
 
   _renderSchedules(conference, schedules){
-    let Schedules = schedules.map((schedule)=>{
-      return this._renderSchedule(conference, schedule);
+    let Schedules = schedules.map((schedule, index)=>{
+      return this._renderSchedule(conference, schedule, index);
     });
 
     return Schedules;

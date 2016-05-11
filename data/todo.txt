@@ -1,3 +1,6 @@
+Imp:
+  courseType pas de schedule plante dans calendar
+
 hide pass dates.
 nb cours selon date aujourd'hui.
 Centraliser isExpired pour cours, conference, titre, reservation 

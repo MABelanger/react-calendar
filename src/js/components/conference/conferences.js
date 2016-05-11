@@ -22,7 +22,6 @@ export default class Conferences extends React.Component {
   _renderConferences(conferences){
     let Conferences = conferences.map((conference, index) =>{
     let scheduleCompleted = componentHelper.isScheduleExpired(conference.schedules);
-    console.log('scheduleCompleted', scheduleCompleted)
 
     if(scheduleCompleted){
       return null;

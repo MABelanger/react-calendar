@@ -73,7 +73,6 @@ export default class Dropdown extends React.Component {
   }
 
   getRenderList(list){
-    console.log('list', list)
     var items = [];
     for (var index in list) {
       var item = list[index];

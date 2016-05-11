@@ -40,7 +40,6 @@ export default class ReservationPage extends React.Component {
   }
 
   getConferences() {
-    console.log('ConferenceStore.getConferences()', ConferenceStore.getConferences())
     this.setState({
       conferences: ConferenceStore.getConferences()
     });

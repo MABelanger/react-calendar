@@ -25,17 +25,21 @@ export default class Conference extends React.Component {
 
   }
 
-  _renderSchedule(schedule){
+  _renderSchedule(schedule, index){
     let day = componentHelper.renderDateDDMMMM(schedule.dayStart);
     let {hourStart, hourEnd} = componentHelper.getHourRange(schedule);
     return(
-      <div>{day} de <strong>{hourStart} à {hourEnd}</strong><br/></div>
+      <div key={index}>
+        {day} de&nbsp;
+        <strong>{hourStart} à {hourEnd}</strong>
+        <br/>
+      </div>
     );
   }
 
   _renderSchedules(schedules){
-    let Schedules = schedules.map((schedule)=>{
-      return this._renderSchedule(schedule);
+    let Schedules = schedules.map((schedule, index)=>{
+      return this._renderSchedule(schedule, index);
     });
 
     return Schedules;
