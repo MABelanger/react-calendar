@@ -8,30 +8,31 @@ import * as componentHelper           from '../helper';
 // Project modules
 
 
+
+
 export default class Conferences extends React.Component {
 
   constructor(props) {
     super(props);
   }
 
-  componentDidMount() {
-
-  }
 
 
   _renderConferences(conferences){
+    
     let Conferences = conferences.map((conference, index) =>{
-    let scheduleCompleted = componentHelper.isScheduleExpired(conference.schedules);
+      //let scheduleCompleted = componentHelper.isScheduleExpired(conference.schedules);
 
-    if(scheduleCompleted){
-      return null;
-    }
-      return (
-        <Conference 
-          key={index}
-          conference={conference}
-        />
-      );
+      if(conference.schedules.length > 0){
+        return (
+          <Conference 
+            key={index}
+            conference={conference}
+          />
+        );
+      } else {
+        return null;
+      }
     });
 
     return Conferences;

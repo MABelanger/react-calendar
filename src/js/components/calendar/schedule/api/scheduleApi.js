@@ -53,13 +53,16 @@ export function getScheduleDays(courses){
   return scheduleDays;
 }// ./getScheduleDays
 
+function _capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 export function getHeaders(scheduleDays){
   moment.locale('fr');
   let headers = scheduleDays.map( function(scheduleDay, index){
-    if(scheduleDay.length > 0){
-      let weekDayName = moment.weekdays( index + 1 );
-      return weekDayName;
-    }
+    let weekDayName = moment.weekdays( index + 1 );
+    weekDayName = _capitalizeFirstLetter(weekDayName);
+    return weekDayName;
   });
   return headers;
 }// ./getHeaders

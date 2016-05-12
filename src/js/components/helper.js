@@ -72,6 +72,26 @@ export function sortByHours(scheduleDay){
   return scheduleDay;
 }
 
+
+function _compareSchedules(a, b) {
+  
+    let dayStartA = a.dayStart;
+    let dayStartB = b.dayStart;
+    if ( dayStartA.isBefore(dayStartB) )
+      return -1;
+    else if ( dayStartA.isAfter(dayStartB) )
+      return 1;
+    else 
+      return 0;
+
+}
+export function sortSchedulesByDate(schedules){
+    schedules.sort( (a, b) => {
+      return _compareSchedules(a, b);
+    });
+    return schedules;
+}
+
 export function getFullName(teacher){
   if(teacher){
     return teacher.firstName + ' ' + teacher.lastName;
@@ -277,19 +297,77 @@ export function getNumberDates(startDate, stopDate){
   return getWeekDates(startDate, stopDate).length;
 }
 
-export function momentSchedules(schedules){
-  moment.locale('fr');
-  let momentSchedules = schedules.map((schedule)=>{
-    let {dayStart, dayEnd} = schedule;
-    dayStart =  moment( dayStart ).utcOffset("+00:00");
-    dayEnd =  moment( dayEnd ).utcOffset("+00:00");
 
-    // Overwrite dayStart and dayEnd
-    schedule.dayStart = dayStart;
-    schedule.dayEnd = dayEnd;
+export function getFutureSchedules(schedules){
+  let futureSchedules = [];
+  for(let i=0; i<schedules.length; i++){
+    let schedule = schedules[i];
+    let momentDay = moment(schedule.dayStart).utcOffset("+00:00");
+    if(isNotExpired(momentDay)){
+      futureSchedules.push(schedule);
+    }
+  }
+  return futureSchedules;
+}
 
-    return schedule;
+function _getFirstSchedule(schedules){
+  let momentSchedules = getMomentSchedules(schedules);
+
+  // pickup random firstDate
+  let firstSchedule = momentSchedules[0];
+  let firstDate = momentSchedules[0].dayStart;
+
+  for(let i=0; i<momentSchedules.length; i++){
+    let date = momentSchedules[i].dayStart;
+    if(date.isBefore(firstDate)){
+      firstDate = date;
+      firstSchedule = momentSchedules[i];
+    }
+  }
+  return firstSchedule;
+}
+
+function _compareConferences(a, b) {
+  if((a.schedules && b.schedules) && (a.schedules.length > 0 && b.schedules.length > 0)){
+    let firstSA = _getFirstSchedule(a.schedules);
+    let firstSB = _getFirstSchedule(b.schedules);
+    if (firstSA.dayStart.isBefore(firstSB.dayStart))
+      return -1;
+    else if (firstSA.dayStart.isAfter(firstSB.dayStart))
+      return 1;
+    else 
+      return 0;
+  }
+  return 0;
+}
+
+export function getOrderConferencesFromNow(conferences){
+  conferences.schedules = getMomentSchedules(conferences.schedules);
+  conferences.schedules = sortSchedulesByDate(conferences.schedules);
+  conferences.sort( (a, b) => {
+    a.schedules = getFutureSchedules(a.schedules);
+    b.schedules = getFutureSchedules(b.schedules);
+    return _compareConferences(a, b);
   });
+  return conferences;
+}
+
+export function getMomentSchedules(schedules){
+  moment.locale('fr');
+  let momentSchedules = []
+  if(schedules && schedules.length > 0) {
+    momentSchedules = schedules.map((schedule)=>{
+      let {dayStart, dayEnd} = schedule;
+      dayStart =  moment( dayStart ).utcOffset("+00:00");
+      dayEnd =  moment( dayEnd ).utcOffset("+00:00");
+
+      // Overwrite dayStart and dayEnd
+      schedule.dayStart = dayStart;
+      schedule.dayEnd = dayEnd;
+
+      return schedule;
+    });
+  }
   return momentSchedules;
 }
 
@@ -297,7 +375,7 @@ export function getRangeSchedules(schedules){
   let dayStart, dayEnd = null;
   if(schedules){
     // convert the date of schedules list to moment date.
-     schedules = momentSchedules(schedules);
+     schedules = getMomentSchedules(schedules);
 
     // init with the first schedule
     dayStart = schedules[0].dayStart;

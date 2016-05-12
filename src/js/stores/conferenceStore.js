@@ -5,6 +5,8 @@ import AppDispatcher                  from '../dispatcher/clientDispatcher';
 import ConferenceConstants            from '../constants/conferenceConstants';
 import { EventEmitter }               from 'events';
 
+import * as componentHelper           from '../components/helper';
+
 const CHANGE_EVENT = ConferenceConstants.CHANGE_EVENT;
 
 
@@ -31,6 +33,7 @@ class ConferenceStoreClass extends EventEmitter {
   }
 
   setConferences(conferences){
+    conferences = componentHelper.getOrderConferencesFromNow(conferences);
     this.conferences = conferences;
   }
 
