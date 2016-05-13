@@ -9,7 +9,7 @@ import CourseConstants                from "../constants/courseConstants";
 
 
 export function getCourses() {
-  const URL = 'http://localhost:3000/public/api/courses';
+  const URL = CourseConstants.URL;
 
   Request
   .get(URL, function(err, res){

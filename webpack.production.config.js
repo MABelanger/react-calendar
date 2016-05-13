@@ -4,10 +4,8 @@ var path = require('path');
 
 module.exports = {
   context: path.join(__dirname, "src"),
-  devtool: debug ? "inline-sourcemap" : "source-map",
-  entry: [
-    './js/client.js'
-  ],
+  devtool: debug ? "inline-sourcemap" : null,
+  entry: './js/client.js',
   module: {
     loaders: [
       {

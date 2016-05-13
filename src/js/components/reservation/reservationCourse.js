@@ -61,6 +61,7 @@ export default class Reservation extends React.Component {
   getConfirmation() {
     let confirmation = ReservationStore.getConfirmation();
 
+    console.log('confirmation', confirmation)
     if(confirmation.errors){
       this.setState({
         confirmation: {},

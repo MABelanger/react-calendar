@@ -5,11 +5,11 @@ import Request                        from "superagent";
 
 // Project modules
 import ClientDispatcher               from "../dispatcher/clientDispatcher";
-import ConferenceConstants                from "../constants/conferenceConstants";
+import ConferenceConstants            from "../constants/conferenceConstants";
 
 
 export function getConferences() {
-  const URL = 'http://localhost:3000/public/api/conferences';
+  const URL = ConferenceConstants.URL;
 
   Request
   .get(URL, function(err, res){

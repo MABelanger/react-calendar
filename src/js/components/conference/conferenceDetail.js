@@ -56,10 +56,6 @@ export default class ConferenceDetail extends React.Component {
   }
 
   _renderSchedules(conference, schedules){
-    schedules = componentHelper.getMomentSchedules(schedules);
-    schedules = componentHelper.getFutureSchedules(schedules);
-    schedules = componentHelper.sortSchedulesByDate(schedules);
-
     let Schedules = schedules.map((schedule, index)=>{
       return this._renderSchedule(conference, schedule, index);
     });
