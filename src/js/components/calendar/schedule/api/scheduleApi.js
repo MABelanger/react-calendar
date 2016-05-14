@@ -60,7 +60,7 @@ function _capitalizeFirstLetter(string) {
 export function getHeaders(scheduleDays){
   moment.locale('fr');
   let headers = scheduleDays.map( function(scheduleDay, index){
-    let weekDayName = moment.weekdays( index + 1 );
+    let weekDayName = moment.weekdays( index + 1 ).substring(0, 3);
     weekDayName = _capitalizeFirstLetter(weekDayName);
     return weekDayName;
   });

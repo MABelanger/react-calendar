@@ -352,17 +352,21 @@ function _compareConferences(a, b) {
 }
 
 export function getOrderConferencesFromNow(conferences){
-  conferences.schedules = getMomentSchedules(conferences.schedules);
-  conferences.schedules = sortSchedulesByDate(conferences.schedules);
 
-  conferences.sort( (a, b) => {
+  let conferenceMoment = conferences.map( (conference)=>{
+    conference.schedules = getMomentSchedules(conference.schedules);
+    conference.schedules = sortSchedulesByDate(conference.schedules);
+    return conference;
+  });
+  
+  conferenceMoment.sort( (a, b) => {
     a.schedules = getFutureSchedules(a.schedules);
     b.schedules = getFutureSchedules(b.schedules);
     return _compareConferences(a, b);
   });
 
   
-  return conferences;
+  return conferenceMoment;
 }
 
 export function getMomentSchedules(schedules){

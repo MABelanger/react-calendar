@@ -17,8 +17,8 @@ export default class FreeDay extends React.Component {
   _getDay(dayFormat){
     if(dayFormat){
       return(
-        <span className="tab txt-red">
-          (Gratuit le {dayFormat} )<br />
+        <span className="txt-red">
+          <small>(Gratuit le {dayFormat})</small><br />
         </span>
       );
     }else {

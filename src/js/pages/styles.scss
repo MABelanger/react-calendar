@@ -13,9 +13,24 @@ $logo-fill: #333;
 body {
     /*font-family: 'Montserrat', sans-serif;*/
     background-color: $bgcolor;
-    font-family: 'Open Sans', Verdana, 'DejaVu Sans', sans-serif;
+    font-family: 'Open Sans', Verdana, 'DejaVu Sans', sans-serif!important;
     /*font-family: Gotham, sans-serif;*/
     font-size: 16px;
+}
+
+/* Main Level */
+// ul{
+//   padding-left:10px;
+// }
+
+/* Second Level */
+ul ul{
+  padding-left:15px;
+}
+
+/* Third Level */
+ul ul ul{
+  padding-left:20px;
 }
 
 h4 {

@@ -136,7 +136,7 @@ export default class ConferenceDetail extends React.Component {
       description = conference.description;
     }
     return (
-      <div className="row">
+      <div>
         <div class="row conf-top-container">
           <div class="col-sm-2"></div>
           <div class="col-sm-8 text-center">

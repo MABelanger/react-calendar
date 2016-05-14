@@ -61,7 +61,6 @@ export default class Reservation extends React.Component {
   getConfirmation() {
     let confirmation = ReservationStore.getConfirmation();
 
-    console.log('confirmation', confirmation)
     if(confirmation.errors){
       this.setState({
         confirmation: {},
@@ -185,7 +184,7 @@ export default class Reservation extends React.Component {
 
   _changeValueDates(stateVariableName, name, value){
     let stateVariable = this.state[stateVariableName]
-    name = moment(name).format('LL');
+    name = moment(name).utcOffset("+00:00").format('LL');
 
     if(value == true){
       stateVariable.push(name);
