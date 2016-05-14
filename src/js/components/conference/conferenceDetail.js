@@ -9,6 +9,7 @@ import BackBtn                        from '../common/backBtn';
 
 import Reserve                        from '../common/reserve';
 import Hours                          from '../common/hours';
+import ConferenceConstants            from '../../constants/conferenceConstants';
 
 import './styles.scss';
 
@@ -129,7 +130,7 @@ export default class ConferenceDetail extends React.Component {
     let conference = this.props.conference;
     if(this.props.conference){
       title = conference.title;
-      imageUrl = 'http://localhost:3000/' + conference.image.url;
+      imageUrl = ConferenceConstants.URL_IMAGE + '/' + conference.image.url;
       ScheduleTable = this._renderInfoTable(conference);
       abstract = conference.abstract;
       description = conference.description;

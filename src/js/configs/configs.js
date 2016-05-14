@@ -1,6 +1,5 @@
-import { createHistory, createHashHistory }              from 'history';
-import { Router, Route, IndexRoute, Redirect,
-  hashHistory, useRouterHistory }       from "react-router";
+import { createHistory, createHashHistory }     from 'history';
+import { useRouterHistory }                     from "react-router";
 
 
 export function isProduction() {
@@ -16,6 +15,13 @@ export function getBaseUrlApi() {
   }
 }
 
+export function getBaseUrlImage() {
+  if( isProduction() ){
+    return 'http://ec2-54-235-235-7.compute-1.amazonaws.com:9000';
+  } else {
+    return 'http://localhost:3000';
+  }
+}
 
 export function getHistory() {
   if( isProduction() ){
@@ -27,5 +33,3 @@ export function getHistory() {
     return hashHistory;
   }
 }
-
-const history = useRouterHistory(createHistory)({ basename: 'http://whatever' })

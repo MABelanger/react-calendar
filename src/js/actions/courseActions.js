@@ -9,10 +9,10 @@ import CourseConstants                from "../constants/courseConstants";
 
 
 export function getCourses() {
-  const URL = CourseConstants.URL;
+  const URL_API = CourseConstants.URL_API;
 
   Request
-  .get(URL, function(err, res){
+  .get(URL_API, function(err, res){
     ClientDispatcher.dispatch({
       actionType: CourseConstants.RECEIVE_COURSES,
       courses: res.body

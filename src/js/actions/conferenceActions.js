@@ -9,10 +9,10 @@ import ConferenceConstants            from "../constants/conferenceConstants";
 
 
 export function getConferences() {
-  const URL = ConferenceConstants.URL;
+  const URL_API = ConferenceConstants.URL_API;
 
   Request
-  .get(URL, function(err, res){
+  .get(URL_API, function(err, res){
     ClientDispatcher.dispatch({
       actionType: ConferenceConstants.RECEIVE_CONFERENCES,
       conferences: res.body

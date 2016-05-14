@@ -5,6 +5,7 @@ import React                          from 'react';
 import Request                        from 'superagent';
 import * as componentHelper           from '../helper';
 import NextBtn                        from '../common/nextBtn';
+import ConferenceConstants            from '../../constants/conferenceConstants';
 
 import './styles.scss';
 
@@ -78,7 +79,7 @@ export default class Conference extends React.Component {
     let conference = this.props.conference;
     if(this.props.conference){
       title = conference.title;
-      imageUrl = 'http://localhost:3000/' + conference.image.url;
+      imageUrl = ConferenceConstants.URL_IMAGE + '/' + conference.image.url;
       ScheduleTable = this._renderScheduleTable(conference.schedules);
       abstract = conference.abstract;
     }

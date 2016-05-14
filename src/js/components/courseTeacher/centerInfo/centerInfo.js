@@ -8,11 +8,12 @@ import { Link }                       from "react-router";
 // Proejct modules
 import BackBtn                        from '../../common/backBtn';
 import * as componentHelper           from '../../helper';
+import CourseConstants                from '../../../constants/courseConstants';
 
 // Proejct styles
 import './styles.scss';
 
-export default class LeftInfo extends React.Component {
+export default class CenterInfo extends React.Component {
 
   constructor(props) {
     super(props);
@@ -22,7 +23,7 @@ export default class LeftInfo extends React.Component {
     let imgSrc = null;
     if (teacher) {
       if (teacher.course && teacher.course.image && teacher.course.image.url) {
-        imgSrc = 'http://localhost:3000/' + teacher.course.image.url;
+        imgSrc = CourseConstants.URL_IMAGE + '/' + teacher.course.image.url;
       }
     }
     return imgSrc;

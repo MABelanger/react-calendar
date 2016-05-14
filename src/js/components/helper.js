@@ -328,27 +328,40 @@ function _getFirstSchedule(schedules){
 }
 
 function _compareConferences(a, b) {
-  if((a.schedules && b.schedules) && (a.schedules.length > 0 && b.schedules.length > 0)){
-    let firstSA = _getFirstSchedule(a.schedules);
-    let firstSB = _getFirstSchedule(b.schedules);
-    if (firstSA.dayStart.isBefore(firstSB.dayStart))
+
+    if(a.schedules.length == 0 && b.schedules.length > 0) // a is smaller
       return -1;
-    else if (firstSA.dayStart.isAfter(firstSB.dayStart))
+
+    else if(a.schedules.length > 0 && b.schedules.length ==0) // b is smaller
       return 1;
-    else 
+
+    else if(a.schedules.length == 0 && b.schedules.length == 0) // does not mather
       return 0;
-  }
-  return 0;
+
+    else {
+      let firstSA = _getFirstSchedule(a.schedules);
+      let firstSB = _getFirstSchedule(b.schedules);
+
+      if (firstSA.dayStart.isBefore(firstSB.dayStart)) // a is smaller
+        return -1;
+      else if (firstSA.dayStart.isAfter(firstSB.dayStart)) // b is smaller
+        return 1;
+      else 
+        return 0;
+    }
 }
 
 export function getOrderConferencesFromNow(conferences){
   conferences.schedules = getMomentSchedules(conferences.schedules);
   conferences.schedules = sortSchedulesByDate(conferences.schedules);
+
   conferences.sort( (a, b) => {
     a.schedules = getFutureSchedules(a.schedules);
     b.schedules = getFutureSchedules(b.schedules);
     return _compareConferences(a, b);
   });
+
+  
   return conferences;
 }
 

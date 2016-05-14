@@ -8,10 +8,10 @@ import ClientDispatcher               from "../dispatcher/clientDispatcher";
 import ReservationConstants           from "../constants/reservationConstants";
 
 export function sendReservation(reservation) {
-  const URL = ReservationConstants.URL;
+  const URL_API = ReservationConstants.URL_API;
 
   Request
-    .post(URL)
+    .post(URL_API)
     .accept('application/json')
     .type('application/json')
     .send(reservation)
