@@ -41,7 +41,7 @@ export default class Nav extends React.Component {
             </button>
           </div>
           <div className={"navbar-collapse " + navClass} id="bs-example-navbar-collapse-1">
-            <ul className="nav navbar-nav">
+            <ul className="nav navbar-nav custum-color">
               <li>
                 <a href="http://www.mondeavie.ca" onClick={this.toggleCollapse.bind(this)}>
                   <span dangerouslySetInnerHTML={{__html: " &lt; RETOUR AU SITE" }}></span>
