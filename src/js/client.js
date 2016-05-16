@@ -22,8 +22,14 @@ const APP = document.getElementById('app');
 
 const history = Configs.getHistory();
 
+function onRouterUpdate(){
+  window.scrollTo(0, 0)
+}
 ReactDOM.render(
-  <Router history={history}>
+  <Router 
+    history={history}
+    onUpdate={() => {onRouterUpdate();} }
+  >
     <Redirect from="/" to="calendrier/cours/" />
     <Route  path="/"
             component={Layout}>
