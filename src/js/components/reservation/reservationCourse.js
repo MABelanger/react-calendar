@@ -13,6 +13,7 @@ import FreeDaysForm                   from './forms/freeDays';
 import TryingDaysForm                 from './forms/tryingDays';
 import OneOrManyDaysForm              from './forms/oneOrManyDays';
 import AllDaysForm                    from './forms/allDays';
+import SuccessMessage                    from './forms/success';
 import BackBtn                        from '../common/backBtn';
 
 // Flux Reservation
@@ -46,7 +47,8 @@ export default class Reservation extends React.Component {
       oneOrManyDaysDates: [],
       freeDaysDates: [],
       confirmation: {},
-      errors: {}
+      errors: {},
+      isSuccess: false
     };
   }
 
@@ -64,19 +66,19 @@ export default class Reservation extends React.Component {
     if(confirmation.errors){
       this.setState({
         confirmation: {},
-        errors: confirmation.errors
+        errors: confirmation.errors,
+        isSuccess: false
       });
 
     } else {
       this.setState({
-        confirmation: confirmation.status,
+        confirmation: confirmation,
+        isSuccess: true,
         tryingDaysDates: [],
         oneOrManyDaysDates: [],
         freeDaysDates: [],
-        confirmation: {},
         errors: {}
       });
-      toastr.success("Votre message à été envoyé avec succes");
     }
   }
 
@@ -223,8 +225,8 @@ export default class Reservation extends React.Component {
     // render the component to htmlString
     let reservationHeader = ReactDomServer.renderToStaticMarkup(this.state.reservationHeader);
     let title = this.getName(this.state.currentForm)
-    reservationHeader += "<br/>";
-    reservationHeader += "<b>pour: </b>" + title + "<br/>";
+    reservationHeader += "<br/><br/>";
+    reservationHeader += "<b>Pour: </b>" + title + "<br/>";
     return reservationHeader;
   }
 
@@ -302,28 +304,8 @@ export default class Reservation extends React.Component {
     );
   }
 
-
-  render(){
-    let {schedule} = this.props;
-    let currentForm = null;
-
-    if(this.state.currentForm){
-
-      if(this.state.currentForm.form == 'TRYING_DAYS'){
-        currentForm = this._getTryingDaysForm(schedule, this.state.tryingDaysDates);
-
-      }else if(this.state.currentForm.form == 'ONE_OR_MANY_DAYS'){
-        currentForm = this._getOneOrManyDaysForm(schedule, this.state.oneOrManyDaysDates);
-
-      }else if(this.state.currentForm.form == 'FREE_DAYS'){
-        currentForm = this._getFreeDaysForm(schedule, this.state.freeDaysDates);
-
-      }else if(this.state.currentForm.form == 'ALL_DAYS'){
-        currentForm = this._getAllDaysForm(schedule);
-      }
-    }
-
-    return (
+  _renderForm(currentForm){
+    return(
       <div>
         <div className="row">
           <div className="col-sm-offset-3 col-sm-6 col-sm-offset-3">
@@ -346,5 +328,35 @@ export default class Reservation extends React.Component {
         </div>
       </div>
     );
+  }
+  render(){
+    let {schedule} = this.props;
+    let currentForm = null;
+
+    if(this.state.currentForm){
+      if(this.state.currentForm.form == 'TRYING_DAYS'){
+        currentForm = this._getTryingDaysForm(schedule, this.state.tryingDaysDates);
+
+      }else if(this.state.currentForm.form == 'ONE_OR_MANY_DAYS'){
+        currentForm = this._getOneOrManyDaysForm(schedule, this.state.oneOrManyDaysDates);
+
+      }else if(this.state.currentForm.form == 'FREE_DAYS'){
+        currentForm = this._getFreeDaysForm(schedule, this.state.freeDaysDates);
+
+      }else if(this.state.currentForm.form == 'ALL_DAYS'){
+        currentForm = this._getAllDaysForm(schedule);
+      }
+    }
+
+    if(this.state.isSuccess){
+      return <SuccessMessage 
+        messageHtml={this.state.confirmation.messageHtml}
+        backBtnClick={this.backBtnClick.bind(this)}
+      />
+    }
+    else {
+      return this._renderForm(currentForm);
+    }
+
   }
 }

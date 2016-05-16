@@ -26,13 +26,16 @@ export default class TextForm extends React.Component {
     super(props);
     this.getConfirmation = this.getConfirmation.bind(this);
     this.state = {};
+    this.mounted = false;
   }
 
-  componentWillMount() {
+  componentDidMount() {
+    this.mounted = true;
     ReservationStore.on(CHANGE_EVENT, this.getConfirmation);
   }
 
   componentWillUnmount() {
+    this.mounted = false;
     ReservationStore.removeListener(CHANGE_EVENT, this.getConfirmation);
   }
 
@@ -60,7 +63,9 @@ export default class TextForm extends React.Component {
         newState[key] = "";
       }
     }
-    this.setState( newState );
+    if(this.mounted){
+      this.setState( newState );
+    }
   }
 
   changeValue(name, value) {
