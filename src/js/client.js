@@ -5,7 +5,7 @@ import React                          from "react";
 import ReactDOM                       from "react-dom";
 import { createHistory }              from 'history';
 import { Router, Route, IndexRoute, Redirect,
-  hashHistory, useRouterHistory }       from "react-router";
+  hashHistory, useRouterHistory, DefaultRoute }       from "react-router";
 
 import * as Configs                    from "./configs/configs";
 
@@ -53,6 +53,7 @@ ReactDOM.render(
               name="conferenceDetailPage"
               component={ReservationConferencePage}>
       </Route>
+      <Redirect from="*" to="calendrier/cours/" />
     </Route>
   </Router>,APP);
 // 
