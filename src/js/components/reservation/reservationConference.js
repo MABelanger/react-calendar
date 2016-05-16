@@ -10,6 +10,7 @@ import toastr                         from 'toastr';
 import * as componentHelper           from '../helper';
 
 import TextForm                       from './forms/textForm';
+import SuccessMessage                 from './forms/success';
 import CtrlBtnForm                    from './forms/ctrlBtnForm';
 
 import BackBtn                        from '../common/backBtn';
@@ -41,7 +42,8 @@ export default class Reservation extends React.Component {
     this.state = {
       reservationHeader: "",
       confirmation: {},
-      errors: {}
+      errors: {},
+      isSuccess: false
     };
   }
 
@@ -59,19 +61,19 @@ export default class Reservation extends React.Component {
     if(confirmation.errors){
       this.setState({
         confirmation: {},
-        errors: confirmation.errors
+        errors: confirmation.errors,
+        isSuccess: false
       });
 
     } else {
       this.setState({
-        confirmation: confirmation.status,
+        confirmation: confirmation,
+        isSuccess: true,
         tryingDaysDates: [],
         oneOrManyDaysDates: [],
         freeDaysDates: [],
-        confirmation: {},
         errors: {}
       });
-      toastr.success("Votre message à été envoyé avec succes");
     }
   }
 
@@ -144,15 +146,13 @@ export default class Reservation extends React.Component {
     router.push('/conferences')
   }
 
-
-  render(){
+  _renderForm(){
     let {conference, schedule} = this.props;
     let reservationHeader = null;
 
     if(conference && schedule){
       reservationHeader = this._renderReservationHeader(conference, schedule)
     }
-
 
     return (
       <div>
@@ -175,5 +175,18 @@ export default class Reservation extends React.Component {
         </div>
       </div>
     );
+  }
+
+  render(){
+    if(this.state.isSuccess){
+      console.log('this.state.confirmation', this.state.confirmation)
+      return <SuccessMessage 
+        messageHtml={this.state.confirmation.messageHtml}
+        backBtnClick={this.backBtnClick.bind(this)}
+      />
+    }
+    else {
+      return this._renderForm();
+    }
   }
 }

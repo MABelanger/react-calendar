@@ -13,7 +13,7 @@ import FreeDaysForm                   from './forms/freeDays';
 import TryingDaysForm                 from './forms/tryingDays';
 import OneOrManyDaysForm              from './forms/oneOrManyDays';
 import AllDaysForm                    from './forms/allDays';
-import SuccessMessage                    from './forms/success';
+import SuccessMessage                 from './forms/success';
 import BackBtn                        from '../common/backBtn';
 
 // Flux Reservation
