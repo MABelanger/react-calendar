@@ -1,6 +1,6 @@
 'use strict';
 
-import CommonConstants                from './CommonConstants';
+import CommonConstants                from './commonConstants';
 
 export default {
     URL_API : CommonConstants.BASE_URL_API + '/conferences',
