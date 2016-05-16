@@ -136,7 +136,7 @@ export default class Reservation extends React.Component {
     let reservationHeader = ReactDomServer.renderToStaticMarkup(
         this._renderReservationHeader(conference, schedule)
     );
-    reservation.reservationHeader = reservationHeader + "<br/>";
+    reservation.reservationHeader = reservationHeader + "<br/><br/>";
     ReservationActions.sendReservation(reservation);
   }
 
