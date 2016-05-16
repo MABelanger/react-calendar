@@ -21,8 +21,12 @@ export default class Nav extends React.Component {
   render() {
     const { location } = this.props;
     const { collapsed } = this.state;
-    const coursesClass = location.pathname === "/" ? "active" : "";
-    const settingsClass = location.pathname.match(/^\/settings/) ? "active" : "";
+
+    console.log('location.pathname', location.pathname)
+
+    let baseUrl = '/' + location.pathname;
+    const coursesClass = baseUrl.match(/^\/calendrier/) ? "active" : "";
+    const conferencesClass = baseUrl.match(/^\/conferences/) ? "active" : "";
     const navClass = collapsed ? "collapse" : "";
 
     return (
@@ -46,7 +50,7 @@ export default class Nav extends React.Component {
               <li className={coursesClass}>
                 <IndexLink to="/" onClick={this.toggleCollapse.bind(this)}>CALENDRIER DES COURS</IndexLink>
               </li>
-              <li className={settingsClass}>
+              <li className={conferencesClass}>
                 <Link to="conferences" onClick={this.toggleCollapse.bind(this)}>CONFÉRENCES ET ATELIERS</Link>
               </li>
             </ul>
