@@ -2,6 +2,7 @@
 import { createHistory, createHashHistory }     from 'history';
 import { useRouterHistory }                     from "react-router";
 
+const PORT = 9000;
 
 export function isProduction() {
   console.log('window.location.hostname', window.location.hostname);
@@ -14,7 +15,7 @@ export function getBaseUrlApi() {
   if( isProduction() ){
     return 'http://www.blackandrouge.com/public/api';
   } else {
-    return 'http://localhost:3000/public/api';
+    return 'http://localhost:' + PORT + '/public/api';
   }
 }
 
@@ -22,7 +23,7 @@ export function getBaseUrlImage() {
   if( isProduction() ){
     return 'http://www.blackandrouge.com';
   } else {
-    return 'http://localhost:3000';
+    return 'http://localhost:' + PORT;
   }
 }
 
