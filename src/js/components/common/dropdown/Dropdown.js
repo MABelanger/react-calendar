@@ -4,9 +4,6 @@
 import React                          from "react";
 import ClassNames                     from "classnames";
 
-// Vendor styles
-import 'bootstrap/dist/css/bootstrap.css';
-
 // Project styles
 import './styles.scss';
 

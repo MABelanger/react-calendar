@@ -18,7 +18,6 @@ import ConferencesPage from './pages/conference/ConferencesPage';
 import ConferenceDetailPage from './pages/conference/ConferenceDetailPage';
 import ReservationConferencePage from './pages/conference/ReservationConferencePage';
 
-const browserHistory = useRouterHistory(createHistory)({ basename: '/' })
 const APP = document.getElementById('app');
 
 const history = Configs.getHistory();

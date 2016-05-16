@@ -47,10 +47,7 @@ export default class Course extends React.Component {
       >
         <div>
           <span dangerouslySetInnerHTML={{__html: this.props.logo }}></span>
-          <br />&nbsp;
-          {this.props.hourStart}-<br />
-          {this.props.hourEnd}<br />
-          {this.props.professorName}
+          <br />{this.props.hourStart}-<br />{this.props.hourEnd}&nbsp;<br />{this.props.professorName}
         </div>
       </Link>
     );

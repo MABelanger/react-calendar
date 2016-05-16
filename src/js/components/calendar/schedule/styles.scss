@@ -6,8 +6,27 @@ $link-hover: #999999;
 $txt-color-mid: #5C753F;
 $logo-fill: #2d4214;
 
+
+@media (max-width: 768px) {
+  .schedule {
+    svg{
+      height: 18px;
+    }
+    table {
+      th {
+        font-size: 13px!important;
+      }
+      td{
+        font-size: 11px!important;
+      }
+    }
+  }
+}
+
 .schedule {
   background-color: $bgcolor;
+
+
 
   svg {
     path {

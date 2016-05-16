@@ -9,6 +9,9 @@ import { Link }                       from "react-router";
 import Footer                         from "../components/layout/Footer";
 import Nav                            from "../components/layout/Nav";
 
+// Vendor styles
+import 'bootstrap/dist/css/bootstrap.css';
+
 // Project styles
 import './styles.scss';
 
