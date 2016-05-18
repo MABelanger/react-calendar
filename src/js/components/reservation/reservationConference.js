@@ -179,7 +179,6 @@ export default class Reservation extends React.Component {
 
   render(){
     if(this.state.isSuccess){
-      console.log('this.state.confirmation', this.state.confirmation)
       return <SuccessMessage 
         messageHtml={this.state.confirmation.messageHtml}
         backBtnClick={this.backBtnClick.bind(this)}

@@ -5,7 +5,6 @@ import { useRouterHistory }                     from "react-router";
 const PORT = 9000;
 
 export function isProduction() {
-  console.log('window.location.hostname', window.location.hostname);
   return    window.location.hostname == 'ec2-54-235-235-7.compute-1.amazonaws.com'
         ||  window.location.hostname == 'mondeavie.ca'
         ||  window.location.hostname == 'www.blackandrouge.com'

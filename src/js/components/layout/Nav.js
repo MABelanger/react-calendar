@@ -22,8 +22,6 @@ export default class Nav extends React.Component {
     const { location } = this.props;
     const { collapsed } = this.state;
 
-    console.log('location.pathname', location.pathname)
-
     let baseUrl = '/' + location.pathname;
     const coursesClass = baseUrl.match(/^\/calendrier/) ? "active" : "";
     const conferencesClass = baseUrl.match(/^\/conferences/) ? "active" : "";
