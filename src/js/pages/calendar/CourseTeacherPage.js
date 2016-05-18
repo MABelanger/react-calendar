@@ -29,19 +29,26 @@ export default class CourseTeacherPage extends React.Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    if(nextProps.courses && nextProps.courses.length > 0){
+  _setStateFromProps(props){
+    if(props.courses && props.courses.length > 0){
       const { query } = this.props.location;
       const { params } = this.props;
       const { courseNameSlug, teacherSlug } = params;
       //const { date, filter } = query;
 
-      let { course, teacher} = helperPage.getCourseTeacher(nextProps.courses, courseNameSlug, teacherSlug);
+      let { course, teacher} = helperPage.getCourseTeacher(props.courses, courseNameSlug, teacherSlug);
       this.setState({
         course: course,
         teacher: teacher
       });
     }
+  }
+  componentWillReceiveProps(nextProps) {
+    this._setStateFromProps(nextProps)
+  }
+
+  componentDidMount(){
+    this._setStateFromProps(this.props)
   }
 
   // TODO put it into helper or extend from parent

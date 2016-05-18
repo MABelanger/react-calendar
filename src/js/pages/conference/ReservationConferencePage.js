@@ -23,13 +23,13 @@ export default class ConferenceTeacherPage extends React.Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    if(nextProps.conferences && nextProps.conferences.length > 0){
+  _setStateFromProps(props){
+    if(props.conferences && props.conferences.length > 0){
       const { params } = this.props;
       const { conferenceSlug, speakerSlug, dateSlug, hourStartSlug } = params;
 
       let matchSchedule = null;
-      let conference = helperPage.getConference(nextProps.conferences, conferenceSlug, speakerSlug);
+      let conference = helperPage.getConference(props.conferences, conferenceSlug, speakerSlug);
       if(conference && conference.schedules){
         let schedules = conference.schedules;
         matchSchedule = helperPage.getMatchReservationSchedule(schedules, dateSlug, hourStartSlug);
@@ -39,6 +39,15 @@ export default class ConferenceTeacherPage extends React.Component {
         matchSchedule: matchSchedule
       });
     }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this._setStateFromProps(nextProps)
+  }
+
+  componentDidMount(){
+    console.log('this.props', this.props)
+    this._setStateFromProps(this.props)
   }
 
   // TODO put it into helper or extend from parent

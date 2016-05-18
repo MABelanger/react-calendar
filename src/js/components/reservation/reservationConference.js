@@ -96,8 +96,8 @@ export default class Reservation extends React.Component {
 
   }
 
-  componentWillReceiveProps(nextProps) {
-    let {conference, schedule} = nextProps;
+  _setStateFromProps(props){
+    let {conference, schedule} = props;
     if(conference && schedule){
       let reservationHeader = null;
       reservationHeader = this._renderReservationHeader(conference, schedule)
@@ -105,6 +105,13 @@ export default class Reservation extends React.Component {
         reservationHeader: reservationHeader
       })
     }
+  }
+  componentWillReceiveProps(nextProps) {
+    this._setStateFromProps(nextProps)
+  }
+
+  componentDidMount(){
+    this._setStateFromProps(this.props)
   }
 
   select(reservationType){

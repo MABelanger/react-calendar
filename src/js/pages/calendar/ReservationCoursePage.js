@@ -26,15 +26,14 @@ export default class CourseTeacherPage extends React.Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-
-    if(nextProps.courses && nextProps.courses.length > 0){
+  _setStateFromProps(props){
+    if(props.courses && props.courses.length > 0){
       const { query } = this.props.location;
       const { params } = this.props;
       const { courseNameSlug, teacherSlug, courseTypeSlug, weekDayNameSlug, hourStartSlug, hourEndSlug } = params;
 
-      let { course, teacher} = helperPage.getCourseTeacher(nextProps.courses, courseNameSlug, teacherSlug);
-      let {courseType, matchSchedule} = helperPage.getMatchCourseTypeSchedule(nextProps.courses, courseNameSlug, teacherSlug, courseTypeSlug, weekDayNameSlug, hourStartSlug, hourEndSlug );
+      let { course, teacher} = helperPage.getCourseTeacher(props.courses, courseNameSlug, teacherSlug);
+      let {courseType, matchSchedule} = helperPage.getMatchCourseTypeSchedule(props.courses, courseNameSlug, teacherSlug, courseTypeSlug, weekDayNameSlug, hourStartSlug, hourEndSlug );
 
       matchSchedule = helperPage.getReservationScheduleFromNow(matchSchedule)
 
@@ -45,6 +44,13 @@ export default class CourseTeacherPage extends React.Component {
         matchSchedule: matchSchedule
       });
     }
+  }
+  componentWillReceiveProps(nextProps) {
+    this._setStateFromProps(nextProps)
+  }
+
+  componentDidMount(){
+    this._setStateFromProps(this.props)
   }
 
   // TODO put it into helper or extend from parent

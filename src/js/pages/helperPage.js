@@ -117,15 +117,17 @@ export function getMatchReservationSchedule(schedules, dateSlug, hourStartSlug){
 
 function _getFreeDaysFromNow(freeDays){
   let freeDaysFromNow = undefined;
-  freeDays.map(function(freeDay){
-    let day = moment( freeDay.day ).utcOffset("+00:00");
-    if(componentHelper.isNotExpired(day)){
-      if(freeDaysFromNow == undefined){
-        freeDaysFromNow = []
+  if(freeDays){
+    freeDays.map(function(freeDay){
+      let day = moment( freeDay.day ).utcOffset("+00:00");
+      if(componentHelper.isNotExpired(day)){
+        if(freeDaysFromNow == undefined){
+          freeDaysFromNow = []
+        }
+        freeDaysFromNow.push(freeDay);
       }
-      freeDaysFromNow.push(freeDay);
-    }
-  });
+    });
+  }
   return freeDaysFromNow;
 }
 

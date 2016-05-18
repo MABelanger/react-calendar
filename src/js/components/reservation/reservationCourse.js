@@ -97,9 +97,10 @@ export default class Reservation extends React.Component {
 
     return weekDayName + ", du " + rangeDates + " " + "(" + numberDates + " cours)";
   }
-  componentWillReceiveProps(nextProps) {
-    if(nextProps.schedule){
-      let schedule = nextProps.schedule;
+
+  _setStateFromProps(props){
+    if(props.schedule){
+      let schedule = props.schedule;
 
       let allDaysTitle =  componentHelper.capitalizeFirstLetter(this._getTitleAllDays(schedule));
       let freeDays = schedule.freeDays;
@@ -122,13 +123,21 @@ export default class Reservation extends React.Component {
         dropDownList : dropDownList
       });
     }
-    if(nextProps.course){
-      let {course, teacher, courseType, schedule} = nextProps;
+    if(props.course){
+      let {course, teacher, courseType, schedule} = props;
       this.setState({
         reservationHeader : this._getReservationHeader(course, teacher, courseType, schedule)
       });
     }
   }
+  componentWillReceiveProps(nextProps) {
+    this._setStateFromProps(nextProps)
+  }
+
+  componentDidMount(){
+    this._setStateFromProps(this.props)
+  }
+
 
   _getReservationHeader(course, teacher, courseType, schedule){
 

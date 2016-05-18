@@ -22,17 +22,26 @@ export default class ConferenceDetailPage extends React.Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    if(nextProps.conferences && nextProps.conferences.length > 0){
+
+
+  _setStateFromProps(props){
+    if(props.conferences && props.conferences.length > 0){
       const { params } = this.props;
       const { conferenceSlug, speakerSlug } = params;
 
-      let conference = helperPage.getConference(nextProps.conferences, conferenceSlug, speakerSlug);
+      let conference = helperPage.getConference(props.conferences, conferenceSlug, speakerSlug);
 
       this.setState({
         conference: conference
       });
     }
+  }
+  componentWillReceiveProps(nextProps) {
+    this._setStateFromProps(nextProps)
+  }
+
+  componentDidMount(){
+    this._setStateFromProps(this.props)
   }
 
   // TODO put it into helper or extend from parent

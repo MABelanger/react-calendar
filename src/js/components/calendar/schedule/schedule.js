@@ -22,15 +22,32 @@ export default class Schedule extends React.Component {
     this.nbLoop=0;
 
     this.state = {
-      scheduleDays: []
+      scheduleDays: null,
+      headers: null,
+      scheduleDay: null
     }
   }
 
+  _setStateFromProps(props){
+    if(props.courses && props.courses.length > 0 ){
+      let scheduleDays = scheduleApi.getScheduleDays(props.courses);
+      let headers = scheduleApi.getHeaders(scheduleDays).map(this.eachHeader);
+      let scheduleDay = scheduleDays.map(this.eachDay.bind(this));
+
+      this.setState({
+        scheduleDays: scheduleDays,
+        headers: headers,
+        scheduleDay: scheduleDay,
+        key: Date()
+      });
+    }
+  }
   componentWillReceiveProps(nextProps) {
-    this.setState({
-      scheduleDays: scheduleApi.getScheduleDays(nextProps.courses),
-      key: Date()
-    });
+    this._setStateFromProps(nextProps)
+  }
+
+  componentDidMount(){
+    this._setStateFromProps(this.props)
   }
 
   eachDay(day, i) {
@@ -77,9 +94,6 @@ export default class Schedule extends React.Component {
   }
 
   render(){
-    let headers = scheduleApi.getHeaders(this.state.scheduleDays).map(this.eachHeader);
-    let scheduleDay = this.state.scheduleDays.map(this.eachDay.bind(this));
-
     return (
       <div 
         className="schedule col-sm-9"
@@ -88,12 +102,12 @@ export default class Schedule extends React.Component {
         <table className="cal">
           <thead>
             <tr className="cal">
-              { headers }
+              { this.state.headers }
             </tr>
           </thead>
           <tbody>
             <tr className="cal">
-              { scheduleDay }
+              { this.state.scheduleDay }
             </tr>
           </tbody>
         </table>
