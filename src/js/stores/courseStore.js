@@ -15,7 +15,7 @@ class CourseStoreClass extends EventEmitter {
 
   constructor() {
     super();
-    this.courses = {};
+    this.courses = [];
   }
 
   addChangeListener(cb) {

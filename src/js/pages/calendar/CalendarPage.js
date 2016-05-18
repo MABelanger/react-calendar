@@ -16,35 +16,36 @@ const CHANGE_EVENT = CourseConstants.CHANGE_EVENT;
 
 export default class Calendar extends React.Component {
 
-  constructor() {
-    super();
-    this.getCourses = this.getCourses.bind(this);
-    this.state = {
-      courses: {},
-    };
-    // get the courses from server.
-    CourseActions.getCourses();
-  }
+  // constructor() {
+  //   super();
+  //   this.getCourses = this.getCourses.bind(this);
+  //   this.state = {
+  //     courses: {},
+  //   };
+  //   // get the courses from server.
+  //   CourseActions.getCourses();
+  // }
 
-  componentWillMount() {
-    CourseStore.on(CHANGE_EVENT, this.getCourses);
-  }
+  // componentWillMount() {
+  //   CourseStore.on(CHANGE_EVENT, this.getCourses);
+  //   console.log('this.props.testProp', this.props.testProp)
+  // }
 
-  componentWillUnmount() {
-    CourseStore.removeListener(CHANGE_EVENT, this.getCourses);
-  }
+  // componentWillUnmount() {
+  //   CourseStore.removeListener(CHANGE_EVENT, this.getCourses);
+  // }
 
-  getCourses() {
-    this.setState({
-      courses: CourseStore.getCourses(),
-    });
-  }
+  // getCourses() {
+  //   this.setState({
+  //     courses: CourseStore.getCourses(),
+  //   });
+  // }
 
   render(){
     return (
       <div className="container" style={{backgroundColor:"#F5F5F5"}}>
         <CalendarComponent 
-          courses={this.state.courses}
+          courses={this.props.courses}
         />
       </div>
     );

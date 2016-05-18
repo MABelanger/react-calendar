@@ -21,29 +21,29 @@ export default class CourseTeacherPage extends React.Component {
     router: React.PropTypes.object
   }
 
-  constructor() {
-    super();
-    this.getCourses = this.getCourses.bind(this);
-    this.state = {
-      courses: {},
-    };
-    // get the courses from server.
-    CourseActions.getCourses();
-  }
+  // constructor() {
+  //   super();
+  //   this.getCourses = this.getCourses.bind(this);
+  //   this.state = {
+  //     courses: {},
+  //   };
+  //   // get the courses from server.
+  //   CourseActions.getCourses();
+  // }
 
-  componentWillMount() {
-    CourseStore.on(CHANGE_EVENT, this.getCourses);
-  }
+  // componentWillMount() {
+  //   CourseStore.on(CHANGE_EVENT, this.getCourses);
+  // }
 
-  componentWillUnmount() {
-    CourseStore.removeListener(CHANGE_EVENT, this.getCourses);
-  }
+  // componentWillUnmount() {
+  //   CourseStore.removeListener(CHANGE_EVENT, this.getCourses);
+  // }
 
-  getCourses() {
-    this.setState({
-      courses: CourseStore.getCourses(),
-    });
-  }
+  // getCourses() {
+  //   this.setState({
+  //     courses: CourseStore.getCourses(),
+  //   });
+  // }
 
   getCourseTeacher(courses, courseNameSlug, teacherSlug){
 
@@ -79,7 +79,7 @@ export default class CourseTeacherPage extends React.Component {
     const { courseNameSlug, teacherSlug } = params;
     const { date, filter } = query;
 
-    let { course, teacher} = helperPage.getCourseTeacher(this.state.courses, courseNameSlug, teacherSlug);
+    let { course, teacher} = helperPage.getCourseTeacher(this.props.courses, courseNameSlug, teacherSlug);
 
     return (
       <div className="container" style={{backgroundColor:"#F5F5F5"}}>

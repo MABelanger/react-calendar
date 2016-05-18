@@ -23,28 +23,50 @@ export default class CourseTeacherPage extends React.Component {
 
   constructor(props, context) {
     super(props, context);
-    this.getCourses = this.getCourses.bind(this);
+    //this.getCourses = this.getCourses.bind(this);
     this.state = {
-      courses: {},
+      //courses: {},
       confirmation: {}
     };
     // get the courses from server.
-    CourseActions.getCourses();
+    //CourseActions.getCourses();
   }
 
-  componentWillMount() {
-    CourseStore.on(CHANGE_EVENT, this.getCourses);
+  componentWillReceiveProps(nextProps) {
+
+    if(nextProps.courses && nextProps.courses.length > 0){
+      const { query } = this.props.location;
+      const { params } = this.props;
+      const { courseNameSlug, teacherSlug, courseTypeSlug, weekDayNameSlug, hourStartSlug, hourEndSlug } = params;
+
+      let { course, teacher} = helperPage.getCourseTeacher(nextProps.courses, courseNameSlug, teacherSlug);
+      let {courseType, matchSchedule} = helperPage.getMatchCourseTypeSchedule(nextProps.courses, courseNameSlug, teacherSlug, courseTypeSlug, weekDayNameSlug, hourStartSlug, hourEndSlug );
+
+      matchSchedule = helperPage.getReservationScheduleFromNow(matchSchedule)
+
+      this.setState({
+        course: course,
+        teacher: teacher,
+        courseType: courseType,
+        matchSchedule: matchSchedule,
+        key: Date()
+      });
+    }
   }
 
-  componentWillUnmount() {
-    CourseStore.removeListener(CHANGE_EVENT, this.getCourses);
-  }
+  // componentWillMount() {
+  //   CourseStore.on(CHANGE_EVENT, this.getCourses);
+  // }
 
-  getCourses() {
-    this.setState({
-      courses: CourseStore.getCourses()
-    });
-  }
+  // componentWillUnmount() {
+  //   CourseStore.removeListener(CHANGE_EVENT, this.getCourses);
+  // }
+
+  // getCourses() {
+  //   this.setState({
+  //     courses: CourseStore.getCourses()
+  //   });
+  // }
 
   // TODO put it into helper or extend from parent
   backBtnClick(e){
@@ -53,26 +75,13 @@ export default class CourseTeacherPage extends React.Component {
     router.push('/')
   }
 
-  render(){
-    // reservation/cours/:courseNameSlug/:teacherSlug/:courseTypeSlug/:weekDayNameSlug/:hourStartSlug-:hourEndSlug
-    const { query } = this.props.location;
-    const { params } = this.props;
-    const { courseNameSlug, teacherSlug, courseTypeSlug, weekDayNameSlug, hourStartSlug, hourEndSlug } = params;
-
-    let { course, teacher} = helperPage.getCourseTeacher(this.state.courses, courseNameSlug, teacherSlug);
-    let {courseType, matchSchedule} = helperPage.getMatchCourseTypeSchedule(this.state.courses, courseNameSlug, teacherSlug, courseTypeSlug, weekDayNameSlug, hourStartSlug, hourEndSlug );
-
-    
-    // if(matchSchedule)
-    //   matchSchedule.dayStart = "2016-01-04T15:30:00.000Z"
-
-    matchSchedule = helperPage.getReservationScheduleFromNow(matchSchedule)
+  render(){    
     return (
       <ReservationCourse
-        course={course}
-        teacher={teacher}
-        courseType={courseType}
-        schedule={matchSchedule}
+        course={this.state.course}
+        teacher={this.state.teacher}
+        courseType={this.state.courseType}
+        schedule={this.state.matchSchedule}
         backBtnClick={(e)=>{ this.backBtnClick(e); }}
       />
     );

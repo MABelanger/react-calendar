@@ -26,15 +26,22 @@ export default class Schedule extends React.Component {
     }
   }
 
-
   componentWillReceiveProps(nextProps) {
-    if(nextProps.courses != this.props.courses){
-      this.setState({
-        scheduleDays: scheduleApi.getScheduleDays(nextProps.courses),
-        key: Date()
-      });
-    }
+    this.setState({
+      scheduleDays: scheduleApi.getScheduleDays(nextProps.courses),
+      key: Date()
+    });
   }
+
+  // componentWillMount() {
+  //   if(this.props.courses && this.props.courses.length > 0){
+  //     this.setState({
+  //       scheduleDays: scheduleApi.getScheduleDays(this.props.courses),
+  //       key: Date()
+  //     });
+  //     console.log('this.props.courses ', this.props.courses )
+  //   }
+  // }
 
   eachDay(day, i) {
     var courses = day;
