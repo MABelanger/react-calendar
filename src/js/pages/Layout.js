@@ -65,7 +65,6 @@ export default class Layout extends React.Component {
  */
 
   getConferences() {
-    console.log('getConferences', ConferenceStore.getConferences())
     this.setState({
       conferences: ConferenceStore.getConferences()
     });

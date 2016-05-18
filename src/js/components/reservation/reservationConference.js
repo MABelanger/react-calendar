@@ -97,7 +97,6 @@ export default class Reservation extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('nextProps', nextProps)
     let {conference, schedule} = nextProps;
     if(conference && schedule){
       let reservationHeader = null;
