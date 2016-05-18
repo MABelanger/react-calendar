@@ -16,12 +16,9 @@ export default class Conferences extends React.Component {
     super(props);
   }
 
-
-
   _renderConferences(conferences){
     
     let Conferences = conferences.map((conference, index) =>{
-      //let scheduleCompleted = componentHelper.isScheduleExpired(conference.schedules);
 
       if(conference.schedules.length > 0){
         return (
@@ -40,7 +37,7 @@ export default class Conferences extends React.Component {
 
   render(){
     let Conferences = null;
-    if(this.props.conferences.length > 0){
+    if(this.props.conferences && this.props.conferences.length > 0){
       Conferences = this._renderConferences(this.props.conferences)
     }
     return (

@@ -33,16 +33,6 @@ export default class Schedule extends React.Component {
     });
   }
 
-  // componentWillMount() {
-  //   if(this.props.courses && this.props.courses.length > 0){
-  //     this.setState({
-  //       scheduleDays: scheduleApi.getScheduleDays(this.props.courses),
-  //       key: Date()
-  //     });
-  //     console.log('this.props.courses ', this.props.courses )
-  //   }
-  // }
-
   eachDay(day, i) {
     var courses = day;
     return (

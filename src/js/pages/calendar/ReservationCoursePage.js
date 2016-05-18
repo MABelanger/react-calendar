@@ -4,16 +4,10 @@
 import React                          from 'react';
 import _                              from 'lodash'
 
-// Flux CourseStore
-import CourseStore                    from '../../stores/courseStore';
-import * as CourseActions             from '../../actions/courseActions';
-import CourseConstants                from '../../constants/courseConstants';
-
 // Project modules
 import ReservationCourse                    from '../../components/reservation/reservationCourse';
 import * as helperPage                from '../helperPage';
 
-const CHANGE_EVENT = CourseConstants.CHANGE_EVENT;
 
 export default class CourseTeacherPage extends React.Component {
 
@@ -23,13 +17,13 @@ export default class CourseTeacherPage extends React.Component {
 
   constructor(props, context) {
     super(props, context);
-    //this.getCourses = this.getCourses.bind(this);
     this.state = {
-      //courses: {},
-      confirmation: {}
+      confirmation: null,
+      course: null,
+      teacher: null,
+      courseType: null,
+      matchSchedule: null
     };
-    // get the courses from server.
-    //CourseActions.getCourses();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -48,25 +42,10 @@ export default class CourseTeacherPage extends React.Component {
         course: course,
         teacher: teacher,
         courseType: courseType,
-        matchSchedule: matchSchedule,
-        key: Date()
+        matchSchedule: matchSchedule
       });
     }
   }
-
-  // componentWillMount() {
-  //   CourseStore.on(CHANGE_EVENT, this.getCourses);
-  // }
-
-  // componentWillUnmount() {
-  //   CourseStore.removeListener(CHANGE_EVENT, this.getCourses);
-  // }
-
-  // getCourses() {
-  //   this.setState({
-  //     courses: CourseStore.getCourses()
-  //   });
-  // }
 
   // TODO put it into helper or extend from parent
   backBtnClick(e){

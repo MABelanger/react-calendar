@@ -4,16 +4,10 @@
 import React                          from 'react';
 import _                              from 'lodash'
 
-// Flux ConferenceStore
-import ConferenceStore                from '../../stores/conferenceStore';
-import * as ConferenceActions         from '../../actions/conferenceActions';
-import ConferenceConstants            from '../../constants/conferenceConstants';
-
 // Project modules
 import ReservationConference          from '../../components/reservation/reservationConference';
 import * as helperPage                from '../helperPage';
 
-const CHANGE_EVENT = ConferenceConstants.CHANGE_EVENT;
 
 export default class ConferenceTeacherPage extends React.Component {
 
@@ -23,27 +17,28 @@ export default class ConferenceTeacherPage extends React.Component {
 
   constructor(props, context) {
     super(props, context);
-    this.getConferences = this.getConferences.bind(this);
     this.state = {
-      conferences: {},
-      confirmation: {}
+      conference: null,
+      matchSchedule: null
     };
-    // get the conferences from server.
-    ConferenceActions.getConferences();
   }
 
-  componentWillMount() {
-    ConferenceStore.on(CHANGE_EVENT, this.getConferences);
-  }
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.conferences && nextProps.conferences.length > 0){
+      const { params } = this.props;
+      const { conferenceSlug, speakerSlug, dateSlug, hourStartSlug } = params;
 
-  componentWillUnmount() {
-    ConferenceStore.removeListener(CHANGE_EVENT, this.getConferences);
-  }
-
-  getConferences() {
-    this.setState({
-      conferences: ConferenceStore.getConferences()
-    });
+      let matchSchedule = null;
+      let conference = helperPage.getConference(nextProps.conferences, conferenceSlug, speakerSlug);
+      if(conference && conference.schedules){
+        let schedules = conference.schedules;
+        matchSchedule = helperPage.getMatchReservationSchedule(schedules, dateSlug, hourStartSlug);
+      }
+      this.setState({
+        conference: conference,
+        matchSchedule: matchSchedule
+      });
+    }
   }
 
   // TODO put it into helper or extend from parent
@@ -54,20 +49,10 @@ export default class ConferenceTeacherPage extends React.Component {
   }
 
   render(){
-    const { params } = this.props;
-    const { conferenceSlug, speakerSlug, dateSlug, hourStartSlug } = params;
-
-    let matchSchedule = null;
-    let conference = helperPage.getConference(this.state.conferences, conferenceSlug, speakerSlug);
-    if(conference && conference.schedules){
-      let schedules = conference.schedules;
-      matchSchedule = helperPage.getMatchReservationSchedule(schedules, dateSlug, hourStartSlug);
-    }
-
     return (
       <ReservationConference
-        conference={conference}
-        schedule={matchSchedule}
+        conference={this.state.conference}
+        schedule={this.state.matchSchedule}
         backBtnClick={(e)=>{ this.backBtnClick(e); }}
       />
     );

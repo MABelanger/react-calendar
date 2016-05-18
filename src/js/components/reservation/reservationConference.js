@@ -40,9 +40,9 @@ export default class Reservation extends React.Component {
     super(props);
     this.getConfirmation = this.getConfirmation.bind(this);
     this.state = {
-      reservationHeader: "",
-      confirmation: {},
-      errors: {},
+      reservationHeader: null,
+      confirmation: null,
+      errors: null,
       isSuccess: false
     };
   }
@@ -78,41 +78,6 @@ export default class Reservation extends React.Component {
   }
 
 
-
-  componentWillReceiveProps(nextProps) {
-
-    // if(nextProps.course){
-    //   let {course, teacher, courseType, schedule} = nextProps;
-    //   this.setState({
-    //     reservationHeader : this._getReservationHeader(course, teacher, courseType, schedule)
-    //   });
-    // }
-  }
-
-
-
-
-  select(reservationType){
-    this.setState({
-      confirmation: {},
-      errors: {}
-    })
-  }
-  
-
-
-
-  // TODO put it into helper or extend from parent
-  backBtnClick(){
-    const { router } = this.context
-    router.push('/')
-  }
-
-  cancel(){
-    this.backBtnClick();
-  }
-
-
   _renderReservationHeader(conference, schedule){
     moment.locale('fr'); 
     let fullName = componentHelper.getFullName(conference.speaker);
@@ -131,6 +96,30 @@ export default class Reservation extends React.Component {
 
   }
 
+  componentWillReceiveProps(nextProps) {
+    console.log('nextProps', nextProps)
+    let {conference, schedule} = nextProps;
+    if(conference && schedule){
+      let reservationHeader = null;
+      reservationHeader = this._renderReservationHeader(conference, schedule)
+      this.setState({
+        reservationHeader: reservationHeader
+      })
+    }
+  }
+
+  select(reservationType){
+    this.setState({
+      confirmation: {},
+      errors: {}
+    })
+  }
+
+  cancel(){
+    const { router } = this.context
+    router.push('/conferences')
+  }
+
   send(conference, schedule){
     let reservation = this.refs.textForm.getFields();
     let reservationHeader = ReactDomServer.renderToStaticMarkup(
@@ -140,27 +129,16 @@ export default class Reservation extends React.Component {
     ReservationActions.sendReservation(reservation);
   }
 
-
-  cancel(){
-    const { router } = this.context
-    router.push('/conferences')
-  }
-
   _renderForm(){
+
     let {conference, schedule} = this.props;
-    let reservationHeader = null;
-
-    if(conference && schedule){
-      reservationHeader = this._renderReservationHeader(conference, schedule)
-    }
-
     return (
       <div>
         <div className="row">
           <div className="col-sm-offset-3 col-sm-6 col-sm-offset-3">
             <h3 className="text-center">Réservation</h3>
             <div className="reserv-cont-form">
-              {reservationHeader}
+              {this.state.reservationHeader}
             </div>
             <br/>
             <TextForm 

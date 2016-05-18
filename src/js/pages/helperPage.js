@@ -41,7 +41,7 @@ export function getCourseTeacher(courses, courseNameSlug, teacherSlug){
   let course = null;
   let teacher = null;
 
-  if(courses.length > 0){
+  if(courses && courses.length > 0){
     course = _.find(courses, function(item) {
         return item.slug == courseNameSlug; 
     });
@@ -63,7 +63,7 @@ export function getCourseTeacher(courses, courseNameSlug, teacherSlug){
 export function getConference(conferences, conferenceSlug, speakerSlug){
   let conference = null;
 
-  if(conferences.length > 0){
+  if(conferences && conferences.length > 0){
     conference = _.find(conferences, function(item) {
         return (
               (item.slug == conferenceSlug)
