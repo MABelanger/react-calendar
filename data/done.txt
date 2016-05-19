@@ -12,3 +12,4 @@ Cours :
 Réservations : 
   - conférence automatiquement invisible pour les dates antérieurs 
   - 
+
