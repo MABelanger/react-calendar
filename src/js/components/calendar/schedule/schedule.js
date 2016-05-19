@@ -24,7 +24,8 @@ export default class Schedule extends React.Component {
     this.state = {
       scheduleDays: null,
       headers: null,
-      scheduleDay: null
+      scheduleDay: null,
+      key: null
     }
   }
 
@@ -38,7 +39,7 @@ export default class Schedule extends React.Component {
         scheduleDays: scheduleDays,
         headers: headers,
         scheduleDay: scheduleDay,
-        key: Date()
+        key: null
       });
     }
   }
