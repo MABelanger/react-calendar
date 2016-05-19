@@ -109,7 +109,10 @@ export default class Schedule extends React.Component {
             </tr>
           </thead>
           <tbody>
-            <tr className="cal">
+            <tr
+              className="cal"
+              key={this.state.key}
+            >
               { this.state.scheduleDay }
             </tr>
           </tbody>
