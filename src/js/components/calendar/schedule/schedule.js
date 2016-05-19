@@ -24,8 +24,7 @@ export default class Schedule extends React.Component {
     this.state = {
       scheduleDays: null,
       headers: null,
-      scheduleDay: null,
-      key: null
+      scheduleDay: null
     }
   }
 
@@ -38,8 +37,7 @@ export default class Schedule extends React.Component {
       this.setState({
         scheduleDays: scheduleDays,
         headers: headers,
-        scheduleDay: scheduleDay,
-        key: null
+        scheduleDay: scheduleDay
       });
     }
   }
@@ -90,7 +88,7 @@ export default class Schedule extends React.Component {
     console.log('this.nbLoop', this.nbLoop)
     console.log('numberOfSchedules', numberOfSchedules)
     if(this.nbLoop == numberOfSchedules){
-
+      this.nbLoop = 0;
       // force reRender this schedule
       this.setState({
         key: Date()
