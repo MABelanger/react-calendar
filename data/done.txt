@@ -1,0 +1,14 @@
+Mise en page : 
+  - Nouvelle navigation facilitant l'accès au callendrier des cours et des conférences.
+  - Navigation compatible mobile
+  - Transformation des logos en SVG vectoriel permet un visuel plus net sur mobile et rétina
+
+
+Conférences : 
+  - regrouper les dates de conférence dans le même encadré
+  - conférence automatiquement invisible pour les dates antérieurs 
+Cours : 
+  - 
+Réservations : 
+  - conférence automatiquement invisible pour les dates antérieurs 
+  - 
