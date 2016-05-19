@@ -86,7 +86,11 @@ export default class Schedule extends React.Component {
 
     // Only if it is the last schedule, force rerender by calling setState
     // with the right height.
+    console.log('this.nbLoop', this.nbLoop)
+    console.log('numberOfSchedules', numberOfSchedules)
     if(this.nbLoop == numberOfSchedules){
+
+      // force reRender this schedule
       this.setState({
         key: Date()
       });
