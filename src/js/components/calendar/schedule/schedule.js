@@ -90,7 +90,7 @@ export default class Schedule extends React.Component {
       this.nbLoop = 0;
       // force reRender this schedule
       this.setState({
-        key: Date()
+        key: this.maxHeight
       });
     }
   }
