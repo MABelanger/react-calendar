@@ -98,10 +98,7 @@ export default class Schedule extends React.Component {
 
   render(){
     return (
-      <div 
-        className="schedule col-sm-9"
-        key={this.state.key}
-      >
+      <div className="schedule col-sm-9">
         <table className="cal">
           <thead>
             <tr className="cal">
