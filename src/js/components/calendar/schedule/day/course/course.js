@@ -12,6 +12,9 @@ export default class Course extends React.Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      height: null
+    };
   }
 
 /*
@@ -32,14 +35,22 @@ export default class Course extends React.Component {
     this.props.setMaxHeight(height);
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      height: nextProps.height,
+    });
+  }
+
   render(){
     let style = {};
-    if(this.props.height > 0){
-      style.height = this.props.height + 'px'
+    console.log('this.state.height', this.state.height)
+    if(this.state.height > 0){
+      style.height = this.state.height + 'px'
     }
 
     return (
-      <Link className="link-url" 
+      <Link 
+        className="link-url"
         ref="course"
         className="cal"
         to={this.props.link}
