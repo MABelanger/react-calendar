@@ -89,8 +89,10 @@ export default class Schedule extends React.Component {
       console.log('this.maxHeight', this.maxHeight);
       this.nbLoop = 0;
       // force reRender this schedule
+      let scheduleDays = scheduleApi.getScheduleDays(this.props.courses);
+      let scheduleDay = scheduleDays.map(this.eachDay.bind(this));
       this.setState({
-        key: this.maxHeight
+        scheduleDay: scheduleDay
       });
     }
   }
@@ -107,7 +109,6 @@ export default class Schedule extends React.Component {
           <tbody>
             <tr
               className="cal"
-              key={this.state.key}
             >
               { this.state.scheduleDay }
             </tr>
