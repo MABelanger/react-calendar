@@ -38,6 +38,7 @@ export default class Course extends React.Component {
   componentWillReceiveProps(nextProps) {
     this.setState({
       height: nextProps.height,
+      key: nextProps.height
     });
   }
 
@@ -50,6 +51,7 @@ export default class Course extends React.Component {
 
     return (
       <Link 
+        key={this.state.key}
         className="link-url"
         ref="course"
         className="cal"
