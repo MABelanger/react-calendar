@@ -86,7 +86,6 @@ export default class Schedule extends React.Component {
     // Only if it is the last schedule, force rerender by calling setState
     // with the right height.
     if(this.nbLoop == numberOfSchedules){
-      console.log('this.maxHeight', this.maxHeight);
       this.nbLoop = 0;
       // force reRender this schedule
       let scheduleDays = scheduleApi.getScheduleDays(this.props.courses);

@@ -2,14 +2,31 @@ Mise en page :
   - Nouvelle navigation facilitant l'accès au callendrier des cours et des conférences.
   - Navigation compatible mobile
   - Transformation des logos en SVG vectoriel permet un visuel plus net sur mobile et rétina
-
+  - Changer le look visuel (background, couleur de texte, liens, boutons)
+  - URL francais
+  - Tout les liens sont lisible et non par ID => /cours/professeur/type-de-de-cours/horaire
+  - Ancien lien accessible tant qu'ils ne sont pas supprimé mais apparaissent pas dans la liste des cours
 
 Conférences : 
   - regrouper les dates de conférence dans le même encadré
   - conférence automatiquement invisible pour les dates antérieurs 
+
 Cours : 
-  - 
+  - Si le cours est encore visible et que la date est antérieurs, afficher (complété)
+  - Cours gratuit s'enlève automatiquement si la date est antérieur.
+
 Réservations : 
-  - conférence automatiquement invisible pour les dates antérieurs 
-  - 
+  - Reservation invisible pour les dates antérieurs 
+  - Ajout d'un message de confirmation avec les informations du formulaires.
+  
+Admin : 
+  - Intégrer un autre plugin pour l'édition de texte pour réglé le bug de devoir rafraichir la page
+  - Sauvegarde automatique du format de l'image (redimention fait coté serveur avec sauvegarde de l'image original)
+  - Simplification des menues de cours, choix de cours et liste des professeurs par la suite.
+  - Menu par ordre alphabétique.
+  - Les conférences terminé sont automatiquement ajouté terminé si la date est antérieur.
+  - Ajout de la notification (terminé) pour chaque conférence terminé et menu en ordre alphabétique.
+  - Ajout de l'heure entre () pour distingué les cours dans la même journée ex:. lundi (9:30) et lundi (14:30)
+  - L'heure peut être sélectionné à l'aide d'un plugin et peut être entré manuellement.
+  - Message de sauvegarde apparaisant en haut a gauche de l'écran.
 

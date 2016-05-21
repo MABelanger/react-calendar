@@ -44,7 +44,6 @@ export default class Course extends React.Component {
 
   render(){
     let style = {};
-    console.log('this.state.height', this.state.height)
     if(this.state.height > 0){
       style.height = this.state.height + 'px'
     }
