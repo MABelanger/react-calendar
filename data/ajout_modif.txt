@@ -1,15 +1,17 @@
-Mise en page : 
+Mise en page générale : 
   - Nouvelle navigation facilitant l'accès au callendrier des cours et des conférences.
   - Navigation compatible mobile
-  - Transformation des logos en SVG vectoriel permet un visuel plus net sur mobile et rétina
+  - Transformation des logos en SVG vectoriel permet un visuel plus net sur mobile et rétina.
   - Changer le look visuel (background, couleur de texte, liens, boutons)
+  - pour tout les pages (cours, attelier et réservations) 
+    l'URL représente le contenu avec le nom de cour et le nom du professeur  ex:. 
+      mondeavie.ca/reservation/cours/yoga/marianne-girard/yoga/lundi/19.00-19.20/
   - URL francais
-  - Tout les liens sont lisible et non par ID => /cours/professeur/type-de-de-cours/horaire
-  - Ancien lien accessible tant qu'ils ne sont pas supprimé mais apparaissent pas dans la liste des cours
+  - Ancien liens accessible tant qu'ils ne sont pas supprimé mais apparaissent pas dans la liste des cours
 
 Conférences : 
   - regrouper les dates de conférence dans le même encadré
-  - conférence automatiquement invisible pour les dates antérieurs 
+  - conférence automatiquement invisible pour les dates antérieurs.
 
 Cours : 
   - Si le cours est encore visible et que la date est antérieurs, afficher (complété)
@@ -22,11 +24,12 @@ Réservations :
 Admin : 
   - Intégrer un autre plugin pour l'édition de texte pour réglé le bug de devoir rafraichir la page
   - Sauvegarde automatique du format de l'image (redimention fait coté serveur avec sauvegarde de l'image original)
+      Permet d'optimiser le poid des images pour les mobiles sur le callendrier.
   - Simplification des menues de cours, choix de cours et liste des professeurs par la suite.
   - Menu par ordre alphabétique.
   - Les conférences terminé sont automatiquement ajouté terminé si la date est antérieur.
-  - Ajout de la notification (terminé) pour chaque conférence terminé et menu en ordre alphabétique.
+  - Ajout de la notification (terminé) pour chaque conférence terminé et menu en ordre alphabétique dans le menu.
   - Ajout de l'heure entre () pour distingué les cours dans la même journée ex:. lundi (9:30) et lundi (14:30)
   - L'heure peut être sélectionné à l'aide d'un plugin et peut être entré manuellement.
-  - Message de sauvegarde apparaisant en haut a gauche de l'écran.
+  - Message vert de sauvegarde et rouge d'erreur apparaisant en haut a gauche de l'écran.
 
