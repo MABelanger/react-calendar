@@ -121,6 +121,12 @@ export default class Reservation extends React.Component {
     })
   }
 
+  // TODO put it into helper or extend from parent
+  backBtnClick(){
+    const { router } = this.context
+    router.push('/conferences')
+  }
+
   cancel(){
     const { router } = this.context
     router.push('/conferences')
