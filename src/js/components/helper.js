@@ -390,7 +390,7 @@ export function getMomentSchedules(schedules){
 
 export function getRangeSchedules(schedules){
   let dayStart, dayEnd = null;
-  if(schedules){
+  if(schedules && schedules.length > 0){
     // convert the date of schedules list to moment date.
      schedules = getMomentSchedules(schedules);
 
