@@ -49,6 +49,20 @@ export default class RightInfo extends React.Component {
     return ScheduleDays;
   }
 
+
+  _renderCourseType(courseType, rangeDates, scheduleDays){
+    return(
+      <div>
+        <div className="all-label">
+          {courseType.name}:
+        </div>
+        <div className="tab">
+          Du {rangeDates}
+          {this._renderScheduleDays(scheduleDays)}
+        </div>
+      </div>
+    );
+  }
   // TODO refactor the return
   render(){
     if(this.props.courseType){
@@ -64,21 +78,13 @@ export default class RightInfo extends React.Component {
       });
 
       let {dayStart, dayEnd} = componentHelper.getRangeSchedules(courseType.schedules);
-      let rangeDates = componentHelper.renderRangeDates(dayStart, dayEnd);
-
-      return (
-        <div>
-          <div className="all-label">
-            {courseType.name}:
-          </div>
-          <div className="tab">
-            Du {rangeDates}
-            {this._renderScheduleDays(scheduleDays)}
-          </div>
-        </div>
-      );
-    } else {
-      return(<div></div>);
-    }
+      let rangeDates = null;
+      if( dayStart && dayEnd ){
+        rangeDates = componentHelper.renderRangeDates(dayStart, dayEnd);
+        return this._renderCourseType(courseType, rangeDates, scheduleDays);
+      }
+      return null;
+    } 
+    return null;
   }
 }
