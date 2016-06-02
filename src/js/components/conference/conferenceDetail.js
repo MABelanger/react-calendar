@@ -118,7 +118,7 @@ export default class ConferenceDetail extends React.Component {
   backConferences(e){
     e.preventDefault();
     const { router } = this.context;
-    router.push('/conferences');
+    router.push('/conferences/');
   }
 
   render(){

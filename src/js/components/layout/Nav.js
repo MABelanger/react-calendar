@@ -49,7 +49,7 @@ export default class Nav extends React.Component {
                 <IndexLink to="/" onClick={this.toggleCollapse.bind(this)}>CALENDRIER DES COURS</IndexLink>
               </li>
               <li className={conferencesClass}>
-                <Link to="conferences" onClick={this.toggleCollapse.bind(this)}>CONFÉRENCES ET ATELIERS</Link>
+                <Link to="conferences/" onClick={this.toggleCollapse.bind(this)}>CONFÉRENCES ET ATELIERS</Link>
               </li>
             </ul>
           </div>
