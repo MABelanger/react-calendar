@@ -77,10 +77,6 @@ export default class ConferenceDetail extends React.Component {
       <table>
         <tbody>
           <tr>
-            <td class="all-label all-label-align ">Durée:</td>
-            <td>2:00h</td>
-          </tr>
-          <tr>
             <td class="all-label all-label-align">Avec:</td>
             <td>{fullName}</td>
           </tr>
