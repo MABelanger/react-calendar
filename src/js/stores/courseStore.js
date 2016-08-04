@@ -31,6 +31,7 @@ class CourseStoreClass extends EventEmitter {
   }
 
   setCourses(courses){
+    console.log('setCourses')
     this.courses = courses;
   }
 

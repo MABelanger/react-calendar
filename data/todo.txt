@@ -1,24 +1,16 @@
-Imp:
-  courseType pas de schedule plante dans calendar
 
-hide pass dates.
-nb cours selon date aujourd'hui.
 Centraliser isExpired pour cours, conference, titre, reservation 
 
 Fix free day when is today and the hours is not pass...
 
 Nice to have : 
 make Slug modules
-Partager sur facebook...
-Ajouter une photo pour reservation. 
 
-
-
-Faire le formulaire (copier admin)
-
-Confirmation email envoyé
-
-
+Partager sur facebook.
+Ajout de commentaires des clients satisfait.
+Ajouter la photo en haut de la reservation. 
+Nouvelle du jours dans la page principal.
+Ajout de d'autre photos pour les profs dans le détail du cours.
 
 redo parameter without all the obj like course -> courseName to remove coupling
 

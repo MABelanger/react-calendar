@@ -57,7 +57,7 @@ export default class CheckBoxDates extends React.Component {
   _splitWeekDatesByMounth(weekDates){
     let mounths = componentHelper.create2DArray(12);
     weekDates.map(function(date){
-      let index = date.format('M');
+      let index = date.month();
       mounths[index].push(date);
     });
     return componentHelper.removeEmptyArray(mounths);    
