@@ -115,8 +115,8 @@ export default class Reservation extends React.Component {
 
       dropDownList.push(
         {title: allDaysTitle, form: 'ALL_DAYS'},
-        {title: "Une ou plusieur journee de cours", form: 'ONE_OR_MANY_DAYS'},
-        {title: "Un cour d'essaie", form: 'TRYING_DAYS'}
+        {title: "Une ou plusieurs journées de cours", form: 'ONE_OR_MANY_DAYS'},
+        {title: "Un cours d'essai", form: 'TRYING_DAYS'}
       );
 
       this.setState({

@@ -1,3 +1,8 @@
+Bug : 
+bug si y a pas d'image
+ordre de sauvegarde de date bug avec le ID description
+Afficher les messsages d'erreur des liens oubligatoires.
+
 
 Centraliser isExpired pour cours, conference, titre, reservation 
 
