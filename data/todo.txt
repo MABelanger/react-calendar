@@ -1,3 +1,13 @@
+todo : 
+Calendar -> calendrier
+
+
+Menu en haut fond blanc
+Lien souligne
+
+Lien vide...
+
+
 Bug : 
 bug si y a pas d'image
 ordre de sauvegarde de date bug avec le ID description

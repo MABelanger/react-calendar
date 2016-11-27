@@ -7,6 +7,7 @@ const PORT = 9000;
 export function isProduction() {
   return    window.location.hostname == 'ec2-54-235-235-7.compute-1.amazonaws.com'
         ||  window.location.hostname == 'www.mondeavie.ca'
+        ||  window.location.hostname == 'mondeavie.ca'
         ||  window.location.hostname == 'www.blackandrouge.com'
 }
 
