@@ -48,7 +48,7 @@ input.form-control, textarea.form-control {
   color: $txt-color-mid;
 }
 
-textarea.form-control:focus, input:focus, input[type]:focus, .uneditable-input:focus {   
+textarea.form-control:focus, input:focus, input[type]:focus, .uneditable-input:focus {
   border-color: rgba( 72, 117, 34, 0.8);
   box-shadow: 0 1px 1px rgba( 72, 117, 34, 0.075) inset, 0 0 8px rgba( 72, 117, 34, 0.6);
   outline: 0 none;
@@ -168,9 +168,4 @@ label:hover:before {
 
 .reservation-is-day {
   padding-top:10px;
-}
-
-/* offset toastr */
-.toast-top-right {
-  top: 80px;
 }

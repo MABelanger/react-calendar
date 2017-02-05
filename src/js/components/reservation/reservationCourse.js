@@ -21,8 +21,6 @@ import ReservationStore               from '../../stores/reservationStore';
 import * as ReservationActions        from '../../actions/reservationActions';
 import ReservationConstants           from '../../constants/reservationConstants';
 
-// Vendor styles
-import 'toastr/build/toastr.css';
 
 // Project styles
 import './styles.scss';
