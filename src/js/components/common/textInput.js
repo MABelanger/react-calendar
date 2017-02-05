@@ -23,7 +23,7 @@ export default class TextInput extends React.Component {
     if(props.rows){
       let rows = this.props.rows;
       return(
-        <textarea 
+        <textarea
           rows={rows}
           name={props.name}
           className="form-control"
@@ -48,8 +48,8 @@ export default class TextInput extends React.Component {
   }
 
   render() {
-    var wrapperClass = 'form-group no-margin';
-    
+    let wrapperClass = 'form-group no-margin';
+
     if (this.props.error && this.props.error.length > 0) {
       wrapperClass += " " + 'has-error';
     }

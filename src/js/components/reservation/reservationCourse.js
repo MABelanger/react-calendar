@@ -184,9 +184,9 @@ export default class Reservation extends React.Component {
       errors: {}
     })
   }
-  
+
   _removeItem(arr, item){
-    var index = arr.indexOf(item);
+    let index = arr.indexOf(item);
     if (index >= 0) {
       arr.splice( index, 1 );
     }
@@ -253,12 +253,12 @@ export default class Reservation extends React.Component {
       //   console.error('! freeDay', freeDay._id)
       //   return moment('2016-01-11T16:15:00.000Z');
       // }
-        
+
       return freeDay.day;
     });
 
     return(
-      <FreeDaysForm 
+      <FreeDaysForm
       freeDays={freeDays}
       errors={this.state.errors}
       selectedDates={selectedDates}
@@ -272,7 +272,7 @@ export default class Reservation extends React.Component {
 
   _getOneOrManyDaysForm(schedule, selectedDates){
     return(
-      <OneOrManyDaysForm 
+      <OneOrManyDaysForm
       dayStart={schedule.dayStart}
       dayEnd={schedule.dayEnd}
       errors={this.state.errors}
@@ -287,7 +287,7 @@ export default class Reservation extends React.Component {
 
   _getTryingDaysForm(schedule, selectedDates){
     return(
-      <TryingDaysForm 
+      <TryingDaysForm
       dayStart={schedule.dayStart}
       dayEnd={schedule.dayEnd}
       errors={this.state.errors}
@@ -302,7 +302,7 @@ export default class Reservation extends React.Component {
 
   _getAllDaysForm(schedule){
     return(
-      <AllDaysForm 
+      <AllDaysForm
       dayStart={schedule.dayStart}
       dayEnd={schedule.dayEnd}
       errors={this.state.errors}
@@ -358,7 +358,7 @@ export default class Reservation extends React.Component {
     }
 
     if(this.state.isSuccess){
-      return <SuccessMessage 
+      return <SuccessMessage
         messageHtml={this.state.confirmation.messageHtml}
         backBtnClick={this.backBtnClick.bind(this)}
       />

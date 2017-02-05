@@ -27,7 +27,7 @@ export default class LeftInfo extends React.Component {
 
   _getTrList(data){
     let trList = [];
-    for (var property in data) {
+    for (let property in data) {
       if (data.hasOwnProperty(property)) {
         let value = data[property];
         if(value) {
@@ -41,7 +41,7 @@ export default class LeftInfo extends React.Component {
   _getLink(label, url){
     let link = null;
     if(url) {
-      link = <a 
+      link = <a
         target="_blank"
         className="link-url"
         href={url}>

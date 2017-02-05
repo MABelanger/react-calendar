@@ -30,7 +30,7 @@ export default class Course extends React.Component {
 
 
   componentDidMount() {
-    var domCourse = ReactDOM.findDOMNode(this)
+    let domCourse = ReactDOM.findDOMNode(this)
     let height = domCourse.clientHeight;
     this.props.setMaxHeight(height);
   }
@@ -49,7 +49,7 @@ export default class Course extends React.Component {
     }
 
     return (
-      <Link 
+      <Link
         key={this.state.key}
         className="link-url"
         ref="course"

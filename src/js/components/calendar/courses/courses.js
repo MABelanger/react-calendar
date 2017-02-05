@@ -11,7 +11,7 @@ export default class Courses extends React.Component {
 
   getRenderCourses(courses){
     if(courses && courses.length > 0){
-      var renderCourses = courses.map( (course, index) => {
+      let renderCourses = courses.map( (course, index) => {
         return <Course key={index} course={course} />;
       });
       return renderCourses;

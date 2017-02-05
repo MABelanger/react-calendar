@@ -70,9 +70,9 @@ export default class Dropdown extends React.Component {
   }
 
   getRenderList(list){
-    var items = [];
-    for (var index in list) {
-      var item = list[index];
+    let items = [];
+    for (let index in list) {
+      let item = list[index];
       items.push( this.getItem(item, index) );
     }
     return items;
@@ -85,7 +85,7 @@ export default class Dropdown extends React.Component {
   }
 
   render() {
-    var btnGroup = ClassNames(this.props.className, {
+    let btnGroup = ClassNames(this.props.className, {
       'btn-group' : true,
       'open': ( this.state.open == true ),
     });
@@ -93,7 +93,7 @@ export default class Dropdown extends React.Component {
 
 
 
-    var button = ClassNames(this.props.className, {
+    let button = ClassNames(this.props.className, {
       'btn': true,
       'dropdown-toggle': true,
       'my-btn': true,
@@ -102,7 +102,7 @@ export default class Dropdown extends React.Component {
 
     return (
       <div className={btnGroup}>
-          <button 
+          <button
             type="button"
             className={button}
             onClick={ (e) => { this.toogleDropDown(e); } }
@@ -113,7 +113,7 @@ export default class Dropdown extends React.Component {
               &nbsp;
               <span className="caret"></span>
           </button>
-          <ul 
+          <ul
             className="dropdown-menu"
             role="menu"
             onMouseEnter={ (e) => { this.mouseEnterMenu(e); } }

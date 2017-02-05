@@ -58,8 +58,8 @@ export default class TextForm extends React.Component {
 
   clearFields(){
     let newState = {}
-    for (var key in this.state) {
-      if (this.state.hasOwnProperty(key)) {  
+    for (let key in this.state) {
+      if (this.state.hasOwnProperty(key)) {
         newState[key] = "";
       }
     }

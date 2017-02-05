@@ -5,9 +5,9 @@ import React                          from 'react';
 import moment                         from 'moment';
 
 export function create2DArray(rows) {
-  var arr = [];
+  let arr = [];
 
-  for (var i=0;i<rows;i++) {
+  for (let i=0;i<rows;i++) {
      arr[i] = [];
   }
 
@@ -74,14 +74,14 @@ export function sortByHours(scheduleDay){
 
 
 function _compareSchedules(a, b) {
-  
+
     let dayStartA = a.dayStart;
     let dayStartB = b.dayStart;
     if ( dayStartA.isBefore(dayStartB) )
       return -1;
     else if ( dayStartA.isAfter(dayStartB) )
       return 1;
-    else 
+    else
       return 0;
 
 }
@@ -118,8 +118,8 @@ export function getConferenceReservationLink(conference, schedule){
     let day = moment( schedule.dayStart ).utcOffset("+00:00")
     let daySlug = day.format('YYYY-MM-DD');
     let hourSlug = day.format('HH.mm');
-    return '/reservation/conference/' 
-            + conference.slug + '/' 
+    return '/reservation/conference/'
+            + conference.slug + '/'
             + conference.speaker.slug + '/'
             + daySlug + '/'
             + hourSlug;
@@ -140,9 +140,9 @@ export function getDateRange(schedule){
 
 export function getWeekDates(startDate, stopDate) {
     moment.locale('fr');
-    var weekDates = [];
+    let weekDates = [];
     stopDate = moment( stopDate ).utcOffset("+00:00")
-    var currentDate = moment( startDate ).utcOffset("+00:00");
+    let currentDate = moment( startDate ).utcOffset("+00:00");
 
     // TODO replace the while by for
     let maxLoop=100;
@@ -346,7 +346,7 @@ function _compareConferences(a, b) {
         return -1;
       else if (firstSA.dayStart.isAfter(firstSB.dayStart)) // b is smaller
         return 1;
-      else 
+      else
         return 0;
     }
 }
@@ -358,14 +358,14 @@ export function getOrderConferencesFromNow(conferences){
     conference.schedules = sortSchedulesByDate(conference.schedules);
     return conference;
   });
-  
+
   conferenceMoment.sort( (a, b) => {
     a.schedules = getFutureSchedules(a.schedules);
     b.schedules = getFutureSchedules(b.schedules);
     return _compareConferences(a, b);
   });
 
-  
+
   return conferenceMoment;
 }
 
@@ -421,7 +421,7 @@ export function getUrlReservation(courseNameSlug, teacherSlug, courseTypeSlug, w
   let hourEnd = moment(schedule.dayEnd).utcOffset("+00:00").format("HH.mm");
 
   let url = 'reservation/cours/'
-    + courseNameSlug + '/' 
+    + courseNameSlug + '/'
     + teacherSlug + '/'
     + courseTypeSlug + '/'
     + weekDayNameSlug + '/'

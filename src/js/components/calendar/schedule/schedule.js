@@ -1,6 +1,6 @@
 "use strict";
 
-/* Setting The State Based On Rendered DOM Elements In ReactJS 
+/* Setting The State Based On Rendered DOM Elements In ReactJS
  * bennadel.com/blog/2915-setting-the-state-based-on-rendered-dom-elements-in-reactjs.htm
  */
 
@@ -50,7 +50,7 @@ export default class Schedule extends React.Component {
   }
 
   eachDay(day, i) {
-    var courses = day;
+    let courses = day;
     return (
       <Day
         courseHeight={this.maxHeight}

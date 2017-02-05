@@ -3,7 +3,7 @@
 // Vendor modules
 import React                          from 'react';
 import {Link}                         from 'react-router';
-import classNames                     from  'classnames'; 
+import classNames                     from  'classnames';
 
 // Project modules
 import * as componentHelper           from '../../../helper';
@@ -36,7 +36,7 @@ export default class Course extends React.Component {
 
   getRenderTeachers(course, classes){
     let teachers = course.teachers;
-    var renderTeachers = teachers.map( (teacher, index)=>{
+    let renderTeachers = teachers.map( (teacher, index)=>{
       if(teacher.course.isVisible){
         let fullName = componentHelper.getFullName(teacher);
         let link = componentHelper.getCourseTeacherLink(course, teacher);
@@ -51,7 +51,7 @@ export default class Course extends React.Component {
     let name = course.name;
     let svg = course.svg;
 
-    var classes = classNames( this.props.className, {
+    let classes = classNames( this.props.className, {
       'teacher' : true,
       'teacher-transition' : true,
         'teacher-show': ( this.state.showTeachers == true ),
