@@ -4,7 +4,6 @@
 import moment                         from 'moment';
 import React                          from 'react';
 import {Link}                         from 'react-router';
-import ReactDOMServer                 from 'react-dom/server';
 
 // Project modules
 import * as componentHelper           from '../helper';

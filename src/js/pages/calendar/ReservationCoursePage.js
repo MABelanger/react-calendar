@@ -2,7 +2,6 @@
 
 // Vendor modules
 import React                          from 'react';
-import _                              from 'lodash'
 
 // Project modules
 import ReservationCourse                    from '../../components/reservation/reservationCourse';
@@ -60,7 +59,7 @@ export default class CourseTeacherPage extends React.Component {
     router.push('/')
   }
 
-  render(){    
+  render(){
     return (
       <ReservationCourse
         course={this.state.course}

@@ -12,19 +12,22 @@ export function isProduction() {
 }
 
 export function getBaseUrlApi() {
-  if( isProduction() ){
-    return 'http://www.blackandrouge.com/public/api';
-  } else {
-    return 'http://localhost:' + PORT + '/public/api';
-  }
+  return 'http://www.blackandrouge.com/public/api';
+
+  // if( isProduction() ){
+  //   return 'http://www.blackandrouge.com/public/api';
+  // } else {
+  //   return 'http://localhost:' + PORT + '/public/api';
+  // }
 }
 
 export function getBaseUrlImage() {
-  if( isProduction() ){
-    return 'http://www.blackandrouge.com';
-  } else {
-    return 'http://localhost:' + PORT;
-  }
+  return 'http://www.blackandrouge.com';
+  // if( isProduction() ){
+  //   return 'http://www.blackandrouge.com';
+  // } else {
+  //   return 'http://localhost:' + PORT;
+  // }
 }
 
 export function getHistory() {

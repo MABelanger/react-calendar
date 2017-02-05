@@ -2,7 +2,6 @@
 
 // Vendor modules
 import React                          from 'react';
-import _                              from 'lodash'
 
 // Project modules
 import ReservationConference          from '../../components/reservation/reservationConference';

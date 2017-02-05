@@ -1,12 +1,10 @@
 "use strict";
 
 // Vendor modules
-import moment                         from 'moment';
 import React                          from 'react';
-import ReactDOMServer                 from 'react-dom/server';
 
 // Project modules
-import * as componentHelper            from '../../../../../helper';  
+import * as componentHelper            from '../../../../../helper';
 
 export default class FreeDay extends React.Component {
 

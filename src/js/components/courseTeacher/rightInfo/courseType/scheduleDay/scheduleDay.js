@@ -3,10 +3,9 @@
 // Vendor modules
 import moment                         from 'moment';
 import React                          from 'react';
-import ReactDOMServer                 from 'react-dom/server';
 
 // Project modules
-import * as componentHelper           from '../../../../helper';  
+import * as componentHelper           from '../../../../helper';
 import Schedule                       from './schedule/schedule';
 
 export default class ScheduleDay extends React.Component {
@@ -19,7 +18,7 @@ export default class ScheduleDay extends React.Component {
   _renderSchedules(schedules){
     let Schedules = schedules.map( (schedule) => {
       let weekDayName = componentHelper.getWeekDayName(schedule.dayStart);
-      return <Schedule 
+      return <Schedule
         key={schedule._id}
         schedule={schedule}
         weekDayNameSlug={weekDayName}

@@ -2,8 +2,6 @@
 
 // Vendor modules
 import React                          from 'react';
-import ReactDOMServer                 from 'react-dom/server';
-import { Link }                       from "react-router";
 
 // Proejct modules
 import BackBtn                        from '../../common/backBtn';
@@ -38,7 +36,7 @@ export default class CenterInfo extends React.Component {
         <img className="coursed-image radius-img" src={this._gerSrc(teacher)}/>
         <br/>
         <br/>
-        <BackBtn 
+        <BackBtn
           txt='Retour au calendrier'
           click={this.props.backBtnClick}
         />

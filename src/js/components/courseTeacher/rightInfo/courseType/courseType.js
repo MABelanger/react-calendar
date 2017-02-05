@@ -3,11 +3,10 @@
 // Vendor modules
 import moment                         from 'moment';
 import React                          from 'react';
-import ReactDOMServer                 from 'react-dom/server';
 
 // Project modules
 import ScheduleDay                    from './scheduleDay/scheduleDay';
-import * as componentHelper           from '../../../helper';  
+import * as componentHelper           from '../../../helper';
 
 // Project styles
 import './styles.scss';
@@ -72,7 +71,7 @@ export default class RightInfo extends React.Component {
       // [{}, {}, {}] -> [0][{},{}], [1][{},{}] ... [6][{},{}]
       let groupByDays = componentHelper.groupByDays(courseType.schedules);
 
-      // order by hours the group by days 
+      // order by hours the group by days
       let scheduleDays = groupByDays.map( function(groupByDay){
         return componentHelper.sortByHours(groupByDay);
       });
@@ -84,7 +83,7 @@ export default class RightInfo extends React.Component {
         return this._renderCourseType(courseType, rangeDates, scheduleDays);
       }
       return null;
-    } 
+    }
     return null;
   }
 }

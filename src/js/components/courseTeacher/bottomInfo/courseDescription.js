@@ -2,7 +2,6 @@
 
 // Vendor modules
 import React                          from 'react';
-import ReactDOMServer                 from 'react-dom/server';
 
 // Project modules
 import * as componentHelper           from '../../helper';
@@ -38,7 +37,7 @@ export default class LeftInfo extends React.Component {
     return(
       <div className="row">
         <div className="col-sm-12">
-          <br /> 
+          <br />
           <span className="all-label">
             Cours de {courseName} avec {fullName}
           </span>,

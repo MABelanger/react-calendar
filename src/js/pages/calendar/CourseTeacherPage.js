@@ -2,7 +2,6 @@
 
 // Vendor modules
 import React                          from 'react';
-import _                              from 'lodash'
 import { hashHistory }                from 'react-router'
 
 // Proejct modules

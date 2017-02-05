@@ -2,7 +2,6 @@
 
 // Vendor modules
 import React                          from 'react';
-import ReactDOMServer                 from 'react-dom/server';
 
 export default class Btn extends React.Component {
 

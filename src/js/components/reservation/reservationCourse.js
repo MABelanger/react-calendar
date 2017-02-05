@@ -4,7 +4,7 @@
 import React                          from 'react';
 import ReactDomServer                 from 'react-dom/server';
 import moment                         from 'moment';
-import toastr                         from 'toastr';
+
 
 // Project modules
 import * as componentHelper           from '../helper';

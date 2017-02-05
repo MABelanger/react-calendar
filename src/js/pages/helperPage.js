@@ -3,6 +3,7 @@
 // Vendor modules
 import React                          from 'react';
 import moment                         from 'moment';
+import _                              from 'lodash';
 
 // Project modules
 import * as componentHelper from '../components/helper';
@@ -20,7 +21,7 @@ function _isMatchWeekDayName(schedule, weekDayNameSlug){
 }
 
 function _isMatchSchedule(schedule, weekDayNameSlug, hourStartSlug, hourEndSlug){
-  return    _isMatchWeekDayName(schedule, weekDayNameSlug) 
+  return    _isMatchWeekDayName(schedule, weekDayNameSlug)
          && _isMatchHours(schedule, hourStartSlug, hourEndSlug)
 }
 
@@ -42,12 +43,12 @@ export function getCourseTeacher(courses, courseNameSlug, teacherSlug){
   let teacher = null;
 
   if(courses && courses.length > 0){
-    course = _.find(courses, function(item) {
-        return item.slug == courseNameSlug; 
+    course = courses.find(function(item) {
+        return item.slug == courseNameSlug;
     });
 
-    teacher = _.find(course.teachers, function(item) {
-        return item.slug == teacherSlug; 
+    teacher = course.teachers.find(function(item) {
+        return item.slug == teacherSlug;
     });
   }
   return {
@@ -64,7 +65,7 @@ export function getConference(conferences, conferenceSlug, speakerSlug){
   let conference = null;
 
   if(conferences && conferences.length > 0){
-    conference = _.find(conferences, function(item) {
+    conference = conferences.find(function(item) {
         return (
               (item.slug == conferenceSlug)
           &&  (item.speaker.slug == speakerSlug)
@@ -74,7 +75,7 @@ export function getConference(conferences, conferenceSlug, speakerSlug){
   return conference;
 }
 
-export function getMatchCourseTypeSchedule( courses, courseNameSlug, teacherSlug, 
+export function getMatchCourseTypeSchedule( courses, courseNameSlug, teacherSlug,
                               courseTypeSlug, weekDayNameSlug,
                               hourStartSlug, hourEndSlug ){
 
@@ -85,8 +86,8 @@ export function getMatchCourseTypeSchedule( courses, courseNameSlug, teacherSlug
   if (course && teacher) {
     let courseTypes = teacher.course.courseTypes;
 
-    courseType = _.find(courseTypes, function(item) {
-      return item.slug == courseTypeSlug; 
+    courseType = courseTypes.find(function(item) {
+      return item.slug == courseTypeSlug;
     });
 
     if(courseType){
@@ -104,7 +105,7 @@ export function getMatchReservationSchedule(schedules, dateSlug, hourStartSlug){
   let matchSchedule = null;
 
   if (schedules) {
-    matchSchedule = _.find(schedules, function(item) {
+    matchSchedule = schedules.find(function(item) {
       let day = moment( item.dayStart ).utcOffset("+00:00")
       return day.format('YYYY-MM-DD') == dateSlug
           && day.format('HH.mm') == hourStartSlug
@@ -138,7 +139,7 @@ function _getDayStartFromNow(dayStartISOString){
 
 // return date from features.
 export function getReservationScheduleFromNow(schedule){
-  
+
   if(schedule){
     schedule.dayStart = _getDayStartFromNow(schedule.dayStart);
     schedule.freeDays = _getFreeDaysFromNow(schedule.freeDays);

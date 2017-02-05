@@ -3,7 +3,6 @@
 // Vendor modules
 import moment                         from 'moment';
 import React                          from 'react';
-import ReactDOMServer                 from 'react-dom/server';
 
 // Project modules
 import * as componentHelper           from '../../helper';
