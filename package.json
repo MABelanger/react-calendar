@@ -36,7 +36,7 @@
   },
   "scripts": {
     "dev": "./node_modules/.bin/webpack-dev-server --content-base ./src --inline --hot --port 8081",
-    "build": "rm -rf ./dist/ && mkdir ./dist && cp -a ./src/index.html ./dist/index.html && NODE_ENV=production webpack -p --config webpack.production.config.js",
+    "build": "rm -rf ./dist/ && mkdir ./dist && cp -a ./src/index.html ./dist/index.html && NODE_ENV=production webpack -p --config webpack.production.config.js"
   },
   "author": "",
   "license": "ISC"
