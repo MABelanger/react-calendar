@@ -4,7 +4,6 @@
 import React                          from 'react';
 import ReactDomServer                 from 'react-dom/server';
 import moment                         from 'moment';
-import toastr                         from 'toastr';
 
 // Project modules
 import * as componentHelper           from '../helper';
@@ -20,8 +19,6 @@ import ReservationStore               from '../../stores/reservationStore';
 import * as ReservationActions        from '../../actions/reservationActions';
 import ReservationConstants           from '../../constants/reservationConstants';
 
-// Vendor styles
-import 'toastr/build/toastr.css';
 
 // Project styles
 import './styles.scss';
@@ -79,7 +76,7 @@ export default class Reservation extends React.Component {
 
 
   _renderReservationHeader(conference, schedule){
-    moment.locale('fr'); 
+    moment.locale('fr');
     let fullName = componentHelper.getFullName(conference.speaker);
     let day = moment( schedule.dayStart ).utcOffset("+00:00").format("LL");
     let {hourStart, hourEnd} = componentHelper.getHourRange(schedule);
@@ -90,7 +87,7 @@ export default class Reservation extends React.Component {
         <strong>{conference.title}</strong>&nbsp;
         avec&nbsp;
         <strong>{fullName}</strong>&nbsp;
-        le {day} de {hourStart} à {hourEnd}. 
+        le {day} de {hourStart} à {hourEnd}.
       </span>
     )
 
@@ -153,7 +150,7 @@ export default class Reservation extends React.Component {
               {this.state.reservationHeader}
             </div>
             <br/>
-            <TextForm 
+            <TextForm
               ref="textForm"
               errors={this.state.errors}
             />
@@ -169,7 +166,7 @@ export default class Reservation extends React.Component {
 
   render(){
     if(this.state.isSuccess){
-      return <SuccessMessage 
+      return <SuccessMessage
         messageHtml={this.state.confirmation.messageHtml}
         backBtnClick={this.backBtnClick.bind(this)}
       />
