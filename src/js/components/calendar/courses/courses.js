@@ -12,7 +12,10 @@ export default class Courses extends React.Component {
   getRenderCourses(courses){
     if(courses && courses.length > 0){
       let renderCourses = courses.map( (course, index) => {
-        return <Course key={index} course={course} />;
+        // TODO:. this is a quick fix... go into the db...
+        if(course.name != 'Joy-a' && course.name != 'Coaching'){
+          return <Course key={index} course={course} />;
+        }
       });
       return renderCourses;
     }
